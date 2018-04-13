@@ -1,7 +1,7 @@
 '''
 Created on Apr 2, 2018
 
-@author: mzehlike
+@author: meike.zehlike
 '''
 
 if __name__ == '__main__':
