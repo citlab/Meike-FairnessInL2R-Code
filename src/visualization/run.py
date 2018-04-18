@@ -140,6 +140,46 @@ pdf.plot(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_PSUMath_SuccessfulStudents.png',
          labels=['female', 'male'])
 
+
+############################################################################
+# PSU LANGUAGE SCORES
+############################################################################
+
+# plot quality distributions of university grades for different school types
+attributeNamesAndCategories = {"highschool_type" : 3}
+attributeQuality = "psu_len"
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.allStudents(data)
+pdf.plot(data, attributeNamesAndCategories, attributeQuality,
+         '../../data/ChileUniversity/pdf_HighschoolType_PSULang_AllStudents.png',
+         labels=['public', 'semi-private', 'private'])
+
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.successfulStudents(data)
+pdf.plot(data, attributeNamesAndCategories, attributeQuality,
+         '../../data/ChileUniversity/pdf_HighschoolType_PSULang_SuccessfulStudents.png',
+         labels=['public', 'semi-private', 'private'])
+
+
+# plot quality distributions of university grades for male and female
+attributeNamesAndCategories = {"hombre" : 2}
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.allStudents(data)
+pdf.plot(data, attributeNamesAndCategories, attributeQuality,
+         '../../data/ChileUniversity/pdf_Gender_PSULang_AllStudents.png',
+         labels=['female', 'male'])
+
+# plot quality distributions of university grades for male and female
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.successfulStudents(data)
+pdf.plot(data, attributeNamesAndCategories, attributeQuality,
+         '../../data/ChileUniversity/pdf_Gender_PSULang_SuccessfulStudents.png',
+         labels=['female', 'male'])
+
 ############################################################################
 # Fraction of Credits a Student failed
 ############################################################################
