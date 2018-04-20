@@ -1,9 +1,9 @@
-#!/usr/bin/env octave
+#!/opt/octave4.2.2/bin/octave -qf
 % command line arguments:
 % usage: cross-validation.m test_set model
 
 % suppress output
-more off;
+%more off;
 
 % pararrayfun is in the 'general' package
 pkg load general;
@@ -15,6 +15,8 @@ source global.m;
 arg_list = argv ();
 test_file = arg_list{1,1};
 model_file = arg_list{2,1};
+%test_file = '../sample/sample_test_data.m'
+%model_file = '../sample/sample_model.m'
 
 disp(sprintf('loading model file %s', model_file));
 omega = load(model_file).omega;

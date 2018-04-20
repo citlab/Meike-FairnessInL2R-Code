@@ -1,4 +1,4 @@
-#!/usr/bin/env octave
+#!/opt/octave4.2.2/bin/octave -qf
 % command line arguments:
 % predict.m model feature_file
 
