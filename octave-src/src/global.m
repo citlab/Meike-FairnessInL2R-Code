@@ -16,7 +16,11 @@ global CORES = 4;
 global INIT_VAR = 0.01;
 
 % factor to weight the importance of the fairness component in the loss function
-global GAMMA = 0;
+% TODO: VALUES FOR EXPOSURE AND COST DIFFERENTIATE BY 12 ORDERS OF MAGNITUDE!! WHAT TO DO ABOUT THAT?
+global GAMMA = 1000000000000;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;
+
+% wanna debug?
+global DEBUG = 0;

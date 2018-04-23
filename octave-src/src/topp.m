@@ -6,8 +6,3 @@
 function t = topp(v)
     t = exp(v)/sum(exp(v));
 end
-
-
-function t_prot = topp_prot(u, v)
-  t_prot = exp(u)/sum(exp(v));
-end

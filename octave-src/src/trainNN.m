@@ -27,7 +27,7 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         % with regularization
         J = listwise_cost(y,z, list_id, prot_idx) + ((z.*z)'.*LAMBDA);
         % without regularization
-        %J = listwise_cost(y,z, list_id);
+        %J = listwise_cost(y,z, list_id, prot_idx);
         
         % gradient
         if quiet == false
