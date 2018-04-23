@@ -13,12 +13,12 @@ pkg load parallel;
 
 % read arguments on the command line
 arg_list = argv ();
-training_file = '../sample/sample_train_data_scoreAndGender.txt'
-model_file = '../sample/sample_model_gender.m'
+training_file = '../sample/sample_train_data_scoreAndGender_separated.txt'
+model_file = '../sample/sample_model_gender_sep.m'
 %training_file = '../sample/sample_training_data.m'
 %model_file = '../sample/sample_model.m'
-training_file = arg_list{1,1};
-model_file = arg_list{2,1};
+%training_file = arg_list{1,1};
+%model_file = arg_list{2,1};
 
 % load constants
 addpath(".")

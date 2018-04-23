@@ -5,7 +5,9 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     m = size(X,1);
     n_features = size(X,2);
     n_lists = size(unique(list_id),1);
-
+    
+    prot_idx = ( X(:,PROT_COL)==1 ); 
+    
     % linear neural network parameter initialization
     omega = rand(n_features,1)*INIT_VAR;
 
@@ -16,14 +18,14 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         
         % forward propagation
         z =  X * omega;
-         
+        
         % cost
         if quiet == false
             fprintf("computing cost... ")
         end
 
         % with regularization
-        J = listwise_cost(y,z, list_id) + ((z.*z)'.*LAMBDA);
+        J = listwise_cost(y,z, list_id, prot_idx) + ((z.*z)'.*LAMBDA);
         % without regularization
         %J = listwise_cost(y,z, list_id);
         
