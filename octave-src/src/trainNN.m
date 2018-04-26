@@ -9,8 +9,8 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     prot_idx = ( X(:,PROT_COL)==PROT_ATTR ); 
     
     % linear neural network parameter initialization
-    % omega = rand(n_features,1)*INIT_VAR;
-    omega = [0.0069304; 0.0084614];
+    omega = rand(n_features,1)*INIT_VAR;
+    % omega = [0.0069304; 0.0084614];
 
     for t = 1:T
         if quiet == false
