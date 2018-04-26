@@ -13,8 +13,10 @@ pkg load parallel;
 
 % read arguments on the command line
 arg_list = argv ();
-training_file = '../sample/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/sample_model_gender_sep.m'
+training_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_train_data_scoreAndGender_separated.txt'
+model_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m'
+%training_file = '../sample/toy_data/toy_training_data.m'
+%model_file = '../sample/toy_data/toy_model.m'
 %training_file = '../sample/sample_training_data.m'
 %model_file = '../sample/sample_model.m'
 %training_file = arg_list{1,1};

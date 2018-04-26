@@ -9,7 +9,8 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     prot_idx = ( X(:,PROT_COL)==1 ); 
     
     % linear neural network parameter initialization
-    omega = rand(n_features,1)*INIT_VAR;
+    % omega = rand(n_features,1)*INIT_VAR;
+    omega = [0.0069304; 0.0084614];
 
     for t = 1:T
         if quiet == false
@@ -34,7 +35,7 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
             fprintf("computing gradient...")
         end
 
-        grad = listnet_gradient(X, y, z, list_id);
+        grad = listnet_gradient(X, y, z, list_id, prot_idx);
         
         % parameter update
         omega = omega - (e .* sum(grad',2));
