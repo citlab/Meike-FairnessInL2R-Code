@@ -5,6 +5,7 @@ Created on Apr 26, 2018
 '''
 
 import numpy as np
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -19,13 +20,18 @@ input_file4 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_fe
 output_file = '../../octave-src/plots/synthetic/separated/rankings_group_property_only.png'
 
 
+mpl.rcParams.update({'font.size': 12, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
+# avoid type 3 (i.e. bitmap) fonts in figures
+mpl.rcParams['ps.useafm'] = True
+mpl.rcParams['pdf.use14corefonts'] = True
+mpl.rcParams['text.usetex'] = True
+
+
 f, ax = plt.subplots()
-# #   output_file_with_extension = strcat(output_file, ".png");
-#
-#   # Generate dummy info for plot handles "h"
-# h = np.zeros(2,1);
-# h(1,1) = plt.plot(1,1,'ro', 'markersize', 5, 'markerfacecolor', 'r');hold on;
-# h(2,1) = plt.plot(1,1,'b+', 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
+
+# Generate dummy info for plot handles "h"
+red_circle, = plt.plot(1, 0, 'ro', ms=2, label="protected")
+blue_plus, = plt.plot(1, 0, 'b+', ms=4, label="non-protected");
 
 data = pd.read_csv(input_file1, sep=",", header=None)
 for i in range(0, k, 2):
@@ -57,8 +63,10 @@ for i in range(0, k, 2):
 
 plt.gca().invert_yaxis()
 plt.ylabel ("ranking position");
-
+plt.title("Predicted Positions of L2R Without and With Fairness Constraint")
 plt.xticks(np.arange(1, 5, step=1), ('Training Data', 'Normal L2R', 'Small Lambda', 'Large Lambda'))
+plt.legend([red_circle, blue_plus], ['protected', 'non-protected'])
+
 # legend(h, 'protected', 'non-protected');
 #
 # title (title1);
