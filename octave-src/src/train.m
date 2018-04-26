@@ -24,7 +24,7 @@ model_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_mod
 
 % load constants
 addpath(".")
-source "./global.m";
+source "./globals.m";
 
 % load training dataset
 disp('loading training data...')

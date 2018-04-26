@@ -1,12 +1,12 @@
 function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     % load constants
-    source global.m;
+    source globals.m;
 
     m = size(X,1);
     n_features = size(X,2);
     n_lists = size(unique(list_id),1);
     
-    prot_idx = ( X(:,PROT_COL)==1 ); 
+    prot_idx = ( X(:,PROT_COL)==PROT_ATTR ); 
     
     % linear neural network parameter initialization
     % omega = rand(n_features,1)*INIT_VAR;

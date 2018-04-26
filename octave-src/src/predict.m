@@ -5,8 +5,14 @@
 % suppress output
 more off;
 
-omega = load(argv(){1});
-drgfile = argv(){2};
+% load constants
+addpath(".")
+source "./globals.m";
+
+%omega = load(argv(){1});
+%drgfile = argv(){2};
+omega = load('../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m');
+drgfile = '../sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated.txt';
 drg = load(drgfile);
 
 list_id = drg(:,1);
@@ -20,8 +26,16 @@ r = @(i) (i+rand*0.02-0.01);
 for id = unique(list_id)'
     indexes = find(list_id==id);
     a(indexes) = floor(ranks(arrayfun(r, z(indexes))));
+    # add protection status to a for later evaluation
+    prot = [X(a, PROT_COL)']
+    a = [prot; a]
 endfor
 ranks = a';
 
-
 dlmwrite(sprintf('%s.pred', drgfile), ranks)
+
+title1 = "Predicted Position Distribution of two Groups under Fairness Constraint";
+title2 = "Position Distribution in Training Data";
+
+plot_rankings_positions_only(ranks, '../plots/predicted_ranking_with_fairness_objective', 100, title1)
+plot_rankings_positions_only(X, '../plots/ranking_from_training_data', 100, title2)
