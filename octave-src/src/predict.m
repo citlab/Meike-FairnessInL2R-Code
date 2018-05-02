@@ -11,8 +11,10 @@ source "./globals.m";
 
 %omega = load(argv(){1});
 %drgfile = argv(){2};
-omega = load('../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m');
-drgfile = '../sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt';
+%omega = load('../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt';
+omega = load('../sample/synthetic_score_gender/distribution_based/sample_model_gender_normdist.m');
+drgfile = '../sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution.txt';
 drg = load(drgfile);
 
 list_id = drg(:,1);
