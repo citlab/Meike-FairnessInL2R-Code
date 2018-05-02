@@ -6,6 +6,7 @@ Created on Apr 17, 2018
 
 import numpy as np
 import scipy.stats as stats
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import itertools
 
@@ -35,7 +36,15 @@ def separate_groups(data_set, categories, attributeItems):
 
 
 def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labels):
-    colors = ['green', 'red', 'blue']
+
+    mpl.rcParams.update({'font.size': 12, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
+# avoid type 3 (i.e. bitmap) fonts in figures
+    mpl.rcParams['ps.useafm'] = True
+    mpl.rcParams['pdf.use14corefonts'] = True
+    mpl.rcParams['text.usetex'] = True
+
+
+    colors = ['red', 'blue', 'green']
     markers = ['-o', '-<', '-s', '-+', '-d']
 #     label=['Male-married','Male-single','Male-divorced','Female']
 #     label=['German','Turkish','Yugoslavian','Greek','Italian']
