@@ -33,9 +33,3 @@ endfor
 ranks = a';
 
 dlmwrite(sprintf('%s.pred', drgfile), ranks)
-
-title1 = "Predicted Position Distribution of two Groups under Fairness Constraint";
-title2 = "Position Distribution in Training Data";
-
-plot_rankings_positions_only(ranks, '../plots/predicted_ranking_with_fairness_objective', 100, title1)
-plot_rankings_positions_only(X, '../plots/ranking_from_training_data', 100, title2)

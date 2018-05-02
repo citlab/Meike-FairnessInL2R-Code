@@ -22,7 +22,7 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     exposure_nprot_normalized = @(i) exposure_nprot(i) / group_size_np(i); 
    
     % calculate difference of exposure between the two groups
-    exposure_diff = @(i) (exposure_prot_normalized(i) - exposure_nprot_normalized(i))^2;
+    exposure_diff = @(i) (exposure_nprot_normalized(i) - exposure_prot_normalized(i))^2;
     
     % calculate accuracy wrt training data
     accuracy = @(i) (-sum(topp(ly(i)) .* log( topp(lz(i)) )));
