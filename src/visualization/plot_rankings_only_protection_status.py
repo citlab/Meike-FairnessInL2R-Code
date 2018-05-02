@@ -13,11 +13,11 @@ PROT_COL = 0
 PROT_ATTR = 1
 k = 100
 
-input_file1 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_train_data_scoreAndGender_separated.txt'
-input_file2 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
-input_file3 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
-input_file4 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
-output_file = '../../octave-src/plots/synthetic/separated/rankings_group_property_only.png'
+input_file1 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
+input_file2 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
+input_file3 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
+input_file4 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
+output_file = '../../plots/synthetic/separated/top_female_bottom_male/rankings_group_property_only.png'
 
 
 mpl.rcParams.update({'font.size': 12, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
@@ -64,7 +64,7 @@ for i in range(0, k, 2):
 plt.gca().invert_yaxis()
 plt.ylabel ("ranking position");
 plt.title("Predicted Positions of L2R Without and With Fairness Constraint")
-plt.xticks(np.arange(1, 5, step=1), ('Training Data', 'Normal L2R', 'Small Lambda', 'Large Lambda'))
+plt.xticks(np.arange(1, 5, step=1), ('Training Data', 'Normal L2R', 'Small Gamma', 'Large Gamma'))
 plt.legend([red_circle, blue_plus], ['protected', 'non-protected'])
 
 # legend(h, 'protected', 'non-protected');
