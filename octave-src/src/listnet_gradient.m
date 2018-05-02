@@ -55,7 +55,7 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     exposure_nprot_normalized = @(i) exposure_nprot(i) / group_size_np(i);  
     
     % make sure u1 is not NaN
-    u1 = @(i) 2 * max((exposure_nprot_normalized(i) - exposure_prot_normalized(i)), 0);
+    u1 = @(i) 2 * max((exposure_prot_normalized(i) - exposure_nprot_normalized(i)), 0);
     u2 = @(i) tp_p(i) ./ log(2) / group_size_p(i);
     u3 = @(i) tp_np(i) ./ log(2) / group_size_np(i);
     U = @(i) u1(i) * (u2(i) - u3(i)); % should be vector of size n(q)
