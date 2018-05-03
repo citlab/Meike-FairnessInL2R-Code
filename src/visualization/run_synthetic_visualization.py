@@ -22,7 +22,7 @@ data = pd.read_csv('../../octave-src/sample/synthetic_score_gender/distribution_
 
 pdf.plot(data, attributeNamesAndCategories, attributeQuality,
          '../../plots/synthetic/separated/top_male_bottom_female/dataset_plots/normal_distribution/pdf_scores.png',
-         labels=['protected', 'non-protected'])
+         labels=['non-protected', 'protected'])
 
 # RESULT PLOT
 input_file1 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_train_data_scoreAndGender_normalDistribution.txt'

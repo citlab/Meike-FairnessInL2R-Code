@@ -44,8 +44,8 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
     mpl.rcParams['text.usetex'] = True
 
 
-    colors = ['red', 'blue', 'green']
-    markers = ['-o', '-+', '-s', '-+', '-d']
+    colors = ['blue', 'red', 'green']
+    markers = ['-', '--', '-s', '-+', '-d']
 #     label=['Male-married','Male-single','Male-divorced','Female']
 #     label=['German','Turkish','Yugoslavian','Greek','Italian']
 #     label=['German','Other','Asylum','EU Country']
@@ -58,6 +58,7 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
     separateQualityByGroups = []
     fig = plt.figure(figsize=(20, 10))
     plt.subplot(211)
+    plt.title("Score PDF")
     round_2f = []
     for idx, row in data.iterrows():
         row[attributeQuality] = float(row[attributeQuality]) / best
@@ -67,17 +68,27 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
         fit = stats.norm.pdf(separateQualityByGroups[i], np.mean(separateQualityByGroups[i]), np.std(separateQualityByGroups[i]))
 #        plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=categories[i], color=colors[i])
         plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=labels[i], color=colors[i])
-        plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
+#         plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
+        plt.legend()
         round_2f.append([round(elem, 2) for elem in separateQualityByGroups[i]])
-    plt.xlabel(attributeQuality + ' (Quality)')
-    plt.ylabel('Probability Density Function')
+#     plt.xlabel(attributeQuality + ' (Quality)')
+#     plt.ylabel('Probability Density Function')
 
     plt.subplot(212)
+    plt.title("Score Histogram")
 #    plt.hist(round_2f, 30, histtype='bar', label=categories, color=colors[:len(categories)])
-    plt.hist(round_2f, 30, histtype='bar', label=labels, color=colors[:len(categories)])
-    plt.xlabel(attributeQuality + ' (Quality)')
-    plt.ylabel('Frequency')
-    plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
+    n, bins, patches = plt.hist(round_2f, 30, histtype='bar', label=labels, color=colors[:len(categories)])
+
+    hatches = ['', '//']
+    for patch_set, hatch in zip(patches, hatches):
+        for patch in patch_set.patches:
+            patch.set_hatch(hatch)
+            patch.set_edgecolor('white')
+
+#     plt.xlabel(attributeQuality + ' (Quality)')
+#     plt.ylabel('Frequency')
+    plt.legend()
+#     plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
     plt.savefig(filename, dpi=100)
 
 
