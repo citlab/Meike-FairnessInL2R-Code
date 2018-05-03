@@ -45,7 +45,7 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
 
 
     colors = ['red', 'blue', 'green']
-    markers = ['-o', '-<', '-s', '-+', '-d']
+    markers = ['-o', '-+', '-s', '-+', '-d']
 #     label=['Male-married','Male-single','Male-divorced','Female']
 #     label=['German','Turkish','Yugoslavian','Greek','Italian']
 #     label=['German','Other','Asylum','EU Country']

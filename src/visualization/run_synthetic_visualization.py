@@ -31,4 +31,4 @@ input_file3 = '../../octave-src/sample/synthetic_score_gender/distribution_based
 input_file4 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution_GAMMA_LARGE.txt.pred'
 output_file = '../../plots/synthetic/separated/top_male_bottom_female/result_plots/normal_distribution/rankings_group_property_only.png'
 
-pltres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, k)
+pltres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 500, 10)
