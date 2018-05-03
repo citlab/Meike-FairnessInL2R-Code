@@ -37,7 +37,7 @@ def separate_groups(data_set, categories, attributeItems):
 
 def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labels):
 
-    mpl.rcParams.update({'font.size': 12, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
+    mpl.rcParams.update({'font.size': 24, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
 # avoid type 3 (i.e. bitmap) fonts in figures
     mpl.rcParams['ps.useafm'] = True
     mpl.rcParams['pdf.use14corefonts'] = True
@@ -56,7 +56,7 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
     attributeItems = attributeNamesAndCategories.items()
     output_ranking_separated = separate_groups(data, categories, attributeItems)
     separateQualityByGroups = []
-    fig = plt.figure(figsize=(12, 6))
+    fig = plt.figure(figsize=(12, 7))
 #     plt.subplot(211)
     plt.title("Score PDF")
     round_2f = []
@@ -65,11 +65,11 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
 
     for i in range(len(categories)):
         separateQualityByGroups.append([quality[attributeQuality] for quality in output_ranking_separated[i]])
-        fit = stats.uniform.pdf(separateQualityByGroups[i], np.mean(separateQualityByGroups[i]), np.std(separateQualityByGroups[i]))
+        fit = stats.norm.pdf(separateQualityByGroups[i], np.mean(separateQualityByGroups[i]), np.std(separateQualityByGroups[i]))
 #        plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=categories[i], color=colors[i])
         plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=labels[i], color=colors[i])
 #         plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
-        plt.legend()
+#         plt.legend()
         round_2f.append([round(elem, 2) for elem in separateQualityByGroups[i]])
 #     plt.xlabel(attributeQuality + ' (Quality)')
 #     plt.ylabel('Probability Density Function')
@@ -87,9 +87,9 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
 
     plt.xlabel(attributeQuality + ' (normalized)')
 #     plt.ylabel('Frequency')
-    plt.legend()
+    plt.legend(loc='upper left')
 #     plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
-    plt.savefig(filename, dpi=100)
+    plt.savefig(filename, dpi=100, bbox_inches='tight')
 
 
 
