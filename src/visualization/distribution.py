@@ -56,8 +56,8 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
     attributeItems = attributeNamesAndCategories.items()
     output_ranking_separated = separate_groups(data, categories, attributeItems)
     separateQualityByGroups = []
-    fig = plt.figure(figsize=(20, 10))
-    plt.subplot(211)
+    fig = plt.figure(figsize=(12, 6))
+#     plt.subplot(211)
     plt.title("Score PDF")
     round_2f = []
     for idx, row in data.iterrows():
@@ -65,7 +65,7 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
 
     for i in range(len(categories)):
         separateQualityByGroups.append([quality[attributeQuality] for quality in output_ranking_separated[i]])
-        fit = stats.norm.pdf(separateQualityByGroups[i], np.mean(separateQualityByGroups[i]), np.std(separateQualityByGroups[i]))
+        fit = stats.uniform.pdf(separateQualityByGroups[i], np.mean(separateQualityByGroups[i]), np.std(separateQualityByGroups[i]))
 #        plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=categories[i], color=colors[i])
         plt.plot(separateQualityByGroups[i], fit, markers[i], markersize=6, label=labels[i], color=colors[i])
 #         plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
@@ -74,18 +74,18 @@ def plot(data_set, attributeNamesAndCategories, attributeQuality, filename, labe
 #     plt.xlabel(attributeQuality + ' (Quality)')
 #     plt.ylabel('Probability Density Function')
 
-    plt.subplot(212)
-    plt.title("Score Histogram")
-#    plt.hist(round_2f, 30, histtype='bar', label=categories, color=colors[:len(categories)])
-    n, bins, patches = plt.hist(round_2f, 30, histtype='bar', label=labels, color=colors[:len(categories)])
+#     plt.subplot(212)
+#     plt.title("Score Histogram")
+# #    plt.hist(round_2f, 30, histtype='bar', label=categories, color=colors[:len(categories)])
+#     n, bins, patches = plt.hist(round_2f, 30, histtype='bar', label=labels, color=colors[:len(categories)])
+#
+#     hatches = ['', '//']
+#     for patch_set, hatch in zip(patches, hatches):
+#         for patch in patch_set.patches:
+#             patch.set_hatch(hatch)
+#             patch.set_edgecolor('white')
 
-    hatches = ['', '//']
-    for patch_set, hatch in zip(patches, hatches):
-        for patch in patch_set.patches:
-            patch.set_hatch(hatch)
-            patch.set_edgecolor('white')
-
-#     plt.xlabel(attributeQuality + ' (Quality)')
+    plt.xlabel(attributeQuality + ' (normalized)')
 #     plt.ylabel('Frequency')
     plt.legend()
 #     plt.legend(loc='center left', fontsize='x-large', bbox_to_anchor=(1, 0.5))
