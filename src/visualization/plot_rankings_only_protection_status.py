@@ -23,7 +23,7 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
 
     f, ax = plt.subplots(figsize=(20, 7))
 
-    # Generate dummy info for plot handles "h"
+    # Generate dummy info for plot_ChileDataset handles "h"
     red_circle, = plt.plot(0, 1.75, 'ro', ms=10, label="protected")
     blue_plus, = plt.plot(0, 1.75, 'b+', ms=12, mew=3, label="non-protected");
 
