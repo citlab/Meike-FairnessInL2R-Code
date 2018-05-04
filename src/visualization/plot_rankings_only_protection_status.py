@@ -21,45 +21,44 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
     mpl.rcParams['text.usetex'] = True
 
 
-    f, ax = plt.subplots(figsize=(12, 12))
+    f, ax = plt.subplots(figsize=(20, 7))
 
     # Generate dummy info for plot handles "h"
-    red_circle, = plt.plot(1, 0, 'ro', ms=5, label="protected")
-    blue_plus, = plt.plot(1, 0, 'b+', ms=7, label="non-protected");
+    red_circle, = plt.plot(0, 1.75, 'ro', ms=10, label="protected")
+    blue_plus, = plt.plot(0, 1.75, 'b+', ms=12, mew=3, label="non-protected");
 
     data = pd.read_csv(input_file1, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][1] == PROT_ATTR:
-            plt.plot(1, i, 'ro', ms=5);  # , 'markersize', 5, 'markerfacecolor', 'r');
+            plt.plot(i, 1, 'ro', ms=10);  # , 'markersize', 5, 'markerfacecolor', 'r');
         else:
-            plt.plot(1, i, 'b+', ms=7);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
+            plt.plot(i, 1, 'b+', ms=12, mew=3);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
 
     data = pd.read_csv(input_file2, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL] == PROT_ATTR:
-            plt.plot(2, i, 'ro', ms=5);  # , 'markersize', 5, 'markerfacecolor', 'r');
+            plt.plot(i, 1.5, 'ro', ms=10);  # , 'markersize', 5, 'markerfacecolor', 'r');
         else:
-            plt.plot(2, i, 'b+', ms=7);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
+            plt.plot(i, 1.5, 'b+', ms=12, mew=3);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
 
     data = pd.read_csv(input_file3, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL] == PROT_ATTR:
-            plt.plot(3, i, 'ro', ms=5);  # , 'markersize', 5, 'markerfacecolor', 'r');
+            plt.plot(i, 2, 'ro', ms=10);  # , 'markersize', 5, 'markerfacecolor', 'r');
         else:
-            plt.plot(3, i, 'b+', ms=7);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
+            plt.plot(i, 2, 'b+', ms=12, mew=3);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
 
     data = pd.read_csv(input_file4, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL] == PROT_ATTR:
-            plt.plot(4, i, 'ro', ms=5);  # , 'markersize', 5, 'markerfacecolor', 'r');
+            plt.plot(i, 2.5, 'ro', ms=10);  # , 'markersize', 5, 'markerfacecolor', 'r');
         else:
-            plt.plot(4, i, 'b+', ms=7);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
+            plt.plot(i, 2.5, 'b+', ms=12, mew=3);  # , 'markersize', 5, 'markerfacecolor', 'b', 'LineWidth', 2);
 
     plt.gca().invert_yaxis()
-    plt.ylabel ("ranking position");
-    plt.title("Ranking Positions in L2R Without and With Disparate Exposure")
-    plt.xticks(np.arange(1, 5, step=1), ('Training Data', 'Normal L2R', 'Small Gamma', 'Large Gamma'))
-    plt.legend([red_circle, blue_plus], ['protected', 'non-protected'])
+    plt.xlabel ("ranking position");
+    plt.yticks(np.arange(1, 3, step=.5), ('Training Data', 'Normal L2R', 'Small Gamma', 'Large Gamma'))
+    plt.legend([red_circle, blue_plus], ['protected', 'non-protected'], bbox_to_anchor=(0.77, 0.69))
 
     # legend(h, 'protected', 'non-protected');
     #
