@@ -21,7 +21,7 @@ data = pd.read_csv('../../octave-src/sample/synthetic_score_gender/top_male_bott
                    sep=",", names=["query_id", "gender", "score", "rank"])
 
 pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
-         '../../plots/synthetic/separated/top_male_bottom_female/dataset_plots/uniform_distribution/pdf_scores.png',
+         '../../plots/synthetic/separated/top_male_bottom_female/dataset_plots/uniform_distribution/uniform_male_top_pdf_scores.png',
          labels=['non-protected', 'protected'])
 
 # RESULT PLOT
@@ -43,7 +43,7 @@ data = pd.read_csv('../../octave-src/sample/synthetic_score_gender/top_female_bo
                    sep=",", names=["query_id", "gender", "score", "rank"])
 
 pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
-         '../../plots/synthetic/separated/top_female_bottom_male/dataset_plots/uniform_distribution/pdf_scores.png',
+         '../../plots/synthetic/separated/top_female_bottom_male/dataset_plots/uniform_distribution/uniform_female_top_pdf_scores.png',
          labels=['non-protected', 'protected'])
 
 # RESULT PLOT
@@ -65,7 +65,7 @@ data = pd.read_csv('../../octave-src/sample/synthetic_score_gender/distribution_
                    sep=",", names=["query_id", "gender", "score", "rank"])
 
 pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
-         '../../plots/synthetic/separated/top_male_bottom_female/dataset_plots/normal_distribution/pdf_scores.png',
+         '../../plots/synthetic/separated/top_male_bottom_female/dataset_plots/normal_distribution/normal_male_top_pdf_scores.png',
          labels=['non-protected', 'protected'], normal=True)
 
 # RESULT PLOT
