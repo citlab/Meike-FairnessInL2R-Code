@@ -4,7 +4,7 @@ Created on Apr 17, 2018
 @author: mzehlike
 '''
 
-import visualization.chileDatasetPreparation as prep
+import util.chileDatasetPreparation as prep
 import pandas as pd
 import visualization.heatmap as hm
 import visualization.distribution as pdf

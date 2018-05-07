@@ -71,7 +71,7 @@ def allStudents(data):
 
     return data
 
-def prepareForL2R(data):
+def prepareForL2R(data, gender=True):
     """
     brings data into the correct format for L2R octave code with following scheme
     query_id; protection_status; feature_1; ...; feature_n; rank
@@ -81,33 +81,50 @@ def prepareForL2R(data):
     writes one dataset with protection_status "gender" and one with protection_status "highschool_type"
     """
 
-    def rank(x, first, second):
-        x.sort([first, second], ascending=[False, False], inplace=True)
+    def rank(x, sortby):
+        x.sort_values([sortby[0], sortby[1]], ascending=[False, False], inplace=True)
+        x['rank'] = range(x.shape[0])
+        # normalize ranks
+        x['rank'] = x['rank'] / x.shape[0]
         return x
 
     def normalize_values(x):
-
+        return x / x.max()
         return x
 
     data = data[data['sem'] == 1]
     data = data[data['inactivo'] != 1]
 
     # drop all lines where values are missing
-    data = data.dropna(subset=['nem', 'psu_mat', 'psu_len', 'psu_cie', 'notas_', 'rat_ud'])
+    data = data.dropna(subset=['nem', 'psu_mat', 'psu_len', 'psu_cie', 'notas_', 'uds_i_'])
 
     # drop all columns that are not needed
-    keep_cols = ['psu_mat', 'psu_len', 'psu_cie', 'nem', 'hombre', 'highschool_type', 'notas_', 'uds_i_' 'ano_in']
+    if(gender):
+        keep_cols = ['ano_in', 'hombre', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+    else:
+        keep_cols = ['ano_in', 'highschool_type', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+
     data = data[keep_cols]
 
-    # group years together and rank them by notas
-    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(rank, ('notas', 'uds_i_'))
+    # add new column for ranks
+    data['rank'] = np.zeros(data.shape[0])
 
-    # normalize scores and ranks
-    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(normalize_values)
+    # group years together and rank them by notas
+    sortby = ['notas_', 'uds_i_']  # only used because not possible somehow to have more than one parameter
+    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(rank, (sortby))
+
+    # drop notas_ and uds_i_ because not needed anymore but would be seen as features
+    data = data.drop(columns=sortby)
+
+    # normalize scores (ranks already normalized)
+    data[['psu_mat', 'psu_len', 'psu_cie', 'nem']] = data.groupby(data['ano_in'], as_index=False, sort=False)[['psu_mat', 'psu_len', 'psu_cie', 'nem']].transform(lambda x: x / x.max())
 
     # replace ano_in with query_ids that start from 1
-
-
+    data['ano_in'] = data['ano_in'].replace(to_replace=2010, value=1)
+    data['ano_in'] = data['ano_in'].replace(to_replace=2011, value=2)
+    data['ano_in'] = data['ano_in'].replace(to_replace=2012, value=3)
+    data['ano_in'] = data['ano_in'].replace(to_replace=2013, value=4)
+    data['ano_in'] = data['ano_in'].replace(to_replace=2014, value=5)
 
     return data
 
