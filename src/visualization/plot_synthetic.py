@@ -5,12 +5,11 @@ Created on May 2, 2018
 '''
 import pandas as pd
 import visualization.distribution as pdf
-import visualization.plot_rankings_only_protection_status as pltres
+import visualization.ranking_results_only_protection_status as rankres
 
 attributeNamesAndCategories = {"gender" : 2}
 attributeQuality = "score"
 
-k = 100
 
 ###########################################################################
 # UNIFORM TOP MALE BOTTOM FEMALE
@@ -31,7 +30,7 @@ input_file3 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_fe
 input_file4 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
 output_file = '../../plots/synthetic/separated/top_male_bottom_female/result_plots/uniform_distribution/uniform_male_top_rankings_group_property_only.png'
 
-pltres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 100, 2)
+rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 100, 2)
 
 
 ###########################################################################
@@ -53,7 +52,7 @@ input_file3 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_
 input_file4 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
 output_file = '../../plots/synthetic/separated/top_female_bottom_male/result_plots/uniform_distribution/uniform_female_top_rankings_group_property_only.png'
 
-pltres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 100, 2)
+rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 100, 2)
 
 
 ############################################################################
@@ -75,5 +74,5 @@ input_file3 = '../../octave-src/sample/synthetic_score_gender/distribution_based
 input_file4 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution_GAMMA_LARGE.txt.pred'
 output_file = '../../plots/synthetic/separated/top_male_bottom_female/result_plots/normal_distribution/normal_male_top_rankings_group_property_only.png'
 
-pltres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 500, 10)
+rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 500, 10)
 
