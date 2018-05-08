@@ -6,7 +6,7 @@ global T = 10;
 
 % learning rate
 % (was: 0.00005) -- changed by CHATO
-global e = 0.005;
+global e = 0.00005;
 
 % regularization constant
 global LAMBDA = 0.01
