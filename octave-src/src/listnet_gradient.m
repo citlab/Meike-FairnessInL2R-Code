@@ -4,9 +4,13 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     global CORES
     global GAMMA
     global DEBUG
+    global DEBUG_PRINT
+    global ONLY_L
+    global ONLY_U
+    global L_AND_U
     
-    m = size(X,1);
-    p = size(X,2);
+    m = size(X,1); %number of documents
+    p = size(X,2); %number of features
     
     %find all data points that belong to one query
     lx = @(i) X(find(list_id == list_id(i)),:);
@@ -47,17 +51,32 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     group_size_np = @(i) size(group_preds_np(i), 1);
  
     % Exposure in Rankings for the protected and non-protected group
-    exposure_prot = @(i) sum(topp_prot(group_preds_p(i), lz(i))) ./ log(2);    
-    exposure_nprot = @(i) sum(topp_prot(group_preds_np(i), lz(i))) ./ log(2);
+    exposure_prot = @(i) (sum(topp_prot(group_preds_p(i), lz(i)))) ./ log(2);    
+    exposure_nprot = @(i) (sum(topp_prot(group_preds_np(i), lz(i)))) ./ log(2);
+ 
+    if DEBUG_PRINT
+      %fprintf("protected z: %f\n", group_preds_p(1));
+      %fprintf("non-protected z: %f\n", group_preds_np(1));
+    end
     
+    if DEBUG_PRINT
+      %fprintf("top probability first prot: %f\n", topp_prot(group_preds_p(1), lz(1)));
+      %fprintf("top probability first nprot: %f\n", topp_prot(group_preds_np(1), lz(1)));
+    end
+   
     % normalize exposures
     exposure_prot_normalized = @(i) exposure_prot(i) / group_size_p(i); 
-    exposure_nprot_normalized = @(i) exposure_nprot(i) / group_size_np(i);  
+    exposure_nprot_normalized = @(i) exposure_nprot(i) / group_size_np(i); 
+    
+    if DEBUG_PRINT
+      fprintf("exposure_prot_normalized: %f\n", exposure_prot_normalized(1)); 
+      fprintf("exposure_nprot_normalized: %f\n", exposure_nprot_normalized(1)); 
+    end
     
     % make sure u1 is not NaN
-    u1 = @(i) 2 * max((exposure_prot_normalized(i) - exposure_nprot_normalized(i)), 0);
-    u2 = @(i) tp_p(i) ./ log(2) / group_size_p(i);
-    u3 = @(i) tp_np(i) ./ log(2) / group_size_np(i);
+    u1 = @(i) 2 * max((exposure_nprot_normalized(i) - exposure_prot_normalized(i)), 0);
+    u2 = @(i) (tp_np(i) ./ log(2)) / group_size_np(i);
+    u3 = @(i) (tp_p(i) ./ log(2)) / group_size_p(i);
     U = @(i) u1(i) * (u2(i) - u3(i)); % should be vector of size n(q)
     
     l1 = @(i) -(lx(i)' * topp(ly(i)));
@@ -65,7 +84,22 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     l3 = @(i) (lx(i)' * exp(lz(i)));
 
     L = @(i) (l1(i) + l2(i) * l3(i)); % should be vector of size n(q)
-    f = @(i) GAMMA * U(i) + L(i)';
+    
+    if ONLY_L
+      f = @(i) L(i)';
+    end
+    
+    if ONLY_U
+      f = @(i) GAMMA * U(i);
+    end 
+    
+    if L_AND_U
+      f = @(i) GAMMA * U(i) + L(i)';
+    end 
+    
+    if DEBUG_PRINT
+      fprintf("cost in gradient 1: %f\n", f(1));
+    end
     
     if DEBUG
       prot_idx_q1 = prot_idx_per_query(1);

@@ -1,10 +1,10 @@
 % global variables declaration
 
 % number of training iterations
-global T = 50;
+global T = 100;
 
 % learning rate
-global e = 0.00005;
+global e = 0.05;
 
 % regularization constant
 global LAMBDA = 0.001;
@@ -22,7 +22,12 @@ global INIT_VAR = 0.01;
 % TODO: Gamma seems to depend on the number of examples, we should somehow take that into account
 % medium gamma = 2000000
 % large gamma = 20000000000000
-global GAMMA = 2000000;
+global GAMMA = 1000000;
+global COST_GAMMA = 100000000000;
+
+global ONLY_U = 0;
+global ONLY_L = 0;
+global L_AND_U = 1;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;
@@ -32,3 +37,4 @@ global PROT_ATTR = 1;
 
 % wanna debug?
 global DEBUG = 0;
+global DEBUG_PRINT = 1;
