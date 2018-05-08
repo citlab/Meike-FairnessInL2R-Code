@@ -10,7 +10,10 @@ function grad = listnet_gradient (X, y, z, list_id)
     s1 = @(i) -(lx(i)' * topp(ly(i)));
     s2 = @(i) (1 / sum(exp(lz(i))));
     s3 = @(i) (lx(i)' * exp(lz(i)));
-    
+
+    s1(1)'
+    s2(1)'
+    s3(1)'
 
     g = @(i) (s1(i) + s2(i) * s3(i)); % n(i) x 1
     f = @(i) g(i)';

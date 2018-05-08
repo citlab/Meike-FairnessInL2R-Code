@@ -2,7 +2,7 @@
 
 % number of training iterations
 % (was: 5) -- changed by CHATO
-global T = 10;
+global T = 5;
 
 % learning rate
 % (was: 0.00005) -- changed by CHATO

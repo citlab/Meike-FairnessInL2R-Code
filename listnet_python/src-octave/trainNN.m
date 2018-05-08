@@ -9,6 +9,22 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     % linear neural network parameter initialization
     omega = rand(n_features,1)*INIT_VAR;
 
+    % STATIC OMEGA initial
+    omega(1) = 0.00537264;
+    omega(2) = 0.00471433;
+    omega(3) = 0.00205609;
+    omega(4) = 0.00398706;
+    omega(5) = 0.0074851;
+    omega(6) = 0.00637906;
+    omega(7) = 0.00903121;
+    omega(8) = 0.00930291;
+    omega(9) = 0.00883843;
+    omega(10) = 0.0048150;
+
+    omega
+    size(omega)
+    % /STATIC
+
     last_cost = -1
 
     for t = 1:T
