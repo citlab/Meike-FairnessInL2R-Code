@@ -5,5 +5,5 @@
 % (protected) group
 
 function t_prot = topp_prot(u, v)
-  t_prot = exp(u)/sum(exp(v));
+  t_prot = 1 - exp(u)/sum(exp(v));
 end

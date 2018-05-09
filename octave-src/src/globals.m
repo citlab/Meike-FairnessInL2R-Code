@@ -1,16 +1,16 @@
 % global variables declaration
 
 % number of training iterations
-global T = 100;
+global T = 3000;
 
 % learning rate
-global e = 0.05;
+global e = 0.001;
 
 % regularization constant
 global LAMBDA = 0.001;
 
 % number of cores for parallel processing
-global CORES = 4;
+global CORES = 2;
 
 % range of values for initialization of weights
 global INIT_VAR = 0.01;
@@ -20,10 +20,10 @@ global INIT_VAR = 0.01;
 % TODO: IN COST FUNCTION VALUES FOR EXPOSURE AND COST DIFFERENTIATE BY 12 ORDERS OF MAGNITUDE!! WHAT TO DO ABOUT THAT?
 % IN GRADIENT FUNCTION THEY ONLY DIFFER BY 6 ORERS OF MAGNITUDE...WHAT NOW?
 % TODO: Gamma seems to depend on the number of examples, we should somehow take that into account
-% medium gamma = 2000000
+% medium gamma = 1000000
 % large gamma = 20000000000000
-global GAMMA = 1000000;
-global COST_GAMMA = 100000000000;
+% COST_GAMMA = 100000000000
+global GAMMA = 1000;
 
 global ONLY_U = 0;
 global ONLY_L = 0;
@@ -37,4 +37,4 @@ global PROT_ATTR = 1;
 
 % wanna debug?
 global DEBUG = 0;
-global DEBUG_PRINT = 1;
+global DEBUG_PRINT = 0;

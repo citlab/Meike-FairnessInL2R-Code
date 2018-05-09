@@ -2,7 +2,9 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     global CORES
     global GAMMA
     global DEBUG
-    global COST_GAMMA
+    global ONLY_L
+    global ONLY_U
+    global L_AND_U
     
     ly = @(i) y(find(list_id == list_id(i)),:);
     lz = @(i) z(find(list_id == list_id(i)),:);
@@ -40,7 +42,9 @@ function J = listwise_cost(y, z, list_id, prot_idx)
       z_nprot = l_prot_vec(lz(iter), !prot_idx_per_query(iter));
 
       top1_prot = topp_prot(l_prot_vec(lz(iter), prot_idx_per_query(iter)), lz(iter));
+      top1_nprot = topp_prot(l_prot_vec(lz(iter), !prot_idx_per_query(iter)), lz(iter));
       top1_prot_times_v = topp_prot(l_prot_vec(lz(iter), prot_idx_per_query(iter)), lz(iter)) ./ log(2);
+      top1_nprot_times_v = topp_prot(l_prot_vec(lz(iter), !prot_idx_per_query(iter)), lz(iter)) ./ log(2);
       
       group_size_prot = group_size_p(iter);
       group_size_nprot = group_size_np(iter);
@@ -54,9 +58,21 @@ function J = listwise_cost(y, z, list_id, prot_idx)
       exposure_difference = exposure_diff(iter);
       accuracy2 = accuracy(iter);
       
-      cost = COST_GAMMA * exposure_diff(iter) .+ accuracy(iter);
+      cost = GAMMA * exposure_diff(iter) .+ accuracy(iter);
     end
     
-    j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
+    if ONLY_U
+      j = @(i) GAMMA * exposure_diff(i);
+    end
+    
+    if ONLY_L
+      j = @(i) accuracy(i);
+    end
+    
+    if L_AND_U
+      u = @(i) GAMMA * exposure_diff(i);
+      l = @(i) accuracy(i);
+      j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
+    end 
     J = pararrayfun(CORES, j,1:size(z,1), "VerboseLevel", 0);
 end

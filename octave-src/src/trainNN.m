@@ -9,8 +9,13 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
     prot_idx = ( X(:,PROT_COL)==PROT_ATTR ); 
     
     % linear neural network parameter initialization
-    %omega = rand(n_features,1)*INIT_VAR;
-    omega = [0.0069304; 0.0084614];
+    omega = rand(n_features,1)*INIT_VAR;
+    %omega = [0.0069304; 0.0084614];
+    
+    cost_converge_J = zeros(T, 1);
+    cost_converge_L = zeros(T, 1);
+    cost_converge_U = zeros(T, 1);
+    omega_converge = zeros(T, n_features);
 
     for t = 1:T
         if quiet == false
@@ -22,14 +27,17 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         
         % cost
         if quiet == false
-            fprintf("computing cost... ")
+            fprintf("computing cost... \n")
         end
 
         % with regularization
         cost = listwise_cost(y,z, list_id, prot_idx);
-        fprintf("cost=%f\n", sum(cost));
+        %fprintf("cost=%f\n", sum(cost));
+        %cost_converge(t) = sum(cost);
         %fprintf("cost: %f\n", J(1));
         J = cost + ((z.*z)'.*LAMBDA);
+        cost_converge_J(t) = sum(J);
+
         % without regularization
         %J = listwise_cost(y,z, list_id, prot_idx);
         
@@ -39,16 +47,19 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         end
 
         grad = listnet_gradient(X, y, z, list_id, prot_idx);
-        fprintf("grad: %f\n", grad(1));
+        %fprintf("grad: %f\n", grad(1));
 
         % parameter update
         omega = omega - (e .* sum(grad',2));
-        %fprintf("summation of gradient: %f\n", sum(grad',2));
+        %fprintf("omega: %f\n", omega);
+        omega_converge(t, :) = omega(:);
 
         
         if quiet == false
             fprintf("\n")
         end
     end
+    figure(); title("total Costs"); plot(cost_converge_J);
+    figure(); plot(omega_converge);
 end
 

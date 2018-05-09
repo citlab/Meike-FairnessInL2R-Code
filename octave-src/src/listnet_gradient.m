@@ -30,7 +30,7 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     % v = predictions of all data points
     % w = feature vectors of all data points    
     tp1 = @(t, u) t .* repmat(exp(u), 1, columns(t));
-    tp2 = @(v) sum(exp(v));  
+    tp2 = @(v) sum(exp(v));      
     tp3 = @(w, v) sum(w' * exp(v));  
     tp4 = @(v) sum(exp(v))^2;  
     
@@ -44,8 +44,8 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     % contains weight adjustments for each feature (each column is a feature) 
     % of each document (each row is a document) (hence a matrix)
     % in order to get overall weight adjustment vector sum up elements in each column
-    tp_p = @(i) sum(tp1(group_features_p(i), group_preds_p(i)) * (tp2(lz(i)) - tp3(lx(i), lz(i)))) / tp4(lz(i));
-    tp_np = @(i) sum(tp1(group_features_np(i), group_preds_np(i)) * (tp2(lz(i)) - tp3(lx(i), lz(i)))) / tp4(lz(i));
+    tp_p = @(i) sum(-1*(tp1(group_features_p(i), group_preds_p(i)) * tp2(lz(i)) - exp(group_preds_p(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));    
+    tp_np = @(i) sum(-1*(tp1(group_features_np(i), group_preds_np(i)) * tp2(lz(i)) - exp(group_preds_np(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));
         
     group_size_p = @(i) size(group_preds_p(i), 1);
     group_size_np = @(i) size(group_preds_np(i), 1);
@@ -53,16 +53,6 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     % Exposure in Rankings for the protected and non-protected group
     exposure_prot = @(i) (sum(topp_prot(group_preds_p(i), lz(i)))) ./ log(2);    
     exposure_nprot = @(i) (sum(topp_prot(group_preds_np(i), lz(i)))) ./ log(2);
- 
-    if DEBUG_PRINT
-      %fprintf("protected z: %f\n", group_preds_p(1));
-      %fprintf("non-protected z: %f\n", group_preds_np(1));
-    end
-    
-    if DEBUG_PRINT
-      %fprintf("top probability first prot: %f\n", topp_prot(group_preds_p(1), lz(1)));
-      %fprintf("top probability first nprot: %f\n", topp_prot(group_preds_np(1), lz(1)));
-    end
    
     % normalize exposures
     exposure_prot_normalized = @(i) exposure_prot(i) / group_size_p(i); 
@@ -98,33 +88,42 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     end 
     
     if DEBUG_PRINT
-      fprintf("cost in gradient 1: %f\n", f(1));
+      %fprintf("cost in gradient 1: %f\n", f(1));
     end
     
     if DEBUG
-      prot_idx_q1 = prot_idx_per_query(1);
+      iter = 1:m;
+
+      prot_idx_q1 = prot_idx_per_query(iter);
       
-      lz1 = lz(1);
-      lx1 = lx(1);
+      lz1 = lz(iter);
+      lx1 = lx(iter);
       
-      z_prot = l_group_vec(lz(1), prot_idx_per_query(1));
-      x_prot = l_group_mat(lx(1), prot_idx_per_query(1));
+      z_prot = l_group_vec(lz(iter), prot_idx_per_query(iter));
+      z_nprot = l_group_vec(lz(iter), !prot_idx_per_query(iter));
+      x_prot = l_group_mat(lx(iter), prot_idx_per_query(iter));
+      
+      exposure_p = exposure_prot(iter);
+      exposure_p_norm = exposure_prot_normalized(iter);
+      
+      exposure_np = exposure_nprot(iter);
+      exposure_np_norm = exposure_nprot_normalized(iter);
       
       tp1p = tp1(x_prot, z_prot);
-      tp2p = tp2(lz(1));
-      tp3p = tp3(lx(1), lz(1));
-      twoMinusThree = tp2(lz(1)) - tp3(lx(1), lz(1));
-      tp4p = tp4(lz(1));
+      tp2p = tp2(lz(iter));
+      tp3p = tp3(lx(iter), lz(iter));
+      twoMinusThree = tp2(lz(iter)) - tp3(lx(iter), lz(iter));
+      tp4p = tp4(lz(iter));
  
-      tp_prot = tp_p(1);
+      tp_prot = tp_p(iter);
       
-      u1p = u1(1);
-      u2p = u2(1);
-      u3p = u3(1);
+      u1expdiff = u1(iter);
+      u2np = u2(iter);
+      u3p = u3(iter);
       
-      fair_w = U(1);
-      fair_w_gamma = GAMMA * U(1);
-      acc_w = L(1);
+      fair_w = U(iter);
+      fair_w_gamma = GAMMA * U(iter);
+      acc_w = L(iter);
       fval = fair_w_gamma + acc_w';
     end
 
