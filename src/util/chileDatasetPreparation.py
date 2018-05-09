@@ -88,10 +88,6 @@ def prepareForL2R(data, gender=True):
         x['rank'] = x['rank'] / x.shape[0]
         return x
 
-    def normalize_values(x):
-        return x / x.max()
-        return x
-
     data = data[data['sem'] == 1]
     data = data[data['inactivo'] != 1]
 
@@ -126,7 +122,9 @@ def prepareForL2R(data, gender=True):
     data['ano_in'] = data['ano_in'].replace(to_replace=2013, value=4)
     data['ano_in'] = data['ano_in'].replace(to_replace=2014, value=5)
 
-    return data
+    train = data[data['ano_in'] < 5]
+    test = data[data['ano_in'] >= 5]
 
+    return train, test
 
 
