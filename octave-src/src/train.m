@@ -17,21 +17,21 @@ arg_list = argv ();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYNTHETIC EXPERIMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-training_file = '../sample/synthetic_score_gender/distribution_based/sample_train_data_scoreAndGender_normalDistribution.txt'
-model_file = '../sample/synthetic_score_gender/distribution_based/sample_model_gender_normdist.m'
-training_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m'
-training_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic_score_gender/distribution_based/sample_train_data_scoreAndGender_normalDistribution.txt'
+%model_file = '../sample/synthetic_score_gender/distribution_based/sample_model_gender_normdist.m'
+%training_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-training_file = '../sample/ChileUni/chileDataL2R_gender_train.txt'
-model_file = '../sample/ChileUni/chileDataL2R_gender_model.m'
+%training_file = '../sample/ChileUni/chileDataL2R_gender_train.txt'
+%model_file = '../sample/ChileUni/chileDataL2R_gender_model.m'
 
-%training_file = '../sample/ChileUni/chileDataL2R_highschool_train.txt'
-%model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
+training_file = '../sample/ChileUni/chileDataL2R_highschool_train.txt'
+model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOY DATA

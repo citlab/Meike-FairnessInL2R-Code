@@ -1,7 +1,7 @@
 % global variables declaration
 
 % number of training iterations
-global T = 3000;
+global T = 5000;
 
 % learning rate
 global e = 0.00001;
@@ -10,7 +10,7 @@ global e = 0.00001;
 global LAMBDA = 0.001;
 
 % number of cores for parallel processing
-global CORES = 4;
+global CORES = 2;
 
 % range of values for initialization of weights
 global INIT_VAR = 0.01;
@@ -23,11 +23,11 @@ global INIT_VAR = 0.01;
 % medium gamma = 1000000
 % large gamma = 20000000000000
 % COST_GAMMA = 100000000000
-global GAMMA = 1000;
+global GAMMA = 100000;
 
 global ONLY_U = 0;
-global ONLY_L = 1;
-global L_AND_U = 0;
+global ONLY_L = 0;
+global L_AND_U = 1;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;

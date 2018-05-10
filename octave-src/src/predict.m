@@ -27,11 +27,11 @@ global GAMMA;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-omega = load('../sample/ChileUni/chileDataL2R_gender_model_GAMMA1000.m');
+omega = load('../sample/ChileUni/chileDataL2R_gender_model_GAMMA0.m');
 drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
 
-omega = load('../sample/ChileUni/chileDataL2R_highschool_model_GAMMA1000.m');
-drgfile = '../sample/ChileUni/chileDataL2R_highschool_test.txt';
+%omega = load('../sample/ChileUni/chileDataL2R_highschool_model_GAMMA1000.m');
+%drgfile = '../sample/ChileUni/chileDataL2R_highschool_test.txt';
 
 drg = load(drgfile);
 
@@ -51,7 +51,8 @@ for id = unique(list_id)'
     z(indexes, :) = sortrows(z_temp, 1);
 endfor
 ranks = z;
-filename = [drgfile "_GAMMA" GAMMA ".pred"];
+gamma_char = sprintf("%d", GAMMA);
+filename = [drgfile ".GAMMA" sprintf("%d", GAMMA) ".pred"];
 
 dlmwrite(filename, ranks)
 figure(); plot(z);
