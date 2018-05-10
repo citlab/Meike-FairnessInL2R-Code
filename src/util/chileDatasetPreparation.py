@@ -4,6 +4,7 @@ Created on Apr 17, 2018
 @author: mzehlike
 '''
 import numpy as np
+import scipy.stats as stats
 from conda._vendor.auxlib.collection import first
 
 
@@ -112,8 +113,17 @@ def prepareForL2R(data, gender=True):
     # drop notas_ and uds_i_ because not needed anymore but would be seen as features
     data = data.drop(columns=sortby)
 
-    # normalize scores (ranks already normalized)
-    data[['psu_mat', 'psu_len', 'psu_cie', 'nem']] = data.groupby(data['ano_in'], as_index=False, sort=False)[['psu_mat', 'psu_len', 'psu_cie', 'nem']].transform(lambda x: x / x.max())
+    # zscore psu scores (ranks already normalized)
+    def apply_zscores(x):
+        x['psu_mat'] = stats.zscore(x['psu_mat'])
+        x['psu_len'] = stats.zscore(x['psu_len'])
+        x['psu_cie'] = stats.zscore(x['psu_cie'])
+        x['nem'] = stats.zscore(x['nem'])
+        return x
+
+    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(lambda x: apply_zscores(x))
+
+    # data[['psu_mat', 'psu_len', 'psu_cie', 'nem']] = data.groupby(data['ano_in'], as_index=False, sort=False)[['psu_mat', 'psu_len', 'psu_cie', 'nem']].transform(lambda x: x / x.max())
 
     # replace ano_in with query_ids that start from 1
     data['ano_in'] = data['ano_in'].replace(to_replace=2010, value=1)
