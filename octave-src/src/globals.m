@@ -4,13 +4,13 @@
 global T = 3000;
 
 % learning rate
-global e = 0.001;
+global e = 0.00001;
 
 % regularization constant
 global LAMBDA = 0.001;
 
 % number of cores for parallel processing
-global CORES = 2;
+global CORES = 4;
 
 % range of values for initialization of weights
 global INIT_VAR = 0.01;
@@ -26,8 +26,8 @@ global INIT_VAR = 0.01;
 global GAMMA = 1000;
 
 global ONLY_U = 0;
-global ONLY_L = 0;
-global L_AND_U = 1;
+global ONLY_L = 1;
+global L_AND_U = 0;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;

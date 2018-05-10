@@ -30,8 +30,8 @@ model_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_mod
 training_file = '../sample/ChileUni/chileDataL2R_gender_train.txt'
 model_file = '../sample/ChileUni/chileDataL2R_gender_model.m'
 
-training_file = '../sample/ChileUni/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/chileDataL2R_highschool_train.txt'
+%model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOY DATA
