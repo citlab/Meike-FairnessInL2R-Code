@@ -10,7 +10,7 @@ more off;
 addpath(".")
 source "./globals.m";
 
-GAMMA=500000;
+GAMMA=500;
 %omega = load(argv(){1});
 %drgfile = argv(){2};
 
@@ -19,8 +19,17 @@ GAMMA=500000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TOP MALE
-%omega = load('../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m');
-%drgfile = '../sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated.txt';
+%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
+
+omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m');
+drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_test_data_scoreAndGender_separated.txt';
+
+%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_test_data_scoreAndGender_separated.txt';
+
+%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=50000/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=50000/sample_test_data_scoreAndGender_separated.txt';
 
 % TOP FEMALE
 %omega = load('../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m');
@@ -60,8 +69,8 @@ GAMMA=500000;
 %drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
-drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
-omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
+%drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 

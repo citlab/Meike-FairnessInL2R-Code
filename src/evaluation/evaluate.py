@@ -7,11 +7,8 @@ Created on May 11, 2018
 import pandas as pd
 
 ##################################################################################
-# EVALUATE PRECENTAGE OF PROTECTED CANDIDATES
+# EVALUATE PRECENTAGE OF PROTECTED CANDIDATES PER CHUNK
 ##################################################################################
-
-Synthetic_maleTop_0 = pd.read_csv('../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/',
-                   sep=",", names=["query_id", "gender", "score", "rank"])
 
 ##################################################################################
 # EVALUATE EXPOSURE DIFFERENCE BETWEEN GROUPS
@@ -21,11 +18,14 @@ Synthetic_maleTop_0 = pd.read_csv('../../octave-src/sample/synthetic/top_male_bo
 # EVALUATE KENDALL'S TAU
 ##################################################################################
 
+def exposureDiff(ranking):
 
-def protected_percentage(ranking):
+    return 0
+
+
+def protected_percentage_per_chunk(ranking):
     '''
-    evaluates the percentage of protected candidates in the top 5% 10%, 25%, 50% percent of the
-    given ranking
+
     '''
     top5 = 0;
     top10 = 0;
@@ -33,3 +33,5 @@ def protected_percentage(ranking):
     top50 = 0;
 
     return top5, top10, top25, top50
+
+
