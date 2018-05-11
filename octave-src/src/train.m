@@ -34,6 +34,19 @@ model_file = '../sample/ChileUni/chileDataL2R_gender_model.m'
 %model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TREC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
+%model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
+
+%training_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-train.csv";
+%model_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m";
+
+training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
+model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOY DATA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %training_file = '../sample/toy_data/toy_training_data.m'

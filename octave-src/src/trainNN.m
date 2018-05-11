@@ -59,7 +59,7 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
             fprintf("\n")
         end
     end
-    figure(); title("total Costs"); plot(cost_converge_J);
+    figure(); plot(cost_converge_J);
     figure(); plot(omega_converge);
 end
 

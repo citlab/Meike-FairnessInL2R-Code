@@ -36,7 +36,7 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     accuracy = @(i) (-sum(topp(ly(i)) .* log( topp(lz(i)) )));
         
     if DEBUG
-      iter = 1:size(z,1)
+      iter = 1
       idx = prot_idx_per_query(iter);
       z_prot = l_prot_vec(lz(iter), prot_idx_per_query(iter));
       z_nprot = l_prot_vec(lz(iter), !prot_idx_per_query(iter));

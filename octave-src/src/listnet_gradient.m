@@ -94,36 +94,38 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     if DEBUG
       iter = 1:m;
 
-      prot_idx_q1 = prot_idx_per_query(iter);
+      prot_idx_q1 = prot_idx_per_query(1);
       
-      lz1 = lz(iter);
-      lx1 = lx(iter);
+      lz1 = lz(1);
+      lx1 = lx(1);
       
-      z_prot = l_group_vec(lz(iter), prot_idx_per_query(iter));
-      z_nprot = l_group_vec(lz(iter), !prot_idx_per_query(iter));
-      x_prot = l_group_mat(lx(iter), prot_idx_per_query(iter));
+      z_prot = l_group_vec(lz(1), prot_idx_q1);
+      z_nprot = l_group_vec(lz(1), !prot_idx_q1);
+      x_prot = l_group_mat(lx(1), prot_idx_per_query(1));
       
-      exposure_p = exposure_prot(iter);
-      exposure_p_norm = exposure_prot_normalized(iter);
+      topp_prot_p = topp_prot(z_prot, lz1);
       
-      exposure_np = exposure_nprot(iter);
-      exposure_np_norm = exposure_nprot_normalized(iter);
+      exposure_p = exposure_prot(1);
+      exposure_p_norm = exposure_prot_normalized(1);
+      
+      exposure_np = exposure_nprot(1);
+      exposure_np_norm = exposure_nprot_normalized(1);
       
       tp1p = tp1(x_prot, z_prot);
-      tp2p = tp2(lz(iter));
-      tp3p = tp3(lx(iter), lz(iter));
-      twoMinusThree = tp2(lz(iter)) - tp3(lx(iter), lz(iter));
-      tp4p = tp4(lz(iter));
+      tp2p = tp2(lz(1));
+      tp3p = tp3(lx(1), lz(1));
+      twoMinusThree = tp2(lz(1)) - tp3(lx(1), lz(1));
+      tp4p = tp4(lz(1));
  
-      tp_prot = tp_p(iter);
+      tp_prot = tp_p(1);
       
-      u1expdiff = u1(iter);
-      u2np = u2(iter);
-      u3p = u3(iter);
+      u1expdiff = u1(1);
+      u2np = u2(1);
+      u3p = u3(1);
       
-      fair_w = U(iter);
-      fair_w_gamma = GAMMA * U(iter);
-      acc_w = L(iter);
+      fair_w = U(1);
+      fair_w_gamma = GAMMA * U(1);
+      acc_w = L(1);
       fval = fair_w_gamma + acc_w';
     end
 

@@ -33,6 +33,12 @@ drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
 omega = load('../sample/ChileUni/chileDataL2R_highschool_model_GAMMA1000.m');
 drgfile = '../sample/ChileUni/chileDataL2R_highschool_test.txt';
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TREC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-v2_subset_test.csv";
+omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore-v2_model_subset.m");
+
 drg = load(drgfile);
 
 list_id = drg(:,1);
