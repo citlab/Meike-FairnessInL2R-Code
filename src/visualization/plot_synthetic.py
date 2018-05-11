@@ -24,7 +24,7 @@ pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
          labels=['non-protected', 'protected'])
 
 # RESULT PLOT
-input_file1 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_train_data_scoreAndGender_separated.txt'
+input_file1 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated.txt'
 input_file2 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
 input_file3 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
 input_file4 = '../../octave-src/sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
@@ -46,7 +46,7 @@ pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
          labels=['non-protected', 'protected'])
 
 # RESULT PLOT
-input_file1 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
+input_file1 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt'
 input_file2 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
 input_file3 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
 input_file4 = '../../octave-src/sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
@@ -68,7 +68,7 @@ pdf.plot_syntheticDataset(data, attributeNamesAndCategories, attributeQuality,
          labels=['non-protected', 'protected'], normal=True)
 
 # RESULT PLOT
-input_file1 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_train_data_scoreAndGender_normalDistribution.txt'
+input_file1 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution.txt'
 input_file2 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution_GAMMA_ZERO.txt.pred'
 input_file3 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution_GAMMA_MEDIUM.txt.pred'
 input_file4 = '../../octave-src/sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution_GAMMA_LARGE.txt.pred'
