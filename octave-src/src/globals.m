@@ -1,16 +1,16 @@
 % global variables declaration
 
 % number of training iterations
-global T = 5000;
+global T = 3000;
 
 % learning rate
-global e = 0.00001;
+global e = 0.001;
 
 % regularization constant
 global LAMBDA = 0.001;
 
 % number of cores for parallel processing
-global CORES = 2;
+global CORES = 3;
 
 % range of values for initialization of weights
 global INIT_VAR = 0.01;
@@ -23,7 +23,7 @@ global INIT_VAR = 0.01;
 % medium gamma = 1000000
 % large gamma = 20000000000000
 % COST_GAMMA = 100000000000
-global GAMMA = 500000;
+global GAMMA = 50000;
 
 global ONLY_U = 0;
 global ONLY_L = 0;
