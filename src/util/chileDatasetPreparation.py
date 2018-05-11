@@ -72,7 +72,7 @@ def allStudents(data):
 
     return data
 
-def prepareForL2R(data, gender=True):
+def prepareForL2R(data, gender=True, colorblind=False):
     """
     brings data into the correct format for L2R octave code with following scheme
     query_id; protection_status; feature_1; ...; feature_n; rank
@@ -100,6 +100,9 @@ def prepareForL2R(data, gender=True):
         keep_cols = ['ano_in', 'hombre', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
     else:
         keep_cols = ['ano_in', 'highschool_type', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+
+    if(colorblind):
+        keep_cols = ['ano_in', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
 
     data = data[keep_cols]
 
