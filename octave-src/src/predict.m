@@ -27,8 +27,8 @@ global GAMMA;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-omega = load('../sample/ChileUni/chileDataL2R_gender_model_GAMMA0.m');
-drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
+%omega = load('../sample/ChileUni/chileDataL2R_gender_model_GAMMA0.m');
+%drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
 
 %omega = load('../sample/ChileUni/chileDataL2R_highschool_model_GAMMA1000.m');
 %drgfile = '../sample/ChileUni/chileDataL2R_highschool_test.txt';
@@ -36,8 +36,11 @@ drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-v2_subset_test.csv";
-omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore-v2_model_subset.m");
+drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
+omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
+
+%drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 
@@ -45,8 +48,17 @@ list_id = drg(:,1);
 X = drg(:,2:size(drg,2)-1);
 
 z =  X * omega.omega;
+doc_ids = 1:size(z);
+
 # add protection status to a for later evaluation
 z = [z, X(:, PROT_COL)];
+
+# add document ids for later evaluation
+z = [doc_ids', z];
+
+unsorted_ranks = z;
+filename = [drgfile ".GAMMA" sprintf("%d", GAMMA) "_UNSORTED.pred"];
+dlmwrite(filename, unsorted_ranks);
 
 # add a little random to avoid ties
 r = @(i) (i+rand*0.02-0.01);
@@ -56,9 +68,8 @@ for id = unique(list_id)'
     z_temp = z(indexes, :);
     z(indexes, :) = sortrows(z_temp, 1);
 endfor
-ranks = z;
-gamma_char = sprintf("%d", GAMMA);
-filename = [drgfile ".GAMMA" sprintf("%d", GAMMA) ".pred"];
+sorted_ranks = z;
+filename = [drgfile ".GAMMA" sprintf("%d", GAMMA) "_SORTED.pred"];
 
-dlmwrite(filename, ranks)
+dlmwrite(filename, sorted_ranks)
 figure(); plot(z);
