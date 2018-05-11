@@ -23,7 +23,7 @@ def exposureDiff(ranking):
     return 0
 
 
-def protected_percentage_per_chunk(ranking):
+def protected_percentage_per_chunk(ranking, chunksize):
     '''
 
     '''

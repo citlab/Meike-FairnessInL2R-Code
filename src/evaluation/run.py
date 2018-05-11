@@ -46,8 +46,8 @@ Chile_gender_100000_sort = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=1
 # CHILE UNIVERSITY HIGHSCHOOL
 ###############################################################################################
 
-Chile_gender_100000_unsort = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt.GAMMA100000_UNSORTED.pred',
+Chile_highschool_100000_unsort = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt.GAMMA100000_UNSORTED.pred',
                                   sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-Chile_gender_100000_sort = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt.GAMMA100000_SORTED.pred',
+Chile_highschool_100000_sort = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt.GAMMA100000_SORTED.pred',
                                   sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 

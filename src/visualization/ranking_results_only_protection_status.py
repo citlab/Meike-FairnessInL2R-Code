@@ -9,7 +9,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
-PROT_COL = 1
+PROT_COL = 3
 PROT_ATTR = 1
 
 
