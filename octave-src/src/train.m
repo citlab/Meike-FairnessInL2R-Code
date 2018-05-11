@@ -44,10 +44,11 @@ model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = '../sample/ChileUni/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/chileDataL2R_gender_model.m'
-%training_file = '../sample/ChileUni/chileDataL2R_highschool_train.txt'
-%model_file = '../sample/ChileUni/chileDataL2R_highschool_model.m'
+
+% GENDER
+training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
+model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m'
+
 
 % HIGHSCHOOL
 %training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_train.txt'
