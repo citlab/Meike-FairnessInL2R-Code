@@ -10,15 +10,19 @@ more off;
 addpath(".")
 source "./globals.m";
 
-global GAMMA;
+GAMMA=500000;
 %omega = load(argv(){1});
 %drgfile = argv(){2};
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYNTHETIC EXPERIMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%omega = load('../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m');
-%drgfile = '../sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt';
+
+% TOP MALE
+%omega = load('../sample/synthetic_score_gender/top_male_bottom_female/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic_score_gender/top_male_bottom_female/sample_test_data_scoreAndGender_separated.txt';
+
+% TOP FEMALE
 %omega = load('../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic_score_gender/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt';
 %omega = load('../sample/synthetic_score_gender/distribution_based/sample_model_gender_normdist.m');
@@ -27,11 +31,28 @@ global GAMMA;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%omega = load('../sample/ChileUni/chileDataL2R_gender_model_GAMMA0.m');
-%drgfile = '../sample/ChileUni/chileDataL2R_gender_test.txt';
 
-%omega = load('../sample/ChileUni/chileDataL2R_highschool_model_GAMMA1000.m');
-%drgfile = '../sample/ChileUni/chileDataL2R_highschool_test.txt';
+% GENDER
+%omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_test.txt';
+
+%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
+
+%omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_test.txt';
+
+% HIGHSCHOOL
+%omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_test.txt';
+
+%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt';
+
+%omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_test.txt';
+
+% colorblind done in Cao original code
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
@@ -39,8 +60,8 @@ global GAMMA;
 %drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
-%drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
-%omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
+drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
+omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 
@@ -66,7 +87,7 @@ r = @(i) (i+rand*0.02-0.01);
 for id = unique(list_id)'
     indexes = find(list_id==id);
     z_temp = z(indexes, :);
-    z(indexes, :) = sortrows(z_temp, 1);
+    z(indexes, :) = sortrows(z_temp, 2);
 endfor
 sorted_ranks = z;
 filename = [drgfile ".GAMMA" sprintf("%d", GAMMA) "_SORTED.pred"];

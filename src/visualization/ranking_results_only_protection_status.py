@@ -57,7 +57,7 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
 
     plt.gca().invert_yaxis()
     plt.xlabel ("ranking position");
-    plt.yticks(np.arange(1, 3, step=.5), ('Training\nData', 'Normal\nL2R', 'Small\nGamma', 'Large\nGamma'))
+    plt.yticks(np.arange(1, 3, step=.5), ('Test\nData', 'Normal\nL2R', 'Small\nGamma', 'Large\nGamma'))
     plt.legend([red_circle, blue_plus], ['protected', 'non-protected'], bbox_to_anchor=(0.7, 0.69))
 
     plt.savefig(output_file, bbox_inches='tight')
