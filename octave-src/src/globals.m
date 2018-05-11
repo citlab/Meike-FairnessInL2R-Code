@@ -1,10 +1,10 @@
 % global variables declaration
 
 % number of training iterations
-global T = 3000;
+global T = 5000;
 
 % learning rate
-global e = 0.001;
+global e = 0.00001;
 
 % regularization constant
 global LAMBDA = 0.001;
@@ -23,11 +23,11 @@ global INIT_VAR = 0.01;
 % medium gamma = 1000000
 % large gamma = 20000000000000
 % COST_GAMMA = 100000000000
-global GAMMA = 50000;
+global GAMMA = 0;
 
 global ONLY_U = 0;
-global ONLY_L = 0;
-global L_AND_U = 1;
+global ONLY_L = 1;
+global L_AND_U = 0;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;

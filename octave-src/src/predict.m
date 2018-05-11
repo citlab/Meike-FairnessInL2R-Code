@@ -36,8 +36,8 @@ global GAMMA;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
-omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
+%drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
 %drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
