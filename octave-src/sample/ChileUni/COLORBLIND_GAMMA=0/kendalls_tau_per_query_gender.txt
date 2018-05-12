@@ -1,8 +1,8 @@
    query_id  exposure_prot_pred  exposure_nprot_pred  exp_diff_pred  \
-0       1.0            0.489222             0.490778       0.001556   
+0       5.0            0.274952             0.723678       0.448725   
 
    exposure_prot_orig  exposure_nprot_orig  exp_diff_orig  kendall_tau  \
-0            0.487551             0.492449       0.004898     0.929796   
+0            0.274938             0.723692       0.448755     0.333559   
 
         p_value  
-0  1.610032e-21  
+0  1.889315e-41  

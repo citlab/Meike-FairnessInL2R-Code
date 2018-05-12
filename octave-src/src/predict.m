@@ -44,8 +44,8 @@ source "./globals.m";
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_test.txt';
 
-omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m');
-drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
+%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
 
 %omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_test.txt';
@@ -71,16 +71,25 @@ drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
 %drgfile = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m");
 
-%drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
-%omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
+drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
+omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 
 list_id = drg(:,1);
 X = drg(:,2:size(drg,2)-1);
 
+
 z =  X * omega.omega;
 doc_ids = 1:size(z);
+
+# also write y for later evaluation
+y = drg(:, size(drg,2));
+y = [list_id, doc_ids', y, X(:, PROT_COL)];
+
+filename = [drgfile "_ORIG.pred"];
+dlmwrite(filename, y);
+
 
 # add protection status to a for later evaluation
 z = [z, X(:, PROT_COL)];
