@@ -1,4 +1,4 @@
-function J = listwise_cost(y, z, list_id, prot_idx)
+function [J, L, U] = listwise_cost(y, z, list_id, prot_idx)
     global CORES
     global GAMMA
     global DEBUG
@@ -36,7 +36,7 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     accuracy = @(i) (-sum(topp(ly(i)) .* log( topp(lz(i)) )));
         
     if DEBUG
-      iter = 1
+      iter = 1;
       idx = prot_idx_per_query(iter);
       z_prot = l_prot_vec(lz(iter), prot_idx_per_query(iter));
       z_nprot = l_prot_vec(lz(iter), !prot_idx_per_query(iter));
@@ -75,4 +75,6 @@ function J = listwise_cost(y, z, list_id, prot_idx)
       j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
     end 
     J = pararrayfun(CORES, j,1:size(z,1), "VerboseLevel", 0);
+    L = 0; %pararrayfun(CORES, l,1:size(z,1), "VerboseLevel", 0);
+    U = 0; %pararrayfun(CORES, u,1:size(z,1), "VerboseLevel", 0);
 end

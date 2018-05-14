@@ -9,7 +9,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
-PROT_COL = 3
+PROT_COL_PRED = 3
+PROT_COL_ORIG = 1
 PROT_ATTR = 1
 
 
@@ -29,28 +30,28 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
 
     data = pd.read_csv(input_file1, sep=",", header=None)
     for i in range(0, k, step_size):
-        if data.iloc[i][PROT_COL] == PROT_ATTR:
+        if data.iloc[i][PROT_COL_ORIG] == PROT_ATTR:
             plt.plot(i, 1, 'ro', ms=14);
         else:
             plt.plot(i, 1, 'b+', ms=16, mew=3);
 
     data = pd.read_csv(input_file2, sep=",", header=None)
     for i in range(0, k, step_size):
-        if data.iloc[i][PROT_COL] == PROT_ATTR:
+        if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
             plt.plot(i, 1.5, 'ro', ms=14);
         else:
             plt.plot(i, 1.5, 'b+', ms=16, mew=3);
 
     data = pd.read_csv(input_file3, sep=",", header=None)
     for i in range(0, k, step_size):
-        if data.iloc[i][PROT_COL] == PROT_ATTR:
+        if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
             plt.plot(i, 2, 'ro', ms=14);
         else:
             plt.plot(i, 2, 'b+', ms=16, mew=3);
 
     data = pd.read_csv(input_file4, sep=",", header=None)
     for i in range(0, k, step_size):
-        if data.iloc[i][PROT_COL] == PROT_ATTR:
+        if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
             plt.plot(i, 2.5, 'ro', ms=14);
         else:
             plt.plot(i, 2.5, 'b+', ms=16, mew=3);

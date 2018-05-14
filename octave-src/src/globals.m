@@ -4,7 +4,7 @@
 global T = 3000;
 
 % learning rate
-global e = 0.001;
+global e = 0.0005;
 
 % regularization constant
 global LAMBDA = 0.001;
@@ -25,6 +25,7 @@ global INIT_VAR = 0.01;
 % COST_GAMMA = 100000000000
 global GAMMA = 500;
 
+
 global ONLY_U = 0;
 global ONLY_L = 0;
 global L_AND_U = 1;
@@ -36,5 +37,5 @@ global PROT_COL = 1;
 global PROT_ATTR = 1;
 
 % wanna debug?
-global DEBUG = 0;
+global DEBUG = 1;
 global DEBUG_PRINT = 0;
