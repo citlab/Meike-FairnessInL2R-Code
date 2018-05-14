@@ -1,9 +1,9 @@
-# Created by Octave 4.2.2, Fri May 11 16:48:12 2018 CEST <mzehlike@cit0566>
+# Created by Octave 4.2.2, Mon May 14 16:46:41 2018 CEST <mzehlike@cit0566>
 # name: omega
 # type: matrix
 # rows: 2
 # columns: 1
- -0.128065676327603
- -0.5233016336613855
+ -0.07057137842339878
+ 0.7455488714248365
 
 

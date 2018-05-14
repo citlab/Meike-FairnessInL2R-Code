@@ -1,4 +1,4 @@
-function J = listwise_cost(y, z, list_id, prot_idx)
+function [J, L, U] = listwise_cost(y, z, list_id, prot_idx)
     global CORES
     global GAMMA
     global DEBUG
@@ -30,13 +30,13 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     % max also makes sure exposure is not NaN, but 0 instead 
     % can be NaN if either protected or non-protected group has size 0
     % !!BECAUSE WE WANT TO PREDICT LOWER Z FOR BETTER RANKS
-    exposure_diff = @(i) max(0, (exposure_nprot_normalized(i)) - exposure_prot_normalized(i))^2;
+    exposure_diff = @(i) (max(0, (exposure_nprot_normalized(i) - exposure_prot_normalized(i))))^2;
     
     % calculate accuracy wrt training data
     accuracy = @(i) (-sum(topp(ly(i)) .* log( topp(lz(i)) )));
         
     if DEBUG
-      iter = 1
+      iter = 1;
       idx = prot_idx_per_query(iter);
       z_prot = l_prot_vec(lz(iter), prot_idx_per_query(iter));
       z_nprot = l_prot_vec(lz(iter), !prot_idx_per_query(iter));
@@ -75,4 +75,6 @@ function J = listwise_cost(y, z, list_id, prot_idx)
       j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
     end 
     J = pararrayfun(CORES, j,1:size(z,1), "VerboseLevel", 0);
+    L = pararrayfun(CORES, l,1:size(z,1), "VerboseLevel", 0);
+    U = pararrayfun(CORES, u,1:size(z,1), "VerboseLevel", 0);
 end

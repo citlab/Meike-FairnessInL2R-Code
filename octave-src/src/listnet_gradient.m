@@ -44,8 +44,8 @@ function grad = listnet_gradient (X, y, z, list_id, prot_idx)
     % contains weight adjustments for each feature (each column is a feature) 
     % of each document (each row is a document) (hence a matrix)
     % in order to get overall weight adjustment vector sum up elements in each column
-    tp_p = @(i) sum(-1*(tp1(group_features_p(i), group_preds_p(i)) * tp2(lz(i)) - exp(group_preds_p(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));    
-    tp_np = @(i) sum(-1*(tp1(group_features_np(i), group_preds_np(i)) * tp2(lz(i)) - exp(group_preds_np(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));
+    tp_p = @(i) sum((tp1(group_features_p(i), group_preds_p(i)) * tp2(lz(i)) - exp(group_preds_p(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));    
+    tp_np = @(i) sum((tp1(group_features_np(i), group_preds_np(i)) * tp2(lz(i)) - exp(group_preds_np(i)) * tp3(lx(i), lz(i)))) / tp4(lz(i));
         
     group_size_p = @(i) size(group_preds_p(i), 1);
     group_size_np = @(i) size(group_preds_np(i), 1);
