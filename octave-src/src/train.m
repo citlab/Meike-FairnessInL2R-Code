@@ -29,8 +29,8 @@ arg_list = argv ();
 training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_train_data_scoreAndGender_separated.txt'
 model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m'
 
-training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m'
 
 % TOP FEMALE BOTTOM MALE
 %training_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
@@ -104,7 +104,7 @@ X = data(:,2:size(data,2)-1);
 y = data(:,size(data,2));
 
 % launch the training routine
-disp(sprintf('training, %d iteration, %d examples, learning rate %f...', T, size(X,1), e))
+disp(sprintf('training, %d iteration, %d examples, learning rate %f..., gamma %d', T, size(X,1), e, GAMMA))
 tic();
 omega = trainNN(list_id, X, y, T, e);
 training_time = toc();
