@@ -48,6 +48,12 @@ arg_list = argv ();
 % GENDER
 %training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m'
+<<<<<<< HEAD
+=======
+
+training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_train.txt'
+model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m'
+>>>>>>> 702b364f55a361eb4f2c525801c495f38894324e
 
 %training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m'
