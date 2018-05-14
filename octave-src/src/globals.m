@@ -20,10 +20,7 @@ global INIT_VAR = 0.01;
 % TODO: IN COST FUNCTION VALUES FOR EXPOSURE AND COST DIFFERENTIATE BY 12 ORDERS OF MAGNITUDE!! WHAT TO DO ABOUT THAT?
 % IN GRADIENT FUNCTION THEY ONLY DIFFER BY 6 ORERS OF MAGNITUDE...WHAT NOW?
 % TODO: Gamma seems to depend on the number of examples, we should somehow take that into account
-% medium gamma = 1000000
-% large gamma = 20000000000000
-% COST_GAMMA = 100000000000
-global GAMMA = 80;
+global GAMMA = 75;
 
 global ONLY_U = 0;
 global ONLY_L = 0;

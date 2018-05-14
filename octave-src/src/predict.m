@@ -24,6 +24,9 @@ source "./globals.m";
 omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m');
 drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_test_data_scoreAndGender_separated.txt';
 
+omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m');
+drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt';
+
 %omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_test_data_scoreAndGender_separated.txt';
 

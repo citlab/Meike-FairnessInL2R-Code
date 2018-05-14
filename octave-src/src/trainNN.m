@@ -31,14 +31,12 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         end
 
         % with regularization
-        [cost, L, U] = listwise_cost(y,z, list_id, prot_idx);
+        cost = listwise_cost(y,z, list_id, prot_idx);
         %fprintf("cost=%f\n", sum(cost));
         %cost_converge(t) = sum(cost);
         %fprintf("cost: %f\n", J(1));
         J = cost + ((z.*z)'.*LAMBDA);
         cost_converge_J(t) = sum(J);
-        cost_converge_L(t) = sum(L);
-        cost_converge_U(t) = sum(U);
 
         % without regularization
         %J = listwise_cost(y,z, list_id, prot_idx);
@@ -62,8 +60,6 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         end
     end
     figure(); plot(cost_converge_J);
-    figure(); plot(cost_converge_U);
-    figure(); plot(cost_converge_L);
     figure(); plot(omega_converge);
 end
 

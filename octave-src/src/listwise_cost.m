@@ -1,4 +1,4 @@
-function [J, L, U] = listwise_cost(y, z, list_id, prot_idx)
+function J = listwise_cost(y, z, list_id, prot_idx)
     global CORES
     global GAMMA
     global DEBUG
@@ -75,6 +75,4 @@ function [J, L, U] = listwise_cost(y, z, list_id, prot_idx)
       j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
     end 
     J = pararrayfun(CORES, j,1:size(z,1), "VerboseLevel", 0);
-    L = 0; %pararrayfun(CORES, l,1:size(z,1), "VerboseLevel", 0);
-    U = 0; %pararrayfun(CORES, u,1:size(z,1), "VerboseLevel", 0);
 end
