@@ -22,15 +22,15 @@ arg_list = argv ();
 
 
 % TOP MALE BOTTOM FEMALE
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
+training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
+model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
 
 
-training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m'
 
-training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m'
 
 % TOP FEMALE BOTTOM MALE
 %training_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
