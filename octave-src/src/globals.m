@@ -23,8 +23,12 @@ global INIT_VAR = 0.01;
 % medium gamma = 1000000
 % large gamma = 20000000000000
 % COST_GAMMA = 100000000000
+<<<<<<< HEAD
 global GAMMA = 500;
 
+=======
+global GAMMA = 80;
+>>>>>>> d20419cbe792813150ea237166e82fda51f871ad
 
 global ONLY_U = 0;
 global ONLY_L = 0;
