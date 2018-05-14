@@ -83,8 +83,8 @@ def prepareForL2R(data, gender=True, colorblind=False):
     """
 
     def rank(x, sortby):
-        x.sort_values([sortby[0], sortby[1]], ascending=[False, False], inplace=True)
-        x['rank'] = range(x.shape[0])
+        x.sort_values([sortby], ascending=[False], inplace=True)
+        x['rank'] = range(x.shape[0], 0, -1)
         # normalize ranks
         x['rank'] = x['rank'] / x.shape[0]
         return x
@@ -97,24 +97,38 @@ def prepareForL2R(data, gender=True, colorblind=False):
 
     # drop all columns that are not needed
     if(gender):
-        keep_cols = ['ano_in', 'hombre', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+        keep_cols = ['ano_in', 'hombre', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_', 'uds_r_', 'uds_e_']
     else:
-        keep_cols = ['ano_in', 'highschool_type', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+        keep_cols = ['ano_in', 'highschool_type', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_', 'uds_r_', 'uds_e_']
 
     if(colorblind):
-        keep_cols = ['ano_in', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_']
+        keep_cols = ['ano_in', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_', 'uds_r_', 'uds_e_']
 
     data = data[keep_cols]
 
-    # add new column for ranks
+    # replace NaNs with zeros
+    data['uds_r_'].fillna(0)
+    data['uds_e_'].fillna(0)
+
+    # add new column for ranks and scores
     data['rank'] = np.zeros(data.shape[0])
+    data['score'] = np.zeros(data.shape[0])
+
+    # calculate score based on grades and credits
+    for idx, row in data.iterrows():
+        grades = row.loc['notas_']
+        credits_taken = row.loc['uds_i_']
+        credits_failed = row.loc['uds_r_']
+        credits_dropped = row.loc['uds_e_']
+
+        score = grades * (credits_taken - credits_failed - credits_dropped) / credits_taken
+        data.loc[idx, 'score'] = score
 
     # group years together and rank them by notas
-    sortby = ['notas_', 'uds_i_']  # only used because not possible somehow to have more than one parameter
-    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(rank, (sortby))
+    data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(rank, ('score'))
 
-    # drop notas_ and uds_i_ because not needed anymore but would be seen as features
-    data = data.drop(columns=sortby)
+    # drop all columns that were used to calculate ranks, so that they wouldn't correlate on default
+    data = data.drop(columns=['notas_', 'uds_i_', 'uds_r_', 'uds_e_', 'score'])
 
     # zscore psu scores (ranks already normalized)
     def apply_zscores(x):
