@@ -55,6 +55,10 @@ def evaluate(prediction, original, result_filename):
 
 
 def calculate_group_exposure(prediction, original):
+    prediction = pd.DataFrame(index=range(4), columns=['prot_attr', 'prediction'])
+    prediction['prot_attr'] = [0, 0, 1, 1]
+    prediction['prediction'] = [0.1, 0.2, 0.3, 0.4]
+
     # exposure in predictions
     prot_rows_pred = prediction.loc[prediction['prot_attr'] == PROT_ATTR]
     nprot_rows_pred = prediction.loc[prediction['prot_attr'] != PROT_ATTR]

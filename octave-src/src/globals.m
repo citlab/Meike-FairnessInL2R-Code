@@ -10,7 +10,7 @@ global e = 0.00001;
 global LAMBDA = 0.001;
 
 % number of cores for parallel processing
-global CORES = 1;
+global CORES = 4;
 
 % range of values for initialization of weights
 global INIT_VAR = 0.01;
@@ -23,7 +23,7 @@ global INIT_VAR = 0.01;
 % medium gamma = 1000000
 % large gamma = 20000000000000
 % COST_GAMMA = 100000000000
-global GAMMA = 500;
+global GAMMA = 5000000;
 
 global ONLY_U = 0;
 global ONLY_L = 0;
