@@ -63,10 +63,10 @@ def calculate_group_exposure(prediction, original):
     prot_rows_pred = prediction.loc[prediction['prot_attr'] == PROT_ATTR]
     nprot_rows_pred = prediction.loc[prediction['prot_attr'] != PROT_ATTR]
 
-    prot_exp_per_doc = 1 - np.exp(prot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
+    prot_exp_per_doc = np.exp(prot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
     avg_prot_exp_pred = sum(prot_exp_per_doc) / prediction.shape[0]
 
-    nprot_exp_per_doc = 1 - np.exp(nprot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
+    nprot_exp_per_doc = np.exp(nprot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
     avg_nprot_exp_pred = sum(nprot_exp_per_doc) / prediction.shape[0]
 
     # exposure in original

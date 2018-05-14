@@ -22,11 +22,8 @@ arg_list = argv ();
 
 
 % TOP MALE BOTTOM FEMALE
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
-
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=250/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=250/sample_model_gender_sep.m'
+training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
+model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
 
 %training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_train_data_scoreAndGender_separated.txt'
 %model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m'
@@ -47,13 +44,7 @@ arg_list = argv ();
 
 % GENDER
 %training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m'
-<<<<<<< HEAD
-=======
-
-training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_train.txt'
-model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m'
->>>>>>> 702b364f55a361eb4f2c525801c495f38894324e
+%model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m' 
 
 %training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m'
@@ -68,8 +59,8 @@ model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m'
 %training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=1000000/chileDataL2R_highschool_model.m'
 
-training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
+%model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
 
 % COLORBLIND
 %training_file = '../sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_train.txt'
