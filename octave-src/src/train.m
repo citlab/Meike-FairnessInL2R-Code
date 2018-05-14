@@ -22,11 +22,11 @@ arg_list = argv ();
 
 
 % TOP MALE BOTTOM FEMALE
-training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
 
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m'
+training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_train_data_scoreAndGender_separated.txt'
+model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m'
 
 %training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_train_data_scoreAndGender_separated.txt'
 %model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_model_gender_sep.m'

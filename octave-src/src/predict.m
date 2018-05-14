@@ -21,8 +21,8 @@ source "./globals.m";
 %omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
 
-%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m');
-%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_test_data_scoreAndGender_separated.txt';
+omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_model_gender_sep.m');
+drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=500/sample_test_data_scoreAndGender_separated.txt';
 
 %omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=1000/sample_test_data_scoreAndGender_separated.txt';
@@ -71,8 +71,8 @@ source "./globals.m";
 %drgfile = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m");
 
-drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
-omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
+%drgfile = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 
@@ -107,7 +107,7 @@ r = @(i) (i+rand*0.02-0.01);
 for id = unique(list_id)'
     indexes = find(list_id==id);
     z_temp = z(indexes, :);
-    z(indexes, :) = sortrows(z_temp, 3);
+    z(indexes, :) = sortrows(z_temp, -3);
 endfor
 sorted_ranks = z;
 filename = [drgfile "_SORTED.pred"];
