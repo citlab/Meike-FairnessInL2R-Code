@@ -83,10 +83,7 @@ def prepareForL2R(data, gender=True, colorblind=False):
     """
 
     def rank(x, sortby):
-        x.sort_values([sortby], ascending=[False], inplace=True)
-        x['rank'] = range(x.shape[0], 0, -1)
-        # normalize ranks
-        x['rank'] = x['rank'] / x.shape[0]
+        x.sort_values([sortby], ascending=False, inplace=True)
         return x
 
     data = data[data['sem'] == 1]
@@ -110,8 +107,7 @@ def prepareForL2R(data, gender=True, colorblind=False):
     data['uds_r_'].fillna(0)
     data['uds_e_'].fillna(0)
 
-    # add new column for ranks and scores
-    data['rank'] = np.zeros(data.shape[0])
+    # add new column for ranking scores
     data['score'] = np.zeros(data.shape[0])
 
     # calculate score based on grades and credits
@@ -128,14 +124,15 @@ def prepareForL2R(data, gender=True, colorblind=False):
     data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(rank, ('score'))
 
     # drop all columns that were used to calculate ranks, so that they wouldn't correlate on default
-    data = data.drop(columns=['notas_', 'uds_i_', 'uds_r_', 'uds_e_', 'score'])
+    data = data.drop(columns=['notas_', 'uds_i_', 'uds_r_', 'uds_e_'])
 
-    # zscore psu scores (ranks already normalized)
+    # zscore psu scores and normalize scores
     def apply_zscores(x):
         x['psu_mat'] = stats.zscore(x['psu_mat'])
         x['psu_len'] = stats.zscore(x['psu_len'])
         x['psu_cie'] = stats.zscore(x['psu_cie'])
         x['nem'] = stats.zscore(x['nem'])
+        x['score'] = stats.zscore(x['score'])
         return x
 
     data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(lambda x: apply_zscores(x))
