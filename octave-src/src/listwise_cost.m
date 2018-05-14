@@ -30,7 +30,7 @@ function J = listwise_cost(y, z, list_id, prot_idx)
     % max also makes sure exposure is not NaN, but 0 instead 
     % can be NaN if either protected or non-protected group has size 0
     % !!BECAUSE WE WANT TO PREDICT LOWER Z FOR BETTER RANKS
-    exposure_diff = @(i) max(0, (exposure_prot_normalized(i) - exposure_nprot_normalized(i)))^2;
+    exposure_diff = @(i) (max(0, (exposure_nprot_normalized(i) - exposure_prot_normalized(i))))^2;
     
     % calculate accuracy wrt training data
     accuracy = @(i) (-sum(topp(ly(i)) .* log( topp(lz(i)) )));
