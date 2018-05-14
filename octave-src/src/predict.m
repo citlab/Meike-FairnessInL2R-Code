@@ -18,11 +18,11 @@ source "./globals.m";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TOP MALE
-%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
-%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
+omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
+drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
 
-omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m');
-drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt';
+%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt';
 
 %omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_test_data_scoreAndGender_separated.txt';
