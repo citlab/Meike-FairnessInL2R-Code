@@ -69,7 +69,7 @@ def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
 
     return colorblind_orig, colorblind_pred
 
-chunksize = 50
+chunksize = 30
 
 # COLORBLIND TRAINING
 orig_scores = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=0/chileDataL2R_gender_test.txt_ORIG.pred',
@@ -111,7 +111,7 @@ evaluate.evaluate(chile_gender_0_pred, chile_gender_0_orig, '../../octave-src/sa
 # CHILE UNIVERSITY HIGHSCHOOL
 ###############################################################################################
 
-chunksize = 50
+chunksize = 30
 
 # COLORBLIND TRAINING
 orig_scores = pd.read_csv('../../octave-src/sample/ChileUni/GAMMA=0/chileDataL2R_highschool_test.txt_ORIG.pred',

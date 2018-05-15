@@ -152,4 +152,53 @@ def prepareForL2R(data, gender=True, colorblind=False):
     return train, test
 
 
+def prepareForBoxplots(data, gender=True):
+    """
+    brings data into the correct format for generating a boxplot over all students from all years
+
+    in this particular case we use year of university entrance as query_id, psu scores as features and notas as rank
+
+    writes one dataset with protection_status "gender" and one with protection_status "highschool_type"
+    """
+
+    data = data[data['sem'] == 1]
+    data = data[data['inactivo'] != 1]
+
+    # drop all lines where values are missing
+    data = data.dropna(subset=['nem', 'psu_mat', 'psu_len', 'psu_cie', 'notas_', 'uds_i_'])
+
+    # drop all columns that are not needed
+    if(gender):
+        keep_cols = ['hombre', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_', 'uds_r_', 'uds_e_']
+    else:
+        keep_cols = ['highschool_type', 'psu_mat', 'psu_len', 'psu_cie', 'nem', 'notas_', 'uds_i_', 'uds_r_', 'uds_e_']
+
+    data = data[keep_cols]
+
+    # replace NaNs with zeros
+    data['uds_r_'].fillna(0)
+    data['uds_e_'].fillna(0)
+
+    # add new column for ranking scores
+    data['score'] = np.zeros(data.shape[0])
+
+    # calculate score based on grades and credits
+    for idx, row in data.iterrows():
+        grades = row.loc['notas_']
+        credits_taken = row.loc['uds_i_']
+        credits_failed = row.loc['uds_r_']
+        credits_dropped = row.loc['uds_e_']
+
+        score = grades * (credits_taken - credits_failed - credits_dropped) / credits_taken
+        data.loc[idx, 'score'] = score
+
+    # zscore psu scores and normalize scores
+    data['psu_mat'] = stats.zscore(data['psu_mat'])
+    data['psu_len'] = stats.zscore(data['psu_len'])
+    data['psu_cie'] = stats.zscore(data['psu_cie'])
+    data['nem'] = stats.zscore(data['nem'])
+    data['score'] = stats.zscore(data['score'])
+
+    return data
+
 
