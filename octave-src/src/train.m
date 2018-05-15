@@ -22,8 +22,8 @@ arg_list = argv ();
 
 
 % TOP MALE BOTTOM FEMALE
-training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
-model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
+%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
+%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
 
 
 %training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_train_data_scoreAndGender_separated.txt'
@@ -74,8 +74,8 @@ model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_ge
 %training_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-train.csv";
 %model_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m";
 
-%training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
-%model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
+training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
+model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
