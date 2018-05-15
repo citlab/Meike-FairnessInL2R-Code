@@ -22,7 +22,6 @@ global INIT_VAR = 0.01;
 % TODO: Gamma seems to depend on the number of examples, we should somehow take that into account
 global GAMMA = 100000;
 
-
 global ONLY_U = 0;
 global ONLY_L = 0;
 global L_AND_U = 1;
