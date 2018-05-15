@@ -152,7 +152,7 @@ def plot_protected_percentage_per_chunk(prot, nonprot, tick_length, x_ticks, plo
     mpl.rcParams['text.usetex'] = True
 
 
-    f, ax = plt.subplots(figsize=(20, 10))
+    f, ax = plt.subplots(figsize=(20, 5))
 #     plt.plot(prot, 'r-')
 #     plt.plot(nonprot, 'b')
     width = bar_width
@@ -163,8 +163,8 @@ def plot_protected_percentage_per_chunk(prot, nonprot, tick_length, x_ticks, plo
     # plt.xticks(np.arange(tick_length))
     # ax.set_xticklabels(x_ticks)
 
-    plt.xlabel ("ranking range");
-    plt.ylabel("ratio per chunk")
+    plt.xlabel ("position");
+    plt.ylabel("proportion")
     plt.legend(['protected', 'non-protected'])
 #     plt.show()
 
