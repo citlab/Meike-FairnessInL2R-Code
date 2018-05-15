@@ -41,11 +41,11 @@ source "./globals.m";
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_test.txt';
 
-%omega = load('../sample/ChileUni/GAMMA=7500/chileDataL2R_gender_model.m');
-%drgfile = '../sample/ChileUni/GAMMA=7500/chileDataL2R_gender_test.txt';
+%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
 
-%omega = load('../sample/ChileUni/GAMMA=15000/chileDataL2R_gender_model.m');
-%drgfile = '../sample/ChileUni/GAMMA=15000/chileDataL2R_gender_test.txt';
+omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m');
+drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_test.txt';
 
 % HIGHSCHOOL
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m');
@@ -68,8 +68,8 @@ source "./globals.m";
 %drgfile = "../sample/TREC/GAMMA=15000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=15000/features_with_total_order-zscore_model.m");
 
-drgfile = "../sample/TREC/GAMMA=75000/features_with_total_order-zscore-test.csv";
-omega = load("../sample/TREC/GAMMA=75000/features_with_total_order-zscore_model.m");
+%drgfile = "../sample/TREC/GAMMA=75000/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=75000/features_with_total_order-zscore_model.m");
 
 drg = load(drgfile);
 
