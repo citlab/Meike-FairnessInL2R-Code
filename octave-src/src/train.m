@@ -41,8 +41,8 @@ arg_list = argv ();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-%training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m' 
+training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
+model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m' 
 
 %training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m'
@@ -74,8 +74,8 @@ arg_list = argv ();
 %training_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-train.csv";
 %model_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m";
 
-training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
-model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
+%training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
+%model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
