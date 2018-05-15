@@ -13,6 +13,13 @@ public vs private schools)
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import pandas as pd
+import util.chileDatasetPreparation as prep
+
+
+#################################################################################################
+# HEATMAPS
+#################################################################################################
 
 def cool_warm_heatmap(data, filename):
     corr = data.corr()
@@ -21,3 +28,16 @@ def cool_warm_heatmap(data, filename):
         linewidths=.5, annot_kws={"size":8})
     fig = hm.get_figure()
     fig.savefig(filename, pad_inches=1, bbox_inches='tight')
+
+# plot_ChileDataset heatmap for successful students
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.successfulStudents(data)
+cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapSuccessfulStudents.png')
+
+# plot_ChileDataset heatmap for all students
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation(data)
+data = prep.allStudents(data)
+cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapAllStudents.png')
+
