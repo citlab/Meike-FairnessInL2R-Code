@@ -24,20 +24,21 @@ PROT_ATTR = 1
 ##################################################################################
 # EVALUATE KENDALL'S TAU
 ##################################################################################
-def evaluate(prediction, original, result_filename):
+def evaluate(prediction, original, result_filename, synthetic=False):
     predictedGroups = prediction.groupby(prediction['query_id'], as_index=False, sort=False)
     originalGroups = original.groupby(prediction['query_id'], as_index=False, sort=False)
 
     result = pd.DataFrame(np.nan,
                           index=range(0, len(predictedGroups)),
-                          columns=['query_id', 'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
+                          columns=['query_id',
+                                   'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
                                    'exposure_prot_orig', 'exposure_nprot_orig', 'exp_diff_orig',
+                                   'precision_top1', 'precision_top10', 'precision_top20', 'precision_top100',
                                    'kendall_tau', 'p_value'])
 
     i = 0
     for name, predGroup in predictedGroups:
         origGroup = originalGroups.get_group(name)
-        x = result.iloc[i]
         result.loc[i]['query_id'] = name
         result.loc[i]['exposure_prot_pred'] = calculate_group_exposure(predGroup, origGroup)[0]
         result.loc[i]['exposure_nprot_pred'] = calculate_group_exposure(predGroup, origGroup)[1]
@@ -45,6 +46,11 @@ def evaluate(prediction, original, result_filename):
         result.loc[i]['exposure_prot_orig'] = calculate_group_exposure(predGroup, origGroup)[3]
         result.loc[i]['exposure_nprot_orig'] = calculate_group_exposure(predGroup, origGroup)[4]
         result.loc[i]['exp_diff_orig'] = calculate_group_exposure(predGroup, origGroup)[5]
+        result.loc[i]['precision_top1'] = precision_at_position(predGroup, origGroup, 1, 'doc_id')
+        result.loc[i]['precision_top10'] = precision_at_position(predGroup, origGroup, 10, 'doc_id')
+        result.loc[i]['precision_top20'] = precision_at_position(predGroup, origGroup, 20, 'doc_id')
+        if (not synthetic) :
+            result.loc[i]['precision_top100'] = precision_at_position(predGroup, origGroup, 100, 'doc_id')
         result.loc[i]['kendall_tau'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[0]
         result.loc[i]['p_value'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[1]
         i += 1
@@ -54,10 +60,16 @@ def evaluate(prediction, original, result_filename):
     return
 
 
+def precision_at_position(prediction, original, pos, mergeCol):
+    top_pred = prediction.head(n=pos)
+    top_orig = original.head(n=pos)
+
+    sec = pd.merge(top_pred, top_orig, how='inner', on=mergeCol)
+    precision = sec.shape[0] / pos
+    return precision
+
+
 def calculate_group_exposure(prediction, original):
-    prediction = pd.DataFrame(index=range(4), columns=['prot_attr', 'prediction'])
-    prediction['prot_attr'] = [0, 0, 1, 1]
-    prediction['prediction'] = [0.1, 0.2, 0.3, 0.4]
 
     # exposure in predictions
     prot_rows_pred = prediction.loc[prediction['prot_attr'] == PROT_ATTR]
