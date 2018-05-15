@@ -192,12 +192,18 @@ def prepareForBoxplots(data, gender=True):
         score = grades * (credits_taken - credits_failed - credits_dropped) / credits_taken
         data.loc[idx, 'score'] = score
 
+    # don't need these columns anymore
+    data = data.drop(columns=['notas_', 'uds_i_', 'uds_r_', 'uds_e_'])
+
     # zscore psu scores and normalize scores
     data['psu_mat'] = stats.zscore(data['psu_mat'])
     data['psu_len'] = stats.zscore(data['psu_len'])
     data['psu_cie'] = stats.zscore(data['psu_cie'])
     data['nem'] = stats.zscore(data['nem'])
     data['score'] = stats.zscore(data['score'])
+
+    # rename protected column to prot_attr
+    data.columns = ['prot\_attr', 'psu\_mat', 'psu\_len', 'psu\_cie', 'nem', 'score']
 
     return data
 
