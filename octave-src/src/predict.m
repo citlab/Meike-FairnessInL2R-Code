@@ -18,8 +18,8 @@ source "./globals.m";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TOP MALE
-omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
-drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
+%omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m');
+%drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt';
 
 %omega = load('../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m');
 %drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt';
@@ -41,11 +41,11 @@ drgfile = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_s
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_test.txt';
 
-%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m');
-%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_test.txt';
+omega = load('../sample/ChileUni/GAMMA=7500/chileDataL2R_gender_model.m');
+drgfile = '../sample/ChileUni/GAMMA=7500/chileDataL2R_gender_test.txt';
 
-%omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m');
-%drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_test.txt';
+%omega = load('../sample/ChileUni/GAMMA=15000/chileDataL2R_gender_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=15000/chileDataL2R_gender_test.txt';
 
 % HIGHSCHOOL
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m');
