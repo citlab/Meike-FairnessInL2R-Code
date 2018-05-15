@@ -33,5 +33,5 @@ global PROT_COL = 1;
 global PROT_ATTR = 1;
 
 % wanna debug?
-global DEBUG = 1;
+global DEBUG = 0;
 global DEBUG_PRINT = 0;

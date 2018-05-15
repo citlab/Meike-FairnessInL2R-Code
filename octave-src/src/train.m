@@ -74,8 +74,8 @@ model_file = '../sample/ChileUni/GAMMA=15000/chileDataL2R_gender_model.m'
 %training_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore-train.csv";
 %model_file = "../sample/TREC/GAMMA=10000/features_with_total_order-zscore_model.m";
 
-%training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
-%model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
+training_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore-train.csv";
+model_file = "../sample/TREC/GAMMA=500000/features_with_total_order-zscore_model.m";
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
