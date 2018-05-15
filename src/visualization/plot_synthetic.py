@@ -26,8 +26,8 @@ attributeQuality = "score"
 # RESULT PLOT
 input_file1 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt'
 input_file2 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
-input_file3 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=500/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
-input_file4 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=50000/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
+input_file3 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
+input_file4 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=150/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
 output_file = '../../plots/synthetic/separated/top_male_bottom_female/result_plots/uniform_distribution/uniform_male_top_rankings_group_property_only.png'
 
 rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 50, 1)
