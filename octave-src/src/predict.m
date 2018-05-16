@@ -34,7 +34,7 @@ source "./globals.m";
 %drgfile = '../sample/synthetic_score_gender/distribution_based/sample_test_data_scoreAndGender_normalDistribution.txt';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CHILE EXPERIMENT
+% CHILE EXPERIMENT WITH SEMI_PRIVATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
@@ -64,8 +64,8 @@ source "./globals.m";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-%omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m');
-%drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt';
+omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m');
+drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt';
 
 %omega = load('../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_model.m');
 %drgfile = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_test.txt';
@@ -74,8 +74,8 @@ source "./globals.m";
 %drgfile = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_test.txt';
 
 % HIGHSCHOOL
-omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m');
-drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test.txt';
+%omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m');
+%drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test.txt';
 
 %omega = load('../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m');
 %drgfile = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_test.txt';
@@ -86,8 +86,8 @@ drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
-omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
+%drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
+%omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
 %drgfile = "../sample/TREC/GAMMA=15000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=15000/features_with_total_order-zscore_model.m");

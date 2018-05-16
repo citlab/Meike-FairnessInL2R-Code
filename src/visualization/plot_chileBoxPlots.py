@@ -32,13 +32,13 @@ def boxPlot(data, filename, gender=True):
                                 'score'],
                   var_name='columns')
 
-    my_pal = {0: "b", 1: "r"}
+    my_pal = {0: "b", 1: "orangered"}
     ax = sns.boxplot(data=df_melt,
                 hue='prot\_attr',  # different colors for different 'cls'
                 x='columns',
                 y='value',
                 showfliers=False,
-                palette="Paired")
+                palette=my_pal)
 
 
 
@@ -58,19 +58,39 @@ def boxPlot(data, filename, gender=True):
 
 
 
+#############################################################################################
+# with semi-private
+#############################################################################################
 
 # plot for gender
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
 data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.prepareForBoxplots(data, gender=True)
-boxPlot(data, '../../plots/Chile/boxPlots_Gender.png')
+boxPlot(data, '../../plots/Chile/boxPlots_Gender_semi.png')
 
 
 # plot for highschool
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
 data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.prepareForBoxplots(data, gender=False)
-boxPlot(data, '../../plots/Chile/boxPlots_Highschool.png', gender=False)
+boxPlot(data, '../../plots/Chile/boxPlots_Highschool_semi.png', gender=False)
+
+#############################################################################################
+# without semi-private
+#############################################################################################
+
+# plot for gender
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation_withoutSemiPrivate(data)
+data = prep.prepareForBoxplots(data, gender=True)
+boxPlot(data, '../../plots/Chile/boxPlots_Gender_nosemi.png')
+
+
+# plot for highschool
+data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
+data = prep.principalDataPreparation_withoutSemiPrivate(data)
+data = prep.prepareForBoxplots(data, gender=False)
+boxPlot(data, '../../plots/Chile/boxPlots_Highschool_nosemi.png', gender=False)
 
 
 

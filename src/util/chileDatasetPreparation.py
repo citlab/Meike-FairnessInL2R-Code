@@ -43,9 +43,6 @@ def principalDataPreparation_withoutSemiPrivate(data):
     data = data.drop(columns=['rank_in', 'rank_em', 'sipee', 'bea', 'deporte', 'genero'])
     data = data.fillna(value={'uds_e_':0})  # fill NaNs with 0 in this specific column only
 
-    # take only those students that have been admitted through the PSU tests, not by other things
-    # data = data[data['tip_ing'] == 'PAA o PSU']
-
     # merge muni, sub and part column into one highschool type column
     # muni = 0, sub & part = 1, part = 2
     data['muni'] = data['muni'].replace([0], np.nan)

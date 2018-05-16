@@ -187,7 +187,7 @@ def plot_protected_percentage_per_chunk(prot, nonprot, tick_length, x_ticks, plo
 #     plt.plot(nonprot, 'b')
     width = bar_width
 
-    ax.bar(x_ticks, prot, color='r', width=width, hatch='//', edgecolor='white')
+    ax.bar(x_ticks, prot, color='orangered', width=width)
     ax.bar(x_ticks + width, nonprot, color='b', width=width)
 
     # plt.xticks(np.arange(tick_length))
