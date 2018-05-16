@@ -8,7 +8,7 @@ import scipy.stats as stats
 from conda._vendor.auxlib.collection import first
 
 
-def principalDataPreparation(data):
+def principalDataPreparation_withSemiPrivate(data):
     # drop all uninteresting columns
     data = data.drop(columns=['rank_in', 'rank_em', 'sipee', 'bea', 'deporte', 'genero'])
     data = data.fillna(value={'uds_e_':0})  # fill NaNs with 0 in this specific column only
@@ -36,6 +36,37 @@ def principalDataPreparation(data):
 
 
     return data
+
+
+def principalDataPreparation_withoutSemiPrivate(data):
+    # drop all uninteresting columns
+    data = data.drop(columns=['rank_in', 'rank_em', 'sipee', 'bea', 'deporte', 'genero'])
+    data = data.fillna(value={'uds_e_':0})  # fill NaNs with 0 in this specific column only
+
+    # take only those students that have been admitted through the PSU tests, not by other things
+    # data = data[data['tip_ing'] == 'PAA o PSU']
+
+    # merge muni, sub and part column into one highschool type column
+    # muni = 0, sub & part = 1, part = 2
+    data['muni'] = data['muni'].replace([0], np.nan)
+    data['muni'] = data['muni'].replace([1], 0)
+    data['sub'] = data['sub'].replace([0], np.nan)
+    data['part'] = data['part'].replace([0], np.nan)
+    data['part'] = data['part'].replace([1], 1)
+    data['muni'] = data['muni'].fillna(data['part'])
+    data['muni'] = data['muni'].fillna(data['sub'])
+    data = data.rename(index=str, columns={"muni":"highschool_type"})
+    data = data.drop(columns=['sub', 'part'])
+    # drop remaining nans
+    data = data.dropna(subset=['highschool_type'])
+
+    # switch protected attribute to be 1
+    data['hombre'] = data['hombre'].replace({0:1, 1:0})
+    data['highschool_type'] = data['highschool_type'].replace({0:1, 1:0})
+
+
+    return data
+
 
 
 def successfulStudents(data):
@@ -91,6 +122,8 @@ def prepareForL2R(data, gender=True, colorblind=False):
 
     # drop all lines where values are missing
     data = data.dropna(subset=['nem', 'psu_mat', 'psu_len', 'psu_cie', 'notas_', 'uds_i_'])
+
+    print(data['hombre'].value_counts())
 
     # drop all columns that are not needed
     if(gender):

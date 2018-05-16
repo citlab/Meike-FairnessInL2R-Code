@@ -31,13 +31,13 @@ def cool_warm_heatmap(data, filename):
 
 # plot_ChileDataset heatmap for successful students
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapSuccessfulStudents.png')
 
 # plot_ChileDataset heatmap for all students
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapAllStudents.png')
 

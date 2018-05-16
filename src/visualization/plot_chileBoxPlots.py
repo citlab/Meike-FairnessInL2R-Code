@@ -61,14 +61,14 @@ def boxPlot(data, filename, gender=True):
 
 # plot for gender
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.prepareForBoxplots(data, gender=True)
 boxPlot(data, '../../plots/Chile/boxPlots_Gender.png')
 
 
 # plot for highschool
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.prepareForBoxplots(data, gender=False)
 boxPlot(data, '../../plots/Chile/boxPlots_Highschool.png', gender=False)
 

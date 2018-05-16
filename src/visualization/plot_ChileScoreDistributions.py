@@ -82,14 +82,14 @@ def plot_ChileDataset(data_set, attributeNamesAndCategories, attributeQuality, f
 attributeNamesAndCategories = {"highschool_type" : 2}
 attributeQuality = "notas_"
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_UniGrades_AllStudents.png',
          labels=['non-public', 'public'])
 
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_UniGrades_SuccessfulStudents.png',
@@ -99,7 +99,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 # plot_ChileDataset quality distributions of university grades for male and female
 attributeNamesAndCategories = {"hombre" : 2}
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_UniGrades_AllStudents.png',
@@ -107,7 +107,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 
 # plot_ChileDataset quality distributions of university grades for male and female
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_UniGrades_SuccessfulStudents.png',
@@ -121,14 +121,14 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 attributeNamesAndCategories = {"highschool_type" : 2}
 attributeQuality = "nem"
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_HighschoolGrades_AllStudents.png',
          labels=['non-public', 'public'])
 
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_HighschoolGrades_SuccessfulStudents.png',
@@ -138,7 +138,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 # plot_ChileDataset quality distributions of university grades for male and female
 attributeNamesAndCategories = {"hombre" : 2}
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_HighschoolGrades_AllStudents.png',
@@ -146,7 +146,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 
 # plot_ChileDataset quality distributions of university grades for male and female
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_HighschoolGrades_SuccessfulStudents.png',
@@ -161,14 +161,14 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 attributeNamesAndCategories = {"highschool_type" : 2}
 attributeQuality = "psu_mat"
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_PSUMath_AllStudents.png',
          labels=['non-public', 'public'])
 
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_PSUMath_SuccessfulStudents.png',
@@ -178,7 +178,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 # plot_ChileDataset quality distributions of university grades for male and female
 attributeNamesAndCategories = {"hombre" : 2}
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_PSUMath_AllStudents.png',
@@ -186,7 +186,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 
 # plot_ChileDataset quality distributions of university grades for male and female
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_PSUMath_SuccessfulStudents.png',
@@ -201,14 +201,14 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 attributeNamesAndCategories = {"highschool_type" : 2}
 attributeQuality = "psu_len"
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_PSULang_AllStudents.png',
          labels=['non-public', 'public'])
 
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_PSULang_SuccessfulStudents.png',
@@ -218,7 +218,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 # plot_ChileDataset quality distributions of university grades for male and female
 attributeNamesAndCategories = {"hombre" : 2}
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_PSULang_AllStudents.png',
@@ -226,7 +226,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 
 # plot_ChileDataset quality distributions of university grades for male and female
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_PSULang_SuccessfulStudents.png',
@@ -240,14 +240,14 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 attributeNamesAndCategories = {"highschool_type" : 2}
 attributeQuality = "rat_ud"
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_FailRatio_AllStudents.png',
          labels=['non-public', 'public'])
 
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_HighschoolType_FailRatio_SuccessfulStudents.png',
@@ -257,7 +257,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 # plot_ChileDataset quality distributions of university grades for male and female
 attributeNamesAndCategories = {"hombre" : 2}
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.allStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_FailRatio_AllStudents.png',
@@ -265,7 +265,7 @@ plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
 
 # plot_ChileDataset quality distributions of university grades for male and female
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation(data)
+data = prep.principalDataPreparation_withSemiPrivate(data)
 data = prep.successfulStudents(data)
 plot_ChileDataset(data, attributeNamesAndCategories, attributeQuality,
          '../../data/ChileUniversity/pdf_Gender_FailRatio_SuccessfulStudents.png',
