@@ -51,8 +51,8 @@ source "./globals.m";
 %omega = load('../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_test.txt';
 
-omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m');
-drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt';
+%omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt';
 
 %omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m');
 %drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_test.txt';
@@ -62,8 +62,8 @@ drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
-%omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
+drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
+omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
 %drgfile = "../sample/TREC/GAMMA=15000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=15000/features_with_total_order-zscore_model.m");

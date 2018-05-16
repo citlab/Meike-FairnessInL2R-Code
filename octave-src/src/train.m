@@ -54,8 +54,8 @@ arg_list = argv ();
 %training_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_train.txt'
 %model_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_model.m'
 
-training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_train.txt'
-model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_model.m'
+%training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_model.m'
 
 %training_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_train.txt'
 %model_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_model.m'
@@ -79,8 +79,8 @@ model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_train.txt'
 %model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m'
 
-training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
-model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
 
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_train.txt'
 %model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_model.m'
@@ -89,8 +89,8 @@ model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
-%model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
+training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
+model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
 
 %training_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore-train.csv"
 %model_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore_model.m"

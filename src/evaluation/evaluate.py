@@ -25,8 +25,8 @@ PROT_ATTR = 1
 # EVALUATE KENDALL'S TAU
 ##################################################################################
 def evaluate(prediction, original, result_filename, synthetic=False):
-    predictedGroups = prediction.groupby(prediction['query_id'], as_index=False, sort=False)
-    originalGroups = original.groupby(prediction['query_id'], as_index=False, sort=False)
+    predictedGroups = prediction.groupby(prediction['query_id'], as_index=True, sort=False)
+    originalGroups = original.groupby(prediction['query_id'], as_index=True, sort=False)
 
     result = pd.DataFrame(np.nan,
                           index=range(0, len(predictedGroups)),
@@ -34,12 +34,17 @@ def evaluate(prediction, original, result_filename, synthetic=False):
                                    'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
                                    'exposure_prot_orig', 'exposure_nprot_orig', 'exp_diff_orig',
                                    'precision_top1', 'precision_top5', 'precision_top10', 'precision_top20', 'precision_top100',
-                                   'prot_pos_mean', 'nprot_pos_mean', 'prot_pos_median', 'nprot_pos_median',
+                                   'prot_pos_mean_pred', 'nprot_pos_mean_pred', 'prot_pos_median_pred', 'nprot_pos_median_pred',
+                                   'prot_pos_mean_orig', 'nprot_pos_mean_orig', 'prot_pos_median_orig', 'nprot_pos_median_orig',
                                    'kendall_tau', 'p_value'])
 
     i = 0
     for name, predGroup in predictedGroups:
         origGroup = originalGroups.get_group(name)
+
+        predGroup = predGroup.reset_index()
+        origGroup = origGroup.reset_index()
+
         result.loc[i]['query_id'] = name
         result.loc[i]['exposure_prot_pred'] = calculate_group_exposure(predGroup, origGroup)[0]
         result.loc[i]['exposure_nprot_pred'] = calculate_group_exposure(predGroup, origGroup)[1]
@@ -47,10 +52,14 @@ def evaluate(prediction, original, result_filename, synthetic=False):
         result.loc[i]['exposure_prot_orig'] = calculate_group_exposure(predGroup, origGroup)[3]
         result.loc[i]['exposure_nprot_orig'] = calculate_group_exposure(predGroup, origGroup)[4]
         result.loc[i]['exp_diff_orig'] = calculate_group_exposure(predGroup, origGroup)[5]
-        result.loc[i]['prot_pos_mean'] = avg_group_position(predGroup)[0]
-        result.loc[i]['nprot_pos_mean'] = avg_group_position(predGroup)[1]
-        result.loc[i]['prot_pos_median'] = avg_group_position(predGroup)[2]
-        result.loc[i]['nprot_pos_median'] = avg_group_position(predGroup)[3]
+        result.loc[i]['prot_pos_mean_pred'] = avg_group_position(predGroup)[0]
+        result.loc[i]['nprot_pos_mean_pred'] = avg_group_position(predGroup)[1]
+        result.loc[i]['prot_pos_median_pred'] = avg_group_position(predGroup)[2]
+        result.loc[i]['nprot_pos_median_pred'] = avg_group_position(predGroup)[3]
+        result.loc[i]['prot_pos_mean_orig'] = avg_group_position(origGroup)[0]
+        result.loc[i]['nprot_pos_mean_orig'] = avg_group_position(origGroup)[1]
+        result.loc[i]['prot_pos_median_orig'] = avg_group_position(origGroup)[2]
+        result.loc[i]['nprot_pos_median_orig'] = avg_group_position(origGroup)[3]
         result.loc[i]['precision_top1'] = precision_at_position(predGroup, origGroup, 1, 'doc_id')
         result.loc[i]['precision_top5'] = precision_at_position(predGroup, origGroup, 5, 'doc_id')
         result.loc[i]['precision_top10'] = precision_at_position(predGroup, origGroup, 10, 'doc_id')
@@ -61,7 +70,7 @@ def evaluate(prediction, original, result_filename, synthetic=False):
         result.loc[i]['p_value'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[1]
         i += 1
 
-    result = result.mean(axis=1)
+    result = result.mean()
 
     with open(result_filename, "w") as text_file:
         print(result, file=text_file)
@@ -86,6 +95,7 @@ def avg_group_position(prediction):
 
     prot_pos_median = np.median(prot_rows_pred.index.values)
     nprot_pos_median = np.median(nprot_rows_pred.index.values)
+
 
     return prot_pos_mean, nprot_pos_mean, prot_pos_median, nprot_pos_median
 

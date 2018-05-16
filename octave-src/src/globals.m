@@ -1,7 +1,7 @@
 % global variables declaration
 
 % number of training iterations
-global T = 1000;
+global T = 2000;
 
 % learning rate
 global e = 0.00001;
@@ -23,8 +23,8 @@ global INIT_VAR = 0.01;
 global GAMMA = 100000;
 
 global ONLY_U = 0;
-global ONLY_L = 0;
-global L_AND_U = 1;
+global ONLY_L = 1;
+global L_AND_U = 0;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;
