@@ -79,8 +79,8 @@ arg_list = argv ();
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_train.txt'
 %model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m'
 
-training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
-model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
 
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_train.txt'
 %model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_model.m'
