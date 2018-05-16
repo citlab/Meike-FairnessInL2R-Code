@@ -54,8 +54,8 @@ source "./globals.m";
 omega = load('../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m');
 drgfile = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_test.txt';
 
-omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m');
-drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_test.txt';
+%omega = load('../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m');
+%drgfile = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_test.txt';
 
 % colorblind done in Cao original code
 

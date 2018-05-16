@@ -55,10 +55,10 @@ arg_list = argv ();
 %model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m'
 
 training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/GAMMA=1000000/chileDataL2R_highschool_model.m'
+model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m'
 
-training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
+%model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
 
 % COLORBLIND
 %training_file = '../sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_train.txt'
