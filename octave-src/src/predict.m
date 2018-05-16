@@ -86,8 +86,8 @@ drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
-%omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
+drgfile = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv";
+omega = load("../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m");
 
 %drgfile = "../sample/TREC/GAMMA=15000/features_with_total_order-zscore-test.csv";
 %omega = load("../sample/TREC/GAMMA=15000/features_with_total_order-zscore_model.m");
