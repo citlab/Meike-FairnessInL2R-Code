@@ -38,7 +38,7 @@ def boxPlot(data, filename, gender=True):
                 x='columns',
                 y='value',
                 showfliers=False,
-                palette="bright")
+                palette="Paired")
 
 
 
