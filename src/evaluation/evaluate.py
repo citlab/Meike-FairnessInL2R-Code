@@ -76,21 +76,21 @@ def calculate_group_exposure(prediction, original):
     prot_rows_pred = prediction.loc[prediction['prot_attr'] == PROT_ATTR]
     nprot_rows_pred = prediction.loc[prediction['prot_attr'] != PROT_ATTR]
 
-    prot_exp_per_doc = np.exp(prot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
-    avg_prot_exp_pred = sum(prot_exp_per_doc) / prediction.shape[0]
+    prot_exp_per_doc = 1 / np.log(prot_rows_pred.index.values + 2)
+    avg_prot_exp_pred = sum(prot_exp_per_doc) / prot_exp_per_doc.shape[0]
 
-    nprot_exp_per_doc = np.exp(nprot_rows_pred['prediction']) / sum(np.exp(prediction['prediction']))
-    avg_nprot_exp_pred = sum(nprot_exp_per_doc) / prediction.shape[0]
+    nprot_exp_per_doc = 1 / np.log(nprot_rows_pred.index.values + 2)
+    avg_nprot_exp_pred = sum(nprot_exp_per_doc) / nprot_rows_pred.shape[0]
 
     # exposure in original
     prot_rows_orig = original.loc[original['prot_attr'] == PROT_ATTR]
     nprot_rows_orig = original.loc[original['prot_attr'] != PROT_ATTR]
 
-    prot_exp_per_doc = 1 - np.exp(prot_rows_orig['prediction']) / sum(np.exp(original['prediction']))
-    avg_prot_exp_orig = sum(prot_exp_per_doc) / original.shape[0]
+    prot_exp_per_doc = 1 / np.log(prot_rows_orig.index.values + 2)
+    avg_prot_exp_orig = sum(prot_exp_per_doc) / prot_rows_orig.shape[0]
 
-    nprot_exp_per_doc = 1 - np.exp(nprot_rows_orig['prediction']) / sum(np.exp(original['prediction']))
-    avg_nprot_exp_orig = sum(nprot_exp_per_doc) / original.shape[0]
+    nprot_exp_per_doc = 1 / np.log(nprot_rows_orig.index.values + 2)
+    avg_nprot_exp_orig = sum(nprot_exp_per_doc) / nprot_rows_orig.shape[0]
 
     return avg_prot_exp_pred, avg_nprot_exp_pred, (avg_nprot_exp_pred - avg_prot_exp_pred), avg_prot_exp_orig, avg_nprot_exp_orig, (avg_nprot_exp_orig - avg_prot_exp_orig)
 
