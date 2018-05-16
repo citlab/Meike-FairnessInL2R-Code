@@ -4,8 +4,8 @@
    exposure_prot_orig  exposure_nprot_orig  exp_diff_orig  precision_top1  \
 0            0.275041             0.723589       0.448549             0.0   
 
-   precision_top10  precision_top20  precision_top100  kendall_tau  \
-0              0.6             0.35              0.51     0.421238   
+   precision_top5  precision_top10  precision_top20  precision_top100  \
+0             0.6              0.6             0.35              0.51   
 
-        p_value  
-0  4.838372e-65  
+   kendall_tau       p_value  
+0     0.421238  4.838372e-65  
