@@ -37,32 +37,53 @@ arg_list = argv ();
 %model_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CHILE EXPERIMENT
+% CHILE EXPERIMENT WITH SEMI_PRIVATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-%training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_gender_model.m' 
+%training_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_semi_model.m' 
 
-%training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_gender_model.m'
+%training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_gender_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_gender_semi_model.m'
 
-%training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_gender_model.m'
+%training_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_semi_model.m'
 
 % HIGHSCHOOL
-%training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_model.m'
 
-training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m'
+training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_train.txt'
+model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_model.m'
 
-%training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
-%model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_train.txt'
+%model_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_model.m'
 
-% COLORBLIND
-%training_file = '../sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_train.txt'
-%model_file = '../sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_model.m'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHILE EXPERIMENT WITHOUT SEMI_PRIVATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% GENDER
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m' 
+
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_model.m'
+
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m'
+
+% HIGHSCHOOL
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m'
+
+training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
+model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
+
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_model.m'
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
