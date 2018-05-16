@@ -50,11 +50,9 @@ def principalDataPreparation_withoutSemiPrivate(data):
     # muni = 0, sub & part = 1, part = 2
     data['muni'] = data['muni'].replace([0], np.nan)
     data['muni'] = data['muni'].replace([1], 0)
-    data['sub'] = data['sub'].replace([0], np.nan)
     data['part'] = data['part'].replace([0], np.nan)
     data['part'] = data['part'].replace([1], 1)
     data['muni'] = data['muni'].fillna(data['part'])
-    data['muni'] = data['muni'].fillna(data['sub'])
     data = data.rename(index=str, columns={"muni":"highschool_type"})
     data = data.drop(columns=['sub', 'part'])
     # drop remaining nans
@@ -124,6 +122,7 @@ def prepareForL2R(data, gender=True, colorblind=False):
     data = data.dropna(subset=['nem', 'psu_mat', 'psu_len', 'psu_cie', 'notas_', 'uds_i_'])
 
     print(data['hombre'].value_counts())
+    print(data['highschool_type'].value_counts())
 
     # drop all columns that are not needed
     if(gender):
