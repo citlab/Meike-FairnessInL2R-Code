@@ -54,8 +54,8 @@ arg_list = argv ();
 %training_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=0/chileDataL2R_highschool_model.m'
 
-training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_train.txt'
-model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m'
+%training_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_train.txt'
+%model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m'
 
 %training_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_train.txt'
 %model_file = '../sample/ChileUni/GAMMA=5000000/chileDataL2R_highschool_model.m'
@@ -68,8 +68,8 @@ model_file = '../sample/ChileUni/GAMMA=100000/chileDataL2R_highschool_model.m'
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
-%model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
+training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
+model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
 
 %training_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore-train.csv"
 %model_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore_model.m"
