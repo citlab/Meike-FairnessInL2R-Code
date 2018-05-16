@@ -1,19 +1,4 @@
-   query_id  exposure_prot_pred  exposure_nprot_pred  exp_diff_pred  \
-0       8.0            0.240663             0.252325       0.011662   
-1       9.0            0.174993             0.176074       0.001081   
-2      10.0            0.161331             0.161034      -0.000296   
-
-   exposure_prot_orig  exposure_nprot_orig  exp_diff_orig  precision_top1  \
-0            0.200207             0.256821       0.056613             0.0   
-1            0.170148             0.176612       0.006464             0.0   
-2            0.158054             0.161398       0.003344             0.0   
-
-   precision_top5  precision_top10  precision_top20  precision_top100  \
-0             0.2              0.2             0.30              0.63   
-1             0.4              0.5             0.35              0.60   
-2             0.2              0.3             0.45              0.72   
-
-   kendall_tau       p_value  
-0     0.268643  1.610840e-08  
-1     0.227940  1.640091e-06  
-2     0.407940  9.603755e-18  
+0     23.997237
+1     68.642283
+2    110.558674
+dtype: float64
