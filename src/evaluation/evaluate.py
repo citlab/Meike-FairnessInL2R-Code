@@ -33,7 +33,7 @@ def evaluate(prediction, original, result_filename, synthetic=False):
                           columns=['query_id',
                                    'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
                                    'exposure_prot_orig', 'exposure_nprot_orig', 'exp_diff_orig',
-                                   'precision_top1', 'precision_top10', 'precision_top20', 'precision_top100',
+                                   'precision_top1', 'precision_top5', 'precision_top10', 'precision_top20', 'precision_top100',
                                    'kendall_tau', 'p_value'])
 
     i = 0
@@ -47,6 +47,7 @@ def evaluate(prediction, original, result_filename, synthetic=False):
         result.loc[i]['exposure_nprot_orig'] = calculate_group_exposure(predGroup, origGroup)[4]
         result.loc[i]['exp_diff_orig'] = calculate_group_exposure(predGroup, origGroup)[5]
         result.loc[i]['precision_top1'] = precision_at_position(predGroup, origGroup, 1, 'doc_id')
+        result.loc[i]['precision_top5'] = precision_at_position(predGroup, origGroup, 5, 'doc_id')
         result.loc[i]['precision_top10'] = precision_at_position(predGroup, origGroup, 10, 'doc_id')
         result.loc[i]['precision_top20'] = precision_at_position(predGroup, origGroup, 20, 'doc_id')
         if (not synthetic) :
