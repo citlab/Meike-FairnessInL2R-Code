@@ -4,7 +4,6 @@ Created on May 2, 2018
 @author: mzehlike
 '''
 import pandas as pd
-import visualization.distribution as pdf
 import visualization.ranking_results_only_protection_status as rankres
 
 attributeNamesAndCategories = {"gender" : 2}
