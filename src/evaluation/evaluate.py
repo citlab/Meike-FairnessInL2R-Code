@@ -9,7 +9,6 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import scipy.stats as stats
-from nose import result
 
 PROT_ATTR = 1
 
@@ -25,6 +24,9 @@ PROT_ATTR = 1
 # EVALUATE KENDALL'S TAU
 ##################################################################################
 def evaluate(prediction, original, result_filename, synthetic=False):
+
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
     predictedGroups = prediction.groupby(prediction['query_id'], as_index=True, sort=False)
     originalGroups = original.groupby(prediction['query_id'], as_index=True, sort=False)
 
@@ -195,7 +197,7 @@ def plot_protected_percentage_per_chunk(prot, nonprot, tick_length, x_ticks, plo
 
     plt.xlabel ("position");
     plt.ylabel("proportion")
-    plt.legend(['protected', 'non-protected'])
+#     plt.legend(['protected', 'non-protected'])
 #     plt.show()
 
     plt.savefig(plot_filename, bbox_inches='tight')

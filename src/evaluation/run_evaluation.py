@@ -82,8 +82,8 @@ chile_colorblind_gender_pred = pd.read_csv('../../octave-src/sample/ChileUni/Sem
 
 chile_colorblind_gender_orig, chile_colorblind_gender_pred = add_prot_to_colorblind(orig_scores, chile_colorblind_gender_orig, chile_colorblind_gender_pred)
 
-evaluate.protected_percentage_per_chunk(chile_colorblind_gender_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_gender.png');
-evaluate.evaluate(chile_colorblind_gender_pred, chile_colorblind_gender_orig, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_gender.txt')
+evaluate.protected_percentage_per_chunk(chile_colorblind_gender_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_gender_semi.png');
+evaluate.evaluate(chile_colorblind_gender_pred, chile_colorblind_gender_orig, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_gender_semi.txt')
 
 # GAMMA 0
 chile_gender_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_test.txt_ORIG.pred',
@@ -91,8 +91,8 @@ chile_gender_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=0
 chile_gender_0_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_test.txt_SORTED.pred',
                                 sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_gender_0_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_gender.png');
-evaluate.evaluate(chile_gender_0_pred, chile_gender_0_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/kendalls_tau_per_query_gender.txt')
+evaluate.protected_percentage_per_chunk(chile_gender_0_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_gender_semi.png');
+evaluate.evaluate(chile_gender_0_pred, chile_gender_0_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/kendalls_tau_per_query_gender_semi.txt')
 
 
 # GAMMA 100000
@@ -101,8 +101,8 @@ chile_gender_100000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GA
 chile_gender_100000_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_gender_test.txt_SORTED.pred',
                                 sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_gender_100000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_gender.png');
-evaluate.evaluate(chile_gender_100000_pred, chile_gender_100000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/kendalls_tau_per_query_gender.txt')
+evaluate.protected_percentage_per_chunk(chile_gender_100000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_gender_semi.png');
+evaluate.evaluate(chile_gender_100000_pred, chile_gender_100000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/kendalls_tau_per_query_gender_semi.txt')
 
 # GAMMA 5000000
 chile_gender_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_test.txt_ORIG.pred',
@@ -110,8 +110,8 @@ chile_gender_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/G
 chile_gender_5000000_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_test.txt_SORTED.pred',
                                 sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_gender_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_gender.png');
-evaluate.evaluate(chile_gender_5000000_pred, chile_gender_5000000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/kendalls_tau_per_query_gender.txt')
+evaluate.protected_percentage_per_chunk(chile_gender_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_gender_semi.png');
+evaluate.evaluate(chile_gender_5000000_pred, chile_gender_5000000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/kendalls_tau_per_query_gender_semi.txt')
 
 ###############################################################################################
 # CHILE UNIVERSITY HIGHSCHOOL WITH SEMI-PRIVATE
@@ -130,8 +130,8 @@ chile_colorblind_highschool_pred = pd.read_csv('../../octave-src/sample/ChileUni
 
 chile_colorblind_highschool_orig, chile_colorblind_highschool_pred = add_prot_to_colorblind(orig_scores, chile_colorblind_highschool_orig, chile_colorblind_highschool_pred)
 
-evaluate.protected_percentage_per_chunk(chile_colorblind_highschool_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_highschool.png');
-evaluate.evaluate(chile_colorblind_highschool_pred, chile_colorblind_highschool_orig, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_highschool.txt')
+evaluate.protected_percentage_per_chunk(chile_colorblind_highschool_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_highschool_semi.png');
+evaluate.evaluate(chile_colorblind_highschool_pred, chile_colorblind_highschool_orig, '../../octave-src/sample/ChileUni/Semi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_highschool_semi.txt')
 
 # GAMMA 0
 chile_highschool_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_test.txt_ORIG.pred',
@@ -139,8 +139,8 @@ chile_highschool_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAM
 chile_highschool_0_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_test.txt_SORTED.pred',
                                   sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_highschool_0_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_highschool.png');
-evaluate.evaluate(chile_highschool_0_pred, chile_highschool_0_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/kendalls_tau_per_query_highschool.txt')
+evaluate.protected_percentage_per_chunk(chile_highschool_0_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_highschool_semi.png');
+evaluate.evaluate(chile_highschool_0_pred, chile_highschool_0_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=0/kendalls_tau_per_query_highschool_semi.txt')
 
 
 # GAMMA 100000
@@ -149,8 +149,8 @@ chile_highschool_100000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Sem
 chile_highschool_100000_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_test.txt_SORTED.pred',
                                   sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_highschool_100000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_highschool.png');
-evaluate.evaluate(chile_highschool_100000_pred, chile_highschool_100000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/kendalls_tau_per_query_highschool.txt')
+evaluate.protected_percentage_per_chunk(chile_highschool_100000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_highschool_semi.png');
+evaluate.evaluate(chile_highschool_100000_pred, chile_highschool_100000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=100000/kendalls_tau_per_query_highschool_semi.txt')
 
 # GAMMA 5000000
 chile_highschool_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_test.txt_ORIG.pred',
@@ -158,8 +158,109 @@ chile_highschool_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/Se
 chile_highschool_5000000_pred = pd.read_csv('../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_test.txt_SORTED.pred',
                                   sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-evaluate.protected_percentage_per_chunk(chile_highschool_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_highschool.png');
-evaluate.evaluate(chile_highschool_5000000_pred, chile_highschool_5000000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/kendalls_tau_per_query_highschool.txt')
+evaluate.protected_percentage_per_chunk(chile_highschool_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_highschool_semi.png');
+evaluate.evaluate(chile_highschool_5000000_pred, chile_highschool_5000000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/kendalls_tau_per_query_highschool_semi.txt')
+
+
+
+###############################################################################################
+# CHILE UNIVERSITY GENDER WITHOUT SEMI-PRIVATE
+###############################################################################################
+
+chunksize = 20
+
+# COLORBLIND TRAINING
+orig_scores = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+chile_colorblind_gender_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_colorblind_gender_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_nosemi_test.txt_SORTED.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+chile_colorblind_gender_orig, chile_colorblind_gender_pred = add_prot_to_colorblind(orig_scores, chile_colorblind_gender_orig, chile_colorblind_gender_pred)
+
+evaluate.protected_percentage_per_chunk(chile_colorblind_gender_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_gender_nosemi.png');
+evaluate.evaluate(chile_colorblind_gender_pred, chile_colorblind_gender_orig, '../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_gender_nosemi.txt')
+
+# GAMMA 0
+chile_gender_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt_ORIG.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_gender_0_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt_SORTED.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_gender_0_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_gender_nosemi.png');
+evaluate.evaluate(chile_gender_0_pred, chile_gender_0_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/kendalls_tau_per_query_gender_nosemi.txt')
+
+
+# GAMMA 100000
+chile_gender_100000_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_test.txt_ORIG.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_gender_100000_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_test.txt_SORTED.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_gender_100000_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_gender_nosemi.png');
+evaluate.evaluate(chile_gender_100000_pred, chile_gender_100000_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/kendalls_tau_per_query_gender_nosemi.txt')
+
+# GAMMA 5000000
+chile_gender_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_test.txt_ORIG.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_gender_5000000_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_test.txt_SORTED.pred',
+                                sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_gender_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_gender_nosemi.png');
+evaluate.evaluate(chile_gender_5000000_pred, chile_gender_5000000_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/kendalls_tau_per_query_gender_nosemi.txt')
+
+###############################################################################################
+# CHILE UNIVERSITY HIGHSCHOOL WITHOUT SEMI-PRIVATE
+###############################################################################################
+
+chunksize = 20
+
+# COLORBLIND TRAINING
+orig_scores = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+chile_colorblind_highschool_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_colorblind_highschool_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_nosemi_test.txt_SORTED.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+chile_colorblind_highschool_orig, chile_colorblind_highschool_pred = add_prot_to_colorblind(orig_scores, chile_colorblind_highschool_orig, chile_colorblind_highschool_pred)
+
+evaluate.protected_percentage_per_chunk(chile_colorblind_highschool_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/UNI-Colorblind-protected_percentage_per_chunk_highschool_nosemi.png');
+evaluate.evaluate(chile_colorblind_highschool_pred, chile_colorblind_highschool_orig, '../../octave-src/sample/ChileUni/NoSemi/COLORBLIND_GAMMA=0/kendalls_tau_per_query_highschool_nosemi.txt')
+
+# GAMMA 0
+chile_highschool_0_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_highschool_0_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_test.txt_SORTED.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_highschool_0_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/UNI-Gamma_0-protected_percentage_per_chunk_highschool_nosemi.png');
+evaluate.evaluate(chile_highschool_0_pred, chile_highschool_0_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=0/kendalls_tau_per_query_highschool_nosemi.txt')
+
+
+# GAMMA 100000
+chile_highschool_100000_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_highschool_100000_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_test.txt_SORTED.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_highschool_100000_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/UNI-Gamma_100000-protected_percentage_per_chunk_highschool_nosemi.png');
+evaluate.evaluate(chile_highschool_100000_pred, chile_highschool_100000_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=100000/kendalls_tau_per_query_highschool_nosemi.txt')
+
+# GAMMA 5000000
+chile_highschool_5000000_orig = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_test.txt_ORIG.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+chile_highschool_5000000_pred = pd.read_csv('../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_test.txt_SORTED.pred',
+                                  sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+evaluate.protected_percentage_per_chunk(chile_highschool_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_highschool_nosemi.png');
+evaluate.evaluate(chile_highschool_5000000_pred, chile_highschool_5000000_orig, '../../octave-src/sample/ChileUni/NoSemi/GAMMA=5000000/kendalls_tau_per_query_highschool_nosemi.txt')
+
+
+
 
 ###############################################################################################
 # TREC
