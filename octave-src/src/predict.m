@@ -64,14 +64,14 @@ source "./globals.m";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m');
-drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt';
+%omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m');
+%drgfile = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_test.txt';
 
 %omega = load('../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_model.m');
 %drgfile = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_test.txt';
 
-%omega = load('../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m');
-%drgfile = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_test.txt';
+omega = load('../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m');
+drgfile = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_test.txt';
 
 % HIGHSCHOOL
 %omega = load('../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m');
