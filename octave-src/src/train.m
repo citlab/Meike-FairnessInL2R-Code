@@ -72,8 +72,8 @@ arg_list = argv ();
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_train.txt'
 %model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_model.m'
 
-training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_train.txt'
-model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m'
+%training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_train.txt'
+%model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m'
 
 % HIGHSCHOOL
 %training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_train.txt'
@@ -97,6 +97,19 @@ model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi
 
 %training_file = "../sample/TREC/GAMMA=1500/features_with_total_order-zscore-train.csv"
 %model_file = "../sample/TREC/GAMMA=1500/features_with_total_order-zscore_model.m"
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TREC BIG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%training_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore_train.csv";
+%model_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore__model.m";
+
+%training_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore_train.csv";
+%model_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore__model.m";
+
+training_file = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore_train.csv";
+model_file = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore__model.m";
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
