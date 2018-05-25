@@ -102,8 +102,8 @@ arg_list = argv ();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC BIG
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-training_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore_train.csv";
-model_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore__model.m";
+%training_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore_train.csv";
+%model_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore__model.m";
 
 %training_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore_train.csv";
 %model_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore__model.m";
