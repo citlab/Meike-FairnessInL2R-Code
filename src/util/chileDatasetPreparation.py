@@ -5,7 +5,6 @@ Created on Apr 17, 2018
 '''
 import numpy as np
 import scipy.stats as stats
-from conda._vendor.auxlib.collection import first
 
 
 def principalDataPreparation_withSemiPrivate(data):
