@@ -30,6 +30,7 @@ def prepareGenderData():
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['sex', 'LSAT', 'UGPA', 'ZFYA']]
+    data.insert(0, 'query_dummy', 1)
 
     train = data.sample(frac=.8)
     test = data.drop(train.index)
@@ -53,6 +54,7 @@ def prepareRaceData(protGroup, nonprotGroup):
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['race', 'LSAT', 'UGPA', 'ZFYA']]
+    data.insert(0, 'query_dummy', 1)
 
     train = data.sample(frac=.8)
     test = data.drop(train.index)
