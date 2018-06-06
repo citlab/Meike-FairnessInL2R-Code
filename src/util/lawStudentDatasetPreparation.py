@@ -65,6 +65,29 @@ def prepareRaceData(protGroup, nonprotGroup):
     return train, test
 
 
+def prepareAllInOneDataForFAIR():
+    data = pd.read_excel('../../octave-src/sample/LawStudents/law_data.csv.xlsx')
+    data = data.drop(columns=['region_first', 'sander_index', 'first_pf'])
+
+    data['sex'] = data['sex'].replace([2], 0)
+
+    data['race'] = data['race'].replace(to_replace="White", value=0)
+    data['race'] = data['race'].replace(to_replace="Amerindian", value=1)
+    data['race'] = data['race'].replace(to_replace="Asian", value=2)
+    data['race'] = data['race'].replace(to_replace="Black", value=3)
+    data['race'] = data['race'].replace(to_replace="Hispanic", value=4)
+    data['race'] = data['race'].replace(to_replace="Mexican", value=5)
+    data['race'] = data['race'].replace(to_replace="Other", value=6)
+    data['race'] = data['race'].replace(to_replace="Puertorican", value=7)
+
+    data['LSAT'] = stats.zscore(data['LSAT'])
+    data['UGPA'] = stats.zscore(data['UGPA'])
+
+    data = data[['sex', 'race', 'LSAT', 'UGPA', 'ZFYA']]
+
+    return data
+
+
 ######################################################################################
 # GENDER
 ######################################################################################
@@ -96,6 +119,12 @@ train, test = prepareRaceData('Puertorican', 'White')
 train.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_train.txt', index=False, header=False)
 test.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_test.txt', index=False, header=False)
 
+#######################################################################################
+# ALL IN ONE
+#######################################################################################
+
+data = prepareAllInOneDataForFAIR()
+data.to_csv('../../data/LSAT/LSAT_AllInOne.csv', index=False, header=True)
 
 
 
