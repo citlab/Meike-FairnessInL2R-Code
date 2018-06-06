@@ -1,4 +1,4 @@
-function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
+function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=false)
     % load constants
     source globals.m;
 
@@ -31,7 +31,7 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         end
 
         % with regularization
-        cost = listwise_cost(y,z, list_id, prot_idx);
+        cost = listwise_cost(GAMMA, y,z, list_id, prot_idx);
         %fprintf("cost=%f\n", sum(cost));
         %cost_converge(t) = sum(cost);
         %fprintf("cost: %f\n", J(1));
@@ -46,7 +46,7 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
             fprintf("computing gradient...\n")
         end
 
-        grad = listnet_gradient(X, y, z, list_id, prot_idx);
+        grad = listnet_gradient(GAMMA, X, y, z, list_id, prot_idx);
         %fprintf("grad: %f\n", grad(1));
 
         % parameter update
@@ -59,7 +59,9 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
             fprintf("\n")
         end
     end
-    figure(); plot(cost_converge_J);
-    figure(); plot(omega_converge);
+    cost_filename = [directory "cost.png"];
+    gradient_filename = [directory "gradient.png"];
+    hf = figure('visible','off'); plot(cost_converge_J); print(hf, cost_filename, '-dpng');
+    gf = figure('visible','off'); plot(omega_converge); print(gf, gradient_filename, '-dpng');
 end
 

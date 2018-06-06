@@ -1,6 +1,5 @@
-function J = listwise_cost(y, z, list_id, prot_idx)
+function J = listwise_cost(GAMMA, y, z, list_id, prot_idx)
     global CORES
-    global GAMMA
     global DEBUG
     global ONLY_L
     global ONLY_U

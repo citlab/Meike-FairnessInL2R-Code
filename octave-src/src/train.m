@@ -12,53 +12,59 @@ pkg load general;
 pkg load parallel;
 
 % read arguments on the command line
-arg_list = argv ();
+arg_list = argv()
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYNTHETIC EXPERIMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = '../sample/synthetic_score_gender/distribution_based/sample_train_data_scoreAndGender_normalDistribution.txt'
-%model_file = '../sample/synthetic_score_gender/distribution_based/sample_model_gender_normdist.m'
-
 
 % TOP MALE BOTTOM FEMALE
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=0/sample_model_gender_sep.m'
+%directory = "../sample/synthetic/top_male_bottom_female/GAMMA=0/";
+%training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
+%model_file = [directory 'sample_model_gender_sep.m']
 
+%directory = "../sample/synthetic/top_male_bottom_female/GAMMA=75/";
+%training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
+%model_file = [directory 'sample_model_gender_sep.m']
 
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=75/sample_model_gender_sep.m'
-
-%training_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic/top_male_bottom_female/GAMMA=150/sample_model_gender_sep.m'
+%directory = "../sample/synthetic/top_male_bottom_female/GAMMA=150/";
+%training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
+%model_file = [directory 'sample_model_gender_sep.m']
 
 % TOP FEMALE BOTTOM MALE
-%training_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_train_data_scoreAndGender_separated.txt'
-%model_file = '../sample/synthetic_score_gender/top_female_bottom_male/sample_model_gender_sep.m'
+%directory = "../sample/synthetic_score_gender/top_female_bottom_male/";
+%training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
+%model_file = [directory 'sample_model_gender_sep.m']
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHILE EXPERIMENT WITH SEMI_PRIVATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-%training_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_gender_semi_model.m' 
+%directory = "../sample/ChileUni/Semi/GAMMA=0/";
+%training_file = [directory 'chileDataL2R_gender_semi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_semi_model.m']
 
-%training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_gender_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_gender_semi_model.m'
+%directory = "../sample/ChileUni/Semi/GAMMA=100000/";
+%training_file = [directory 'chileDataL2R_gender_semi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_semi_model.m']
 
-%training_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_gender_semi_model.m'
+%directory = "../sample/ChileUni/Semi/GAMMA=5000000/";
+%training_file = [directory 'chileDataL2R_gender_semi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_semi_model.m']
 
 % HIGHSCHOOL
-%training_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=0/chileDataL2R_highschool_semi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=0/";
+%training_file = [directory 'chileDataL2R_highschool_semi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_semi_model.m']
 
-%training_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=100000/chileDataL2R_highschool_semi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=100000/";
+%training_file = [directory 'chileDataL2R_highschool_semi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_semi_model.m']
 
-%training_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_train.txt'
-%model_file = '../sample/ChileUni/Semi/GAMMA=5000000/chileDataL2R_highschool_semi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=5000000/";
+%training_file = [directory 'chileDataL2R_highschool_semi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_semi_model.m']
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,50 +72,62 @@ arg_list = argv ();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % GENDER
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_gender_nosemi_model.m' 
+%directory = "../sample/ChileUni/NoSemi/GAMMA=0/";
+%training_file = [directory 'chileDataL2R_gender_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_nosemi_model.m']
 
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_gender_nosemi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=100000/";
+%training_file = [directory 'chileDataL2R_gender_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_nosemi_model.m']
 
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_gender_nosemi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=5000000/";
+%training_file = [directory 'chileDataL2R_gender_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_gender_nosemi_model.m']
 
 % HIGHSCHOOL
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=0/chileDataL2R_highschool_nosemi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=0/";
+%training_file = [directory 'chileDataL2R_highschool_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_nosemi_model.m']
 
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=100000/chileDataL2R_highschool_nosemi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=100000/";
+%training_file = [directory 'chileDataL2R_highschool_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_nosemi_model.m']
 
-%training_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_train.txt'
-%model_file = '../sample/ChileUni/NoSemi/GAMMA=5000000/chileDataL2R_highschool_nosemi_model.m'
+%directory = "../sample/ChileUni/NoSemi/GAMMA=5000000/";
+%training_file = [directory 'chileDataL2R_highschool_nosemi_train.txt']
+%model_file = [directory 'chileDataL2R_highschool_nosemi_model.m']
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore-train.csv";
-%model_file = "../sample/TREC/GAMMA=0/features_with_total_order-zscore_model.m";
+%directory = "../sample/TREC/GAMMA=0/";
+%training_file = [directory "features_with_total_order-zscore-train.csv"];
+%model_file = [directory "features_with_total_order-zscore_model.m"];
 
-%training_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore-train.csv"
-%model_file = "../sample/TREC/GAMMA=750/features_with_total_order-zscore_model.m"
+%directory = "../sample/TREC/GAMMA=750/";
+%training_file = [directory "features_with_total_order-zscore-train.csv"];
+%model_file = [directory "features_with_total_order-zscore_model.m"];
 
-%training_file = "../sample/TREC/GAMMA=1500/features_with_total_order-zscore-train.csv"
-%model_file = "../sample/TREC/GAMMA=1500/features_with_total_order-zscore_model.m"
+%directory = "../sample/TREC/GAMMA=1500/";
+%training_file = [directory "features_with_total_order-zscore-train.csv"];
+%model_file = [directory "features_with_total_order-zscore_model.m"];
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TREC BIG
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%training_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore_train.csv";
-%model_file = "../sample/TREC-BIG/GAMMA=0/features_with_total_order-withGender_withZscore__model.m";
+%directory = "../sample/TREC-BIG/GAMMA=0/"
+%training_file = [directory "features_with_total_order-withGender_withZscore_train.csv"];
+%model_file = [directory "features_with_total_order-withGender_withZscore__model.m"];
 
-%training_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore_train.csv";
-%model_file = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore__model.m";
+%directory = "../sample/TREC-BIG/GAMMA=15000/"
+%training_file = [directory "features_with_total_order-withGender_withZscore_train.csv"];
+%model_file = [directory "features_with_total_order-withGender_withZscore__model.m"];
 
-%training_file = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore_train.csv";
-%model_file = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore__model.m";
+%directory = "../sample/TREC-BIG/GAMMA=75000/"
+%training_file = [directory "features_with_total_order-withGender_withZscore_train.csv"];
+%model_file = [directory "features_with_total_order-withGender_withZscore__model.m"];
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,8 +141,13 @@ arg_list = argv ();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %training_file = '../sample/sample_training_data.m'
 %model_file = '../sample/sample_model.m'
-%training_file = arg_list{1,1};
-%model_file = arg_list{2,1};
+
+directory = arg_list{1,1}
+training_file = arg_list{2,1}
+model_file = arg_list{3,1}
+GAMMA = str2num(arg_list{4,1})
+
+%GAMMA = 100000
 
 % load constants
 addpath(".")
@@ -138,9 +161,9 @@ X = data(:,2:size(data,2)-1);
 y = data(:,size(data,2));
 
 % launch the training routine
-disp(sprintf('training, %d iteration, %d examples, learning rate %f..., gamma %d', T, size(X,1), e, GAMMA))
+disp(sprintf('training, %d iteration, %d examples, learning rate %f, gamma %d, ...\n', T, size(X,1), e, GAMMA))
 tic();
-omega = trainNN(list_id, X, y, T, e);
+omega = trainNN(GAMMA, directory, list_id, X, y, T, e);
 training_time = toc();
 disp(sprintf('finished training, time elapsed: %d seconds', training_time))
 save(model_file, "omega");

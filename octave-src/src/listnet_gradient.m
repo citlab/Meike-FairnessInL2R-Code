@@ -1,8 +1,7 @@
-function grad = listnet_gradient (X, y, z, list_id, prot_idx)
+function grad = listnet_gradient (GAMMA, X, y, z, list_id, prot_idx)
     % prot_idx : array for logical indexing that tells in which lines of the data are
     %            protected items 
     global CORES
-    global GAMMA
     global DEBUG
     global DEBUG_PRINT
     global ONLY_L
