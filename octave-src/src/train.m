@@ -1,4 +1,4 @@
-#!/opt/octave4.2.2/bin/octave -qf
+#!/usr/bin/octave -qf
 % train a linear network using the examples provided in the training_set file
 % and writes the model on output_model
 %
