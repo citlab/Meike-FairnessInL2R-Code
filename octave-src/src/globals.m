@@ -23,8 +23,8 @@ global INIT_VAR = 0.01;
 %global GAMMA = 0;
 
 global ONLY_U = 0;
-global ONLY_L = 0;
-global L_AND_U = 1;
+global ONLY_L = 1;
+global L_AND_U = 0;
 
 % index of column that contains protected attribute
 global PROT_COL = 1;
