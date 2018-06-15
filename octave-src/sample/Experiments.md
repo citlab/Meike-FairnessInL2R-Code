@@ -4,8 +4,8 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 3000 | 5,000,000 | x | x | x | | x | |
-| 3000 | 100,000 | x | x | x | | x | |
+| 3000 | 5,000,000 | x | 14.6.2018 | x | x | x | higher iterations did not make women to be distributed evenly, but also rates all women to top positions |
+| 3000 | 100,000 | x | 14.6.2018 | x | x | x | |
 | 1000 | 5,000,000 | x | x | x | x | x | made all women appear in top positions, super weird, trying to have better convergence |
 | 1000 | 0 | x | x | x | x | x | |
 | 1000 | Colorblind | x | x | x | x | x | |
@@ -17,5 +17,5 @@
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
 | 3000 | 50,000,000 | x | | | | | |
-| 3000 | 0 |  | | | | | |
+| 1000 | 0 | 15.6.2018 | | | | | |
 | 3000 | Colorblind |  | | | | | |
