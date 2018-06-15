@@ -4,6 +4,7 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 5,000,000 | 15.06.2018 |  |  |  |  | trying with dataset with continuous scores |
 | 3000 | 5,000,000 | x | 14.6.2018 | x | x | x | higher iterations did not make women to be distributed evenly, but also rates all women to top positions |
 | 3000 | 100,000 | x | 14.6.2018 | x | x | x | |
 | 1000 | 5,000,000 | x | x | x | x | x | made all women appear in top positions, super weird, trying to have better convergence |
