@@ -104,8 +104,8 @@ source "./globals.m";
 %drgfile = "../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore_test.csv";
 %omega = load("../sample/TREC-BIG/GAMMA=15000/features_with_total_order-withGender_withZscore__model.m");
 
-drgfile = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore_test.csv";
-omega = load("../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore__model.m");
+%drgfile = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore_test.csv";
+%omega = load("../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore__model.m");
 
 drg = load(drgfile);
 
