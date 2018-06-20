@@ -33,7 +33,7 @@ X = np.asarray(X)
 y = np.asarray(y)
 print(y.shape[0])
 #launch the training routine
-#omega = trainNN(GAMMA, directory, list_id, X, y)
+omega = trainNN(GAMMA, directory, list_id, X, y)
 
 
 

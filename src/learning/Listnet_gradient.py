@@ -52,7 +52,7 @@ def listnet_gradient(GAMMA, X, y, z, list_id, prot_idx):
         print("exposure_nprot_normalized")
 
     u1 = lambda i: 2 * np.max((exposure_nprot_normalized(i)-exposure_prot_normalized(i)),0)
-    u2 = lambda i: (tp_np(i)/np.öog(2))/group_size_np(i)
+    u2 = lambda i: (tp_np(i)/np.log(2))/group_size_np(i)
     u3 = lambda i: (tp_p(i)/np.log(2))/group_size_p(i)
     U = lambda i: u1(i)*(u2(i)-u3(i))
 
@@ -106,5 +106,4 @@ def listnet_gradient(GAMMA, X, y, z, list_id, prot_idx):
         acc_w = L(1)
         fval = fair_w_gamma + np.transpose(acc_w)
 
-    #parrayfun
     grad = np.transpose(f(np.arange(m)).reshape(p,m))
