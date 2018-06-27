@@ -11,7 +11,7 @@ from learning.topp import topp
 class Test_Topp(unittest.TestCase):
 
     def testNormalBehaviour(self):
-        v = np.array([0.95, 0.05])
+        v = np.array([10, 1])
         expected = np.exp(v) / np.sum(np.exp(v))
         actual = topp(v)
 
