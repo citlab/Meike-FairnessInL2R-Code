@@ -4,14 +4,14 @@ from learning.topp_prot import *
 from learning.topp import *
 from learning.find import *
 
-def listwise_cost(GAMMA, y, z, list_id, prot_idx):
+def listwise_cost(GAMMA, y, z, query_ids, prot_idx):
 
     # find all training judgments and all predicted scores that belong to one query
-    ly = find_items_per_query(y, list_id)
-    lz = find_items_per_query(z, list_id)
+    ly = lambda i: y[np.where(query_ids == query_ids[i]), :]
+    lz = lambda i: z[np.where(query_ids == query_ids[i]), :]
 
     # get idx of protected candidates per query, otherwise dimensiions don't fit
-    prot_idx_per_query = lambda i: prot_idx[np.where(list_id == list_id[i]), :]
+    prot_idx_per_query = lambda i: prot_idx[np.where(query_ids == query_ids[i]), :]
     l_prot_vec = lambda preds, idx: preds[idx]
     group_size_p = lambda i: l_prot_vec(lz(i), prot_idx_per_query(i)).shape[0]
     group_size_np = lambda i: l_prot_vec(lz(i), ~prot_idx_per_query[i]).shape[0]
@@ -63,4 +63,5 @@ def listwise_cost(GAMMA, y, z, list_id, prot_idx):
         j = lambda i: GAMMA * exposure_diff(i) + accuracy
 
     # J feht noch, wegen pararrayfun
+    # FIXME: reimplement this such that you don't iterate over each element but over each query id
     J = j(np.arange(len(z)))
