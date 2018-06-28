@@ -4,7 +4,7 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 5,000,000 | 15.06.2018 |  |  |  |  | trying with dataset with continuous scores, using 50 queries for training |
+| 1000 | 5,000,000 | 28.06.2018 |  |  |  |  | trying with dataset with continuous scores, using 50 queries for training, but only 200 candidates |
 | 3000 | 5,000,000 | x | 14.6.2018 | x | x | x | higher iterations did not make women to be distributed evenly, but also rates all women to top positions |
 | 3000 | 100,000 | x | 14.6.2018 | x | x | x | |
 | 1000 | 5,000,000 | x | x | x | x | x | made all women appear in top positions, super weird, trying to have better convergence |
@@ -17,6 +17,6 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 3000 | 50,000,000 | x | | | | | |
+| 3000 | 50,000,000 | | | | | | |
 | 1000 | 0 | 15.6.2018 | | | | | running on trec-big server |
 | 3000 | Colorblind |  | | | | | |
