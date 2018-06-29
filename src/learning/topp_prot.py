@@ -9,4 +9,4 @@ def topp_prot(u, v):
     FIXME: rewrite this such that finding the items per group happens here instead of somewhere else
     and that we pass only the whole dataset to this function
     '''
-    return np.exp(u / np.sum(np.exp(v)))
+    return np.exp(u) / np.sum(np.exp(v))
