@@ -27,7 +27,7 @@ def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
                                           np.log(topp(data_per_query(which_query, predictions)[0])))  # eq 2 from CIKM paper
 
     if ONLY_L:
-        cost = lambda i: loss(i)
+        cost = lambda which_query: loss(which_query)
 
     if L_AND_U:
         cost = lambda which_query: GAMMA * exposure_diff(which_query) + loss(which_query)
