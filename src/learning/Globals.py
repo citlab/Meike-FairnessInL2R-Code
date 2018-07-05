@@ -9,8 +9,8 @@ global e
 e = 0.00001
 
 #regularization constant
-global LAMDA
-LAMDA = 0.001
+global LAMBDA
+LAMBDA = 0.001
 
 #number of cores for parallel processing
 global CORES

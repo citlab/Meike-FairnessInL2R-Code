@@ -1,7 +1,6 @@
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
-
 from Globals import *
 from topp_prot import *
 from topp import *
