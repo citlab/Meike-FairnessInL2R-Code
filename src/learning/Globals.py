@@ -2,7 +2,7 @@
 
 #number of training iterations
 global T
-T = 1000
+T = 100
 
 #learning rate
 global e
@@ -31,7 +31,7 @@ L_AND_U = 1
 
 #index of column that contains protected attribute
 global PROT_COL
-PROT_COL = 1
+PROT_COL = 0
 
 #define what is the protected attribute
 global PROT_ATTR

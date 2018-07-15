@@ -1,20 +1,23 @@
 import sys
 import csv
 import numpy as np
-from TrainNN import *
+from src.learning import TrainNN
+from src.learning import Globals
 
 #read arguments from the command line
 arg_list = sys.argv
-print('Argument List:', str(sys.argv))
+##print('Argument List:', str(sys.argv))
 
-directory = arg_list[1]
-training_file = arg_list[2]
-model_file = arg_list[3]
-GAMMA = float(arg_list[4])
+#directory = arg_list[1]
+#training_file = arg_list[2]
+#model_file = arg_list[3]
+#GAMMA = float(arg_list[4])
+GAMMA = 0
+directory = 'C:\\Users\\ying_\\Pictures\\Listwise_Cost'
 
 #read testfile and load training dataset
-with open('testdaten.csv') as csvfile:
-    readCSV = csv.reader(csvfile,delimiter=';')
+with open('testdaten.csv',encoding='utf-8-sig') as csvfile:
+    readCSV = csv.reader(csvfile,delimiter=',')
     #row_count = sum(1 for row in readCSV)
     list_id = []
     y = []
@@ -28,12 +31,11 @@ with open('testdaten.csv') as csvfile:
         X.append(X1)
         y.append(y1)
 #print(str(X_list))
-list_id = np.asarray(list_id)
-X = np.asarray(X)
-y = np.asarray(y)
-print(y.shape[0])
+list_id = np.asarray(list_id).astype('int64')
+X = np.asarray(X).astype('float')
+y = np.reshape(np.asarray(y).astype('float'),(len(y),1))
 #launch the training routine
-omega = trainNN(GAMMA, directory, list_id, X, y)
+omega = TrainNN.trainNN(GAMMA, directory, list_id, X, y, Globals.T, Globals.e)
 
 
 
