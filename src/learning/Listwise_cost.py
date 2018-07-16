@@ -12,7 +12,8 @@ def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
     ##print(query_ids)
     data_per_query = lambda which_query, data: \
                                    find.find_items_per_group_per_query(data, query_ids, which_query, prot_idx)
-
+    #print("predictions")
+    #print(predictions)
     # Exposure in rankings for protected and non-protected group
     exposure_prot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[1],
                                                             data_per_query(which_query, predictions)[0])

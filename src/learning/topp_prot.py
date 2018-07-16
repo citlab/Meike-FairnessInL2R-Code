@@ -18,13 +18,14 @@ def topp_prot_first_derivative(group_features, all_features, group_predictions, 
     all_predictions = predictions of all data points
     all_features = feature vectors of all data points
     '''
-    numerator1 = np.dot(group_features, np.repeat(np.exp(group_predictions), group_features.shape[0]))
+    #numerator1 = np.dot(group_features, np.repeat(np.exp(group_predictions), group_features.shape[0]))
+    #numerator1 = np.dot(group_features, np.transpose(np.repeat(np.exp(group_predictions), group_features.shape[1], axis = 1)))
+    numerator1 = np.multiply(group_features,np.exp(group_predictions))
     numerator2 = np.sum(np.exp(all_predictions))
-    numerator3 = np.sum(np.dot(all_features, np.exp(all_predictions)))
+    numerator3 = np.sum(np.multiply(all_features, np.exp(all_predictions)))
     denominator = np.sum(np.exp(all_predictions)) ** 2
 
     result = np.sum(numerator1 * numerator2 - np.exp(group_predictions) * numerator3) / denominator
-
     return result
 
 
