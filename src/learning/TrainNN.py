@@ -24,7 +24,6 @@ def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
 
         #forward propagation
         z = np.multiply(X,np.transpose(omega))
-        print(z)
         #cost
         if quiet == False:
             print('computing cost')

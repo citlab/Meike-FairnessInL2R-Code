@@ -34,7 +34,6 @@ with open('testdaten.csv',encoding='utf-8-sig') as csvfile:
 list_id = np.asarray(list_id).astype('int64')
 X = np.asarray(X).astype('float')
 y = np.reshape(np.asarray(y).astype('float'),(len(y),1))
-print(X)
 #launch the training routine
 omega = TrainNN.trainNN(GAMMA, directory, list_id, X, y, Globals.T, Globals.e)
 

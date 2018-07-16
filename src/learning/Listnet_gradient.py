@@ -17,22 +17,27 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
     data_per_query = lambda which_query, data: \
                                    find.find_items_per_group_per_query(data, query_ids, which_query, prot_idx)
     # Exposure in rankings for protected and non-protected group
-    exposure_prot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[1], \
-                                                                     data_per_query(which_query, predictions)[0])
-    exposure_nprot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[2], \
-                                                                    data_per_query(which_query, predictions)[0])
+    #exposure_prot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[1], \
+                                                                     #data_per_query(which_query, predictions)[0])
+    #exposure_nprot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[2], \
+                                                                    #data_per_query(which_query, predictions)[0])
 
-    u1 = lambda which_query: 2 * np.max((exposure_nprot_normalized(which_query) - exposure_prot_normalized(which_query)), 0)
-    u2 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[2], \
-                                                       data_per_query(which_query, training_features)[0], \
-                                                       data_per_query(which_query, predictions)[2], \
-                                                       data_per_query(which_query, predictions)[0])  # derivative for non-protected group
-    u3 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[1], \
-                                                       data_per_query(which_query, training_features)[0], \
-                                                       data_per_query(which_query, predictions)[1], \
-                                                       data_per_query(which_query, predictions)[0])  # derivative for protected group
+    #u1 = lambda which_query: 2 * np.max((exposure_nprot_normalized(which_query) - exposure_prot_normalized(which_query)), 0)
+    # u1 = lambda which_query: 2*exposure.exposure_diff(predictions, query_ids, which_query, prot_idx)
+    # u2 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[2], \
+    #                                                    data_per_query(which_query, training_features)[0], \
+    #                                                    data_per_query(which_query, predictions)[2], \
+    #                                                    data_per_query(which_query, predictions)[0])  # derivative for non-protected group
+    # u3 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[1], \
+    #                                                    data_per_query(which_query, training_features)[0], \
+    #                                                    data_per_query(which_query, predictions)[1], \
+    #                                                    data_per_query(which_query, predictions)[0])  # derivative for protected group
 
-    U_deriv = lambda which_query: u1(which_query) * (u2(which_query) - u3(which_query))
+    # U_deriv = lambda which_query: u1(which_query) * (u2(which_query) - u3(which_query))
+
+    U_deriv = lambda which_query: 2*exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
+                                  topp_prot.normalized_topp_prot_deriv_per_group_diff(training_features, predictions, \
+                                                                                      query_ids, which_query, prot_idx)
 
     ######asking Meike again because of the data structure#########
     l1 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0][:, 1], topp.topp(data_per_query(which_query, training_judgments)[0]))
