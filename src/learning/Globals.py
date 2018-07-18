@@ -2,15 +2,15 @@
 
 #number of training iterations
 global T
-T = 1000
+T = 100
 
 #learning rate
 global e
 e = 0.00001
 
 #regularization constant
-global LAMDA
-LAMDA = 0.001
+global LAMBDA
+LAMBDA = 0.001
 
 #number of cores for parallel processing
 global CORES
@@ -31,7 +31,7 @@ L_AND_U = 1
 
 #index of column that contains protected attribute
 global PROT_COL
-PROT_COL = 1
+PROT_COL = 0
 
 #define what is the protected attribute
 global PROT_ATTR

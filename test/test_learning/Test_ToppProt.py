@@ -5,7 +5,7 @@ Created on Jun 23, 2018
 '''
 import unittest
 import numpy as np
-from learning.topp_prot import topp_prot
+from src.learning.topp_prot import topp_prot
 
 class Test_ToppProt(unittest.TestCase):
 
@@ -28,7 +28,7 @@ class Test_ToppProt(unittest.TestCase):
         np.testing.assert_array_equal(expected_prot, actual_prot)
 
         expected_nprot = np.exp(nprot) / np.sum(np.exp(all_items))
-        actual_nprot = topp_prot(prot, all_items)
+        actual_nprot = topp_prot(nprot, all_items)
         np.testing.assert_array_equal(expected_nprot, actual_nprot)
 
 
@@ -42,7 +42,7 @@ class Test_ToppProt(unittest.TestCase):
         np.testing.assert_array_equal(expected_prot, actual_prot)
 
         expected_nprot = np.exp(nprot) / np.sum(np.exp(all_items))
-        actual_nprot = topp_prot(prot, all_items)
+        actual_nprot = topp_prot(nprot, all_items)
         np.testing.assert_array_equal(expected_nprot, actual_nprot)
 
 
@@ -79,3 +79,4 @@ class Test_ToppProt(unittest.TestCase):
         expected_nprot = np.exp(nprot) / np.sum(np.exp(all_items))
         actual_nprot = topp_prot(prot, all_items)
         np.testing.assert_array_equal(expected_nprot, actual_nprot)
+
