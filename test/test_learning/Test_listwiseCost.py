@@ -6,7 +6,7 @@ Created on Jun 27, 2018
 import unittest
 
 
-class Test(unittest.TestCase):
+class TestListwiseCost(unittest.TestCase):
 
 
     def setUp(self):
@@ -17,6 +17,6 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testName(self):
-        pass
+    def testListwiseCost(self):
+        self.fail("TODO STEFFI: not yet implemented")
 

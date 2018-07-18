@@ -44,5 +44,10 @@ class TestFindMethods(unittest.TestCase):
         self.assertEqual(expected_5.size, actual_5.size)
 
 
+    def test_find_items_per_group_per_query(self):
+        self.fail("TODO STEFFI: not yet implemented")
+
+
+
 
 

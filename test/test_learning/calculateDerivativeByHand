@@ -1,0 +1,29 @@
+all_predictions = np.array([4, 3, 2, 1])
+nprot_predictions = np.array([4, 3])
+prot_predictions = np.array([2, 1])
+
+all_features = np.matrix('0 10; 0 9; 1 2; 1 1')
+prot_features = np.matrix('1 2; 1 1')
+nprot_features = np.matrix('0 10; 0 9')
+
+protected group:
+e_iq = [2; 1]
+x_iq = [1, 2; 1, 1]
+
+e_kq = [4; 3; 2; 1]
+x_kq = [0 10; 0 9; 1 2; 1 1]
+
+e_iq * x_iq = [4, 3] -> müsste ein Zeilenvektor sein
+sum(e_kq) = 10
+e_iq * x_iq * sum(e_kq) = [40, 30]
+
+--> man muss x_kq transponieren, damit man die Matrix-Multiplikation durchführen kann
+x_kq' = [0, 0, 1, 1; 10, 9, 2, 1]
+e_kq * x_kq = [3, 72]
+sum(e_kq * x_kq) = 75
+e_iq * sum(e_kq * x_kq) = [150; 75]
+
+nenner = 100
+
+
+
