@@ -1,7 +1,7 @@
 from src.learning import Globals
 from src.learning import topp_prot
 from src.learning import topp
-from src.learning import exposure
+from src.learning import normalized_exposure
 from src.learning import find
 import numpy as np
 import multiprocessing
@@ -17,13 +17,13 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
     data_per_query = lambda which_query, data: \
                                    find.find_items_per_group_per_query(data, query_ids, which_query, prot_idx)
     # Exposure in rankings for protected and non-protected group
-    #exposure_prot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[1], \
+    #exposure_prot_normalized = lambda which_query: normalized_exposure.normalized_exposure(data_per_query(which_query, predictions)[1], \
                                                                      #data_per_query(which_query, predictions)[0])
-    #exposure_nprot_normalized = lambda which_query: exposure.exposure(data_per_query(which_query, predictions)[2], \
+    #exposure_nprot_normalized = lambda which_query: normalized_exposure.normalized_exposure(data_per_query(which_query, predictions)[2], \
                                                                     #data_per_query(which_query, predictions)[0])
 
     #u1 = lambda which_query: 2 * np.max((exposure_nprot_normalized(which_query) - exposure_prot_normalized(which_query)), 0)
-    # u1 = lambda which_query: 2*exposure.exposure_diff(predictions, query_ids, which_query, prot_idx)
+    # u1 = lambda which_query: 2*normalized_exposure.exposure_diff(predictions, query_ids, which_query, prot_idx)
     # u2 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[2], \
     #                                                    data_per_query(which_query, training_features)[0], \
     #                                                    data_per_query(which_query, predictions)[2], \
@@ -35,7 +35,7 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
 
     # U_deriv = lambda which_query: u1(which_query) * (u2(which_query) - u3(which_query))
 
-    U_deriv = lambda which_query: 2*exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
+    U_deriv = lambda which_query: 2*normalized_exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
                                   topp_prot.normalized_topp_prot_deriv_per_group_diff(training_features, predictions, \
                                                                                       query_ids, which_query, prot_idx)
 
