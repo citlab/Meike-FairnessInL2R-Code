@@ -40,9 +40,9 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
                                                                                       query_ids, which_query, prot_idx)
 
     ######asking Meike again because of the data structure#########
-    l1 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0][:, 1], topp.topp(data_per_query(which_query, training_judgments)[0]))
+    l1 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], topp.topp(data_per_query(which_query, training_judgments)[0]))
     l2 = lambda which_query: 1 / np.sum(np.exp(data_per_query(which_query, predictions)[0]))
-    l3 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0][:, 1], np.exp(data_per_query(which_query, predictions)[0]))
+    l3 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], np.exp(data_per_query(which_query, predictions)[0]))
 
     L_deriv = lambda which_query: -l1(which_query) + l2(which_query) * l3(which_query)
 
