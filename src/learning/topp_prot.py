@@ -1,5 +1,5 @@
 import numpy as np
-from learning import find
+from src.learning import find
 
 
 def topp_prot(group_items, all_items):

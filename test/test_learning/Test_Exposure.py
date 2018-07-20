@@ -1,26 +1,39 @@
 import unittest
 import numpy as np
 from src.learning import exposure
+from src.learning import topp_prot
 
 class TestExposureMethod(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        self._all_items = np.array([5, 6, 7, 8, 2, 9, 10, 4, 3])
-        self._prot_group = np.array([5, 6, 8, 4, 3])
-        self._nprot_group = np.array([7, 1, 2, 9, 10])
+        self.__data = np.matrix('0 10;1 9; 1 8; 0 7')
+        self.__prot_group = np.matrix('1 9; 1 8')
+        self.__nprot_group = np.matrix('0 10; 0 7')
 
     def tearDown(self):
         pass
 
     def test_exposure_for_each_group(self):
-        expected_prot = 0.02987333554210711
-        actual_prot = exposure.exposure(self._prot_group, self._all_items)
-        np.testing.assert_equal(expected_prot, actual_prot)
+        expected_prot_1 = np.sum(topp_prot.topp_prot(self.__prot_group, self.__data)/np.log(2))/self.__prot_group.size
+        actual_prot_1 = exposure.exposure(self.__prot_group, self.__data)
+        np.testing.assert_equal(expected_prot_1, actual_prot_1)
 
-        expected_nprot = 0.25866567263568563
-        actual_nprot = exposure.exposure(self._nprot_group, self._all_items)
-        np.testing.assert_equal(expected_nprot, actual_nprot)
+        expected_nprot_1 = np.sum(topp_prot.topp_prot(self.__nprot_group, self.__data) / np.log(2)) / self.__nprot_group.size
+        actual_nprot_1 = exposure.exposure(self.__nprot_group, self.__data)
+        np.testing.assert_equal(expected_nprot_1, actual_nprot_1)
+
+        data = np.matrix('1 10;1 9; 1 8; 1 7')
+        prot_group = np.matrix('1 9; 1 8')
+        nprot_group = np.matrix('')
+
+        expected_prot_2 = np.sum(topp_prot.topp_prot(prot_group, data) / np.log(2)) / prot_group.size
+        actual_prot_2 = exposure.exposure(prot_group, data)
+        np.testing.assert_equal(expected_prot_2, actual_prot_2)
+
+        expected_nprot_2 = np.sum(topp_prot.topp_prot(nprot_group, data) / np.log(2)) / nprot_group.size
+        actual_nprot_2 = exposure.exposure(nprot_group, data)
+        np.testing.assert_equal(expected_nprot_2, actual_nprot_2)
 
 
 

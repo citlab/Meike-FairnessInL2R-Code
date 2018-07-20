@@ -5,8 +5,8 @@ Created on Jun 23, 2018
 '''
 import unittest
 import numpy as np
-from learning.topp_prot import topp_prot
-from learning.topp_prot import topp_prot_first_derivative
+from src.learning.topp_prot import topp_prot
+from src.learning.topp_prot import topp_prot_first_derivative
 
 class Test_ToppProt(unittest.TestCase):
 
