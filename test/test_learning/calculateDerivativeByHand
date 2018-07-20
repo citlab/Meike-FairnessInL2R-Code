@@ -1,0 +1,38 @@
+all_predictions = np.array([4, 3, 2, 1])
+nprot_predictions = np.array([4, 3])
+prot_predictions = np.array([2, 1])
+
+all_features = np.matrix('0 10; 0 9; 1 2; 1 1')
+prot_features = np.matrix('1 2; 1 1')
+nprot_features = np.matrix('0 10; 0 9')
+
+protected group:
+e_iq = [e^2; e]
+x_iq = [1, 2; 1, 1]
+
+e_kq = [e^4; e^3; e^2; e^1]
+x_kq = [0 10; 0 9; 1 2; 1 1]
+
+e_iq' * x_iq = [10.1073379274; 17.4963940263] 
+sum(e_kq) = 84.7910248837
+e_iq * x_iq * sum(e_kq) = [101.073379274; 174.963940263] 
+
+--> man muss x_kq transponieren, damit man die Matrix-Multiplikation durchführen kann
+x_kq' = [0, 0, 1, 1; 10, 9, 2, 1]
+e_kq * x_kq = [10.1073379274; 744.247726666]
+sum(e_kq * x_kq) = 754.355064593
+e_iq * sum(e_kq * x_kq) = [5573.97189079; 2050.54966429]
+
+nenner = 7189.51790083
+
+gesamt_prot = ([10.1073379274; 17.4963940263] - [5573.97189079; 2050.54966429]) / 7189.51790083 = [-0.65608855 -0.07886655]
+
+non-protected group:
+e_iq = [4; 3]
+x_iq = [0, 10; 0, 9]
+
+e_iq' * x_iq = [0; 67] 
+e_iq * x_iq * sum(e_kq) = [0; 670]
+e_iq * sum(e_kq * x_kq) = [300; 225]
+
+gesamt_nprot = ([0; 670] - [300; 225]) / 100 = [-3; 4.47]

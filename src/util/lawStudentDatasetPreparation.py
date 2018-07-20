@@ -35,9 +35,8 @@ def prepareGenderData():
     train = data.sample(frac=.8)
     test = data.drop(train.index)
 
-#     print(train.shape)
-#     print(test.shape)
-
+    # subsample training data, because otherwise training takes too long
+    train = train.sample(frac=.1)
     return train, test
 
 
@@ -59,9 +58,8 @@ def prepareRaceData(protGroup, nonprotGroup):
     train = data.sample(frac=.8)
     test = data.drop(train.index)
 
-#     print(train.shape)
-#     print(test.shape)
-
+    # subsample training data, because otherwise training takes too long
+    train = train.sample(frac=.1)
     return train, test
 
 

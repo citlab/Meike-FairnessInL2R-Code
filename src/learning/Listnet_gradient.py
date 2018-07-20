@@ -1,109 +1,65 @@
-from Globals import *
-from topp_prot import *
-from topp import *
+from src.learning import Globals
+from src.learning import topp_prot
+from src.learning import topp
+from src.learning import normalized_exposure
+from src.learning import find
 import numpy as np
+import multiprocessing
+from joblib import Parallel, delayed
 
-def listnet_gradient(GAMMA, X, y, z, list_id, prot_idx):
+def listnet_gradient(GAMMA, training_features, training_judgments, predictions, query_ids, prot_idx):
 
-    #number of documents
-    m = X.shape[0]
-    #number of features
-    p = X.shape[1]
+    # number of documents
+    m = training_features.shape[0]
+    # number of features
+    p = training_features.shape[1]
+    # find all training judgments and all predicted scores that belong to one query
+    data_per_query = lambda which_query, data: \
+                                   find.find_items_per_group_per_query(data, query_ids, which_query, prot_idx)
+    # Exposure in rankings for protected and non-protected group
+    #exposure_prot_normalized = lambda which_query: normalized_exposure.normalized_exposure(data_per_query(which_query, predictions)[1], \
+                                                                     #data_per_query(which_query, predictions)[0])
+    #exposure_nprot_normalized = lambda which_query: normalized_exposure.normalized_exposure(data_per_query(which_query, predictions)[2], \
+                                                                    #data_per_query(which_query, predictions)[0])
 
-    #find all data points that belong to one query
-    lx = lambda i: X[np.where(list_id==list_id[i]),:]
-    ly = lambda i: y[np.where(list_id==list_id[i]),:]
-    lz = lambda i: z[np.where(list_id==list_id[i]),:]
+    #u1 = lambda which_query: 2 * np.max((exposure_nprot_normalized(which_query) - exposure_prot_normalized(which_query)), 0)
+    # u1 = lambda which_query: 2*normalized_exposure.exposure_diff(predictions, query_ids, which_query, prot_idx)
+    # u2 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[2], \
+    #                                                    data_per_query(which_query, training_features)[0], \
+    #                                                    data_per_query(which_query, predictions)[2], \
+    #                                                    data_per_query(which_query, predictions)[0])  # derivative for non-protected group
+    # u3 = lambda which_query: topp_prot.normalized_topp_prot_deriv_per_group(data_per_query(which_query, training_features)[1], \
+    #                                                    data_per_query(which_query, training_features)[0], \
+    #                                                    data_per_query(which_query, predictions)[1], \
+    #                                                    data_per_query(which_query, predictions)[0])  # derivative for protected group
 
-    #get idx of protected candidates per query, otherwise dimensions don't fit
-    prot_idx_per_query = lambda i: prot_idx[np.where(list_id == list_id[i]),:]
+    # U_deriv = lambda which_query: u1(which_query) * (u2(which_query) - u3(which_query))
 
-    #returns only those lines in which the logical array idx contains 1
-    l_group_vec = lambda preds, idx: preds[idx]
-    l_group_mat = lambda data,idx: data[idx,:]
+    U_deriv = lambda which_query: 2*normalized_exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
+                                  topp_prot.normalized_topp_prot_deriv_per_group_diff(training_features, predictions, \
+                                                                                      query_ids, which_query, prot_idx)
 
-    tp1 = lambda t,u: np.dot(np.repeat(np.exp(u),len(t)))
-    tp2 = lambda v: np.sum(np.exp(v))
-    tp3 = lambda w,v: np.sum(np.dot(w,np.exp(v)))
-    tp4 = lambda v: np.sum(np.exp(v))**2
+    ######asking Meike again because of the data structure#########
+    l1 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], topp.topp(data_per_query(which_query, training_judgments)[0]))
+    l2 = lambda which_query: 1 / np.sum(np.exp(data_per_query(which_query, predictions)[0]))
+    l3 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], np.exp(data_per_query(which_query, predictions)[0]))
 
-    #collect data structures
-    group_features_p = lambda i: l_group_mat(lx(i),prot_idx_per_query(i))
-    group_preds_p = lambda i: l_group_vec(lz(i), prot_idx_per_query(i))
-    group_features_np = lambda i: l_group_mat(lx(i), ~prot_idx_per_query(i))
-    group_preds_np = lambda i: l_group_vec(lz(i),~prot_idx_per_query(i))
+    L_deriv = lambda which_query: -l1(which_query) + l2(which_query) * l3(which_query)
 
-    tp_p = lambda i: np.sum((tp1(group_features_p(i)), group_preds_p(i))*tp2(lz(i))-np.exp(group_preds_p(i))*tp3(lx(i),lz(i))/tp4(lz(i)))
-    tp_np = lambda i: np.sum((tp1(group_features_p(i)), group_preds_np(i))*tp2(lz(i))-np.exp(group_preds_np(i))*tp3(lx(i),lz(i))/tp4(lz(i)))
+    if Globals.ONLY_L:
+        grad = lambda which_query: L_deriv(which_query)
 
-    group_size_p = lambda i: group_preds_p(i).shape[0]
-    group_size_np = lambda i: group_preds_np(i).shape[0]
+    if Globals.ONLY_U:
+        grad = lambda which_query: GAMMA * U_deriv(which_query)
 
-    #Exposure in Rankings for the protected and non-protected group
-    exposure_prot = lambda i: np.sum(topp_prot(group_preds_p(i),lz(i))) / np.log(2)
-    exposure_nprot = lambda i: np.sum(topp_prot(group_preds_np(i),lz(i))) / np.log(2)
+    if Globals.L_AND_U:
+        grad = lambda which_query: GAMMA * U_deriv(which_query) + L_deriv(which_query)
 
-    #normalize exposures
-    exposure_prot_normalized = lambda i: exposure_prot(i)/group_size_p(i)
-    exposure_nprot_normalized = lambda i: exposure_nprot(i)/group_size_np(i)
 
-    if DEBUG_PRINT:
-        print("exposure_prot_normalized:")
-        print("exposure_nprot_normalized")
+    # TODO: bin mir nicht sicher ob wir das hier brauchen...man müsste mal in octave gucken, was das gemacht hatte...
+    # grad = np.transpose(f(np.arange(m)).reshape(p, m))
 
-    u1 = lambda i: 2 * np.max((exposure_nprot_normalized(i)-exposure_prot_normalized(i)),0)
-    u2 = lambda i: (tp_np(i)/np.log(2))/group_size_np(i)
-    u3 = lambda i: (tp_p(i)/np.log(2))/group_size_p(i)
-    U = lambda i: u1(i)*(u2(i)-u3(i))
+    num_cores = multiprocessing.cpu_count()
+    results = Parallel(n_jobs=num_cores)(delayed(grad)(query) for query in np.unique(query_ids))
 
-    l1 = lambda i: np.dot(lx(i),topp(ly(i)))
-    l2 = lambda i: 1/np.sum(np.exp(lz(i)))
-    l3 = lambda i: np.dot(lx(i),np.exp(lz(i)))
-
-    L = lambda i: l1(i) + l2(i) * l3(i)
-
-    if ONLY_L:
-        f = lambda i: L(i)
-
-    if ONLY_U:
-        f = lambda i: GAMMA * U(i)
-
-    if L_AND_U:
-        f = lambda i: GAMMA * U(i) + L(i)
-
-    if DEBUG_PRINT:
-        print("cost in gradient l")
-
-    if DEBUG:
-        iter = np.arange(m)
-        prot_idx_q1 = prot_idx_per_query(1)
-        lz1 = lz(1)
-        lx1 = lx(1)
-
-        z_prot = l_group_vec(lz(1), prot_idx_q1)
-        z_nprot = l_group_vec(lz(1), ~prot_idx_q1)
-        x_prot = l_group_mat(lx(1),prot_idx_per_query(1))
-
-        topp_prot_p = topp_prot(z_prot,lz1)
-
-        exposure_p = exposure_nprot(1)
-        exposure_p_norm = exposure_nprot_normalized(1)
-
-        tp1p = tp1(x_prot, z_prot)
-        tp2p = tp2(lz(1))
-        tp3p = tp3(lx(1),lz(1))
-        twoMinusThree = tp2(lz(1)) - tp3(lx(1),lz(1))
-        tp4p =  tp4(lz(1))
-
-        tp_prot = tp_p(1)
-
-        u1expdiff = u1(1)
-        u2np = u2(1)
-        u3p = u3(1)
-
-        fair_w = U(1)
-        fair_w_gamma = GAMMA * U(1)
-        acc_w = L(1)
-        fval = fair_w_gamma + np.transpose(acc_w)
-
-    grad = np.transpose(f(np.arange(m)).reshape(p,m))
+    return results
