@@ -5,7 +5,7 @@ Created on Jun 28, 2018
 '''
 import unittest
 import numpy as np
-from src.learning import find
+from learning import find
 from numpy import dtype
 
 
