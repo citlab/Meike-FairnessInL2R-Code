@@ -19,6 +19,6 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 3000 | 50,000,000 | | | | | | |
+| 1000 | 5,000,000 | 20.07.2018 | | | | | subsampled dataset, now has ~1700 candidates in training set |
 | 1000 | 0 | 15.6.2018 | | | | | running on trec-big server |
 | 3000 | Colorblind |  | | | | | |
