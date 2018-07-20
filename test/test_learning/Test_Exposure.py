@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
-from src.learning import exposure
-from src.learning import topp_prot
+from learning import exposure
+from learning import topp_prot
 
 class TestExposureMethod(unittest.TestCase):
 
@@ -15,7 +15,7 @@ class TestExposureMethod(unittest.TestCase):
         pass
 
     def test_exposure_for_each_group(self):
-        expected_prot_1 = np.sum(topp_prot.topp_prot(self.__prot_group, self.__data)/np.log(2))/self.__prot_group.size
+        expected_prot_1 = np.sum(topp_prot.topp_prot(self.__prot_group, self.__data) / np.log(2)) / self.__prot_group.size
         actual_prot_1 = exposure.exposure(self.__prot_group, self.__data)
         np.testing.assert_equal(expected_prot_1, actual_prot_1)
 

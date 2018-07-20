@@ -5,7 +5,7 @@ Created on Jun 23, 2018
 '''
 import unittest
 import numpy as np
-from src.learning.topp import topp
+from learning.topp import topp
 
 
 class Test_Topp(unittest.TestCase):

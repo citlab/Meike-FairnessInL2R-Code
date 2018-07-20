@@ -4,8 +4,8 @@ Created on Jun 29, 2018
 @author: mzehlike
 '''
 import numpy as np
-from src.learning import topp_prot
-from src.learning import find
+from learning import topp_prot
+from learning import find
 
 def exposure(group_data, all_data):
     # eq 4 in cikm paper

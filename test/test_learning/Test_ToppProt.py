@@ -5,8 +5,8 @@ Created on Jun 23, 2018
 '''
 import unittest
 import numpy as np
-from src.learning.topp_prot import topp_prot
-from src.learning.topp_prot import topp_prot_first_derivative
+from learning.topp_prot import topp_prot
+from learning.topp_prot import topp_prot_first_derivative
 
 class Test_ToppProt(unittest.TestCase):
 
@@ -60,7 +60,7 @@ class Test_ToppProt(unittest.TestCase):
 
 
     def test_toppProtFirstDerivative_OneGroupOnlyZeros(self):
-        self.fail("not yet implemented")
+        self.fail("NOT TO DO: not yet implemented")
         all_items = np.array([10, 9, 0, 0])
         prot = np.array([10, 9])
         nprot = np.array([0, 0])
