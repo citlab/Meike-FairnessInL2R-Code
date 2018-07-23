@@ -39,7 +39,7 @@
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 0 | 10417 | 23.07.2018 |  | | | |  |
-| 1000 | Colorblind | -- | 23.07.2018 | | | | |
+| 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
 
 ### Hispanic
@@ -47,7 +47,7 @@
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 0 | 1399 | 23.07.2018 |  | | | | running on TREC server |
-| 1000 | Colorblind | | | | | | |
+| 1000 | Colorblind | -- | 23.07.2018 | | | | |
 
 
 ### Mexican
