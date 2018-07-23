@@ -46,3 +46,11 @@
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 0 | 1399 | 23.07.2018 |  | | | | running on TREC server |
 | 1000 | Colorblind | | | | | | |
+
+
+### Mexican
+
+| T | Gamma | pid | run | done | pred | repo | eval | comments |
+| --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 0 | 29541 | 23.07.2018 |  | | | | running on TREC server |
+| 1000 | Colorblind | | | | | | |
