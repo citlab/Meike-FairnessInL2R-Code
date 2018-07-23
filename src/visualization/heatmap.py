@@ -14,7 +14,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import pandas as pd
-import util.chileDatasetPreparation as prep
+import util.chileDatasetPreparation as prepChile
+import util.lawStudentDatasetPreparation as prepLawGender
 
 
 #################################################################################################
@@ -31,13 +32,19 @@ def cool_warm_heatmap(data, filename):
 
 # plot_ChileDataset heatmap for successful students
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation_withSemiPrivate(data)
-data = prep.successfulStudents(data)
+data = prepChile.principalDataPreparation_withSemiPrivate(data)
+data = prepChile.successfulStudents(data)
 cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapSuccessfulStudents.png')
 
 # plot_ChileDataset heatmap for all students
 data = pd.read_excel('../../data/ChileUniversity/UCH-FCFM-GRADES_2010_2014_chato.xls.xlsx')
-data = prep.principalDataPreparation_withSemiPrivate(data)
-data = prep.allStudents(data)
+data = prepChile.principalDataPreparation_withSemiPrivate(data)
+data = prepChile.allStudents(data)
 cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapAllStudents.png')
+
+# plot Law Student heatmap for all students
+training_data = prepLawGender.prepareGenderData()[0]
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/gender/heatmapGender.png')
+
+
 
