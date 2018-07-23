@@ -19,6 +19,8 @@ Aufteilung in Trainings und Testdaten, 80% Training, 20% Testing, Random Samplin
 import pandas as pd
 from scipy.stats import stats
 
+CREATE_DATASETS = 0
+
 
 def prepareGenderData():
     data = pd.read_excel('../../octave-src/sample/LawStudents/law_data.csv.xlsx')
@@ -92,44 +94,44 @@ def prepareAllInOneDataForFAIR():
 
     return data
 
+if CREATE_DATASETS:
+    ######################################################################################
+    # GENDER
+    ######################################################################################
+    train, test = prepareGenderData()
+    train.to_csv('../../octave-src/sample/LawStudents/gender/LawStudents_Gender_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/gender/LawStudents_Gender_test.txt', index=False, header=False)
 
-######################################################################################
-# GENDER
-######################################################################################
-train, test = prepareGenderData()
-train.to_csv('../../octave-src/sample/LawStudents/gender/LawStudents_Gender_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/gender/LawStudents_Gender_test.txt', index=False, header=False)
+    ######################################################################################
+    # RACE
+    ######################################################################################
 
-######################################################################################
-# RACE
-######################################################################################
+    train, test = prepareRaceData('Asian', 'White')
+    train.to_csv('../../octave-src/sample/LawStudents/race_asian/LawStudents_Race_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/race_asian/LawStudents_Race_test.txt', index=False, header=False)
 
-train, test = prepareRaceData('Asian', 'White')
-train.to_csv('../../octave-src/sample/LawStudents/race_asian/LawStudents_Race_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/race_asian/LawStudents_Race_test.txt', index=False, header=False)
+    train, test = prepareRaceData('Black', 'White')
+    train.to_csv('../../octave-src/sample/LawStudents/race_black/LawStudents_Race_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/race_black/LawStudents_Race_test.txt', index=False, header=False)
 
-train, test = prepareRaceData('Black', 'White')
-train.to_csv('../../octave-src/sample/LawStudents/race_black/LawStudents_Race_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/race_black/LawStudents_Race_test.txt', index=False, header=False)
+    train, test = prepareRaceData('Hispanic', 'White')
+    train.to_csv('../../octave-src/sample/LawStudents/race_hispanic/LawStudents_Race_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/race_hispanic/LawStudents_Race_test.txt', index=False, header=False)
 
-train, test = prepareRaceData('Hispanic', 'White')
-train.to_csv('../../octave-src/sample/LawStudents/race_hispanic/LawStudents_Race_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/race_hispanic/LawStudents_Race_test.txt', index=False, header=False)
+    train, test = prepareRaceData('Mexican', 'White')
+    train.to_csv('../../octave-src/sample/LawStudents/race_mexican/LawStudents_Race_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/race_mexican/LawStudents_Race_test.txt', index=False, header=False)
 
-train, test = prepareRaceData('Mexican', 'White')
-train.to_csv('../../octave-src/sample/LawStudents/race_mexican/LawStudents_Race_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/race_mexican/LawStudents_Race_test.txt', index=False, header=False)
+    train, test = prepareRaceData('Puertorican', 'White')
+    train.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_train.txt', index=False, header=False)
+    test.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_test.txt', index=False, header=False)
 
-train, test = prepareRaceData('Puertorican', 'White')
-train.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_train.txt', index=False, header=False)
-test.to_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_test.txt', index=False, header=False)
+    #######################################################################################
+    # ALL IN ONE
+    #######################################################################################
 
-#######################################################################################
-# ALL IN ONE
-#######################################################################################
-
-data = prepareAllInOneDataForFAIR()
-data.to_csv('../../data/LSAT/LSAT_AllInOne.csv', index=False, header=True)
+    data = prepareAllInOneDataForFAIR()
+    data.to_csv('../../data/LSAT/LSAT_AllInOne.csv', index=False, header=True)
 
 
 

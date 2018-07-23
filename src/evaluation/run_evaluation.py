@@ -420,14 +420,14 @@ if LAW_STUDENTS_GENDER:
 
 
     # GAMMA LARGE
-    trec_big_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/trainingScores_ORIG.pred',
+    lawStudents_gender_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-    trec_big_largeGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/predictions_SORTED.pred',
+    lawStudents_gender_largeGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/predictions_SORTED.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-    evaluate.protected_percentage_per_chunk(trec_big_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/LawStudents_gender_Gamma_LARGE-protected_percentage_per_chunk.png')
-    evaluate.evaluate(trec_big_largeGamma_pred, trec_big_largeGamma_orig, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/kendalls_tau_per_query.txt')
+    evaluate.protected_percentage_per_chunk(lawStudents_gender_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/LawStudents_gender_Gamma_LARGE-protected_percentage_per_chunk.png')
+    evaluate.evaluate(lawStudents_gender_largeGamma_pred, lawStudents_gender_largeGamma_orig, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/kendalls_tau_per_query.txt')
 
 
     # COLORBLIND
