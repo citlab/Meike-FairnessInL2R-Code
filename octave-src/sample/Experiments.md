@@ -22,7 +22,7 @@
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 5,000,000 | 1634 | 20.07.2018 | 21.07.2018 | x | | | subsampled dataset, now has ~1700 candidates in training set |
 | 1000 | 0 | 10417 | 20.07.2018 | 21.07.2018 | x | | | subsampled dataset, now has ~1700 candidates in training set |
-| 1000 | Colorblind | | | | | | |
+| 1000 | Colorblind | -- | 23.07.2018 | | | | |
 
 
 ### Asian
