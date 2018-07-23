@@ -32,13 +32,14 @@ def prepareGenderData():
     data = data[['sex', 'LSAT', 'UGPA', 'ZFYA']]
     data.insert(0, 'query_dummy', 1)
 
-    data = data.sort_values(by=['ZFYA'], ascending=False)
 
     train = data.sample(frac=.8)
     test = data.drop(train.index)
 
     # subsample training data, because otherwise training takes too long
     train = train.sample(frac=.1)
+    train = train.sort_values(by=['ZFYA'], ascending=False)
+    test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
 
 
@@ -64,6 +65,8 @@ def prepareRaceData(protGroup, nonprotGroup):
 
     # subsample training data, because otherwise training takes too long
     train = train.sample(frac=.1)
+    train = train.sort_values(by=['ZFYA'], ascending=False)
+    test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
 
 
