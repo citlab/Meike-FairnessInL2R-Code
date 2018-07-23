@@ -20,8 +20,8 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 5,000,000 | 1634 | 20.07.2018 | 21.07.2018 | | | | subsampled dataset, now has ~1700 candidates in training set |
-| 1000 | 0 | 10417 | 20.07.2018 | 21.07.2018 | | | | subsampled dataset, now has ~1700 candidates in training set |
+| 1000 | 5,000,000 | 1634 | 20.07.2018 | 21.07.2018 | x | | | subsampled dataset, now has ~1700 candidates in training set |
+| 1000 | 0 | 10417 | 20.07.2018 | 21.07.2018 | x | | | subsampled dataset, now has ~1700 candidates in training set |
 | 1000 | Colorblind | | | | | | |
 
 
