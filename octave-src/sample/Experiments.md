@@ -4,8 +4,8 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 50,000 | 30.06.2018 |  |  |  |  | |
-| 1000 | 1,000,000 | 29.06.2018 | 30.06.2018 |  |  |  | |
+| 1000 | 50,000 | 30.06.2018 | 01.07.2018 | x |  |  | |
+| 1000 | 1,000,000 | 29.06.2018 | 30.06.2018 | x |  |  | |
 | 1000 | 5,000,000 | 28.06.2018 | 29.06.2018 |  |  |  | trying with dataset with continuous scores, using 50 queries for training, but only 200 candidates --> gamma too large, convergence looked weird |
 | 3000 | 5,000,000 | x | 14.6.2018 | x | x | x | higher iterations did not make women to be distributed evenly, but also rates all women to top positions |
 | 3000 | 100,000 | x | 14.6.2018 | x | x | x | |
@@ -17,8 +17,8 @@
 
 ### Gender
 
-| T | Gamma | run | done | pred | repo | eval | comments |
-| --- | --- | --- | ---| --- | --- | --- | --- |
-| 3000 | 50,000,000 | | | | | | |
-| 1000 | 0 | 15.6.2018 | | | | | running on trec-big server |
-| 3000 | Colorblind |  | | | | | |
+| T | Gamma | pid | run | done | pred | repo | eval | comments |
+| --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 5,000,000 | 1634 | 20.07.2018 | | | | | subsampled dataset, now has ~1700 candidates in training set |
+| 1000 | 0 | 10417 | 20.07.2018 | | | | | subsampled dataset, now has ~1700 candidates in training set |
+| 3000 | Colorblind | | | | | | |

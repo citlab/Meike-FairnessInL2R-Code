@@ -10,8 +10,7 @@ more off;
 addpath(".")
 source "./globals.m";
 
-%omega = load(argv(){1});
-%drgfile = argv(){2};
+arg_list = argv()
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYNTHETIC EXPERIMENTS
@@ -107,7 +106,13 @@ source "./globals.m";
 %drgfile = "../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore_test.csv";
 %omega = load("../sample/TREC-BIG/GAMMA=75000/features_with_total_order-withGender_withZscore__model.m");
 
-drg = load(drgfile);
+test_file = arg_list{1,1}
+model_file = arg_list{2,1}
+output_dir = arg_list{3,1}
+
+omega = load(model_file);
+
+drg = load(test_file);
 
 list_id = drg(:,1);
 X = drg(:,2:size(drg,2)-1);
@@ -119,7 +124,7 @@ doc_ids = 1:size(z);
 y = drg(:, size(drg,2));
 y = [list_id, doc_ids', y, X(:, PROT_COL)];
 
-filename = [drgfile "_ORIG.pred"];
+filename = [output_dir "trainingScores_ORIG.pred"];
 dlmwrite(filename, y);
 
 
@@ -130,7 +135,7 @@ z = [z, X(:, PROT_COL)];
 z = [list_id, doc_ids', z];
 
 unsorted_ranks = z;
-filename = [drgfile "_UNSORTED.pred"];
+filename = [output_dir "predictions_UNSORTED.pred"];
 dlmwrite(filename, unsorted_ranks);
 
 # add a little random to avoid ties
@@ -142,7 +147,7 @@ for id = unique(list_id)'
     z(indexes, :) = sortrows(z_temp, -3);
 endfor
 sorted_ranks = z;
-filename = [drgfile "_SORTED.pred"];
+filename = [output_dir "predictions_SORTED.pred"];
 
 dlmwrite(filename, sorted_ranks)
 %figure(); plot(z);

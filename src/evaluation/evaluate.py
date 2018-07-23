@@ -143,8 +143,8 @@ def protected_percentage_per_chunk(ranking, chunksize, plot_filename):
         result_protected = np.empty(len(chunkStartPositions))
         result_nonprotected = np.empty(len(chunkStartPositions))
 
-        total_protected = rank['prot_attr'].value_counts()[1]
-        total_nonprotected = rank['prot_attr'].value_counts()[0]
+#         total_protected = rank['prot_attr'].value_counts()[1]
+#         total_nonprotected = rank['prot_attr'].value_counts()[0]
 
         for idx, start in enumerate(chunkStartPositions):
             if idx == (len(chunkStartPositions) - 1):
