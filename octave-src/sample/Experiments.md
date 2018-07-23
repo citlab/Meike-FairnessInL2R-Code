@@ -4,7 +4,7 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 500,000 | 23.07.2018 | |  |  |  | |
+| 1000 | 500,000 | 23.07.2018 | |  |  |  | running on LSAT server with PID 31731 |
 | 1000 | 50,000 | 30.06.2018 | 01.07.2018 | x |  |  | |
 | 1000 | 1,000,000 | 29.06.2018 | 30.06.2018 | x |  |  | gamma still too large |
 | 1000 | 5,000,000 | 28.06.2018 | 29.06.2018 |  |  |  | trying with dataset with continuous scores, using 50 queries for training, but only 200 candidates --> gamma too large, convergence looked weird |
