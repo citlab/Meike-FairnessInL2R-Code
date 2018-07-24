@@ -19,7 +19,7 @@ Aufteilung in Trainings und Testdaten, 80% Training, 20% Testing, Random Samplin
 import pandas as pd
 from scipy.stats import stats
 
-CREATE_DATASETS = 0
+CREATE_DATASETS = 1
 
 
 def prepareGenderData():

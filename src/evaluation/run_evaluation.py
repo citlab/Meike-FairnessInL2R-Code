@@ -15,9 +15,9 @@ CHILE_GENDER_NOSEMI = 0
 CHILE_HIGHSCHOOL_NOSEMI = 0
 
 TREC = 0
-TREC_BIG = 1
+TREC_BIG = 0
 
-LAW_STUDENTS_GENDER = 0
+LAW_STUDENTS_GENDER = 1
 
 
 def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
