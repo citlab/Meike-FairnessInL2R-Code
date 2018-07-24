@@ -17,7 +17,7 @@ CHILE_HIGHSCHOOL_NOSEMI = 0
 TREC = 0
 TREC_BIG = 0
 
-LAW_STUDENTS_GENDER = 1
+LAW_STUDENTS_GENDER = 0
 LAW_STUDENTS_ASIAN = 0
 LAW_STUDENTS_BLACK = 0
 LAW_STUDENTS_HISPANIC = 0
@@ -400,7 +400,7 @@ if TREC_BIG:
 ###############################################################################################
 
 if LAW_STUDENTS_GENDER:
-    chunksize = 100
+    chunksize = 200
 
     # GAMMA 0
     lawStudents_gender_0_orig = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=0/trainingScores_ORIG.pred',
