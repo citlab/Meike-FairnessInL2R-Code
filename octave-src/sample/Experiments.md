@@ -22,7 +22,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 30341 | 23.07.2018 | x | x | | | had to redo datasets because was not ordered in descending manner |
+| 1000 | 0 | 31731 | 24.07.2018 | | | | |  |
 | 1000 | 2,000,000 | 30341 | 24.07.2018 |  |  | | |  |
 | 1000 | Colorblind | -- | 23.07.2018 | 23.07.2018 | x | | |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
