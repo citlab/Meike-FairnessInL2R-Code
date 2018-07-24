@@ -22,9 +22,9 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 30341 | 23.07.2018 | x | x | | | had to redo datasets because was not ordered in descending manner |
+| 1000 | 0 | 31731 | 24.07.2018 | | | | |  |
 | 1000 | 2,000,000 | 30341 | 24.07.2018 |  |  | | |  |
-| 1000 | Colorblind | -- | 23.07.2018 | 23.07.2018 | x | | |
+| 1000 | Colorblind | -- | 24.07.2018 | x | x | | |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 1,000,000 | 1399 | 23.07.2018 | x | x | | | gamma seems to be still too small, because mean of positions of protected and non-protected group is not yet equal|
 | 1000 | 5,000,000 | 1634 | 20.07.2018 | 21.07.2018 | x | | | FAILED; subsampled dataset, now has ~1700 candidates in training set |
@@ -36,7 +36,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 1634 | 23.07.2018 | x | | | |  |
+| 1000 | 0 | 1634 | 23.07.2018 | x | x | | |  |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
 
@@ -44,7 +44,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 10417 | 23.07.2018 | x | | | |  |
+| 1000 | 0 | 10417 | 23.07.2018 | x | x | | |  |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
 
@@ -69,6 +69,6 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 30551 | 23.07.2018 | x | | | | running on TREC server |
+| 1000 | 0 | 30551 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
