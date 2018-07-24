@@ -4,7 +4,7 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 100,000 | 24.07.2018 |  |  |  |  | |
+| 1000 | 100,000 | 24.07.2018 | x | x |  |  | |
 | 1000 | 0 | x | x | x | x | x | |
 | 1000 | Colorblind | x | x | x | x | x | |
 | --- | --- | --- | ---| --- | --- | --- | --- |
@@ -56,7 +56,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 2,000,000 | 1399 | 24.07.2018 |  |  | | | running on TREC server |
+| 1000 | 2,000,000 | 1399 | 24.07.2018 | x | x | | | running on TREC server |
 | 1000 | 0 | 1399 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
@@ -65,7 +65,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 2,000,000 | 29541 | 24.07.2018 |  |  | | | running on TREC server |
+| 1000 | 2,000,000 | 29541 | 24.07.2018 | x | x | | | running on TREC server |
 | 1000 | 0 | 29541 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
@@ -75,7 +75,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 2,000,000 | 4649 | 24.07.2018 |  |  | | | running on TREC server |
+| 1000 | 2,000,000 | 4649 | 24.07.2018 | x | x | | | running on TREC server |
 | 1000 | 0 | 30551 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
