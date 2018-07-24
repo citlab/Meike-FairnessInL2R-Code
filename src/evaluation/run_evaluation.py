@@ -15,9 +15,9 @@ CHILE_GENDER_NOSEMI = 0
 CHILE_HIGHSCHOOL_NOSEMI = 0
 
 TREC = 0
-TREC_BIG = 0
+TREC_BIG = 1
 
-LAW_STUDENTS_GENDER = 1
+LAW_STUDENTS_GENDER = 0
 
 
 def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
@@ -378,10 +378,10 @@ if TREC_BIG:
     orig_scores = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=0/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-    trec_big_colorblind_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/features_with_total_order-withGender_withZscore_test.csv_ORIG.pred',
+    trec_big_colorblind_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-    trec_big_colorblind_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/features_with_total_order-withGender_withZscore_test.csv_SORTED.pred',
+    trec_big_colorblind_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/predictions_SORTED.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
     trec_big_colorblind_orig, trec_big_colorblind_pred = add_prot_to_colorblind(orig_scores, trec_big_colorblind_orig, trec_big_colorblind_pred)
