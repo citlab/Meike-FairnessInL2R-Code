@@ -18,6 +18,11 @@ TREC = 0
 TREC_BIG = 0
 
 LAW_STUDENTS_GENDER = 1
+LAW_STUDENTS_ASIAN = 0
+LAW_STUDENTS_BLACK = 0
+LAW_STUDENTS_HISPANIC = 0
+LAW_STUDENTS_MEXICAN = 0
+LAW_STUDENTS_PUERTORICAN = 0
 
 
 def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
@@ -446,8 +451,116 @@ if LAW_STUDENTS_GENDER:
     evaluate.evaluate(lawStudents_gender_colorblind_pred, lawStudents_gender_colorblind_orig, '../../octave-src/sample/LawStudents/gender/COLORBLIND/kendalls_tau_per_query.txt')
 
 
+###############################################################################################
+# LAW STUDENTS ASIAN
+###############################################################################################
+
+if LAW_STUDENTS_ASIAN:
+    chunksize = 100
+
+    # GAMMA 0
+    lawStudents_asian_0_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=0/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_asian_0_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=0/predictions_SORTED.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    evaluate.protected_percentage_per_chunk(lawStudents_asian_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=0/LawStudents_Asian_Gamma_0-protected_percentage_per_chunk.png')
+    evaluate.evaluate(lawStudents_asian_0_pred, lawStudents_asian_0_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=0/kendalls_tau_per_query.txt')
 
 
+    # GAMMA SMALL
+#     lawStudents_asian_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/trainingScores_ORIG.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     lawStudents_asian_smallGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/predictions_SORTED.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     evaluate.protected_percentage_per_chunk(lawStudents_asian_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/LawStudents_Asian_Gamma_SMALL-protected_percentage_per_chunk.png')
+#     evaluate.evaluate(lawStudents_asian_smallGamma_pred, lawStudents_asian_smallGamma_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/kendalls_tau_per_query.txt')
+
+
+    # GAMMA LARGE
+#     lawStudents_asian_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/trainingScores_ORIG.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     lawStudents_asian_largeGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/predictions_SORTED.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     evaluate.protected_percentage_per_chunk(lawStudents_asian_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/LawStudents_asian_Gamma_LARGE-protected_percentage_per_chunk.png')
+#     evaluate.evaluate(lawStudents_asian_largeGamma_pred, lawStudents_asian_largeGamma_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/kendalls_tau_per_query.txt')
+
+
+    # COLORBLIND
+    orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=0/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_asian_colorblind_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/COLORBLIND/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_asian_colorblind_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/COLORBLIND/predictions_SORTED.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_asian_colorblind_orig, lawStudents_asian_colorblind_pred = add_prot_to_colorblind(orig_scores, lawStudents_asian_colorblind_orig, lawStudents_asian_colorblind_pred)
+
+    evaluate.protected_percentage_per_chunk(lawStudents_asian_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/COLORBLIND/LawStudents_asian_Colorblind-protected_percentage_per_chunk.png')
+    evaluate.evaluate(lawStudents_asian_colorblind_pred, lawStudents_asian_colorblind_orig, '../../octave-src/sample/LawStudents/race_asian/COLORBLIND/kendalls_tau_per_query.txt')
+
+
+###############################################################################################
+# LAW STUDENTS BLACK
+###############################################################################################
+
+if LAW_STUDENTS_BLACK:
+    chunksize = 100
+
+    # GAMMA 0
+    lawStudents_black_0_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=0/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_black_0_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=0/predictions_SORTED.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    evaluate.protected_percentage_per_chunk(lawStudents_black_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=0/LawStudents_black_Gamma_0-protected_percentage_per_chunk.png')
+    evaluate.evaluate(lawStudents_black_0_pred, lawStudents_black_0_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=0/kendalls_tau_per_query.txt')
+
+
+    # GAMMA SMALL
+#     lawStudents_black_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/trainingScores_ORIG.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     lawStudents_black_smallGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/predictions_SORTED.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     evaluate.protected_percentage_per_chunk(lawStudents_black_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/LawStudents_black_Gamma_SMALL-protected_percentage_per_chunk.png')
+#     evaluate.evaluate(lawStudents_blackn_smallGamma_pred, lawStudents_black_smallGamma_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/kendalls_tau_per_query.txt')
+
+
+    # GAMMA LARGE
+#     lawStudents_black_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/trainingScores_ORIG.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     lawStudents_black_largeGamma_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/predictions_SORTED.pred',
+#                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+#
+#     evaluate.protected_percentage_per_chunk(lawStudents_black_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/LawStudents_black_Gamma_LARGE-protected_percentage_per_chunk.png')
+#     evaluate.evaluate(lawStudents_black_largeGamma_pred, lawStudents_black_largeGamma_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/kendalls_tau_per_query.txt')
+
+
+    # COLORBLIND
+    orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=0/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_black_colorblind_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/COLORBLIND/trainingScores_ORIG.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_black_colorblind_pred = pd.read_csv('../../octave-src/sample/LawStudents/race_black/COLORBLIND/predictions_SORTED.pred',
+                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+
+    lawStudents_black_colorblind_orig, lawStudents_black_colorblind_pred = add_prot_to_colorblind(orig_scores, lawStudents_black_colorblind_orig, lawStudents_black_colorblind_pred)
+
+    evaluate.protected_percentage_per_chunk(lawStudents_black_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/COLORBLIND/LawStudents_black_Colorblind-protected_percentage_per_chunk.png')
+    evaluate.evaluate(lawStudents_black_colorblind_pred, lawStudents_black_colorblind_orig, '../../octave-src/sample/LawStudents/race_black/COLORBLIND/kendalls_tau_per_query.txt')
 
 
 
