@@ -22,10 +22,11 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 31731 | 24.07.2018 | x | x | | |  |
-| 1000 | 500,000 | 31731 | 24.07.2018 |  |  | | |  |
-| 1000 | 2,000,000 | 30341 | 24.07.2018 | x |  | | |  |
-| 1000 | Colorblind | -- | 24.07.2018 | x | x | | |
+| 1000 | 0 | 31731 | 24.07.2018 | x | x | x | x |  |
+| 1000 | 1,000,000 | 31731 | 24.07.2018 |  |  |  |  |  |
+| 1000 | 500,000 | 31731 | 24.07.2018 | x | x | x | x | might be a bit too small |
+| 1000 | 2,000,000 | 30341 | 24.07.2018 | x | x | x | x |  |
+| 1000 | Colorblind | -- | 24.07.2018 | x | x | x | x | |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
 | 1000 | 1,000,000 | 1399 | 23.07.2018 | x | x | | | gamma seems to be still too small, because mean of positions of protected and non-protected group is not yet equal|
 | 1000 | 5,000,000 | 1634 | 20.07.2018 | 21.07.2018 | x | | | FAILED; subsampled dataset, now has ~1700 candidates in training set |
@@ -37,24 +38,25 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 2,000,000 | 30341 | 24.07.2018 |  |  | | |  |
-| 1000 | 0 | 1634 | 23.07.2018 | x | x | | |  |
-| 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
+| 1000 | 2,000,000 | 30341 | 24.07.2018 | x | x | x | x |  |
+| 1000 | 0 | 1634 | 23.07.2018 | x | x | x | x |  |
+| 1000 | Colorblind | -- | 23.07.2018 | x | x | x | x | |
 
 
 ### Black
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 2,000,000 | 10417 | 24.07.2018 |  |  | | |  |
-| 1000 | 0 | 10417 | 23.07.2018 | x | x | | |  |
-| 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
+| 1000 | 2,000,000 | 10417 | 24.07.2018 | x | x | x | x |  |
+| 1000 | 0 | 10417 | 23.07.2018 | x | x | x | x |  |
+| 1000 | Colorblind | -- | 23.07.2018 | x | x | x | x |
 
 
 ### Hispanic
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 2,000,000 | 1399 | 24.07.2018 |  |  | | | running on TREC server |
 | 1000 | 0 | 1399 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
@@ -63,6 +65,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 2,000,000 | 29541 | 24.07.2018 |  |  | | | running on TREC server |
 | 1000 | 0 | 29541 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
@@ -72,6 +75,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 2,000,000 | 4649 | 24.07.2018 |  |  | | | running on TREC server |
 | 1000 | 0 | 30551 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
 
