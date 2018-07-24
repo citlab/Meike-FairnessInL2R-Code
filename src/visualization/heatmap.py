@@ -15,8 +15,6 @@ import seaborn as sns
 
 import pandas as pd
 import util.chileDatasetPreparation as prepChile
-import util.lawStudentDatasetPreparation as prepLawGender
-
 
 #################################################################################################
 # HEATMAPS
@@ -42,9 +40,27 @@ data = prepChile.principalDataPreparation_withSemiPrivate(data)
 data = prepChile.allStudents(data)
 cool_warm_heatmap(data, '../../data/ChileUniversity/heatmapAllStudents.png')
 
-# plot Law Student heatmap for all students
-training_data = prepLawGender.prepareGenderData()[0]
+# plot Law Student heatmaps for gender and race
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/gender/LawStudents_Gender_train.txt',
+                            sep=",", names=['query', 'sex', 'LSAT', 'UGPA', 'ZFYA'])
 cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/gender/heatmapGender.png')
 
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/LawStudents_Race_train.txt',
+                            sep=",", names=['query', 'asian', 'LSAT', 'UGPA', 'ZFYA'])
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/race_asian/heatmapAsian.png')
 
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/race_black/LawStudents_Race_train.txt',
+                            sep=",", names=['query', 'black', 'LSAT', 'UGPA', 'ZFYA'])
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/race_black/heatmapBlack.png')
 
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/race_hispanic/LawStudents_Race_train.txt',
+                            sep=",", names=['query', 'hispanic', 'LSAT', 'UGPA', 'ZFYA'])
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/race_hispanic/heatmapHispanic.png')
+
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/race_mexican/LawStudents_Race_train.txt',
+                            sep=",", names=['query', 'mexican', 'LSAT', 'UGPA', 'ZFYA'])
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/race_mexican/heatmapMexican.png')
+
+training_data = pd.read_csv('../../octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_train.txt',
+                            sep=",", names=['query', 'puertorican', 'LSAT', 'UGPA', 'ZFYA'])
+cool_warm_heatmap(training_data, '../../octave-src/sample/LawStudents/race_puertorican/heatmapPuertorican.png')
