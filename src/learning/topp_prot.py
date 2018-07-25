@@ -22,13 +22,13 @@ def topp_prot_first_derivative(group_features, all_features, group_predictions, 
     @return numpy array with weight adjustments
     '''
     # numerator1 = np.dot(group_features, np.repeat(np.exp(group_predictions), group_features.shape[0]))
-    # numerator1 = np.dot(group_features, np.transpose(np.repeat(np.exp(group_predictions), group_features.shape[1], axis = 1)))
-    numerator1 = np.dot(np.exp(group_predictions), group_features)
+    numerator1 = np.dot(np.transpose(np.exp(group_predictions)), group_features)
     numerator2 = np.sum(np.exp(all_predictions))
-    numerator3 = np.sum(np.dot(np.exp(all_predictions), all_features))
+    numerator3 = np.sum(np.dot(np.transpose(np.exp(all_predictions)), all_features))
     denominator = np.sum(np.exp(all_predictions)) ** 2
 
     result = (numerator1 * numerator2 - np.exp(group_predictions) * numerator3) / denominator
+
     # return result as flat numpy array instead of matrix
     return np.asarray(result).reshape(-1)
 

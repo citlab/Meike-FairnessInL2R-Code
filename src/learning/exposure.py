@@ -21,6 +21,14 @@ def normalized_exposure(group_data, all_data):
     return (np.sum(topp_prot.topp_prot(group_data, all_data) / np.log(2))) / group_data.size
 
 def exposure_diff(data, query_ids, which_query, prot_idx):
+    """
+
+    :param data: all predictions
+    :param query_ids: list of query IDs
+    :param which_query: given query ID
+    :param prot_idx: list states which item is protected or non-protected
+    :return: float value
+    """
     judgments_per_query, protected_items_per_query, nonprotected_items_per_query = \
         find.find_items_per_group_per_query(data, query_ids, which_query, prot_idx)
     exposure_prot = normalized_exposure(protected_items_per_query, judgments_per_query)

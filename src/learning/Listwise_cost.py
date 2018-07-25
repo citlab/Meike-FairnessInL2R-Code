@@ -20,7 +20,7 @@ def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
     # exposure_diff = lambda which_query : np.maximum(0, (exposure_nprot_normalized(which_query) - \
                                                         # exposure_prot_normalized(which_query))) ** 2  # eq 5 from CIKM paper
 
-    loss = lambda which_query:-np.sum(topp.topp(data_per_query(which_query, training_judgments)[0]) *
+    loss = lambda which_query:-np.dot(np.transpose(topp.topp(data_per_query(which_query, training_judgments)[0])),
                                           np.log(topp.topp(data_per_query(which_query, predictions)[0])))  # eq 2 from CIKM paper
 
     if Globals.ONLY_L:
