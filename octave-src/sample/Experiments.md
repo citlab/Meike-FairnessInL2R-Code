@@ -4,10 +4,11 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 100,000 | 24.07.2018 | x | x |  |  | FAILED: number of iterations too small, gamma small enough though |
+| 3000 | 200,000 | 25.07.2018 |  |  |  |  |  |
 | 1000 | 0 | x | x | x | x | x | |
 | 1000 | Colorblind | x | x | x | x | x | |
 | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 100,000 | 24.07.2018 | x | x |  |  | FAILED: number of iterations too small, gamma small enough though |
 | 1000 | 50,000 | 30.06.2018 | 01.07.2018 | x |  |  | Gamma might be to large for the small gamma case, have to wait to find large gamma first|
 | 1000 | 500,000 | 23.07.2018 | x |  |  |  | FAILED: gamma too large, cost function looks weird; running on LSAT server with PID 31731 |
 | 1000 | 1,000,000 | 29.06.2018 | 30.06.2018 | x |  |  | FAILED; gamma still too large |
