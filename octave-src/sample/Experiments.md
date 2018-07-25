@@ -4,7 +4,7 @@
 
 | T | Gamma | run | done | pred | repo | eval | comments |
 | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 100,000 | 24.07.2018 | x | x |  |  | |
+| 1000 | 100,000 | 24.07.2018 | x | x |  |  | FAILED: number of iterations too small, gamma small enough though |
 | 1000 | 0 | x | x | x | x | x | |
 | 1000 | Colorblind | x | x | x | x | x | |
 | --- | --- | --- | ---| --- | --- | --- | --- |
