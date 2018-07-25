@@ -59,6 +59,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 500,000 | 1634 | 25.07.2018 |  |  |  |  |  |
 | 1000 | 2,000,000 | 1399 | 24.07.2018 | x | x | | | running on TREC server |
 | 1000 | 0 | 1399 | 23.07.2018 | x | x | | | running on TREC server |
 | 1000 | Colorblind | -- | 23.07.2018 | x | x | | |
