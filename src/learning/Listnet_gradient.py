@@ -1,8 +1,8 @@
-from src.learning import Globals
-from src.learning import topp_prot
-from src.learning import topp
-from src.learning import normalized_exposure
-from src.learning import find
+from learning import Globals
+from learning import topp_prot
+from learning import topp
+from learning import exposure
+from learning import find
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
@@ -35,14 +35,14 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
 
     # U_deriv = lambda which_query: u1(which_query) * (u2(which_query) - u3(which_query))
 
-    U_deriv = lambda which_query: 2*normalized_exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
+    U_deriv = lambda which_query: 2*exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) * \
                                   topp_prot.normalized_topp_prot_deriv_per_group_diff(training_features, predictions, \
                                                                                       query_ids, which_query, prot_idx)
 
     ######asking Meike again because of the data structure#########
-    l1 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], topp.topp(data_per_query(which_query, training_judgments)[0]))
+    l1 = lambda which_query: np.dot(np.transpose(data_per_query(which_query, training_features)[0]), topp.topp(data_per_query(which_query, training_judgments)[0]))
     l2 = lambda which_query: 1 / np.sum(np.exp(data_per_query(which_query, predictions)[0]))
-    l3 = lambda which_query: np.dot(data_per_query(which_query, training_features)[0], np.exp(data_per_query(which_query, predictions)[0]))
+    l3 = lambda which_query: np.dot(np.transpose(data_per_query(which_query, training_features)[0]), np.exp(data_per_query(which_query, predictions)[0]))
 
     L_deriv = lambda which_query: -l1(which_query) + l2(which_query) * l3(which_query)
 

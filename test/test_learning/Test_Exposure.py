@@ -7,9 +7,9 @@ class TestExposureMethod(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        self.__data = np.matrix('0 10;1 9; 1 8; 0 7')
-        self.__prot_group = np.matrix('1 9; 1 8')
-        self.__nprot_group = np.matrix('0 10; 0 7')
+        self.__data = np.matrix('10;9; 8; 7')
+        self.__prot_group = np.matrix('9; 8')
+        self.__nprot_group = np.matrix('10; 7')
 
     def tearDown(self):
         pass
@@ -23,8 +23,9 @@ class TestExposureMethod(unittest.TestCase):
         actual_nprot_1 = exposure.normalized_exposure(self.__nprot_group, self.__data)
         np.testing.assert_equal(expected_nprot_1, actual_nprot_1)
 
-        data = np.matrix('1 10;1 9; 1 8; 1 7')
-        prot_group = np.matrix('1 9; 1 8')
+    def test_exposure_for_empty_group(self):
+        data = np.matrix('10; 9; 8; 7')
+        prot_group = np.matrix('9; 8')
         nprot_group = np.matrix('')
 
         expected_prot_2 = np.sum(topp_prot.topp_prot(prot_group, data) / np.log(2)) / prot_group.size

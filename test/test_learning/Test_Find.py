@@ -23,6 +23,7 @@ class TestFindMethods(unittest.TestCase):
         super(TestFindMethods, cls).tearDownClass()
 
 
+
     def test_find_items_per_query(self):
         expected_1 = np.matrix('1 0 10; 1 1 9; 1 1 8; 1 0 7')
         actual_1 = find.find_items_per_query(self.__data, self.__query_ids, 1)
