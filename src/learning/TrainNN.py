@@ -5,13 +5,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
+    """
+    trains the Neural Network to find the op
+    :param GAMMA:
+    :param directory:
+    :param list_id:
+    :param X:
+    :param y:
+    :param T:
+    :param e:
+    :param quiet:
+    """
     m = X.shape[0]
     n_features = X.shape[1]
     n_lists = np.unique(list_id).shape[0]
 
     prot_idx = np.reshape(X[:,Globals.PROT_COL] == np.repeat(Globals.PROT_ATTR,m),(m,1))
     #linear neural network parameter initialization
-    omega = np.random.rand(n_features,1)*Globals.INIT_VAR
+    omega = (np.random.rand(n_features,1)*Globals.INIT_VAR).reshape(-1)
 
     cost_converge_J = np.zeros((T, 1))
     cost_converge_L = np.zeros((T, 1))
@@ -23,7 +34,8 @@ def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
             print('iteration ',t)
 
         #forward propagation
-        z = np.multiply(X,np.transpose(omega))
+        z = np.dot(X,omega)
+        z = np.reshape(np.asarray(z).astype('float'),(len(z),1))
         #cost
         if quiet == False:
             print('computing cost')
@@ -37,7 +49,7 @@ def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
             print("computing gradient")
 
         grad = Listnet_gradient.listnet_gradient(GAMMA, X, y, z, list_id, prot_idx)
-        omega = omega - e*np.sum(grad)
+        omega = omega - e*np.sum(np.asarray(grad)[0],axis =1)
         omega_converge[t, :] = np.transpose(omega[:])
 
         if quiet == False:

@@ -60,7 +60,6 @@ class Test_ToppProt(unittest.TestCase):
 
 
     def test_toppProtFirstDerivative_OneGroupOnlyZeros(self):
-        self.fail("NOT TO DO: not yet implemented")
         all_items = np.array([10, 9, 0, 0])
         prot = np.array([10, 9])
         nprot = np.array([0, 0])
@@ -70,6 +69,6 @@ class Test_ToppProt(unittest.TestCase):
         np.testing.assert_array_equal(expected_prot, actual_prot)
 
         expected_nprot = np.exp(nprot) / np.sum(np.exp(all_items))
-        actual_nprot = topp_prot(prot, all_items)
+        actual_nprot = topp_prot(nprot, all_items)
         np.testing.assert_array_equal(expected_nprot, actual_nprot)
 
