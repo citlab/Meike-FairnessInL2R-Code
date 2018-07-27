@@ -8,6 +8,7 @@ import numpy as np
 def find_items_per_query(data, query_ids, which_query):
     """
     finds items which contains the given query_id
+
     :param data: all predictions or training judgments
     :param query_ids: list of query IDs
     :param which_query: given query ID
@@ -20,10 +21,11 @@ def find_items_per_group_per_query(data, query_ids, which_query, prot_idx):
     """
     finds all the items with a given query ID and separates the items into protected
     and non-protected groups
+
     :param data: all predictions or training judgments
     :param query_ids: list of query IDs
     :param which_query: given query ID
-    :param prot_idx: list states which item is protected or non-protected
+    :param prot_idx: list stating which item is protected or non-protected
     :return: three matrices
     """
     judgments_per_query = find_items_per_query(data, query_ids, which_query)

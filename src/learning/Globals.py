@@ -6,7 +6,7 @@ T = 100
 
 #learning rate
 global e
-e = 0.00001
+e = 0.001
 
 #regularization constant
 global LAMBDA
