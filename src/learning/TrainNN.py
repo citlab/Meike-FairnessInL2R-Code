@@ -6,14 +6,15 @@ import matplotlib.pyplot as plt
 
 def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
     """
-    trains the Neural Network to find the op
-    :param GAMMA:
-    :param directory:
-    :param list_id:
-    :param X:
-    :param y:
-    :param T:
-    :param e:
+    trains the Neural Network to find the optimal loss in listwise learning to rank
+
+    :param GAMMA: a float parameter tuning the disparate exposure metric
+    :param directory: directory for saving the plots
+    :param list_id: list of query IDs
+    :param X: training features
+    :param y: training judgments
+    :param T: iteration steps
+    :param e: learning rate
     :param quiet:
     """
     m = X.shape[0]
