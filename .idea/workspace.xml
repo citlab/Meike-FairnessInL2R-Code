@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9658c8bd-713b-4cf5-88ab-bf087508ab08" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Meike-FairnessInL2R-Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Meike-FairnessInL2R-Code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/learning/Globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/Globals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/Listnet_gradient.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/Listnet_gradient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/Listwise_cost.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/Listwise_cost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/learning/Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/Train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/TrainNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/TrainNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/exposure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/exposure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/find.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/find.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/topp.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/topp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/learning/topp_prot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/learning/topp_prot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_learning/Test_Exposure.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_learning/Test_Exposure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_learning/Test_Find.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_learning/Test_Find.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_learning/Test_ListwiseCost.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_learning/Test_ListwiseCost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_learning/Test_ToppProt.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_learning/Test_ToppProt.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,32 +21,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Globals.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/learning/Globals.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-159">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Test_Exposure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_learning/Test_Exposure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="175">
               <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topp_prot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learning/topp_prot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrainNN.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TrainNN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/learning/TrainNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="289">
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -59,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Listwise_cost.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Listwise_cost.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/learning/Listwise_cost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -71,20 +63,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Listnet_gradient.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learning/Listnet_gradient.py">
+      <file leaf-file-name="Test_ListwiseCost.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test_learning/Test_ListwiseCost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learning/topp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="42" />
+            <state relative-caret-position="476">
+              <caret line="28" column="128" selection-start-line="28" selection-start-column="128" selection-end-line="28" selection-end-column="128" />
+              <folding>
+                <element signature="e#51#66#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,32 +78,11 @@
       <file leaf-file-name="Train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/learning/Train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
+            <state relative-caret-position="300">
               <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exposure.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learning/exposure.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-              <folding>
-                <element signature="e#51#69#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="find.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learning/find.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -150,27 +115,27 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test/test_learning/Test_listwiseCost.py" />
-        <option value="$PROJECT_DIR$/src/learning/Globals.py" />
         <option value="$PROJECT_DIR$/test/test_learning/Test_Topp.py" />
-        <option value="$PROJECT_DIR$/src/learning/Listnet_gradient.py" />
-        <option value="$PROJECT_DIR$/src/learning/topp_prot.py" />
         <option value="$PROJECT_DIR$/test/test_learning/Test_ToppProt.py" />
         <option value="$PROJECT_DIR$/test/test_learning/Test_Exposure.py" />
-        <option value="$PROJECT_DIR$/src/learning/Listwise_cost.py" />
         <option value="$PROJECT_DIR$/test/test_learning/Test_ListwiseCost.py" />
         <option value="$PROJECT_DIR$/test/test_learning/Test_Find.py" />
-        <option value="$PROJECT_DIR$/src/learning/exposure.py" />
-        <option value="$PROJECT_DIR$/src/learning/topp.py" />
-        <option value="$PROJECT_DIR$/src/learning/find.py" />
         <option value="$PROJECT_DIR$/src/learning/Train.py" />
+        <option value="$PROJECT_DIR$/src/learning/Globals.py" />
+        <option value="$PROJECT_DIR$/src/learning/Listnet_gradient.py" />
+        <option value="$PROJECT_DIR$/src/learning/find.py" />
+        <option value="$PROJECT_DIR$/src/learning/topp.py" />
+        <option value="$PROJECT_DIR$/src/learning/exposure.py" />
+        <option value="$PROJECT_DIR$/src/learning/topp_prot.py" />
+        <option value="$PROJECT_DIR$/src/learning/Listwise_cost.py" />
         <option value="$PROJECT_DIR$/src/learning/TrainNN.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="1401" />
-    <option name="height" value="1002" />
+    <option name="x" value="-14" />
+    <option name="width" value="2102" />
+    <option name="height" value="1503" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -235,7 +200,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.runner">
+  <component name="RunManager" selected="Python.Train">
     <configuration name="Train" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Meike-FairnessInL2R-Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -320,8 +285,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.runner" />
         <item itemvalue="Python.Train" />
+        <item itemvalue="Python.runner" />
         <item itemvalue="Python tests.Unittests for Test_ListwiseCost.Test.test_exposure_diff" />
         <item itemvalue="Python tests.Unittests for Test_Exposure.TestExposureMethod.test_exposure_for_each_group" />
         <item itemvalue="Python tests.Unittests in Test_Exposure.py" />
@@ -403,15 +368,14 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1455" height="935" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1875" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2498265" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5015625" side_tool="true" visible="true" weight="0.32943678" />
-      <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.499653" weight="0.3296837" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5024289" side_tool="true" visible="true" weight="0.32846716" />
+      <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.49895906" weight="0.37125748" />
       <window_info anchor="bottom" id="Python Console" order="0" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4984375" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49757114" visible="true" weight="0.32846716" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -714,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/Globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_learning/Test_Topp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -755,10 +712,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_learning/Test_Exposure.py">
+    <entry file="file://$PROJECT_DIR$/src/learning/Globals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="-159">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learning/Listnet_gradient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learning/find.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learning/topp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learning/exposure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          <folding>
+            <element signature="e#51#69#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -772,50 +760,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/Listnet_gradient.py">
+    <entry file="file://$PROJECT_DIR$/test/test_learning/Test_Exposure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/exposure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-          <folding>
-            <element signature="e#51#69#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="175">
+          <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/learning/topp_prot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        <state relative-caret-position="368">
+          <caret line="69" column="40" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/topp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/find.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/learning/Train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
+        <state relative-caret-position="300">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -823,22 +787,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/TrainNN.py">
+    <entry file="file://$PROJECT_DIR$/src/learning/Listwise_cost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="289">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learning/Listwise_cost.py">
+    <entry file="file://$PROJECT_DIR$/src/learning/TrainNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
