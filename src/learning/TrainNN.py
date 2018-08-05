@@ -3,6 +3,7 @@ from src.learning import Listwise_cost
 from src.learning import Globals
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
     """
@@ -31,32 +32,34 @@ def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
     omega_converge = np.empty((T, n_features))
 
     for t in range(0,T):
-        if quiet == False:
-            print('iteration ',t)
+        # if quiet == False:
+        #     print('iteration ',t)
 
         #forward propagation
         z = np.dot(X,omega)
         z = np.reshape(np.asarray(z).astype('float'),(len(z),1))
         #cost
-        if quiet == False:
-            print('computing cost')
+        # if quiet == False:
+        #     print('computing cost')
 
         #with regularization
         cost = Listwise_cost.listwise_cost(GAMMA, y, z, list_id, prot_idx)
         J = cost + np.transpose(np.multiply(z,z))*Globals.LAMBDA
         cost_converge_J[t] = np.sum(J)
 
-        if quiet == False:
-            print("computing gradient")
+        # if quiet == False:
+        #     print("computing gradient")
 
         grad = Listnet_gradient.listnet_gradient(GAMMA, X, y, z, list_id, prot_idx)
-        omega = omega - e*np.sum(np.asarray(grad)[0],axis =1)
+        omega = omega - e*np.sum(np.asarray(grad)[0], axis=1)
         omega_converge[t, :] = np.transpose(omega[:])
 
-        if quiet == False:
-            print('\n')
+        # if quiet == False:
+        #     print('\n')
 
     #plots
+    plt.subplot(211)
     plt.plot(cost_converge_J)
+    plt.subplot(212)
     plt.plot(omega_converge)
-    plt.show()
+    plt.savefig(directory+'cost_gradient.png')

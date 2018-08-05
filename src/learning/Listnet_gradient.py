@@ -73,4 +73,5 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
     num_cores = multiprocessing.cpu_count()
     results = Parallel(n_jobs=num_cores)(delayed(grad)(query) for query in np.unique(query_ids))
 
+
     return results
