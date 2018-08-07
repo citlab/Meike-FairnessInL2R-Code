@@ -1,5 +1,5 @@
 #!/bin/bash
-# runs all experiments for Chile University data and saves result models into respective folders
+# runs all trainings for Chile University data and saves result models into respective folders
 
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 

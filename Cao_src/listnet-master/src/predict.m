@@ -5,6 +5,13 @@
 % suppress output
 more off;
 
+
+% load constants
+addpath(".")
+source "./globals.m";
+
+arg_list = argv()
+
 %omega = load('/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_model.m');
 %drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/ChileUni/COLORBLIND_GAMMA=0/chileDataL2R_colorblind_test.txt';
 
@@ -14,8 +21,8 @@ more off;
 %omega = load(model_file = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC/COLORBLIND_GAMMA=0/features_with_total_order-zscore-model.m');
 %drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC/COLORBLIND_GAMMA=0/features_with_total_order-zscore-test.csv';
 
-omega = load('/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/model.m');
-drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/features_withListNetFormat_withGender_withZscore_test.csv';
+%omega = load('/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/model.m');
+%drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/features_withListNetFormat_withGender_withZscore_test.csv';
 
 %omega = load('/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/gender/COLORBLIND/model.m');
 %drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/gender/LawStudents_Gender_test.txt';
@@ -37,7 +44,12 @@ drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/T
 
 FEAT_START = 3
 
-drg = load(drgfile);
+test_file = arg_list{1,1}
+model_file = arg_list{2,1}
+output_dir = arg_list{3,1}
+
+omega = load(model_file);
+drg = load(test_file);
 
 list_id = drg(:,1);
 X = drg(:,FEAT_START:size(drg,2)-1);
@@ -52,14 +64,14 @@ doc_ids = 1:size(z);
 y = drg(:, size(drg,2));
 y = [list_id, doc_ids', y];
 
-filename = [drgfile "_ORIG.pred"];
+filename = [output_dir "trainingScores_ORIG.pred"];
 dlmwrite(filename, y);
 
 # add document ids for later evaluation
 z = [list_id, doc_ids', z];
 
 unsorted_ranks = z;
-filename = [drgfile "_UNSORTED.pred"];
+filename = [output_dir "predictions_UNSORTED.pred"];
 dlmwrite(filename, unsorted_ranks);
 
 # add a little random to avoid ties
@@ -71,7 +83,7 @@ for id = unique(list_id)'
     z(indexes, :) = sortrows(z_temp, -3);
 endfor
 sorted_ranks = z;
-filename = [drgfile "_SORTED.pred"];
+filename = [output_dir "predictions_SORTED.pred"];
 
 dlmwrite(filename, sorted_ranks)
-figure(); plot(z);
+%figure(); plot(z);
