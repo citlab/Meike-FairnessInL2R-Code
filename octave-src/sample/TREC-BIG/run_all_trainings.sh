@@ -5,7 +5,7 @@ GIT_ROOT="$(git rev-parse --show-toplevel)"
 
 PATH_TO_EXECUTABLE_DELTR=$GIT_ROOT/octave-src/src
 PATH_TO_EXECUTABLE_LISTNET=$GIT_ROOT/Cao_src/listnet-master/src
-PATH_TO_BIG_TREC_DATASETS=$GIT_ROOT/octave-src/sample/TREC-BIG/
+PATH_TO_BIG_TREC_DATASETS=$GIT_ROOT/octave-src/sample/TREC-BIG
 
 GAMMA_SMALL=20000
 GAMMA_LARGE=200000
