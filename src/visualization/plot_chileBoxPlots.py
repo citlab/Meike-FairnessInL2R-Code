@@ -4,7 +4,7 @@ Created on Apr 17, 2018
 @author: mzehlike
 '''
 
-import util.chileDatasetPreparation as prep
+import data_preparation.chileDatasetPreparation as prep
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
