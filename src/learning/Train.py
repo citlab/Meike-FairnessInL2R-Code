@@ -1,8 +1,9 @@
 import sys
 import csv
 import numpy as np
-from src.learning import TrainNN
-from src.learning import Globals
+import time
+from learning import TrainNN
+from learning import Globals
 
 #read arguments from the command line
 arg_list = sys.argv
@@ -13,7 +14,7 @@ arg_list = sys.argv
 #model_file = arg_list[3]
 #GAMMA = float(arg_list[4])
 GAMMA = 0
-directory = 'C:\\Users\\ying_\\Pictures\\Listwise_Cost'
+directory = 'C:/Users/ying_/Documents/Meike-FairnessInL2R-Code/src/learning/top_male_bottom_female/GAMMA=0/'
 
 #read testfile and load training dataset
 with open('testdaten.csv',encoding='utf-8-sig') as csvfile:
@@ -33,9 +34,9 @@ with open('testdaten.csv',encoding='utf-8-sig') as csvfile:
 list_id = np.asarray(list_id).astype('int64')
 X = np.asarray(X).astype('float')
 y = np.reshape(np.asarray(y).astype('float'),(len(y),1))
-
+start = time.clock()
 #launch the training routine
 omega = TrainNN.trainNN(GAMMA, directory, list_id, X, y, Globals.T, Globals.e)
-
-
+end = time.clock()
+print("time: ", end-start)
 
