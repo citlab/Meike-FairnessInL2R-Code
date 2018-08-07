@@ -97,6 +97,8 @@ def allStudents(data):
 
     return data
 
+
+
 def prepareForL2R(data, gender=True, colorblind=False):
     """
     brings data into the correct format for L2R octave code with following scheme
@@ -174,10 +176,23 @@ def prepareForL2R(data, gender=True, colorblind=False):
     data['ano_in'] = data['ano_in'].replace(to_replace=2013, value=4)
     data['ano_in'] = data['ano_in'].replace(to_replace=2014, value=5)
 
-    train = data[data['ano_in'] < 5]
-    test = data[data['ano_in'] >= 5]
+    # prepare 5 folds of dataset for crossvalidation
+    train_fold1 = data[data['ano_in'] != 1]
+    test_fold1 = data[data['ano_in'] == 1]
 
-    return train, test
+    train_fold2 = data[data['ano_in'] != 2]
+    test_fold2 = data[data['ano_in'] == 2]
+
+    train_fold3 = data[data['ano_in'] != 3]
+    test_fold3 = data[data['ano_in'] == 3]
+
+    train_fold4 = data[data['ano_in'] != 4]
+    test_fold4 = data[data['ano_in'] == 4]
+
+    train_fold5 = data[data['ano_in'] != 5]
+    test_fold5 = data[data['ano_in'] == 5]
+
+    return train_fold1, test_fold1, train_fold2, test_fold2, train_fold3, test_fold3, train_fold4, test_fold4, train_fold5, test_fold5
 
 
 def prepareForBoxplots(data, gender=True):
