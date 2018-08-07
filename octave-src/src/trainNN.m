@@ -59,6 +59,8 @@ function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=t
             fprintf("\n")
         end
     end
+    fprintf("\n")
+
     cost_filename = [directory "cost.png"];
     gradient_filename = [directory "gradient.png"];
     hf = figure('visible','off'); plot(cost_converge_J); print(hf, cost_filename, '-dpng');
