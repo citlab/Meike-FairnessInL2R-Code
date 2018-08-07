@@ -1,8 +1,13 @@
 #!/bin/bash
 # runs all experiments for Chile University data and saves result models into respective folders
 
-PATH_TO_EXECUTABLE_DELTR=../../../src/train.m
-PATH_TO_EXECUTABLE_LISTNET=../../../../Cao_src/listnet-master/src/train.m
+GIT_ROOT=git rev-parse --show-toplevel
+
+PATH_TO_EXECUTABLE_DELTR=$GIT_ROOT/octave-src/src
+PATH_TO_EXECUTABLE_LISTNET=$GIT_ROOT/Cao_src/listnet-master/src
+PATH_TO_CHILE_NOSEMI_DATASETS=$GIT_ROOT/octave-src/sample/ChileUni/NoSemi
+
+echo $GIT_ROOT
 
 ##########################################################################################
 # all gender experiments, no semi-private highschools

@@ -53,6 +53,7 @@ directory = arg_list{1,1}
 training_file = arg_list{2,1}
 model_file = arg_list{3,1}
 
+
 % load constants
 addpath(".")
 source "./global.m";
