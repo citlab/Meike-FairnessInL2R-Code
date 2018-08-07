@@ -1,4 +1,4 @@
-function [omega, avg_J] = trainNN(list_id, directory, X, y, T, e, quiet=false)
+function [omega, avg_J] = trainNN(list_id, directory, X, y, T, e, quiet=true)
     % load constants
     source global.m;
 
@@ -14,6 +14,7 @@ function [omega, avg_J] = trainNN(list_id, directory, X, y, T, e, quiet=false)
     omega_converge = zeros(T, n_features);
 
     for t = 1:T
+        fprintf(".")
         if quiet == false
             fprintf("iteration %d: ", t)
         end
