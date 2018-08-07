@@ -1,4 +1,4 @@
-function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
+function [omega, avg_J] = trainNN(list_id, directory, X, y, T, e, quiet=false)
     % load constants
     source global.m;
 
