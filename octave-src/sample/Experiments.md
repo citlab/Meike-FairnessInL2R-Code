@@ -6,19 +6,19 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | 1000 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | 50000 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | Colorblind | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 0 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 1000 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 50000 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | Colorblind | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
 
 ### Highschool (each of 5 folds running)
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 1000 | 0 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | 1000 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | 50000 | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
-| 1000 | Colorblind | 24011 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 0 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 1000 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | 50000 | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
+| 1000 | Colorblind | 3811 | 07.08.2018 |  |  |  |  | running on lsat |
 
 
 ## TREC-BIG
