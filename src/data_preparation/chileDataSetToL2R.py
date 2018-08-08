@@ -113,37 +113,3 @@ test_fold4.to_csv('../../octave-src/sample/ChileUni/NoSemi/colorblind/fold_4/chi
 train_fold5.to_csv('../../octave-src/sample/ChileUni/NoSemi/colorblind/fold_5/chileDataL2R_highschool_nosemi_fold5_train.txt', index=False, header=False)
 test_fold5.to_csv('../../octave-src/sample/ChileUni/NoSemi/colorblind/fold_5/chileDataL2R_highschool_nosemi_fold5_test.txt', index=False, header=False)
 
-
-# TODO: remove this, dead code
-# data = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/features_with_total_order-withGender_withZscore_train.csv', sep=' ',
-#                    names=['query_id', 'gender', '1', '2', '3', '4', '5', 'score'])
-# rankingsPerQuery = data.groupby(data['query_id'], as_index=False, sort=False)
-# for queryName, group in rankingsPerQuery:
-#     rowNum = group.shape[0]
-#     newScores = (rowNum - group.index) / rowNum
-#     group['score'] = newScores
-# data.to_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/features_with_total_order-withGender_withZscore_train.csv', index=False, header=False)
-#
-# data = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/features_with_total_order-withGender_withZscore_test.csv', sep=' ',
-#                    names=['query_id', '2', '3', '4', '5', '6', '7', 'score'])
-# rankingsPerQuery = data.groupby(data['query_id'], as_index=False, sort=False)
-# for queryName, group in rankingsPerQuery:
-#     rowNum = group.shape[0]
-#     group['score'] = (rowNum - group.index) / rowNum
-# data.to_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/features_with_total_order-withGender_withZscore_test.csv', index=False, header=False)
-#
-# data = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/features_with_total_order-withGender_withZscore_train.csv', sep=' ',
-#                    names=['query_id', '2', '3', '4', '5', '6', '7', 'score'])
-# rankingsPerQuery = data.groupby(data['query_id'], as_index=False, sort=False)
-# for queryName, group in rankingsPerQuery:
-#     rowNum = group.shape[0]
-#     group['score'] = (rowNum - group.index) / rowNum
-# data.to_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/features_with_total_order-withGender_withZscore_train.csv', index=False, header=False)
-#
-# data = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/features_with_total_order-withGender_withZscore_test.csv', sep=' ',
-#                    names=['query_id', '2', '3', '4', '5', '6', '7', 'score'])
-# rankingsPerQuery = data.groupby(data['query_id'], as_index=False, sort=False)
-# for queryName, group in rankingsPerQuery:
-#     rowNum = group.shape[0]
-#     group['score'] = (rowNum - group.index) / rowNum
-# data.to_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/features_with_total_order-withGender_withZscore_test.csv', index=False, header=False)

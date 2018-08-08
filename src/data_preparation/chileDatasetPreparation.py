@@ -167,8 +167,6 @@ def prepareForL2R(data, gender=True, colorblind=False):
 
     data = data.groupby(data['ano_in'], as_index=False, sort=False).apply(lambda x: apply_zscores(x))
 
-    # data[['psu_mat', 'psu_len', 'psu_cie', 'nem']] = data.groupby(data['ano_in'], as_index=False, sort=False)[['psu_mat', 'psu_len', 'psu_cie', 'nem']].transform(lambda x: x / x.max())
-
     # replace ano_in with query_ids that start from 1
     data['ano_in'] = data['ano_in'].replace(to_replace=2010, value=1)
     data['ano_in'] = data['ano_in'].replace(to_replace=2011, value=2)
