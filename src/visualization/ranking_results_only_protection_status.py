@@ -21,12 +21,11 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
     mpl.rcParams['pdf.use14corefonts'] = True
     mpl.rcParams['text.usetex'] = True
 
-
-    f, ax = plt.subplots(figsize=(20, 10))
+    f, ax = plt.subplots(figsize=(20, 5))
 
     # Generate dummy info for plot_ChileDataset handles "h"
-    red_circle, = plt.plot(0, 1.75, 'ro', ms=14, label="protected")
-    blue_plus, = plt.plot(0, 1.75, 'b+', ms=16, mew=3, label="non-protected");
+    red_circle, = plt.plot(0, 1.65, 'ro', ms=14, label="protected")
+    blue_plus, = plt.plot(0, 1.65, 'b+', ms=16, mew=3, label="non-protected");
 
     data = pd.read_csv(input_file1, sep=",", header=None)
     for i in range(0, k, step_size):
@@ -38,28 +37,28 @@ def plot_rankings(input_file1, input_file2, input_file3, input_file4, output_fil
     data = pd.read_csv(input_file2, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
-            plt.plot(i, 1.5, 'ro', ms=14);
+            plt.plot(i, 1.25, 'ro', ms=14);
         else:
-            plt.plot(i, 1.5, 'b+', ms=16, mew=3);
+            plt.plot(i, 1.25, 'b+', ms=16, mew=3);
 
     data = pd.read_csv(input_file3, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
-            plt.plot(i, 2, 'ro', ms=14);
+            plt.plot(i, 1.5, 'ro', ms=14);
         else:
-            plt.plot(i, 2, 'b+', ms=16, mew=3);
+            plt.plot(i, 1.5, 'b+', ms=16, mew=3);
 
     data = pd.read_csv(input_file4, sep=",", header=None)
     for i in range(0, k, step_size):
         if data.iloc[i][PROT_COL_PRED] == PROT_ATTR:
-            plt.plot(i, 2.5, 'ro', ms=14);
+            plt.plot(i, 1.75, 'ro', ms=14);
         else:
-            plt.plot(i, 2.5, 'b+', ms=16, mew=3);
+            plt.plot(i, 1.75, 'b+', ms=16, mew=3);
 
     plt.gca().invert_yaxis()
     plt.xlabel ("ranking position");
-    plt.yticks(np.arange(1, 3, step=.5), ('Ground\nTruth', 'Normal\nL2R', 'Small\nGamma', 'Large\nGamma'))
-    plt.legend([red_circle, blue_plus], ['protected', 'non-protected'], bbox_to_anchor=(0.7, 0.69))
+    plt.yticks(np.arange(1, 2, step=.25), ('Ground\nTruth', 'Normal\nL2R', 'Small\nGamma', 'Large\nGamma'))
+    plt.legend([red_circle, blue_plus], ['protected', 'non-protected'], loc='upper right')  # , bbox_to_anchor=(0.73, 0.92))
 
     plt.savefig(output_file, bbox_inches='tight')
 
