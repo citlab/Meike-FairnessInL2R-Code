@@ -56,7 +56,7 @@ model_file = arg_list{3,1}
 
 % load constants
 addpath(".")
-source "./global.m";
+source "./globals.m";
 
 % load training dataset
 disp('loading training data...')

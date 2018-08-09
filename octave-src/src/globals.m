@@ -4,7 +4,7 @@
 global T = 1000;
 
 % learning rate
-global e = 0.001 %0.00001;
+global e = 0.00001;
 
 % regularization constant
 global LAMBDA = 0.001;
