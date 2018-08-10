@@ -2,6 +2,8 @@
 
 ## CHILE UNIVERSITY
 
+rerunning small gamma, because was too small. now 3000
+
 ### Gender (each of 5 folds running)
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
