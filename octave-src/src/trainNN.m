@@ -1,4 +1,4 @@
-function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=false)
+function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=true)
     % load constants
     source globals.m;
 
@@ -18,6 +18,8 @@ function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=f
     omega_converge = zeros(T, n_features);
 
     for t = 1:T
+      fprintf(".")
+
         if quiet == false
             fprintf("iteration %d: ", t)
         end
@@ -59,6 +61,8 @@ function [omega, avg_J] = trainNN(GAMMA, directory, list_id, X, y, T, e, quiet=f
             fprintf("\n")
         end
     end
+    fprintf("\n")
+
     cost_filename = [directory "cost.png"];
     gradient_filename = [directory "gradient.png"];
     hf = figure('visible','off'); plot(cost_converge_J); print(hf, cost_filename, '-dpng');

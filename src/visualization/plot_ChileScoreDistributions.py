@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import itertools
 
 import pandas as pd
-import util.chileDatasetPreparation as prep
+import data_preparation.chileDatasetPreparation as prep
 
 
 def determineGroups(attributeNamesAndCategories):

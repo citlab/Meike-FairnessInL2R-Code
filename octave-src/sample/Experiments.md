@@ -1,10 +1,33 @@
 # Experiments
 
+## CHILE UNIVERSITY
+
+### Gender (each of 5 folds running)
+
+| T | Gamma | pid | run | done | pred | repo | eval | comments |
+| --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 0 | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+| 1000 | 1000 | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+| 1000 | 50000 | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+| 1000 | Colorblind | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+
+### Highschool (each of 5 folds running)
+
+| T | Gamma | pid | run | done | pred | repo | eval | comments |
+| --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 0 | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+| 1000 | 1000 | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+| 1000 | 50000 | 3811 | 07.08.2018 | x |  |  |  | running on lsat, redo this one for fold 3 [Done]|
+| 1000 | Colorblind | 3811 | 07.08.2018 | x |  |  |  | running on lsat |
+
+
 ## TREC-BIG
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
-| 3000 | 20000 | 1634 | 26.07.2018 |  |  |  |  | running on lsat |
+| 3000 | all | xxx | 09.08.2018 |  |  |  |  | fold 4-5, running on LSAT, Has same gammas as in fold 6, as is 20,000 and 200,000 |
+| 3000 | all | 4649 | 07.08.2018 |  |  |  |  | fold 1-3, fold 6 is already done in former experiments. Has same gammas as in fold 6, as is 20,000 and 200,000 |
+| 3000 | 20000 | 1634 | 26.07.2018 | x | x | x | x | running on lsat |
 | 3000 | 0 | 1634 | 25.07.2018 | x | x | x | x | running on lsat |
 | 3000 | 200,000 | 30551 | 25.07.2018 | x | x | x | x |  |
 | 3000 | Colorblind | -- | 25.07.2018 | x | x | x | x |  |
