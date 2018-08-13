@@ -2,12 +2,11 @@
 
 ## CHILE UNIVERSITY
 
-rerunning small gamma, because was too small. now 3000
-
 ### Gender (each of 5 folds running)
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 3000 | 10126 | 10.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 0 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 1000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 50000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
@@ -17,6 +16,7 @@ rerunning small gamma, because was too small. now 3000
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 3000 | 10126 | 10.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 0 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 1000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 50000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat, redo this one for fold 3 [Done]|
