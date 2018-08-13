@@ -19,9 +19,10 @@ arg_list = argv()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TOP MALE BOTTOM FEMALE
-%directory = "../sample/synthetic/top_male_bottom_female/GAMMA=0/";
-%training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
-%model_file = [directory 'sample_model_gender_sep.m']
+directory = "../sample/synthetic/top_male_bottom_female/GAMMA=0/";
+training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
+model_file = [directory 'model.m']
+GAMMA=0
 
 %directory = "../sample/synthetic/top_male_bottom_female/GAMMA=75/";
 %training_file = [directory 'sample_train_data_scoreAndGender_separated.txt']
@@ -142,10 +143,10 @@ arg_list = argv()
 %training_file = '../sample/sample_training_data.m'
 %model_file = '../sample/sample_model.m'
 
-directory = arg_list{1,1}
-training_file = arg_list{2,1}
-model_file = arg_list{3,1}
-GAMMA = str2num(arg_list{4,1})
+%directory = arg_list{1,1}
+%training_file = arg_list{2,1}
+%model_file = arg_list{3,1}
+%GAMMA = str2num(arg_list{4,1})
 
 %GAMMA = 100000
 

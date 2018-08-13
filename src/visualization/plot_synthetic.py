@@ -24,9 +24,9 @@ attributeQuality = "score"
 
 # RESULT PLOT
 input_file1 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt'
-input_file2 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
-input_file3 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=75/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
-input_file4 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=150/sample_test_data_scoreAndGender_separated.txt_SORTED.pred'
+input_file2 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=0/predictions_SORTED.pred'
+input_file3 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=75/predictions_SORTED.pred'
+input_file4 = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=150/predictions_SORTED.pred'
 output_file = '../../plots/synthetic/separated/top_male_bottom_female/result_plots/uniform_distribution/uniform_male_top_rankings_group_property_only.png'
 
 rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 50, 1)
@@ -45,13 +45,13 @@ rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output
 #          labels=['non-protected', 'protected'])
 #
 # # RESULT PLOT
-input_file1 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt'
-input_file2 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
-input_file3 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
-input_file4 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
-output_file = '../../plots/synthetic/separated/top_female_bottom_male/result_plots/uniform_distribution/uniform_female_top_rankings_group_property_only.png'
-#
-rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 50, 1)
+# input_file1 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated.txt'
+# input_file2 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_ZERO.txt.pred'
+# input_file3 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_MEDIUM.txt.pred'
+# input_file4 = '../../octave-src/sample/synthetic/top_female_bottom_male/sample_test_data_scoreAndGender_separated_GAMMA_LARGE.txt.pred'
+# output_file = '../../plots/synthetic/separated/top_female_bottom_male/result_plots/uniform_distribution/uniform_female_top_rankings_group_property_only.png'
+# #
+# rankres.plot_rankings(input_file1, input_file2, input_file3, input_file4, output_file, 50, 1)
 
 
 

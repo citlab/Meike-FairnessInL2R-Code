@@ -1,7 +1,9 @@
 % global variables declaration
 
 % number of training iterations
+
 global T = 3000;
+
 
 % learning rate
 global e = 0.00001;

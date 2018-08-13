@@ -13,7 +13,7 @@ arg_list = sys.argv
 #training_file = arg_list[2]
 #model_file = arg_list[3]
 #GAMMA = float(arg_list[4])
-GAMMA = 0
+GAMMA = 500
 directory = 'C:/Users/ying_/Documents/Meike-FairnessInL2R-Code/src/learning/top_male_bottom_female/GAMMA=0/'
 
 #read testfile and load training dataset
@@ -39,4 +39,4 @@ start = time.clock()
 omega = TrainNN.trainNN(GAMMA, directory, list_id, X, y, Globals.T, Globals.e)
 end = time.clock()
 print("time: ", end-start)
-
+print("omega: ", omega)
