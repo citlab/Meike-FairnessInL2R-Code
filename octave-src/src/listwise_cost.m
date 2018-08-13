@@ -69,8 +69,8 @@ function J = listwise_cost(GAMMA, y, z, list_id, prot_idx)
     end
     
     if L_AND_U
-      u = @(i) GAMMA * exposure_diff(i);
-      l = @(i) accuracy(i);
+      %u = @(i) GAMMA * exposure_diff(i);
+      %l = @(i) accuracy(i);
       j = @(i) GAMMA * exposure_diff(i) .+ accuracy(i);
     end 
     J = pararrayfun(CORES, j,1:size(z,1), "VerboseLevel", 0);

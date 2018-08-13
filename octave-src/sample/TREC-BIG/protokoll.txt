@@ -1,0 +1,43 @@
+
+fold_4 COLORBLIND...
+FEAT_START =  3
+directory = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/COLORBLIND/
+training_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv
+model_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/COLORBLIND/model.m
+loading training data...
+training, 1000 iteration, 10190 examples, learning rate 0.000010...
+fold_4 GAMMA=0...
+arg_list = 
+{
+  [1,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=0/
+  [2,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv
+  [3,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG//fold_4/GAMMA=0/model.m
+  [4,1] = 0
+}
+directory = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=0/
+training_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv
+model_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG//fold_4/GAMMA=0/model.m
+GAMMA = 0
+loading training data...
+training, 200 iteration, 10190 examples, learning rate 0.001000, gamma 0, ...
+
+.
+fold_4 GAMMA=SMALL...
+arg_list = 
+{
+  [1,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/
+  [2,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv
+  [3,1] = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/model.m
+  [4,1] = 20000
+}
+directory = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/
+training_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv
+model_file = /home/ubuntu/Meike-FairnessInL2R-Code/octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/model.m
+GAMMA =  20000
+loading training data...
+training, 200 iteration, 10190 examples, learning rate 0.001000, gamma 20000, ...
+
+.
+fold_4 GAMMA=LARGE...
+fold_5 COLORBLIND...
+fold_5 GAMMA=0...

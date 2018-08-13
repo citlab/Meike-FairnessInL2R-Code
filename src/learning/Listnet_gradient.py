@@ -13,7 +13,7 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
     implementation of equation 8 and appendix  A in paper DELTR
 
     :param GAMMA: a float parameter tuning the disparate exposure metric
-    :param training_features:
+    :param training_features: containing all the features
     :param training_judgments: vector containing the training judgments/ scores
     :param predictions: vector containing the prediction scores
     :param query_ids: list of query IDs
