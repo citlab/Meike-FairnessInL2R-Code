@@ -31,7 +31,7 @@ echo ""
 
 ###################################################################################
 
-FOLD=fold_2
+#FOLD=fold_2
 
 #echo "$FOLD COLORBLIND..."
 #cd $PATH_TO_EXECUTABLE_LISTNET
@@ -49,7 +49,7 @@ FOLD=fold_2
 
 #####################################################################################
 
-FOLD=fold_3
+#FOLD=fold_3
 
 #echo "$FOLD COLORBLIND..."
 #cd $PATH_TO_EXECUTABLE_LISTNET
@@ -69,9 +69,9 @@ FOLD=fold_3
 
 FOLD=fold_4
 
-echo "$FOLD COLORBLIND..."
-cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m
+#echo "$FOLD COLORBLIND..."
+#cd $PATH_TO_EXECUTABLE_LISTNET
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m
 
 echo "$FOLD GAMMA=0..."
 cd $PATH_TO_EXECUTABLE_DELTR 
@@ -85,21 +85,21 @@ echo "$FOLD GAMMA=LARGE..."
 
 #######################################################################################
 
-FOLD=fold_5
+#FOLD=fold_5
 
-echo "$FOLD COLORBLIND..."
-cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m
+#echo "$FOLD COLORBLIND..."
+#cd $PATH_TO_EXECUTABLE_LISTNET
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m
 
-echo "$FOLD GAMMA=0..."
-cd $PATH_TO_EXECUTABLE_DELTR 
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$EXPERIMENT/$FOLD/GAMMA\=0/model.m 0
+#echo "$FOLD GAMMA=0..."
+#cd $PATH_TO_EXECUTABLE_DELTR 
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$EXPERIMENT/$FOLD/GAMMA\=0/model.m 0
 
-echo "$FOLD GAMMA=SMALL..."
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=SMALL/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=SMALL/model.m $GAMMA_SMALL
+#echo "$FOLD GAMMA=SMALL..."
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=SMALL/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=SMALL/model.m $GAMMA_SMALL
 
-echo "$FOLD GAMMA=LARGE..."
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=LARGE/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=LARGE/model.m $GAMMA_LARGE
+#echo "$FOLD GAMMA=LARGE..."
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=LARGE/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=LARGE/model.m $GAMMA_LARGE
 
 
 
