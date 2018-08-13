@@ -1,6 +1,6 @@
 function [omega, avg_J] = trainNN(list_id, directory, X, y, T, e, quiet=true)
     % load constants
-    source global.m;
+    source globals.m;
 
     m = size(X,1);
     n_features = size(X,2);
