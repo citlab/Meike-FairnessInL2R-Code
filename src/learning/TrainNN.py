@@ -1,6 +1,7 @@
 from src.learning  import Listnet_gradient
 from src.learning import Listwise_cost
 from src.learning import Globals
+from learning import topp
 import numpy as np
 import matplotlib.pyplot as plt
 import time
@@ -63,3 +64,5 @@ def trainNN(GAMMA, directory, list_id, X, y, T, e, quiet = False):
     plt.subplot(212)
     plt.plot(omega_converge)
     plt.savefig(directory+'cost_gradient.png')
+
+    return omega
