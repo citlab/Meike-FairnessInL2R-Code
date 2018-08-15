@@ -9,6 +9,8 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import scipy.stats as stats
+import math
+from sympy.physics.quantum.shor import shor
 
 PROT_ATTR = 1
 
@@ -127,7 +129,7 @@ def calculate_group_exposure(prediction, original):
 
 
 
-def protected_percentage_per_chunk(ranking, chunksize, plot_filename):
+def protected_percentage_per_chunk_per_query(ranking, chunksize, plot_filename):
     '''
     calculates percentage of protected (non-protected resp.) for each chunk of the ranking
     plots them into a figure
@@ -174,6 +176,63 @@ def protected_percentage_per_chunk(ranking, chunksize, plot_filename):
     return
 
 
+def protected_percentage_per_chunk_average_all_queries(ranking, chunksize, plot_filename):
+    '''
+    calculates percentage of protected (non-protected resp.) for each chunk of the ranking
+    plots them into a figure
+    '''
+    rankingsPerQuery = ranking.groupby(ranking['query_id'], as_index=False, sort=False)
+    shortest_query = math.inf
+
+    data_matriks = pd.DataFrame()
+
+    for name, rank in rankingsPerQuery:
+        # find shortest query
+        if (len(rank) < shortest_query):
+            shortest_query = len(rank)
+
+    for name, rank in rankingsPerQuery:
+        data_matriks[name] = rank['prot_attr'].head(shortest_query)
+
+    chunkStartPositions = np.arange(0, shortest_query, chunksize)
+
+    result_protected = np.empty(len(chunkStartPositions))
+    result_nonprotected = np.empty(len(chunkStartPositions))
+
+#         total_protected = rank['prot_attr'].value_counts()[1]
+#         total_nonprotected = rank['prot_attr'].value_counts()[0]
+
+    for idx, start in enumerate(chunkStartPositions):
+        if idx == (len(chunkStartPositions) - 1):
+            # last Chunk
+            end = shortest_query
+        else:
+            end = chunkStartPositions[idx + 1]
+        chunk = data_matriks.iloc[start:end]
+
+
+        chunk_protected = 0
+        for col in chunk:
+            try:
+                chunk_protected += chunk[col].value_counts()[1]
+            except KeyError:
+                # no protected elements in this chunk
+                chunk_protected += 0
+
+        chunk_nonprotected = 0
+        for col in chunk:
+            try:
+                chunk_nonprotected += chunk[col].value_counts()[0]
+            except KeyError:
+                # no nonprotected elements in this chunk
+                chunk_nonprotected = 0
+
+        result_protected[idx] = chunk_protected / shortest_query
+        result_nonprotected[idx] = chunk_nonprotected / shortest_query
+
+
+    plot_protected_percentage_per_chunk(result_protected, result_nonprotected, len(chunkStartPositions), chunkStartPositions, plot_filename, chunksize / 2)
+    return
 
 
 def plot_protected_percentage_per_chunk(prot, nonprot, tick_length, x_ticks, plot_filename, bar_width):
