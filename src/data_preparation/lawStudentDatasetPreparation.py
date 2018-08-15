@@ -19,7 +19,7 @@ Aufteilung in Trainings und Testdaten, 80% Training, 20% Testing, Random Samplin
 import pandas as pd
 from scipy.stats import stats
 
-CREATE_DATASETS = 1
+CREATE_DATASETS = 0
 
 
 def prepareGenderData():
@@ -28,11 +28,13 @@ def prepareGenderData():
 
     data['sex'] = data['sex'].replace([2], 0)
 
+    print(data['sex'].value_counts())
+
     data['LSAT'] = stats.zscore(data['LSAT'])
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['sex', 'LSAT', 'UGPA', 'ZFYA']]
-    data.insert(0, 'query_dummy', 1)
+    data.insert(0, 'query\_dummy', 1)
 
 
     train = data.sample(frac=.8)
@@ -54,11 +56,14 @@ def prepareRaceData(protGroup, nonprotGroup):
 
     data = data[data['race'].isin([0, 1])]
 
+    print(data['race'].value_counts())
+
+
     data['LSAT'] = stats.zscore(data['LSAT'])
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['race', 'LSAT', 'UGPA', 'ZFYA']]
-    data.insert(0, 'query_dummy', 1)
+    data.insert(0, 'query\_dummy', 1)
 
     data = data.sort_values(by=['ZFYA'], ascending=False)
 
@@ -93,6 +98,7 @@ def prepareAllInOneDataForFAIR():
     data = data[['sex', 'race', 'LSAT', 'UGPA', 'ZFYA']]
 
     return data
+
 
 if CREATE_DATASETS:
     ######################################################################################
