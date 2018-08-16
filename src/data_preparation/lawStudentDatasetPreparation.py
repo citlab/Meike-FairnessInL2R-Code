@@ -41,7 +41,7 @@ def prepareGenderData():
     test = data.drop(train.index)
 
     # subsample training data, because otherwise training takes too long
-    train = train.sample(frac=.1)
+#     train = train.sample(frac=.1)
     train = train.sort_values(by=['ZFYA'], ascending=False)
     test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
@@ -71,7 +71,7 @@ def prepareRaceData(protGroup, nonprotGroup):
     test = data.drop(train.index)
 
     # subsample training data, because otherwise training takes too long
-    train = train.sample(frac=.1)
+#     train = train.sample(frac=.1)
     train = train.sort_values(by=['ZFYA'], ascending=False)
     test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
