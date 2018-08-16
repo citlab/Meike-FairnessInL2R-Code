@@ -51,6 +51,7 @@
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 50,000,000 | 29541 | 16.08.2018 |  |  |  |  | large gamma was too small, now taking previously large gamma as small gamma and redoing large gamma experiment on TREC server |
 | 1000 | 0 | 31731 | 24.07.2018 | x | x | x | x | x |
 | 1000 | 1,000,000 | 31731 | 24.07.2018 | x | x | x | x | doesn't change a lot going back to 500,000 |
 | 1000 | 500,000 | 31731 | 24.07.2018 | x | x | x | x | might be a bit too small |
