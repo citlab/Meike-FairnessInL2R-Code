@@ -192,7 +192,9 @@ def protected_percentage_per_chunk_average_all_queries(ranking, chunksize, plot_
             shortest_query = len(rank)
 
     for name, rank in rankingsPerQuery:
-        data_matriks[name] = rank['prot_attr'].head(shortest_query)
+        temp = rank['prot_attr'].head(shortest_query)
+        data_matriks[name] = temp.reset_index(drop=True)
+        print(data_matriks.shape)
 
     chunkStartPositions = np.arange(0, shortest_query, chunksize)
 

@@ -469,7 +469,7 @@ if TREC:
 ###############################################################################################
 
 if TREC_BIG:
-    chunksize = 50
+    chunksize = 10
 
 
     # COLORBLIND TRAINING SCORES
@@ -495,21 +495,13 @@ if TREC_BIG:
                              '../../octave-src/sample/TREC-BIG/fold_6/COLORBLIND/predictions_SORTED.pred']
 
     orig_scores = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                             for file in orig_files_training), ignore_index=True)
-
-    print(orig_scores.shape)
+                             for file in orig_files_training))
 
     trec_big_colorblind_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                                              for file in colorblind_orig_files), ignore_index=True)
-
-    print(trec_big_colorblind_orig.shape)
-
+                                              for file in colorblind_orig_files))
 
     trec_big_colorblind_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                                              for file in colorblind_pred_files), ignore_index=True)
-
-    print(trec_big_colorblind_orig.shape)
-
+                                              for file in colorblind_pred_files))
 
     trec_big_colorblind_orig, trec_big_colorblind_pred = add_prot_to_colorblind(orig_scores, trec_big_colorblind_orig, trec_big_colorblind_pred)
 
