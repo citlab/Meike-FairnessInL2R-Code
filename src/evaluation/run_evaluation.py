@@ -15,11 +15,11 @@ CHILE_GENDER_NOSEMI = 0
 CHILE_HIGHSCHOOL_NOSEMI = 0
 
 TREC = 0
-TREC_BIG = 0
+TREC_BIG = 1
 
 LAW_STUDENTS_GENDER = 0
 LAW_STUDENTS_ASIAN = 0
-LAW_STUDENTS_BLACK = 1
+LAW_STUDENTS_BLACK = 0
 LAW_STUDENTS_HISPANIC = 0
 LAW_STUDENTS_MEXICAN = 0
 LAW_STUDENTS_PUERTORICAN = 0
@@ -468,52 +468,118 @@ if TREC:
 if TREC_BIG:
     chunksize = 50
 
-    # GAMMA 0
-    trec_big_0_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=0/trainingScores_ORIG.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
 
-    trec_big_0_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=0/predictions_SORTED.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+    # COLORBLIND TRAINING SCORES
+    orig_files_training = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/trainingScores_ORIG.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=0/trainingScores_ORIG.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=0/trainingScores_ORIG.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=0/trainingScores_ORIG.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/trainingScores_ORIG.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/trainingScores_ORIG.pred']
 
-    evaluate.protected_percentage_per_chunk_per_query(trec_big_0_pred, chunksize, '../../octave-src/sample/TREC-BIG/GAMMA=0/TREC-BIG-Gamma_0-protected_percentage_per_chunk_per_query.png')
-    evaluate.evaluate(trec_big_0_pred, trec_big_0_orig, '../../octave-src/sample/TREC-BIG/GAMMA=0/kendalls_tau_per_query.txt')
+    colorblind_orig_files = ['../../octave-src/sample/TREC-BIG/fold_1/COLORBLIND/trainingScores_ORIG.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_2/COLORBLIND/trainingScores_ORIG.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_3/COLORBLIND/trainingScores_ORIG.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_4/COLORBLIND/trainingScores_ORIG.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_5/COLORBLIND/trainingScores_ORIG.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_6/COLORBLIND/trainingScores_ORIG.pred']
+
+    colorblind_pred_files = ['../../octave-src/sample/TREC-BIG/fold_1/COLORBLIND/predictions_SORTED.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_2/COLORBLIND/predictions_SORTED.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_3/COLORBLIND/predictions_SORTED.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_4/COLORBLIND/predictions_SORTED.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_5/COLORBLIND/predictions_SORTED.pred',
+                             '../../octave-src/sample/TREC-BIG/fold_6/COLORBLIND/predictions_SORTED.pred']
+
+    orig_scores = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                             for file in orig_files_training))
+
+    trec_big_colorblind_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in colorblind_orig_files))
 
 
-    # GAMMA SMALL
-    trec_big_smallGamma_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/trainingScores_ORIG.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    trec_big_smallGamma_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=SMALL/predictions_SORTED.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    evaluate.protected_percentage_per_chunk_per_query(trec_big_smallGamma_pred, chunksize, '../../octave-src/sample/TREC-BIG/GAMMA=SMALL/TREC-BIG-Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
-    evaluate.evaluate(trec_big_smallGamma_pred, trec_big_smallGamma_orig, '../../octave-src/sample/TREC-BIG/GAMMA=SMALL/kendalls_tau_per_query.txt')
-
-
-    # GAMMA LARGE
-    trec_big_largeGamma_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/trainingScores_ORIG.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    trec_big_largeGamma_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=LARGE/predictions_SORTED.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    evaluate.protected_percentage_per_chunk_per_query(trec_big_largeGamma_pred, chunksize, '../../octave-src/sample/TREC-BIG/GAMMA=LARGE/TREC-BIG-Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
-    evaluate.evaluate(trec_big_largeGamma_pred, trec_big_largeGamma_orig, '../../octave-src/sample/TREC-BIG/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
-    # COLORBLIND
-    orig_scores = pd.read_csv('../../octave-src/sample/TREC-BIG/GAMMA=0/trainingScores_ORIG.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    trec_big_colorblind_orig = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/trainingScores_ORIG.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
-
-    trec_big_colorblind_pred = pd.read_csv('../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/predictions_SORTED.pred',
-                                      sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
+    trec_big_colorblind_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in colorblind_pred_files))
 
     trec_big_colorblind_orig, trec_big_colorblind_pred = add_prot_to_colorblind(orig_scores, trec_big_colorblind_orig, trec_big_colorblind_pred)
 
-    evaluate.protected_percentage_per_chunk_per_query(trec_big_colorblind_pred, chunksize, '../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/TREC-BIG-Colorblind-protected_percentage_per_chunk_per_query.png')
-    evaluate.evaluate(trec_big_colorblind_pred, trec_big_colorblind_orig, '../../octave-src/sample/TREC-BIG/COLORBLIND_GAMMA=0/kendalls_tau_per_query.txt')
+    evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_colorblind_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Colorblind-protected_percentage_per_chunk.png');
+    evaluate.evaluate(trec_big_colorblind_pred, trec_big_colorblind_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_colorblind.txt')
+
+    # GAMMA 0
+
+    gamma0_orig_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=0/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=0/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=0/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/trainingScores_ORIG.pred']
+
+    gamma0_pred_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=0/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=0/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=0/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/predictions_SORTED.pred']
+
+
+    trec_big_0_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gamma0_orig_files))
+    trec_big_0_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gamma0_pred_files))
+
+    evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_0_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Gamma_0-protected_percentage_per_chunk.png');
+    evaluate.evaluate(trec_big_0_pred, trec_big_0_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_gamma0.txt')
+
+
+    # GAMMA SMALL
+
+    gammaSmall_orig_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=SMALL/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=SMALL/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=SMALL/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=SMALL/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=SMALL/trainingScores_ORIG.pred']
+
+    gammaSmall_pred_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=SMALL/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=SMALL/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=SMALL/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=SMALL/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=SMALL/predictions_SORTED.pred']
+
+
+    trec_big_small_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gammaSmall_orig_files))
+    trec_big_small_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gammaSmall_pred_files))
+
+    evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_small_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Gamma_small-protected_percentage_per_chunk.png');
+    evaluate.evaluate(trec_big_small_pred, trec_big_small_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_gammaSmall.txt')
+
+    # GAMMA LARGE
+    gammaLarge_orig_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=LARGE/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=LARGE/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=LARGE/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=LARGE/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=LARGE/trainingScores_ORIG.pred',
+                         '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=LARGE/trainingScores_ORIG.pred']
+
+    gammaLarge_pred_files = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=LARGE/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=LARGE/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=LARGE/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=LARGE/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=LARGE/predictions_SORTED.pred',
+                           '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=LARGE/predictions_SORTED.pred']
+
+
+    trec_big_large_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gammaLarge_orig_files))
+    trec_big_large_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
+                                              for file in gammaLarge_pred_files))
+
+    evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_large_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Gamma_large-protected_percentage_per_chunk.png');
+    evaluate.evaluate(trec_big_large_pred, trec_big_large_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_gammaLarge.txt')
 
 
 ###############################################################################################
