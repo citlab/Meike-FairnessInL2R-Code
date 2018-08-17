@@ -6,6 +6,7 @@ Created on May 11, 2018
 
 import pandas as pd
 from evaluation import evaluate
+from conda._vendor.toolz.itertoolz import drop
 
 SYNTHETIC = 0
 
@@ -28,6 +29,8 @@ LAW_STUDENTS_PUERTORICAN = 0
 def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
 
     orig_prot_attr = orig_scores['prot_attr']
+    print(colorblind_orig.index)
+    print(orig_prot_attr.index)
     colorblind_orig["prot_attr"] = orig_prot_attr
 
     for doc_id in colorblind_orig['doc_id']:
@@ -492,14 +495,21 @@ if TREC_BIG:
                              '../../octave-src/sample/TREC-BIG/fold_6/COLORBLIND/predictions_SORTED.pred']
 
     orig_scores = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                             for file in orig_files_training))
+                             for file in orig_files_training), ignore_index=True)
+
+    print(orig_scores.shape)
 
     trec_big_colorblind_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                                              for file in colorblind_orig_files))
+                                              for file in colorblind_orig_files), ignore_index=True)
+
+    print(trec_big_colorblind_orig.shape)
 
 
     trec_big_colorblind_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
-                                              for file in colorblind_pred_files))
+                                              for file in colorblind_pred_files), ignore_index=True)
+
+    print(trec_big_colorblind_orig.shape)
+
 
     trec_big_colorblind_orig, trec_big_colorblind_pred = add_prot_to_colorblind(orig_scores, trec_big_colorblind_orig, trec_big_colorblind_pred)
 
