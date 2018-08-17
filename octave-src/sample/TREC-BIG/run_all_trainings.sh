@@ -71,7 +71,7 @@ FOLD=fold_3
 
 #FOLD=fold_4
 
-echo "$FOLD COLORBLIND..."
+#echo "$FOLD COLORBLIND..."
 #cd $PATH_TO_EXECUTABLE_LISTNET
 #./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m
 
@@ -105,3 +105,8 @@ echo "$FOLD COLORBLIND..."
 
 #######################################################################################
 
+FOLD=fold_6
+
+echo "$FOLD COLORBLIND..."
+cd $PATH_TO_EXECUTABLE_LISTNET
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/CO$
