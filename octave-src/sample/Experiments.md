@@ -2,12 +2,11 @@
 
 ## CHILE UNIVERSITY
 
-rerunning small gamma, because was too small. now 3000
-
 ### Gender (each of 5 folds running)
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 3000 | 10126 | 10.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 0 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 1000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 50000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
@@ -17,6 +16,7 @@ rerunning small gamma, because was too small. now 3000
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 3000 | 10126 | 10.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 0 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 1000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat |
 | 1000 | 50000 | 3811 | 07.08.2018 | x | x | x | x | running on lsat, redo this one for fold 3 [Done]|
@@ -51,6 +51,7 @@ rerunning small gamma, because was too small. now 3000
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 50,000,000 | 29541 | 16.08.2018 | x | x | x | x | large gamma was too small, now taking previously large gamma as small gamma and redoing large gamma experiment on TREC server |
 | 1000 | 0 | 31731 | 24.07.2018 | x | x | x | x | x |
 | 1000 | 1,000,000 | 31731 | 24.07.2018 | x | x | x | x | doesn't change a lot going back to 500,000 |
 | 1000 | 500,000 | 31731 | 24.07.2018 | x | x | x | x | might be a bit too small |
@@ -77,6 +78,7 @@ rerunning small gamma, because was too small. now 3000
 
 | T | Gamma | pid | run | done | pred | repo | eval | comments |
 | --- | --- | --- | --- | ---| --- | --- | --- | --- |
+| 1000 | 50,000 | 9076 | 16.08.2018 |  |  |  |  | running on TREC |
 | 1000 | 500,000 | 10417 | 25.07.2018 | x | x | x | x |  |
 | 1000 | 2,000,000 | 10417 | 24.07.2018 | x | x | x | x |  |
 | 1000 | 0 | 10417 | 23.07.2018 | x | x | x | x |  |

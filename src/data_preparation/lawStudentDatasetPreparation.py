@@ -19,7 +19,7 @@ Aufteilung in Trainings und Testdaten, 80% Training, 20% Testing, Random Samplin
 import pandas as pd
 from scipy.stats import stats
 
-CREATE_DATASETS = 1
+CREATE_DATASETS = 0
 
 
 def prepareGenderData():
@@ -28,18 +28,20 @@ def prepareGenderData():
 
     data['sex'] = data['sex'].replace([2], 0)
 
+    print(data['sex'].value_counts())
+
     data['LSAT'] = stats.zscore(data['LSAT'])
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['sex', 'LSAT', 'UGPA', 'ZFYA']]
-    data.insert(0, 'query_dummy', 1)
+    data.insert(0, 'query\_dummy', 1)
 
 
     train = data.sample(frac=.8)
     test = data.drop(train.index)
 
     # subsample training data, because otherwise training takes too long
-    train = train.sample(frac=.1)
+#     train = train.sample(frac=.1)
     train = train.sort_values(by=['ZFYA'], ascending=False)
     test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
@@ -54,11 +56,14 @@ def prepareRaceData(protGroup, nonprotGroup):
 
     data = data[data['race'].isin([0, 1])]
 
+    print(data['race'].value_counts())
+
+
     data['LSAT'] = stats.zscore(data['LSAT'])
     data['UGPA'] = stats.zscore(data['UGPA'])
 
     data = data[['race', 'LSAT', 'UGPA', 'ZFYA']]
-    data.insert(0, 'query_dummy', 1)
+    data.insert(0, 'query\_dummy', 1)
 
     data = data.sort_values(by=['ZFYA'], ascending=False)
 
@@ -66,7 +71,7 @@ def prepareRaceData(protGroup, nonprotGroup):
     test = data.drop(train.index)
 
     # subsample training data, because otherwise training takes too long
-    train = train.sample(frac=.1)
+#     train = train.sample(frac=.1)
     train = train.sort_values(by=['ZFYA'], ascending=False)
     test = test.sort_values(by=['ZFYA'], ascending=False)
     return train, test
@@ -93,6 +98,7 @@ def prepareAllInOneDataForFAIR():
     data = data[['sex', 'race', 'LSAT', 'UGPA', 'ZFYA']]
 
     return data
+
 
 if CREATE_DATASETS:
     ######################################################################################
