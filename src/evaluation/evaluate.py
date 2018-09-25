@@ -37,7 +37,8 @@ def evaluate(prediction, original, result_filename, synthetic=False):
                           columns=['query_id',
                                    'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
                                    'exposure_prot_orig', 'exposure_nprot_orig', 'exp_diff_orig',
-                                   'precision_top1', 'precision_top5', 'precision_top10', 'precision_top20', 'precision_top100',
+                                   'precision_top1', 'precision_top5', 'precision_top10',
+                                   'precision_top20', 'precision_top100', 'precision_top500',
                                    'prot_pos_mean_pred', 'nprot_pos_mean_pred', 'prot_pos_median_pred', 'nprot_pos_median_pred',
                                    'prot_pos_mean_orig', 'nprot_pos_mean_orig', 'prot_pos_median_orig', 'nprot_pos_median_orig',
                                    'kendall_tau', 'p_value'])
@@ -70,6 +71,7 @@ def evaluate(prediction, original, result_filename, synthetic=False):
         result.loc[i]['precision_top20'] = precision_at_position(predGroup, origGroup, 20, 'doc_id')
         if (not synthetic) :
             result.loc[i]['precision_top100'] = precision_at_position(predGroup, origGroup, 100, 'doc_id')
+            result.loc[i]['precision_top500'] = precision_at_position(predGroup, origGroup, 500, 'doc_id')
         result.loc[i]['kendall_tau'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[0]
         result.loc[i]['p_value'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[1]
         i += 1

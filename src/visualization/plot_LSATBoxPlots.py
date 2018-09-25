@@ -46,7 +46,7 @@ def boxPlot(data, filename, prot_attr, gender=True):
 
 
 
-    labels = ['LSAC', 'Highschool\nGrades', 'University\nGrades']
+    labels = ['LSAT', 'Highschool\nGrades', 'University\nGrades']
     ax.set_xticklabels(labels)
     handles, labels = ax.get_legend_handles_labels()
     if (gender):

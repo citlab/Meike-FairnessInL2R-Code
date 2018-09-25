@@ -10,6 +10,7 @@ precision_top5             0.000
 precision_top10            0.000
 precision_top20            0.000
 precision_top100           0.090
+precision_top500           0.216
 prot_pos_mean_pred      2201.246
 nprot_pos_mean_pred     2160.753
 prot_pos_median_pred    2189.500
