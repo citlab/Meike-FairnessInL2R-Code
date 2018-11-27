@@ -19,7 +19,7 @@ training_file = directory + "features_withListNetFormat_withGender_withZscore_ca
 
 # TODO: Terminal-Argumente einbauen
 # TODO: bash Skripte anpassen, sodass Experimente mit Python laufen
-# TODO: refactoring sodass keine globalen Variablen
+# TODO: refactoring sodass keine globalen Variablen mehr gibt, evtl object-oriented
 
 # read testfile and load training dataset
 df = pd.read_csv(training_file, decimal=',', header=None)
