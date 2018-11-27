@@ -1,22 +1,22 @@
-#global variables declaration
+# global variables declaration
 
-#number of training iterations
+# number of training iterations
 global T
-T = 10
+T = 3000
 
-#learning rate
+# learning rate
 global e
 e = 0.001
 
-#regularization constant
+# regularization constant
 global LAMBDA
 LAMBDA = 0.001
 
-#number of cores for parallel processing
+# number of cores for parallel processing
 global CORES
 CORES = 8
 
-#range of values for initialization of weights
+# range of values for initialization of weights
 global INIT_VAR
 INIT_VAR = 0.01
 
@@ -29,15 +29,15 @@ ONLY_L = 0
 global L_AND_U
 L_AND_U = 1
 
-#index of column that contains protected attribute
+# index of column that contains protected attribute
 global PROT_COL
 PROT_COL = 0
 
-#define what is the protected attribute
+# define what is the protected attribute
 global PROT_ATTR
 PROT_ATTR = 1
 
-#debug
+# debug
 global DEBUG
 DEBUG = 0
 global DEBUG_PRINT
