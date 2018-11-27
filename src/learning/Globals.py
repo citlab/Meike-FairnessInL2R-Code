@@ -1,12 +1,12 @@
 # global variables declaration
 
-# number of training iterations
-global T
-T = 3000
-
-# learning rate
-global e
-e = 0.001
+# # number of training iterations
+# global T
+# T = 3000
+#
+# # learning rate
+# global e
+# e = 0.001
 
 # regularization constant
 global LAMBDA

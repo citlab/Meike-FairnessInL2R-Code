@@ -6,7 +6,6 @@ Created on May 11, 2018
 
 import pandas as pd
 from evaluation import evaluate
-from conda._vendor.toolz.itertoolz import drop
 
 SYNTHETIC = 0
 
@@ -39,10 +38,10 @@ def add_prot_to_colorblind(orig_scores, colorblind_orig, colorblind_pred):
 
     return colorblind_orig, colorblind_pred
 
-
 #############################################################################################
 # SYNTHETIC
 #############################################################################################
+
 
 if SYNTHETIC:
     chunksize = 5
@@ -85,7 +84,6 @@ if SYNTHETIC:
                       synthetic_male_top_150_orig,
                       '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=150/kendalls_tau_per_query.txt',
                       synthetic=True)
-
 
 ###############################################################################################
 # CHILE UNIVERSITY GENDER WITH SEMI-PRIVATE
@@ -185,8 +183,6 @@ if SYNTHETIC:
 #     evaluate.protected_percentage_per_chunk_per_query(chile_highschool_5000000_pred, chunksize, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/UNI-Gamma_5000000-protected_percentage_per_chunk_highschool_semi.png');
 #     evaluate.evaluate(chile_highschool_5000000_pred, chile_highschool_5000000_orig, '../../octave-src/sample/ChileUni/Semi/GAMMA=5000000/kendalls_tau_per_query_highschool_semi.txt')
 
-
-
 ###############################################################################################
 # CHILE UNIVERSITY GENDER WITHOUT SEMI-PRIVATE
 ###############################################################################################
@@ -219,7 +215,6 @@ if CHILE_GENDER_NOSEMI:
     chile_colorblind_gender_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in colorblind_orig_files))
 
-
     chile_colorblind_gender_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in colorblind_pred_files))
 
@@ -242,7 +237,6 @@ if CHILE_GENDER_NOSEMI:
                              '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=0/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=0/predictions_SORTED.pred']
 
-
     chile_gender_0_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gamma0_orig_files))
     chile_gender_0_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
@@ -250,7 +244,6 @@ if CHILE_GENDER_NOSEMI:
 
     evaluate.protected_percentage_per_chunk_average_all_queries(chile_gender_0_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/gender/results/UNI-Gamma_0-protected_percentage_per_chunk_gender_nosemi.png');
     evaluate.evaluate(chile_gender_0_pred, chile_gender_0_orig, '../../octave-src/sample/ChileUni/NoSemi/gender/results/evaluation_gender_nosemi_gamma0.txt')
-
 
     # GAMMA SMALL
 
@@ -265,7 +258,6 @@ if CHILE_GENDER_NOSEMI:
                              '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/GAMMA=SMALL/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=SMALL/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=SMALL/predictions_SORTED.pred']
-
 
     chile_gender_gammaSmall_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gammaSmall_orig_files))
@@ -329,7 +321,6 @@ if CHILE_HIGHSCHOOL_NOSEMI:
     chile_colorblind_highschool_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in colorblind_orig_files))
 
-
     chile_colorblind_highschool_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in colorblind_pred_files))
 
@@ -352,7 +343,6 @@ if CHILE_HIGHSCHOOL_NOSEMI:
                              '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=0/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=0/predictions_SORTED.pred']
 
-
     chile_highschool_0_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gamma0_orig_files))
     chile_highschool_0_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
@@ -360,7 +350,6 @@ if CHILE_HIGHSCHOOL_NOSEMI:
 
     evaluate.protected_percentage_per_chunk_average_all_queries(chile_highschool_0_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/highschool/results/UNI-Gamma_0-protected_percentage_per_chunk_highschool_nosemi.png');
     evaluate.evaluate(chile_highschool_0_pred, chile_highschool_0_orig, '../../octave-src/sample/ChileUni/NoSemi/highschool/results/evaluation_highschool_nosemi_gamma0.txt')
-
 
     # GAMMA SMALL
 
@@ -375,7 +364,6 @@ if CHILE_HIGHSCHOOL_NOSEMI:
                              '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/GAMMA=SMALL/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=SMALL/predictions_SORTED.pred',
                              '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=SMALL/predictions_SORTED.pred']
-
 
     chile_highschool_gammaSmall_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gammaSmall_orig_files))
@@ -407,7 +395,6 @@ if CHILE_HIGHSCHOOL_NOSEMI:
     evaluate.protected_percentage_per_chunk_average_all_queries(chile_highschool_gammaLarge_pred, chunksize, '../../octave-src/sample/ChileUni/NoSemi/highschool/results/UNI-Gamma_large-protected_percentage_per_chunk_highschool_nosemi.png');
     evaluate.evaluate(chile_highschool_gammaLarge_pred, chile_highschool_gammaLarge_orig, '../../octave-src/sample/ChileUni/NoSemi/highschool/results/evaluation_highschool_nosemi_gammaLarge.txt')
 
-
 ###############################################################################################
 # TREC
 ###############################################################################################
@@ -425,7 +412,6 @@ if TREC:
     evaluate.protected_percentage_per_chunk_per_query(trec_0_pred, chunksize, '../../octave-src/sample/TREC/GAMMA=0/TREC-Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(trec_0_pred, trec_0_orig, '../../octave-src/sample/TREC/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA 15000
     trec_15000_orig = pd.read_csv('../../octave-src/sample/TREC/GAMMA=15000/features_with_total_order-zscore-test.csv_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -436,7 +422,6 @@ if TREC:
     evaluate.protected_percentage_per_chunk_per_query(trec_15000_pred, chunksize, '../../octave-src/sample/TREC/GAMMA=15000/TREC-Gamma_15000-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(trec_15000_pred, trec_15000_orig, '../../octave-src/sample/TREC/GAMMA=15000/kendalls_tau_per_query.txt')
 
-
     # GAMMA 75000
     trec_75000_orig = pd.read_csv('../../octave-src/sample/TREC/GAMMA=75000/features_with_total_order-zscore-test.csv_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -446,7 +431,6 @@ if TREC:
 
     evaluate.protected_percentage_per_chunk_per_query(trec_75000_pred, chunksize, '../../octave-src/sample/TREC/GAMMA=75000/TREC-Gamma_75000-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(trec_75000_pred, trec_75000_orig, '../../octave-src/sample/TREC/GAMMA=75000/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/TREC/GAMMA=0/features_with_total_order-zscore-test.csv_ORIG.pred',
@@ -463,14 +447,12 @@ if TREC:
     evaluate.protected_percentage_per_chunk_per_query(trec_colorblind_pred, chunksize, '../../octave-src/sample/TREC/COLORBLIND_GAMMA=0/TREC-Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(trec_colorblind_pred, trec_colorblind_orig, '../../octave-src/sample/TREC/COLORBLIND_GAMMA=0/kendalls_tau_per_query.txt')
 
-
 ###############################################################################################
 # TREC BIG
 ###############################################################################################
 
 if TREC_BIG:
     chunksize = 10
-
 
     # COLORBLIND TRAINING SCORES
     orig_files_training = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/trainingScores_ORIG.pred',
@@ -524,7 +506,6 @@ if TREC_BIG:
                            '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/predictions_SORTED.pred',
                            '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/predictions_SORTED.pred']
 
-
     trec_big_0_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gamma0_orig_files))
     trec_big_0_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
@@ -532,7 +513,6 @@ if TREC_BIG:
 
     evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_0_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Gamma_0-protected_percentage_per_chunk.png');
     evaluate.evaluate(trec_big_0_pred, trec_big_0_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_gamma0.txt')
-
 
     # GAMMA SMALL
 
@@ -549,7 +529,6 @@ if TREC_BIG:
                            '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/predictions_SORTED.pred',
                            '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=SMALL/predictions_SORTED.pred',
                            '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=SMALL/predictions_SORTED.pred']
-
 
     trec_big_small_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gammaSmall_orig_files))
@@ -574,7 +553,6 @@ if TREC_BIG:
                            '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=LARGE/predictions_SORTED.pred',
                            '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=LARGE/predictions_SORTED.pred']
 
-
     trec_big_large_orig = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
                                               for file in gammaLarge_orig_files))
     trec_big_large_pred = pd.concat((pd.read_csv(file, sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"]) \
@@ -582,7 +560,6 @@ if TREC_BIG:
 
     evaluate.protected_percentage_per_chunk_average_all_queries(trec_big_large_pred, chunksize, '../../octave-src/sample/TREC-BIG/results/TREC-BIG-Gamma_large-protected_percentage_per_chunk.png');
     evaluate.evaluate(trec_big_large_pred, trec_big_large_orig, '../../octave-src/sample/TREC-BIG/results/evaluation_TREC-BIG_gammaLarge.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS GENDER
@@ -601,7 +578,6 @@ if LAW_STUDENTS_GENDER:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_gender_0_pred, chunksize, '../../octave-src/sample/LawStudents/gender/GAMMA=0/LawStudents_Gender_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_gender_0_pred, lawStudents_gender_0_orig, '../../octave-src/sample/LawStudents/gender/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_gender_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -612,7 +588,6 @@ if LAW_STUDENTS_GENDER:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_gender_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/gender/GAMMA=SMALL/LawStudents_Gender_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_gender_smallGamma_pred, lawStudents_gender_smallGamma_orig, '../../octave-src/sample/LawStudents/gender/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_gender_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -622,7 +597,6 @@ if LAW_STUDENTS_GENDER:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_gender_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/LawStudents_gender_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_gender_largeGamma_pred, lawStudents_gender_largeGamma_orig, '../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/gender/GAMMA=0/trainingScores_ORIG.pred',
@@ -638,7 +612,6 @@ if LAW_STUDENTS_GENDER:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_gender_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/gender/COLORBLIND/LawStudents_gender_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_gender_colorblind_pred, lawStudents_gender_colorblind_orig, '../../octave-src/sample/LawStudents/gender/COLORBLIND/kendalls_tau_per_query.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS ASIAN
@@ -657,7 +630,6 @@ if LAW_STUDENTS_ASIAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_asian_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=0/LawStudents_Asian_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_asian_0_pred, lawStudents_asian_0_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_asian_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -668,7 +640,6 @@ if LAW_STUDENTS_ASIAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_asian_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/LawStudents_Asian_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_asian_smallGamma_pred, lawStudents_asian_smallGamma_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_asian_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -678,7 +649,6 @@ if LAW_STUDENTS_ASIAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_asian_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/LawStudents_asian_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_asian_largeGamma_pred, lawStudents_asian_largeGamma_orig, '../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_asian/GAMMA=0/trainingScores_ORIG.pred',
@@ -694,7 +664,6 @@ if LAW_STUDENTS_ASIAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_asian_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_asian/COLORBLIND/LawStudents_asian_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_asian_colorblind_pred, lawStudents_asian_colorblind_orig, '../../octave-src/sample/LawStudents/race_asian/COLORBLIND/kendalls_tau_per_query.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS BLACK
@@ -713,7 +682,6 @@ if LAW_STUDENTS_BLACK:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_black_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=0/LawStudents_black_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_black_0_pred, lawStudents_black_0_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_black_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -724,7 +692,6 @@ if LAW_STUDENTS_BLACK:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_black_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/LawStudents_black_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_black_smallGamma_pred, lawStudents_black_smallGamma_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_black_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -734,7 +701,6 @@ if LAW_STUDENTS_BLACK:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_black_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/LawStudents_black_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_black_largeGamma_pred, lawStudents_black_largeGamma_orig, '../../octave-src/sample/LawStudents/race_black/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_black/GAMMA=0/trainingScores_ORIG.pred',
@@ -750,7 +716,6 @@ if LAW_STUDENTS_BLACK:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_black_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_black/COLORBLIND/LawStudents_black_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_black_colorblind_pred, lawStudents_black_colorblind_orig, '../../octave-src/sample/LawStudents/race_black/COLORBLIND/kendalls_tau_per_query.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS HISPANIC
@@ -769,7 +734,6 @@ if LAW_STUDENTS_HISPANIC:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_hispanic_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=0/LawStudents_hispanic_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_hispanic_0_pred, lawStudents_hispanic_0_orig, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_hispanic_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_hispanic/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -780,7 +744,6 @@ if LAW_STUDENTS_HISPANIC:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_hispanic_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=SMALL/LawStudents_hispanic_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_hispanic_smallGamma_pred, lawStudents_hispanic_smallGamma_orig, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_hispanic_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_hispanic/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -790,7 +753,6 @@ if LAW_STUDENTS_HISPANIC:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_hispanic_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=LARGE/LawStudents_hispanic_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_hispanic_largeGamma_pred, lawStudents_hispanic_largeGamma_orig, '../../octave-src/sample/LawStudents/race_hispanic/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_hispanic/GAMMA=0/trainingScores_ORIG.pred',
@@ -806,7 +768,6 @@ if LAW_STUDENTS_HISPANIC:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_hispanic_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_hispanic/COLORBLIND/LawStudents_hispanic_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_hispanic_colorblind_pred, lawStudents_hispanic_colorblind_orig, '../../octave-src/sample/LawStudents/race_hispanic/COLORBLIND/kendalls_tau_per_query.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS MEXICAN
@@ -825,7 +786,6 @@ if LAW_STUDENTS_MEXICAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_mexican_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=0/LawStudents_mexican_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_mexican_0_pred, lawStudents_mexican_0_orig, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_mexican_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_mexican/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -836,7 +796,6 @@ if LAW_STUDENTS_MEXICAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_mexican_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=SMALL/LawStudents_mexican_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_mexican_smallGamma_pred, lawStudents_mexican_smallGamma_orig, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_mexican_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_mexican/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -846,7 +805,6 @@ if LAW_STUDENTS_MEXICAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_mexican_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=LARGE/LawStudents_mexican_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_mexican_largeGamma_pred, lawStudents_mexican_largeGamma_orig, '../../octave-src/sample/LawStudents/race_mexican/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_mexican/GAMMA=0/trainingScores_ORIG.pred',
@@ -862,7 +820,6 @@ if LAW_STUDENTS_MEXICAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_mexican_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_mexican/COLORBLIND/LawStudents_mexican_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_mexican_colorblind_pred, lawStudents_mexican_colorblind_orig, '../../octave-src/sample/LawStudents/race_mexican/COLORBLIND/kendalls_tau_per_query.txt')
-
 
 ###############################################################################################
 # LAW STUDENTS PUERTORICAN
@@ -881,7 +838,6 @@ if LAW_STUDENTS_PUERTORICAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_puertorican_0_pred, chunksize, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=0/LawStudents_puertorican_Gamma_0-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_puertorican_0_pred, lawStudents_puertorican_0_orig, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=0/kendalls_tau_per_query.txt')
 
-
     # GAMMA SMALL
     lawStudents_puertorican_smallGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_puertorican/GAMMA=SMALL/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -892,7 +848,6 @@ if LAW_STUDENTS_PUERTORICAN:
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_puertorican_smallGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=SMALL/LawStudents_puertorican_Gamma_SMALL-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_puertorican_smallGamma_pred, lawStudents_puertorican_smallGamma_orig, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=SMALL/kendalls_tau_per_query.txt')
 
-
     # GAMMA LARGE
     lawStudents_puertorican_largeGamma_orig = pd.read_csv('../../octave-src/sample/LawStudents/race_puertorican/GAMMA=LARGE/trainingScores_ORIG.pred',
                                       sep=",", names=["query_id", "doc_id", "prediction", "prot_attr"])
@@ -902,7 +857,6 @@ if LAW_STUDENTS_PUERTORICAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_puertorican_largeGamma_pred, chunksize, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=LARGE/LawStudents_puertorican_Gamma_LARGE-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_puertorican_largeGamma_pred, lawStudents_puertorican_largeGamma_orig, '../../octave-src/sample/LawStudents/race_puertorican/GAMMA=LARGE/kendalls_tau_per_query.txt')
-
 
     # COLORBLIND
     orig_scores = pd.read_csv('../../octave-src/sample/LawStudents/race_puertorican/GAMMA=0/trainingScores_ORIG.pred',
@@ -918,38 +872,4 @@ if LAW_STUDENTS_PUERTORICAN:
 
     evaluate.protected_percentage_per_chunk_per_query(lawStudents_puertorican_colorblind_pred, chunksize, '../../octave-src/sample/LawStudents/race_puertorican/COLORBLIND/LawStudents_puertorican_Colorblind-protected_percentage_per_chunk_per_query.png')
     evaluate.evaluate(lawStudents_puertorican_colorblind_pred, lawStudents_puertorican_colorblind_orig, '../../octave-src/sample/LawStudents/race_puertorican/COLORBLIND/kendalls_tau_per_query.txt')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
