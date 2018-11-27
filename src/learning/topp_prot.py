@@ -53,8 +53,9 @@ def normalized_topp_prot_deriv_per_group(group_features, all_features, group_pre
     :return: numpy array of float values
     """
     derivative = topp_prot_first_derivative(group_features, all_features, group_predictions, all_predictions)
-    result = (derivative / np.log(2)) / group_predictions.size
+    result = (np.sum(derivative / np.log(2))) / group_predictions.size
     return result
+
 
 def normalized_topp_prot_deriv_per_group_diff(training_features, predictions, query_ids, which_query, prot_idx):
     """
