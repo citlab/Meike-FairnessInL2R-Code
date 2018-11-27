@@ -2,8 +2,8 @@ import sys
 import numpy as np
 import datetime
 import pandas as pd
-import TrainNN
-import Globals
+from learning import TrainNN
+from learning import Globals
 
 #read arguments from the command line
 arg_list = sys.argv

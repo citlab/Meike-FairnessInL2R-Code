@@ -1,8 +1,8 @@
-import Globals
-import topp_prot
-import topp
-import exposure
-import find
+from learning import Globals
+from learning import topp_prot
+from learning import topp
+from learning import exposure
+from learning import find
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed

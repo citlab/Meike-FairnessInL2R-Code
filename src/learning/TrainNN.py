@@ -1,6 +1,6 @@
-import Listnet_gradient
-import Listwise_cost
-import Globals
+from learning import Listnet_gradient
+from learning import Listwise_cost
+from learning import Globals
 import numpy as np
 import matplotlib.pyplot as plt
 

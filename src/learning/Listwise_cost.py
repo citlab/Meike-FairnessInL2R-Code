@@ -1,10 +1,10 @@
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
-import Globals
-import topp
-import find
-import exposure
+from learning import Globals
+from learning import topp
+from learning import find
+from learning import exposure
 
 def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
     """
