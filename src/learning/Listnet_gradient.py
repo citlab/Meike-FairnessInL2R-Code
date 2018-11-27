@@ -1,8 +1,8 @@
-from learning import Globals
-from learning import topp_prot
-from learning import topp
-from learning import exposure
-from learning import find
+import Globals
+import topp_prot
+import topp
+import exposure
+import find
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
@@ -70,8 +70,9 @@ def listnet_gradient(GAMMA, training_features, training_judgments, predictions, 
     # TODO: bin mir nicht sicher ob wir das hier brauchen...man müsste mal in octave gucken, was das gemacht hatte...
     # grad = np.transpose(f(np.arange(m)).reshape(p, m))
 
-    num_cores = multiprocessing.cpu_count()
-    results = Parallel(n_jobs=num_cores)(delayed(grad)(query) for query in np.unique(query_ids))
+    #num_cores = multiprocessing.cpu_count()
+    #results = Parallel(n_jobs=num_cores)(delayed(grad)(query) for query in np.unique(query_ids))
+    results = [grad(query) for query in query_ids]
 
 
-    return results
+    return np.asarray(results)

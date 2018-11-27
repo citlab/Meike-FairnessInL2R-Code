@@ -4,8 +4,8 @@ Created on Jun 29, 2018
 @author: mzehlike
 '''
 import numpy as np
-from learning import topp_prot
-from learning import find
+import topp_prot
+import find
 
 def normalized_exposure(group_data, all_data):
     '''

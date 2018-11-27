@@ -1,10 +1,10 @@
 import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
-from learning import Globals
-from learning import topp
-from learning import find
-from learning import exposure
+import Globals
+import topp
+import find
+import exposure
 
 def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
     """
@@ -42,7 +42,8 @@ def listwise_cost(GAMMA, training_judgments, predictions, query_ids, prot_idx):
         # cost = lambda which_query: GAMMA * exposure_diff(which_query) + loss(which_query)
         cost = lambda which_query: GAMMA * exposure.exposure_diff(predictions, query_ids, which_query, prot_idx) ** 2 + loss(which_query)
 
-    num_cores = multiprocessing.cpu_count()
-    results = Parallel(n_jobs=num_cores)(delayed(cost)(query) for query in np.unique(query_ids))
+    #num_cores = multiprocessing.cpu_count()
+    #results = Parallel(n_jobs=num_cores)(delayed(cost)(query) for query in np.unique(query_ids))
+    results = [cost(query) for query in query_ids]
 
-    return results
+    return np.asarray(results)

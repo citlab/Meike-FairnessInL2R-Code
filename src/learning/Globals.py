@@ -2,7 +2,7 @@
 
 #number of training iterations
 global T
-T = 1000
+T = 10
 
 #learning rate
 global e
