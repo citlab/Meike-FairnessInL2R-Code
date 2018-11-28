@@ -8,8 +8,11 @@ import argparse
 from learning import Train
 from data_preparation import *
 from learning.Train import DELTR_Trainer
+from learning.predict import DELTR_Predictor
 
 # TODO: bash Skripte anpassen, sodass Experimente mit Python laufen
+# TODO: predictor as object
+# TODO: evaluation as object oriented
 
 
 def main():
@@ -97,10 +100,11 @@ def main():
 
         numIter = 3000
         learningRate = 0.001
-        protCol = 0
-        protAttr = 1
         initVar = 0.01
         lambdaa = 0.001
+
+        protCol = 1
+        protAttr = 1
 
         trainer = DELTR_Trainer(pathToTrainingData,
                                 pathToModelFile,
@@ -118,6 +122,14 @@ def main():
         pathToTestData = args.predict[0]
         pathToModelFile = args.predict[1]
         resultDir = args.predict[2]
+        protCol = 1
+
+        predictor = DELTR_Predictor(pathToTestData,
+                                    pathToModelFile,
+                                    resultDir,
+                                    protCol)
+
+        predictor.predict()
     else:
         parser.error("choose one command line option")
 
