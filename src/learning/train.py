@@ -36,7 +36,7 @@ class DELTR_Trainer():
     '''
 
     def __init__(self, pathToTrainingData, pathToModelFile, resultDir, gamma, numIter, learningRate,
-                 protCol, protAttr, initVar, lambdaa):
+                 protCol, protAttr, initVar, lambdaa, quiet=False):
         # paths
         self.__pathToTrainingData = pathToTrainingData
         self.__pathToModelFile = pathToModelFile
@@ -57,9 +57,13 @@ class DELTR_Trainer():
         if gamma == 0:
             self.__noExposure = True
 
+        # print intermediate steps to stdout
+        self.__quiet = quiet
+
     def train(self, colorblind=False):
         '''
-        TODO: write doc
+        prepares data and launches training routine.
+        also measures time for the calculation and saves resulting model to disk
         '''
         # read testfile and load training dataset
         data = pd.read_csv(self.__pathToTrainingData, decimal=',', header=None)
@@ -89,9 +93,9 @@ class DELTR_Trainer():
         # safe results
         np.save(self.__pathToModelFile, omega)
 
-    def _trainNN(self, query_ids, featureMatrix, trainingScores, quiet=False):
+    def _trainNN(self, query_ids, featureMatrix, trainingScores):
         """
-        trains the Neural Network to find the optimal loss in listwise learning to rank
+        trains the Neural Network to find the optimal feature weights in listwise learning to rank
 
         :param query_ids: list of query IDs
         :param featureMatrix: training features
@@ -112,14 +116,14 @@ class DELTR_Trainer():
 
         # training routine
         for t in range(0, self.__numberIterations):
-            if quiet == False:
+            if self.__quiet == False:
                 print('iteration ', t)
 
             # forward propagation
             predictedScores = np.dot(featureMatrix, omega)
             predictedScores = np.reshape(np.asarray(predictedScores).astype('float'), (len(predictedScores), 1))
             # cost
-            if quiet == False:
+            if self.__quiet == False:
                 print('computing cost')
 
             # with regularization
@@ -127,14 +131,14 @@ class DELTR_Trainer():
             J = cost + np.transpose(np.multiply(predictedScores, predictedScores)) * self.__lambda
             cost_converge_J[t] = np.sum(J)
 
-            if quiet == False:
+            if self.__quiet == False:
                 print("computing gradient")
 
             grad = self._calculateGradient(featureMatrix, trainingScores, predictedScores, query_ids, prot_idx)
             omega = omega - self.__learningRate * np.sum(np.asarray(grad)[0], axis=1)
             omega_converge[t, :] = np.transpose(omega[:])
 
-            if quiet == False:
+            if self.__quiet == False:
                 print('\n')
 
         # plots
