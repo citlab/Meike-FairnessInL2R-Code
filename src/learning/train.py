@@ -164,7 +164,7 @@ class DELTR_Trainer():
         :return: a float value --> loss
         """
         data_per_query = lambda which_query, data: \
-                                       self.__find_items_per_group_per_query(data,
+                                       self._find_items_per_group_per_query(data,
                                                                              query_ids,
                                                                              which_query,
                                                                              prot_idx)
@@ -206,10 +206,10 @@ class DELTR_Trainer():
         """
         # find all training judgments and all predicted scores that belong to one query
         data_per_query = lambda which_query, data: \
-                                       self.__find_items_per_group_per_query(data,
-                                                                             query_ids,
-                                                                             which_query,
-                                                                             prot_idx)
+                                       self._find_items_per_group_per_query(data,
+                                                                            query_ids,
+                                                                            which_query,
+                                                                            prot_idx)
         # Exposure in rankings for protected and non-protected group, right summand in eq 8
         U_deriv = lambda which_query:   2 \
                                         * self._exposure_diff(predictions,
@@ -217,10 +217,10 @@ class DELTR_Trainer():
                                                               which_query,
                                                               prot_idx) \
                                         * self._normalized_topp_prot_deriv_per_group_diff(training_features,
-                                                                                              predictions,
-                                                                                              query_ids,
-                                                                                              which_query,
-                                                                                              prot_idx)
+                                                                                          predictions,
+                                                                                          query_ids,
+                                                                                          which_query,
+                                                                                          prot_idx)
         # Training error
         l1 = lambda which_query: np.dot(np.transpose(data_per_query(which_query,
                                                                     training_features)[0]),
@@ -250,17 +250,6 @@ class DELTR_Trainer():
 
         return np.asarray(results)
 
-    def _find_items_per_query(self, data, query_ids, which_query):
-        """
-        finds items which contains the given query_id
-
-        :param data: all predictions or training judgments
-        :param query_ids: list of query IDs
-        :param which_query: given query ID
-        :return: matrix filtered by which_query
-        """
-        return data[np.where(query_ids == which_query)[0], :]
-
     def _find_items_per_group_per_query(self, data, query_ids, which_query, prot_idx):
         """
         finds all the items with a given query ID and separates the items into protected
@@ -283,18 +272,16 @@ class DELTR_Trainer():
 
         return judgments_per_query, protected_items_per_query, nonprotected_items_per_query
 
-    def __normalized_exposure(self, group_data, all_data):
-        '''
-        calculates the exposure of a group in the entire ranking
-        implementation of equation 4 in DELTR paper
+    def __find_items_per_query(self, data, query_ids, which_query):
+        """
+        finds items which contains the given query_id
 
-        :param group_data: predictions of relevance scores for one group
-        :param all_data: all predictions
-
-        :return: float value that is normalized exposure in a ranking for one group
-                 nan if group size is 0
-        '''
-        return (np.sum(self._topp_prot(group_data, all_data) / np.log(2))) / group_data.size
+        :param data: all predictions or training judgments
+        :param query_ids: list of query IDs
+        :param which_query: given query ID
+        :return: matrix filtered by which_query
+        """
+        return data[np.where(query_ids == which_query)[0], :]
 
     def _exposure_diff(self, data, query_ids, which_query, prot_idx):
         """
@@ -310,7 +297,7 @@ class DELTR_Trainer():
         """
         judgments_per_query, \
         protected_items_per_query, \
-        nonprotected_items_per_query = self.__find_items_per_group_per_query(data,
+        nonprotected_items_per_query = self._find_items_per_group_per_query(data,
                                                                              query_ids,
                                                                              which_query,
                                                                              prot_idx)
@@ -322,7 +309,20 @@ class DELTR_Trainer():
 
         return exposure_diff
 
-    def _topp_prot(self, group_items, all_items):
+    def __normalized_exposure(self, group_data, all_data):
+        '''
+        calculates the exposure of a group in the entire ranking
+        implementation of equation 4 in DELTR paper
+
+        :param group_data: predictions of relevance scores for one group
+        :param all_data: all predictions
+
+        :return: float value that is normalized exposure in a ranking for one group
+                 nan if group size is 0
+        '''
+        return (np.sum(self.__topp_prot(group_data, all_data) / np.log(2))) / group_data.size
+
+    def __topp_prot(self, group_items, all_items):
         '''
         given a dataset of features what is the probability of being at the top position
         for one group (group_items) out of all items
@@ -351,14 +351,14 @@ class DELTR_Trainer():
         """
         train_judgments_per_query, \
         train_protected_items_per_query, \
-        train_nonprotected_items_per_query = self.__find_items_per_group_per_query(training_features,
+        train_nonprotected_items_per_query = self._find_items_per_group_per_query(training_features,
                                                                                    query_ids,
                                                                                    which_query,
                                                                                    prot_idx)
 
         predictions_per_query, \
         pred_protected_items_per_query, \
-        pred_nonprotected_items_per_query = self.__find_items_per_group_per_query(predictions,
+        pred_nonprotected_items_per_query = self._find_items_per_group_per_query(predictions,
                                                                                   query_ids,
                                                                                   which_query,
                                                                                   prot_idx)
