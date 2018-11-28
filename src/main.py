@@ -11,7 +11,6 @@ from learning.Train import DELTR_Trainer
 from learning.predict import DELTR_Predictor
 
 # TODO: bash Skripte anpassen, sodass Experimente mit Python laufen
-# TODO: predictor as object
 # TODO: evaluation as object oriented
 
 
