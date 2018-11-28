@@ -7,15 +7,9 @@ import argparse
 
 from learning import Train
 from data_preparation import *
+from learning.Train import DELTR_Trainer
 
-global ONLY_U
-ONLY_U = 0
-
-global ONLY_L
-ONLY_L = 0
-
-global L_AND_U
-L_AND_U = 1
+# TODO: bash Skripte anpassen, sodass Experimente mit Python laufen
 
 
 def main():
@@ -38,10 +32,11 @@ def main():
                                  'engineering-withoutSemiPrivate'],
                         help="creates datasets from raw data and writes them to disk")
     parser.add_argument("--train",
-                        nargs=4,
-                        metavar=('TRAINING DATA', 'MODEL', 'DIRECTORY', 'GAMMA'),
+                        nargs=5,
+                        metavar=('TRAINING DATA', 'MODEL', 'DIRECTORY', 'GAMMA', 'COLORBLIND'),
                         help="runs training phase of DELTR with given GAMMA for given DATASET, stores \
-                              trained model into file MODEL. All results are stored into DIRECTORY")
+                              trained model into file MODEL. All results are stored into DIRECTORY. \
+                              if COLORBLIND is True, excludes protected column for training")
     parser.add_argument("--predict",
                         nargs=3,
                         metavar=('TEST DATA', 'MODEL', 'DIRECTORY'),
@@ -98,13 +93,27 @@ def main():
         pathToModelFile = args.train[1]
         resultDir = args.train[2]
         gamma = float(args.train[3])
+        colorblind = True if args.train[4] == 'True' else False
 
         numIter = 3000
         learningRate = 0.001
         protCol = 0
         protAttr = 1
+        initVar = 0.01
+        lambdaa = 0.001
 
-        Train.train(pathToTrainingData, pathToModelFile, resultDir, gamma, numIter, learningRate, protCol, protAttr)
+        trainer = DELTR_Trainer(pathToTrainingData,
+                                pathToModelFile,
+                                resultDir,
+                                gamma,
+                                numIter,
+                                learningRate,
+                                protCol,
+                                protAttr,
+                                initVar,
+                                lambdaa)
+        trainer.train(colorblind)
+
     elif args.predict:
         pathToTestData = args.predict[0]
         pathToModelFile = args.predict[1]
