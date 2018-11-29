@@ -102,7 +102,6 @@ class DELTR_Trainer():
         :param query_ids: list of query IDs
         :param featureMatrix: training features
         :param trainingScores: training judgments
-        :param quiet:
         """
         m = featureMatrix.shape[0]
         n_features = featureMatrix.shape[1]
