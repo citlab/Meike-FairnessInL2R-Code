@@ -150,122 +150,100 @@ def main():
     elif args.evaluate == ['law-all']:
         raise NotImplementedError
     elif args.evaluate == ['law-gender']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/LawStudents/gender/results/'
         binSize = 200
         protAttr = 1
         evaluator = DELTR_Evaluator('law-gender',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['law-asian']:
-        trainingDir = '../../octave-src/sample/'
-        resultDir = '../experiments/LawStudents/asian/results/'
+        resultDir = '../experiments/LawStudents/race_asian/results/'
         binSize = 100
         protAttr = 1
         evaluator = DELTR_Evaluator('law-asian',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['law-black']:
-        trainingDir = '../../octave-src/sample/'
-        resultDir = '../experiments/LawStudents/black/results/'
+        resultDir = '../experiments/LawStudents/race_black/results/'
         binSize = 200
         protAttr = 1
         evaluator = DELTR_Evaluator('law-black',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['law-hispanic']:
-        trainingDir = '../../octave-src/sample/'
-        resultDir = '../experiments/LawStudents/hispanic/results/'
+        resultDir = '../experiments/LawStudents/race_hispanic/results/'
         binSize = 100
         protAttr = 1
         evaluator = DELTR_Evaluator('law-hispanic',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['law-mexican']:
-        trainingDir = '../../octave-src/sample/'
-        resultDir = '../experiments/LawStudents/mexican/results/'
+        resultDir = '../experiments/LawStudents/race_mexican/results/'
         binSize = 100
         protAttr = 1
         evaluator = DELTR_Evaluator('law-mexican',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['law-puertorican']:
-        trainingDir = '../../octave-src/sample/'
-        resultDir = '../experiments/LawStudents/puertorican/results/'
+        resultDir = '../experiments/LawStudents/race_puertorican/results/'
         binSize = 100
         protAttr = 1
         evaluator = DELTR_Evaluator('law-puertorican',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['trec']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/TREC/results/'
         binSize = 10
         protAttr = 1
         evaluator = DELTR_Evaluator('trec',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['engineering-gender-withSemiPrivate']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/EngineeringStudents/results/'
         binSize = 10
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-gender-withSemiPrivate',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['engineering-highschool-withSemiPrivate']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/EngineeringStudents/results/'
         binSize = 10
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-highschool-withSemiPrivate',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['engineering-gender-withoutSemiPrivate']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/EngineeringStudents/results/'
         binSize = 10
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-gender-withoutSemiPrivate',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
     elif args.evaluate == ['engineering-highschool-withoutSemiPrivate']:
-        trainingDir = '../../octave-src/sample/'
         resultDir = '../experiments/EngineeringStudents/results/'
         binSize = 10
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-highschool-withoutSemiPrivate',
-                                    trainingDir,
                                     resultDir,
                                     binSize,
                                     protAttr)

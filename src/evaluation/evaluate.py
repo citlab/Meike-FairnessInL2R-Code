@@ -25,13 +25,36 @@ import math
 
 
 class DELTR_Evaluator():
+    '''
+    evaluates model that was trained on given dataset and writes evaluation into textfile
+    indicators are:
+        exposure of protected group in training scores and predictions
+        exposure of non-protected group in training scores and predictions
+        difference of group exposure in training scores and predictions
+        mean ranking position of protected group in training scores and predictions
+        mean ranking position of non-protected group in training scores and predictions
+        median ranking position of protected group in training scores and predictions
+        median ranking position of non-protected group in training scores and predictions
+        precision at top 1, 5, 10, 20, 100, 200
+        kendall's tau
+    :field __trainingDir:             directory in which training scores and predictions are stored
+    :field __resultDir:               path where to store the result files
+    :field __protectedAttribute:      int, defines what the protected attribute in the dataset was
+    :field __dataset:                 string, specifies which dataset to evaluate
+    :field __chunkSize:               int, defines how many items belong to one chunk in the bar plots
+    :field __columnNames:             predictions are read into dataframe with defined column names
+    :field __prediction:              np-array with predicted scores
+    :field __original:                np-array with training scores
+    :field __evaluationFilename       string, filename to store the evaluation results (without path)
+    :field __plotFilename             string, filename to store the barplots (without path)
+    '''
 
-    def __init__(self, experimentDir, resultDir, dataset, binSize, protAttr):
+    def __init__(self, resultDir, dataset, binSize, protAttr):
+        self.__trainingDir = '../../octave-src/sample/'
         self.__resultDir = resultDir
-        self.__experimentDir = experimentDir
         self.__protectedAttribute = protAttr
         self.__dataset = dataset
-        self.__binSize = binSize
+        self.__chunkSize = binSize
         self.__columnNames = ["query_id", "doc_id", "prediction", "prot_attr"]
 
         self.__prediction
@@ -43,7 +66,7 @@ class DELTR_Evaluator():
         if self.__dataset == 'synthetic':
             raise NotImplementedError
             # GAMMA 0
-            scoreDir = self.__experimentDir + 'synthetic/top_male_bottom_female/GAMMA=0/'
+            scoreDir = self.__trainingDir + 'synthetic/top_male_bottom_female/GAMMA=0/'
             gamma = '0'
             self.__original = pd.read_csv(scoreDir + 'sample_test_data_scoreAndGender_separated.txt_ORIG.pred',
                                           sep=",",
@@ -58,7 +81,7 @@ class DELTR_Evaluator():
             self.__evaluate(synthetic=True)
 
             # GAMMA 75
-            scoreDir = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=75/'
+            scoreDir = self.__trainingDir + 'synthetic/top_male_bottom_female/GAMMA=75/'
             gamma = 'small'
             self.__original = pd.read_csv(scoreDir + 'sample_test_data_scoreAndGender_separated.txt_ORIG.pred',
                                           sep=",",
@@ -74,7 +97,7 @@ class DELTR_Evaluator():
 
             # GAMMA 150
             gamma = 'large'
-            scoreDir = '../../octave-src/sample/synthetic/top_male_bottom_female/GAMMA=150/'
+            scoreDir = self.__trainingDir + 'synthetic/top_male_bottom_female/GAMMA=150/'
             self.__original = pd.read_csv(scoreDir + 'sample_test_data_scoreAndGender_separated.txt_ORIG.pred',
                                           sep=",",
                                           names=self.__columnNames)
@@ -92,17 +115,17 @@ class DELTR_Evaluator():
 
         elif self.__dataset == 'engineering-gender-withoutSemiPrivate':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
+            pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
 
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/gender/fold_1/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_2/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/COLORBLIND/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             pathsForColorblind = None
@@ -116,11 +139,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = '0'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -132,11 +155,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/gender/fold_1/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_2/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -148,11 +171,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/gender/fold_1/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_2/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_3/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_4/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/gender/fold_5/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -161,22 +184,22 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
-        ######################################################
-        ######################################################
+        ###########################################################################################
+        ###########################################################################################
 
         elif self.__dataset == 'engineering-highschool-withoutSemiPrivate':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/ChileUni/NoSemi/highschool/fold_1/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_2/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=0/']
+            pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/GAMMA=0/']
 
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/highschool/fold_1/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_2/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/COLORBLIND/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_3/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             pathsForColorblind = None
@@ -189,11 +212,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = '0'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/highschool/fold_1/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_2/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_3/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -205,11 +228,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/highschool/fold_1/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_2/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_3/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -221,11 +244,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/ChileUni/NoSemi/highschool/fold_1/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_2/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_3/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_4/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/NoSemi/highschool/fold_5/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_3/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -238,17 +261,17 @@ class DELTR_Evaluator():
         ###########################################################################################
         elif self.__dataset == 'engineering-gender-withSemiPrivate':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/ChileUni/Semi/gender/fold_1/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/gender/fold_2/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/gender/fold_3/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/gender/fold_4/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/gender/fold_5/GAMMA=0/']
+            pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
 
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/gender/fold_1/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_2/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_3/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_4/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_5/COLORBLIND/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             pathsForColorblind = None
@@ -262,11 +285,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = '0'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/gender/fold_1/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_2/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_3/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_4/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_5/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -278,11 +301,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/gender/fold_1/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_2/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_3/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_4/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_5/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -294,11 +317,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/gender/fold_1/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_2/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_3/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_4/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/gender/fold_5/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -312,17 +335,17 @@ class DELTR_Evaluator():
 
         elif self.__dataset == 'engineering-highschool-withSemiPrivate':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/ChileUni/Semi/highschool/fold_1/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/highschool/fold_2/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/highschool/fold_3/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/highschool/fold_4/GAMMA=0/',
-                                  '../../octave-src/sample/ChileUni/Semi/highschool/fold_5/GAMMA=0/']
+            pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
 
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/highschool/fold_1/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_2/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_3/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_4/COLORBLIND/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_5/COLORBLIND/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/COLORBLIND/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             pathsForColorblind = None
@@ -335,11 +358,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = '0'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/highschool/fold_1/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_2/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_3/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_4/GAMMA=0/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_5/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -351,11 +374,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/highschool/fold_1/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_2/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_3/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_4/GAMMA=SMALL/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_5/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=SMALL/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -367,11 +390,11 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/ChileUni/Semi/highschool/fold_1/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_2/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_3/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_4/GAMMA=LARGE/',
-                             '../../octave-src/sample/ChileUni/Semi/highschool/fold_5/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=LARGE/',
+                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -385,19 +408,19 @@ class DELTR_Evaluator():
 
         elif self.__dataset == 'trec':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/',
-                                  '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=0/',
-                                  '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=0/',
-                                  '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=0/',
-                                  '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/',
-                                  '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/']
+            pathsForColorblind = [self.__trainingDir + 'TREC/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'TREC/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'TREC/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'TREC/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'TREC/fold_5/GAMMA=0/',
+                                  self.__trainingDir + 'TREC/fold_6/GAMMA=0/']
 
-            pathsToScores = ['../../octave-src/sample/TREC-BIG/fold_1/COLORBLIND/',
-                             '../../octave-src/sample/TREC-BIG/fold_2/COLORBLIND/',
-                             '../../octave-src/sample/TREC-BIG/fold_3/COLORBLIND/',
-                             '../../octave-src/sample/TREC-BIG/fold_4/COLORBLIND/',
-                             '../../octave-src/sample/TREC-BIG/fold_5/COLORBLIND/',
-                             '../../octave-src/sample/TREC-BIG/fold_6/COLORBLIND/']
+            pathsToScores = [self.__trainingDir + 'TREC/fold_1/COLORBLIND/',
+                             self.__trainingDir + 'TREC/fold_2/COLORBLIND/',
+                             self.__trainingDir + 'TREC/fold_3/COLORBLIND/',
+                             self.__trainingDir + 'TREC/fold_4/COLORBLIND/',
+                             self.__trainingDir + 'TREC/fold_5/COLORBLIND/',
+                             self.__trainingDir + 'TREC/fold_6/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -410,12 +433,12 @@ class DELTR_Evaluator():
 
             gamma = '0'
             pathsForColorblind = None
-            pathsToScores = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=0/',
-                             '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=0/',
-                             '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=0/',
-                             '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=0/',
-                             '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=0/',
-                             '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'TREC/fold_1/GAMMA=0/',
+                             self.__trainingDir + 'TREC/fold_2/GAMMA=0/',
+                             self.__trainingDir + 'TREC/fold_3/GAMMA=0/',
+                             self.__trainingDir + 'TREC/fold_4/GAMMA=0/',
+                             self.__trainingDir + 'TREC/fold_5/GAMMA=0/',
+                             self.__trainingDir + 'TREC/fold_6/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -427,12 +450,12 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=SMALL/',
-                             '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=SMALL/',
-                             '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=SMALL/',
-                             '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=SMALL/',
-                             '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=SMALL/',
-                             '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'TREC/fold_1/GAMMA=SMALL/',
+                             self.__trainingDir + 'TREC/fold_2/GAMMA=SMALL/',
+                             self.__trainingDir + 'TREC/fold_3/GAMMA=SMALL/',
+                             self.__trainingDir + 'TREC/fold_4/GAMMA=SMALL/',
+                             self.__trainingDir + 'TREC/fold_5/GAMMA=SMALL/',
+                             self.__trainingDir + 'TREC/fold_6/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -444,12 +467,12 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/TREC-BIG/fold_1/GAMMA=LARGE/',
-                             '../../octave-src/sample/TREC-BIG/fold_2/GAMMA=LARGE/',
-                             '../../octave-src/sample/TREC-BIG/fold_3/GAMMA=LARGE/',
-                             '../../octave-src/sample/TREC-BIG/fold_4/GAMMA=LARGE/',
-                             '../../octave-src/sample/TREC-BIG/fold_5/GAMMA=LARGE/',
-                             '../../octave-src/sample/TREC-BIG/fold_6/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'TREC/fold_1/GAMMA=LARGE/',
+                             self.__trainingDir + 'TREC/fold_2/GAMMA=LARGE/',
+                             self.__trainingDir + 'TREC/fold_3/GAMMA=LARGE/',
+                             self.__trainingDir + 'TREC/fold_4/GAMMA=LARGE/',
+                             self.__trainingDir + 'TREC/fold_5/GAMMA=LARGE/',
+                             self.__trainingDir + 'TREC/fold_6/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -463,8 +486,8 @@ class DELTR_Evaluator():
 
         elif self.__dataset == 'law-gender':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/LawStudents/gender/GAMMA=0/']
-            pathsToScores = ['../../octave-src/sample/LawStudents/gender/COLORBLIND/']
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/gender/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/gender/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -477,7 +500,7 @@ class DELTR_Evaluator():
 
             gamma = '0'
             pathsForColorblind = None
-            pathsToScores = ['../../octave-src/sample/LawStudents/gender/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/gender/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -489,7 +512,7 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/LawStudents/gender/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/gender/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -501,7 +524,7 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/LawStudents/gender/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/gender/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -515,8 +538,8 @@ class DELTR_Evaluator():
 
         elif self.__dataset == 'law-asian':
             gamma = 'colorblind'
-            pathsForColorblind = ['../../octave-src/sample/LawStudents/race_asian/GAMMA=0/']
-            pathsToScores = ['../../octave-src/sample/LawStudents/race_asian/COLORBLIND/']
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/COLORBLIND/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -529,7 +552,7 @@ class DELTR_Evaluator():
 
             gamma = '0'
             pathsForColorblind = None
-            pathsToScores = ['../../octave-src/sample/LawStudents/race_asian/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -541,7 +564,7 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'small'
-            pathsToScores = ['../../octave-src/sample/LawStudents/race_asian/GAMMA=SMALL/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=SMALL/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -553,7 +576,215 @@ class DELTR_Evaluator():
             #######################################################################################
 
             gamma = 'large'
-            pathsToScores = ['../../octave-src/sample/LawStudents/race_asian/GAMMA=LARGE/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=LARGE/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+        ###########################################################################################
+        ###########################################################################################
+
+        elif self.__dataset == 'law-black':
+            gamma = 'colorblind'
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_black/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/COLORBLIND/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = '0'
+            pathsForColorblind = None
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/GAMMA=0/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'small'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/GAMMA=SMALL/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'large'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/GAMMA=LARGE/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+        ###########################################################################################
+        ###########################################################################################
+
+        elif self.__dataset == 'law-hispanic':
+            gamma = 'colorblind'
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/COLORBLIND/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = '0'
+            pathsForColorblind = None
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'small'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=SMALL/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'large'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=LARGE/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+        ###########################################################################################
+        ###########################################################################################
+
+        elif self.__dataset == 'law-mexican':
+            gamma = 'colorblind'
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/COLORBLIND/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = '0'
+            pathsForColorblind = None
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'small'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=SMALL/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'large'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=LARGE/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+        ###########################################################################################
+        ###########################################################################################
+
+        elif self.__dataset == 'law-puertorican':
+            gamma = 'colorblind'
+            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/COLORBLIND/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = '0'
+            pathsForColorblind = None
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'small'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=SMALL/']
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            #######################################################################################
+
+            gamma = 'large'
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=LARGE/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -702,7 +933,7 @@ class DELTR_Evaluator():
             filename = plot_filename[:-4] + "_" + str(name) + plot_filename[-4:]
 
             rowNum = rank.shape[0]
-            chunkStartPositions = np.arange(0, rowNum, self.__binSize)
+            chunkStartPositions = np.arange(0, rowNum, self.__chunkSize)
 
             result_protected = np.empty(len(chunkStartPositions))
             result_nonprotected = np.empty(len(chunkStartPositions))
@@ -737,7 +968,7 @@ class DELTR_Evaluator():
                                                        result_nonprotected,
                                                        chunkStartPositions,
                                                        filename,
-                                                       self.__binSize / 2)
+                                                       self.__chunkSize / 2)
 
     def _protected_percentage_per_chunk_average_all_queries(self):
         '''
@@ -759,7 +990,7 @@ class DELTR_Evaluator():
             data_matriks[name] = temp.reset_index(drop=True)
             print(data_matriks.shape)
 
-        chunkStartPositions = np.arange(0, shortest_query, self.__binSize)
+        chunkStartPositions = np.arange(0, shortest_query, self.__chunkSize)
 
         result_protected = np.empty(len(chunkStartPositions))
         result_nonprotected = np.empty(len(chunkStartPositions))
@@ -798,7 +1029,7 @@ class DELTR_Evaluator():
                                                    result_nonprotected,
                                                    chunkStartPositions,
                                                    self.__plotFilename,
-                                                   self.__binSize / 2)
+                                                   self.__chunkSize / 2)
 
     def __plot_protected_percentage_per_chunk(self, prot, nonprot, x_ticks, plot_filename, bar_width):
         mpl.rcParams.update({'font.size': 30, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
