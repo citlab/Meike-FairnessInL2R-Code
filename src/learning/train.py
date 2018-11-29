@@ -54,6 +54,7 @@ class DELTR_Trainer():
         self.__protectedAttribute = protAttr
 
         # switch off exposure calculation if gamma is zero, because it's faster
+        self.__noExposure = False
         if gamma == 0:
             self.__noExposure = True
 
@@ -73,6 +74,7 @@ class DELTR_Trainer():
             # also switch off exposure calculation, as not needed, which speeds up training
             self.__noExposure = True
         # TODO: Steffi --> warum wandelst du den dataframe in ein np-array um? schreib mal einen Kommentar dazu
+        # cast dataframe entries to numeric values
         data = data.apply(pd.to_numeric, errors='ignore')
         print(data)
 
@@ -105,9 +107,10 @@ class DELTR_Trainer():
         m = featureMatrix.shape[0]
         n_features = featureMatrix.shape[1]
 
-        prot_idx = np.reshape(featureMatrix[:, self.__protCol] == np.repeat(self.__protAttr, m), (m, 1))
+        prot_idx = np.reshape(featureMatrix[:, self.__protectedColumn] == np.repeat(self.__protectedAttribute, m), (m, 1))
         # linear neural network parameter initialization
         omega = (np.random.rand(n_features, 1) * self.__initVar).reshape(-1)
+        #omega = (0.01, 0.01)
 
         cost_converge_J = np.zeros((self.__numberIterations, 1))
 #         cost_converge_L = np.zeros((self.__numberIterations, 1))
@@ -121,7 +124,9 @@ class DELTR_Trainer():
 
             # forward propagation
             predictedScores = np.dot(featureMatrix, omega)
-            predictedScores = np.reshape(np.asarray(predictedScores).astype('float'), (len(predictedScores), 1))
+            predictedScores = np.reshape(predictedScores,(featureMatrix.shape[0], 1))
+            #predictedScores = np.reshape(np.asarray(predictedScores).astype('float'), (len(predictedScores), 1))
+
             # cost
             if self.__quiet == False:
                 print('computing cost')
@@ -135,7 +140,7 @@ class DELTR_Trainer():
                 print("computing gradient")
 
             grad = self._calculateGradient(featureMatrix, trainingScores, predictedScores, query_ids, prot_idx)
-            omega = omega - self.__learningRate * np.sum(np.asarray(grad)[0], axis=1)
+            omega = omega - self.__learningRate * np.sum(np.asarray(grad), axis=0).reshape(-1)
             omega_converge[t, :] = np.transpose(omega[:])
 
             if self.__quiet == False:
@@ -241,13 +246,11 @@ class DELTR_Trainer():
             grad = lambda which_query: L_deriv(which_query)
         else:
             # eq 8 in DELTR paper
-            grad = lambda which_query: self.__gamma * U_deriv(which_query) + L_deriv(which_query)
+            grad = lambda which_query: self.__gamma * U_deriv(which_query) + L_deriv(which_query).reshape(-1)
 
 #         if Globals.ONLY_U:
 #             grad = lambda which_query: gamma * U_deriv(which_query)
-
         results = [grad(query) for query in query_ids]
-
         return np.asarray(results)
 
     def _find_items_per_group_per_query(self, data, query_ids, which_query, prot_idx):
@@ -391,7 +394,7 @@ class DELTR_Trainer():
                                                        all_features,
                                                        group_predictions,
                                                        all_predictions)
-        result = (np.sum(derivative / np.log(2))) / group_predictions.size
+        result = (np.sum(derivative / np.log(2), axis=0)) / group_predictions.size
         return result
 
     def __topp_prot_first_derivative(self, group_features, all_features, group_predictions, all_predictions):
@@ -417,7 +420,7 @@ class DELTR_Trainer():
         result = (numerator1 * numerator2 - np.exp(group_predictions) * numerator3) / denominator
 
         # return result as flat numpy array instead of matrix
-        return np.asarray(result).reshape(-1)
+        return np.asarray(result)
 
     def _topp(self, v):
         """
