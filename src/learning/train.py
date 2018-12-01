@@ -178,7 +178,7 @@ class DELTR_Trainer():
                             -np.dot(np.transpose(self._topp(data_per_query(which_query,
                                                                            training_judgments)[0])),
                                     np.log(self._topp(data_per_query(which_query,
-                                                                     predictions)[0])))
+                                                                     predictions)[0])))/np.log(predictions.size)
 
         if self.__noExposure:
             cost = lambda which_query: loss(which_query)
@@ -191,6 +191,8 @@ class DELTR_Trainer():
                                                               prot_idx) \
                                         ** 2 \
                                         +loss(which_query)
+        print("U: {}".format(self._exposure_diff(predictions,query_ids,1,prot_idx)))
+        print("L: {}".format(loss(1)))
 
         results = [cost(query) for query in query_ids]
 
@@ -238,7 +240,7 @@ class DELTR_Trainer():
                                         np.exp(data_per_query(which_query,
                                                               predictions)[0]))
 
-        L_deriv = lambda which_query:-l1(which_query) + l2(which_query) * l3(which_query)
+        L_deriv = lambda which_query:(-l1(which_query) + l2(which_query) * l3(which_query))/np.log(predictions.size)
 
         if self.__noExposure:
             # standard L2R that only considers loss
