@@ -20,7 +20,7 @@ class DELTR_Predictor():
         self.__quiet = quiet
 
     def predict(self):
-        testData = pd.read_csv(self.__pathToTestData, decimal=',')
+        testData = pd.read_csv(self.__pathToTestData, decimal=',', header=None)
         testData = testData.apply(pd.to_numeric, errors='ignore')
         if self.__quiet == False:
             print(testData)
@@ -52,11 +52,14 @@ class DELTR_Predictor():
         '''
         read model from disk and return it as np-array containing floats
         '''
-        with open(self.__pathToModelFile, 'r', encoding='utf-8-sig') as file:
-            for line in file:
-                omega = np.asarray(line.split(" "), dtype='float64')
-                if self.__quiet == False:
-                    print(omega)
+        omega = np.load(self.__pathToModelFile)
+        if self.__quiet == False:
+            print(omega)
+        # with open(self.__pathToModelFile, 'r', encoding='utf-8-sig') as file:
+        #     for line in file:
+        #         omega = np.asarray(line.split(" "), dtype='float64')
+        #         if self.__quiet == False:
+        #             print(omega)
         return omega
 
     def _prepareData(self, testData):
