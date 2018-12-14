@@ -859,7 +859,8 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'TREC/fold_2/FA-IR/',
                              self.__trainingDir + 'TREC/fold_3/FA-IR/',
                              self.__trainingDir + 'TREC/fold_4/FA-IR/',
-                             self.__trainingDir + 'TREC/fold_5/FA-IR/']
+                             self.__trainingDir + 'TREC/fold_5/FA-IR/',
+                             self.__trainingDir + 'TREC/fold_6/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1003,11 +1004,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/gender/FA-IR/',
-                             self.__trainingDir + 'LawStudents/gender/FA-IR/',
-                             self.__trainingDir + 'LawStudents/gender/FA-IR/',
-                             self.__trainingDir + 'LawStudents/gender/FA-IR/',
-                             self.__trainingDir + 'LawStudents/gender/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/gender/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1151,11 +1148,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_asian/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_asian/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_asian/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_asian/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1299,11 +1292,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_black/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_black/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_black/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_black/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_black/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1447,11 +1436,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1595,11 +1580,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_mexican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_mexican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_mexican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_mexican/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1743,11 +1724,7 @@ class DELTR_Evaluator():
             # FA*IR as post-processing evaluation
 
             pString = "p=01_"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/',
-                             self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/']
+            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/']
 
             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
@@ -1868,7 +1845,8 @@ class DELTR_Evaluator():
         pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
         predictedGroups = self.__predictions.groupby(self.__predictions['query_id'], as_index=True, sort=False)
-        originalGroups = self.__original.groupby(self.__predictions['query_id'], as_index=True, sort=False)
+#         originalGroups = self.__original.groupby(self.__predictions['query_id'], as_index=True, sort=False)
+        originalGroups = self.__original.groupby(self.__original['query_id'], as_index=True, sort=False)
 
         result = pd.DataFrame(np.nan,
                               index=range(0, len(predictedGroups)),
@@ -1883,6 +1861,7 @@ class DELTR_Evaluator():
 
         i = 0
         for name, predGroup in predictedGroups:
+            print(name)
             origGroup = originalGroups.get_group(name)
 
             predGroup = predGroup.reset_index()
