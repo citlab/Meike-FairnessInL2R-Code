@@ -32,7 +32,7 @@ def rerank_featurevectors(dataDescription):
             # candidate_row = pd.DataFrame(data_query.query("uuid=='" + str(candidate.uuid) + "'"))
             candidate_row = data_query[data_query.uuid == candidate.uuid]
 
-            candidate_row.iloc[0, data_query.columns.get_loc(dataDescription.judgment)] = candidate.qualification
+            candidate_row.iloc[0, data_query.columns.get_loc(dataDescription.judgment)] = (candidate.qualification / len(fairRanking) )
 
             reranked_features = reranked_features.append(candidate_row.iloc[0])
 

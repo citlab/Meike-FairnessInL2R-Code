@@ -4,8 +4,8 @@ import pandas as pd
 
 # Rerank the following datasets:
 TREC = True
-LSAT = True
-ChileUniversity = True
+LSAT = False
+ChileUniversity = False
 
 if TREC:
     """
