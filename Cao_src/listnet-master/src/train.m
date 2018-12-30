@@ -47,7 +47,7 @@ arg_list = argv ();
 %training_file = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_train.txt'
 %model_file = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/race_puertorican/COLORBLIND/model.m'
 
-FEAT_START = 3
+FEAT_START = 2
 
 directory = arg_list{1,1}
 training_file = arg_list{2,1}
