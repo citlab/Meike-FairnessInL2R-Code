@@ -137,7 +137,7 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/PREPROCESSED/',
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
 
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
@@ -328,7 +328,7 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/PREPROCESSED/',
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -859,7 +859,7 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'TREC/fold_5/PREPROCESSED/',
                              self.__trainingDir + 'TREC/fold_6/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1034,7 +1034,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/gender/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/gender/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1190,7 +1190,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1346,7 +1346,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_black/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/race_black/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1502,7 +1502,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1657,7 +1657,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
@@ -1813,7 +1813,7 @@ class DELTR_Evaluator():
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/PREPROCESSED/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
 
