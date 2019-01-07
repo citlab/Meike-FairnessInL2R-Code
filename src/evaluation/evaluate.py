@@ -293,7 +293,7 @@ class DELTR_Evaluator():
         ###########################################################################################
         ###########################################################################################
 
-        elif self.__dataset == 'engineering-highschool-withoutSemiPrivate':git 
+        elif self.__dataset == 'engineering-highschool-withoutSemiPrivate':
             gamma = 'colorblind'
             pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_1/GAMMA=0/',
                                   self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_2/GAMMA=0/',
