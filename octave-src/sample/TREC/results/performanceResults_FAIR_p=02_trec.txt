@@ -1,24 +1,23 @@
-query_id                 30.500
-exposure_prot_pred        0.236
-exposure_nprot_pred       0.252
-exp_diff_pred             0.016
-exposure_prot_orig        0.207
-exposure_nprot_orig       0.256
-exp_diff_orig             0.049
-precision_top1            0.300
-precision_top5            0.193
-precision_top10           0.178
-precision_top20           0.216
-precision_top100          0.575
-precision_top500          0.406
-prot_pos_mean_pred       86.907
-nprot_pos_mean_pred     102.646
-prot_pos_median_pred     89.050
-nprot_pos_median_pred   103.725
-prot_pos_mean_orig      174.496
-nprot_pos_mean_orig      92.647
-prot_pos_median_orig    190.408
-nprot_pos_median_orig    93.025
-kendall_tau               0.160
-p_value                   0.043
-dtype: float64
+query_id,30.5
+exposure_prot_pred,0.23638179783434285
+exposure_nprot_pred,0.25223186467692243
+exp_diff_pred,0.01585006684257991
+exposure_prot_orig,0.2066383529783258
+exposure_nprot_orig,0.2556598682328809
+exp_diff_orig,0.04902151525455508
+precision_top1,0.3
+precision_top5,0.1933333333333333
+precision_top10,0.17833333333333326
+precision_top20,0.21583333333333338
+precision_top100,0.5748333333333334
+precision_top500,0.40633333333333305
+prot_pos_mean_pred,86.90696248196251
+nprot_pos_mean_pred,102.64649269289934
+prot_pos_median_pred,89.05
+nprot_pos_median_pred,103.725
+prot_pos_mean_orig,174.49563492063487
+nprot_pos_mean_orig,92.64716014897581
+prot_pos_median_orig,190.40833333333333
+nprot_pos_median_orig,93.025
+kendall_tau,0.16015510130354274
+p_value,0.0433710983201198
