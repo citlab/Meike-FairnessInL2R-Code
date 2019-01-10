@@ -122,6 +122,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -290,6 +293,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -460,6 +466,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -628,6 +637,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -800,6 +812,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -964,6 +979,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -1107,6 +1125,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -1264,6 +1285,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = 'small'
@@ -1395,6 +1419,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -1540,6 +1567,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -1683,6 +1713,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -1994,14 +2027,17 @@ class DELTR_Evaluator():
                                                        filename,
                                                        self.__chunkSize / 2)
 
-    def __protected_percentage_per_chunk_average_all_queries(self):
+    def __protected_percentage_per_chunk_average_all_queries(self, plotGroundTruth=False):
         '''
         calculates percentage of protected (non-protected resp.) for each chunk of the ranking
         plots them into a figure
 
         averages results over all queries
         '''
-        rankingsPerQuery = self.__predictions.groupby(self.__predictions['query_id'], as_index=False, sort=False)
+        if plotGroundTruth:
+            rankingsPerQuery = self.__original.groupby(self.__original['query_id'], as_index=False, sort=False)
+        else:
+            rankingsPerQuery = self.__predictions.groupby(self.__predictions['query_id'], as_index=False, sort=False)
         shortest_query = math.inf
 
         data_matriks = pd.DataFrame()
