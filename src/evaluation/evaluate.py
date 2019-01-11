@@ -187,15 +187,14 @@ class DELTR_Evaluator():
 
             #######################################################################################
             # FA*IR as post-processing evaluation
-
-            pString = "p=*"
+            pString = ""
             pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/FA-IR/',
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/FA-IR/',
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/FA-IR/',
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/FA-IR/',
                              self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/FA-IR/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores p=pString)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -207,7 +206,8 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -217,7 +217,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -227,14 +227,14 @@ class DELTR_Evaluator():
 
             #######################################################################################
             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2)
 
         ###########################################################################################
         ###########################################################################################
@@ -329,7 +329,7 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/FA-IR/',
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/FA-IR/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -341,7 +341,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -351,7 +351,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -361,284 +361,284 @@ class DELTR_Evaluator():
 
             #######################################################################################
             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
-        ###########################################################################################
-        elif self.__dataset == 'engineering-gender-withSemiPrivate':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
-
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_2/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_3/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_4/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/gender/fold_5/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
-        ###########################################################################################
-
-        elif self.__dataset == 'engineering-highschool-withSemiPrivate':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
-
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/COLORBLIND/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=SMALL/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=LARGE/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/FA-IR/',
-                             self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2)
+
+#         #########################################################################################
+#         ##########################################################################################
+#          elif self.__dataset == 'engineering-gender-withSemiPrivate':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
+#
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_2/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_3/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_4/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_5/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_2/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_3/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_4/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_5/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/gender/fold_1/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_2/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_3/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_4/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/gender/fold_5/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
+#
+#         ###########################################################################################
+#         ###########################################################################################
+#
+#         elif self.__dataset == 'engineering-highschool-withSemiPrivate':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
+#                                   self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
+#
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/COLORBLIND/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=0/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=SMALL/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/GAMMA=LARGE/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'ChileUni/Semi/highschool/fold_1/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_2/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_3/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_4/FA-IR/',
+#                              self.__trainingDir + 'ChileUni/Semi/highschool/fold_5/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
+
+        ##########################################################################################
         ###########################################################################################
 
         elif self.__dataset == 'trec':
@@ -737,7 +737,7 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'TREC/fold_5/FA-IR/',
                              self.__trainingDir + 'TREC/fold_6/FA-IR/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -749,7 +749,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -759,7 +759,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -769,14 +769,14 @@ class DELTR_Evaluator():
 
             #######################################################################################
             utility1, utility2, fairness1, fairness2 = "precision-top5", "precision-top10", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2)
 
         ###########################################################################################
         ###########################################################################################
@@ -846,7 +846,7 @@ class DELTR_Evaluator():
             pString = "p=p*"
             pathsToScores = [self.__trainingDir + 'LawStudents/gender/FA-IR/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -858,7 +858,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -868,7 +868,7 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -878,123 +878,123 @@ class DELTR_Evaluator():
 
             #######################################################################################
             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2)
 
-        ###########################################################################################
-        ###########################################################################################
-
-        elif self.__dataset == 'law-asian':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
+#         ###########################################################################################
+#         ###########################################################################################
+#
+#         elif self.__dataset == 'law-asian':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_asian/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
 
         ###########################################################################################
         ###########################################################################################
@@ -1064,7 +1064,7 @@ class DELTR_Evaluator():
             pString = "p=p*"
             pathsToScores = [self.__trainingDir + 'LawStudents/race_black/FA-IR/']
 
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
@@ -1076,377 +1076,373 @@ class DELTR_Evaluator():
             #--------------------------------------------------------------------------------------
 
             pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+            self.__original, self.__predictions = self.__prepareData(pathsToScores)
             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
 
             #######################################################################################
             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
-        ###########################################################################################
-
-        elif self.__dataset == 'law-hispanic':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
-        ###########################################################################################
-
-        elif self.__dataset == 'law-mexican':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-        ###########################################################################################
-        ###########################################################################################
-
-        elif self.__dataset == 'law-puertorican':
-            gamma = 'colorblind'
-            pathsForColorblind = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/COLORBLIND/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
-
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
-            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
-            #######################################################################################
-
-            gamma = '0'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'small'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=SMALL/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
-
-            #######################################################################################
-
-            gamma = 'large'
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=LARGE/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
-
-            #######################################################################################
-            # FA*IR as post-processing evaluation
-
-            pString = "p=p*"
-            pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/']
-
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
-
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*-01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
-            #--------------------------------------------------------------------------------------
-
-            pString = "p=p*+01"
-            self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
-
-            #######################################################################################
-            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility1, fairness2)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness1)
-            filename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
-            self.__scatterPlot(filename, utility2, fairness2)
-
-    def __prepareData(self, pathsToScores, pathsForColorblind=None, pString=""):
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1)
+            scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2)
+
+#         ###########################################################################################
+#         ###########################################################################################
+#
+#         elif self.__dataset == 'law-hispanic':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_hispanic/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
+#
+#         ###########################################################################################
+#         ###########################################################################################
+#
+#         elif self.__dataset == 'law-mexican':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_mexican/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
+#
+#         ###########################################################################################
+#         ###########################################################################################
+#
+#         elif self.__dataset == 'law-puertorican':
+#             gamma = 'colorblind'
+#             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/COLORBLIND/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pathsForColorblind)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+#
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+#             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+#
+#             #######################################################################################
+#
+#             gamma = '0'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=0/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'small'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=SMALL/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#
+#             gamma = 'large'
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/GAMMA=LARGE/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             # FA*IR as post-processing evaluation
+#
+#             pString = "p=p*"
+#             pathsToScores = [self.__trainingDir + 'LawStudents/race_puertorican/FA-IR/']
+#
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#
+#             self.__experimentNamesAndFiles["fair-post-p=p*"] = self.__evaluationFilename
+#
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*-01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*-01"] = self.__evaluationFilename
+#             #--------------------------------------------------------------------------------------
+#
+#             pString = "p=p*+01"
+#             self.__original, self.__predictions = self.__prepareData(pathsToScores, pString=pString)
+#             self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
+#             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
+#
+#             self.__protected_percentage_per_chunk_average_all_queries()
+#             self.__evaluate()
+#             self.__experimentNamesAndFiles["fair-post-p=p*+01"] = self.__evaluationFilename
+#
+#             #######################################################################################
+#             utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top500", "exposure-prot-pred", "prot-pos-median-pred"
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility1, fairness2)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness1)
+#             scatterFilename = self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png'
+#             self.__scatterPlot(scatterFilename, utility2, fairness2)
+
+    def __prepareData(self, pathsToScores, pathsForColorblind=None, p=None):
         '''
         reads training scores and predictions from disc and arranges them NICELY into a dataframe
         '''
-        trainingfiles = (dirname + 'trainingScores_ORIG.pred' for dirname in pathsToScores)
-        predictionFiles = (dirname + pString + 'predictions_SORTED.pred' for dirname in pathsToScores)
+        trainingfiles = list()
+        predictionfiles = list()
+        for dirName in pathsToScores:
+            for _, _, filenames in os.walk(dirName):
+                for fileName in filenames:
+                    if 'trainingScores_ORIG.pred' in fileName:
+                        trainingfiles.append(str(dirName + fileName))
+                    if 'predictions_SORTED.pred' and p in fileName:
+                        predictionfiles.append(str(dirName + fileName))
         trainingScores = pd.concat((pd.read_csv(file,
                                                 sep=",",
                                                 names=self.__columnNames) \
                                     for file in trainingfiles))
-
         predictedScores = pd.concat((pd.read_csv(file,
                                                 sep=",",
                                                 names=self.__columnNames) \
-                                    for file in predictionFiles))
+                                    for file in predictionfiles))
 
         if pathsForColorblind is not None:
             # if we want to evaluate a colorblind training, we have to put the protectedAttribute
@@ -1480,7 +1476,6 @@ class DELTR_Evaluator():
 
         i = 0
         for name, predGroup in predictedGroups:
-            print(name)
             origGroup = originalGroups.get_group(name)
 
             predGroup = predGroup.reset_index()
@@ -1636,7 +1631,6 @@ class DELTR_Evaluator():
         for name, rank in rankingsPerQuery:
             temp = rank['prot_attr'].head(shortest_query)
             data_matriks[name] = temp.reset_index(drop=True)
-            print(data_matriks.shape)
 
         chunkStartPositions = np.arange(0, shortest_query, self.__chunkSize)
 
@@ -1706,8 +1700,6 @@ class DELTR_Evaluator():
 
     def __add_prot_to_colorblind(self, trainingScoresWithProtected, colorblind_orig, colorblind_pred):
         orig_prot_attr = trainingScoresWithProtected['prot_attr']
-        print(colorblind_orig.index)
-        print(orig_prot_attr.index)
         colorblind_orig["prot_attr"] = orig_prot_attr
 
         for doc_id in colorblind_orig['doc_id']:
