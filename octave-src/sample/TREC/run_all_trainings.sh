@@ -21,7 +21,11 @@ FOLD=fold_1
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
 
 #echo "$FOLD GAMMA=0..."
 
@@ -45,7 +49,11 @@ FOLD=fold_2
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
 
 #echo "$FOLD GAMMA=0..."
 #cd $PATH_TO_EXECUTABLE_DELTR 
@@ -67,7 +75,11 @@ FOLD=fold_3
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
 
 #echo "$FOLD GAMMA=0..."
 #cd $PATH_TO_EXECUTABLE_DELTR 
@@ -89,7 +101,11 @@ FOLD=fold_4
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
 
 #echo "$FOLD GAMMA=0..."
 #cd $PATH_TO_EXECUTABLE_DELTR 
@@ -111,7 +127,11 @@ FOLD=fold_5
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
 
 #echo "$FOLD GAMMA=0..."
 #cd $PATH_TO_EXECUTABLE_DELTR 
@@ -133,4 +153,8 @@ FOLD=fold_6
 
 echo "$FOLD PREPROCESSED..."
 cd $PATH_TO_EXECUTABLE_LISTNET
-./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+#./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PPlus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m
+
+./train.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/ $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_train_RERANKED_PMinus.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m
