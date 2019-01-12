@@ -4,7 +4,7 @@ from fair.dataset_creator.candidate import Candidate
 import pandas as pd
 
 
-def rerank_featurevectors(dataDescription):
+def rerank_featurevectors(dataDescription, p_deviation=0.0):
     file = open(dataDescription.path, 'r')
     data = None
     if dataDescription.header_in_file == None:
@@ -18,12 +18,18 @@ def rerank_featurevectors(dataDescription):
 
     # re-rank with fair for every query
     for query in data[dataDescription.query_id].unique():
-        print("Rerank for query " + str(query))
+        #print("Rerank for query " + str(query))
         data_query = data.query(dataDescription.query_id + "==" + str(query))
 
         data_query, protected, nonProtected = create(data_query, dataDescription)
 
-        p = len(data_query.query(dataDescription.protected_attribute + "==" + str(dataDescription.protected_attribute_value))) / len(data_query)
+        p = (len(data_query.query(dataDescription.protected_attribute + "==" + str(dataDescription.protected_attribute_value))) / len(data_query) + p_deviation)
+
+        if("TREC" in dataDescription.path):
+            p = 0.105 + p_deviation
+
+        print("p value for query " + str(query))
+        print(p)
         fairRanking, fairNotSelected = fair.fairRanking(dataDescription.k, protected, nonProtected, p, dataDescription.alpha)
         fairRanking = setNewQualifications(fairRanking)
 
