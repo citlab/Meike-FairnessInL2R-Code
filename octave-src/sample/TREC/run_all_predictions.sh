@@ -16,8 +16,13 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
-#
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
+
+
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
 #
@@ -31,7 +36,12 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
+
 
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
@@ -46,7 +56,11 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
 
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
@@ -63,7 +77,11 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
 
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
@@ -79,7 +97,11 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
 
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
@@ -95,7 +117,11 @@ echo "$FOLD predictions..."
 cd $PATH_TO_EXECUTABLE_LISTNET
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/COLORBLIND/
 
-./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+#./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PPlus/
+
+./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/PREPROCESSED_PMinus/
 
 #cd $PATH_TO_EXECUTABLE_DELTR
 #./predict.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/features_withListNetFormat_withGender_withZscore_candidateAmount-200_test.csv $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_BIG_TREC_DATASETS/$FOLD/GAMMA\=0/
