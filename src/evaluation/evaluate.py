@@ -8,6 +8,8 @@ import pandas as pd
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import matplotlib.colors as colors
 import scipy.stats as stats
 import math
 import os
@@ -33,8 +35,9 @@ class DELTR_Evaluator():
     :field __dataset:                 string, specifies which dataset to evaluate
     :field __chunkSize:               int, defines how many items belong to one chunk in the bar plots
     :field __columnNames:             predictions are read into dataframe with defined column names
-    :field __predictions:              np-array with predicted scores
+    :field __predictions:             np-array with predicted scores
     :field __original:                np-array with training scores
+    :field __experimentNamesAndFiles: collects experiment names and result filenames to use for scatter plot
     :field __evaluationFilename       string, filename to store the evaluation results (without path)
     :field __plotFilename             string, filename to store the barplots (without path)
     '''
@@ -48,6 +51,7 @@ class DELTR_Evaluator():
         self.__dataset = dataset
         self.__chunkSize = binSize
         self.__columnNames = ["query_id", "doc_id", "prediction", "prot_attr"]
+        self.__experimentNamesAndFiles = {}
 
     def evaluate(self):
         if self.__dataset == 'synthetic':
@@ -122,6 +126,11 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__experimentNamesAndFiles["colorblind"] = self.__evaluationFilename
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = 'PREPROCESSED'
@@ -161,6 +170,8 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__experimentNamesAndFiles["gamma=0"] = self.__evaluationFilename
+
             #######################################################################################
 
             gamma = 'small'
@@ -177,6 +188,8 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__experimentNamesAndFiles["gamma=small"] = self.__evaluationFilename
+
             #######################################################################################
 
             gamma = 'large'
@@ -192,6 +205,8 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__experimentNamesAndFiles["gamma=large"] = self.__evaluationFilename
 
             #######################################################################################
             # FA*IR as post-processing evaluation
@@ -210,6 +225,8 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__experimentNamesAndFiles["fair-post-p=01"] = self.__evaluationFilename
+
             #--------------------------------------------------------------------------------------
 
             pString = "p=02_"
@@ -219,7 +236,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
-
+            self.__experimentNamesAndFiles["fair-post-p=02"] = self.__evaluationFilename
             #--------------------------------------------------------------------------------------
 
             pString = "p=03_"
@@ -229,6 +246,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=03"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -239,6 +257,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=04"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -249,6 +268,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=05"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -259,6 +279,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=06"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -269,6 +290,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=07"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -279,6 +301,7 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=08"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
 
@@ -289,6 +312,16 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+            self.__experimentNamesAndFiles["fair-post-p=09"] = self.__evaluationFilename
+
+            #######################################################################################
+            utility1, utility2, fairness1, fairness2 = "kendall-tau", "precision-top100", "exposure-prot-pred", "prot-pos-median-pred"
+            filename = self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness1 + self.__dataset + '.png'
+#                          self.__resultDir + 'scatter_' + '_' + utility1 + '-' + fairness2 + self.__dataset + '.png',
+#                          self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness1 + self.__dataset + '.png',
+#                          self.__resultDir + 'scatter_' + '_' + utility2 + '-' + fairness2 + self.__dataset + '.png']
+
+            self.__scatterPlot(filename, utility1, fairness1)
 
         ###########################################################################################
         ###########################################################################################
@@ -313,6 +346,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
             gamma = 'PREPROCESSED'
@@ -503,6 +539,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = '0'
@@ -671,6 +710,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
 
@@ -842,6 +884,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
             gamma = 'PREPROCESSED'
@@ -1029,6 +1074,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
             gamma = 'PREPROCESSED'
             pathsForColorblind = [self.__trainingDir + 'LawStudents/gender/GAMMA=0/']
@@ -1184,6 +1232,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
             gamma = 'PREPROCESSED'
@@ -1365,6 +1416,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
 
             gamma = 'small'
@@ -1496,6 +1550,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
             gamma = 'PREPROCESSED'
@@ -1652,6 +1709,9 @@ class DELTR_Evaluator():
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
 
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
+
             #######################################################################################
             gamma = 'PREPROCESSED'
             pathsForColorblind = [self.__trainingDir + 'LawStudents/race_mexican/GAMMA=0/']
@@ -1807,6 +1867,9 @@ class DELTR_Evaluator():
 
             self.__protected_percentage_per_chunk_average_all_queries()
             self.__evaluate()
+
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
+            self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
             #######################################################################################
             gamma = 'PREPROCESSED'
@@ -1986,14 +2049,14 @@ class DELTR_Evaluator():
 
         result = pd.DataFrame(np.nan,
                               index=range(0, len(predictedGroups)),
-                              columns=['query_id',
-                                       'exposure_prot_pred', 'exposure_nprot_pred', 'exp_diff_pred',
-                                       'exposure_prot_orig', 'exposure_nprot_orig', 'exp_diff_orig',
-                                       'precision_top1', 'precision_top5', 'precision_top10',
-                                       'precision_top20', 'precision_top100', 'precision_top500',
-                                       'prot_pos_mean_pred', 'nprot_pos_mean_pred', 'prot_pos_median_pred', 'nprot_pos_median_pred',
-                                       'prot_pos_mean_orig', 'nprot_pos_mean_orig', 'prot_pos_median_orig', 'nprot_pos_median_orig',
-                                       'kendall_tau', 'p_value'])
+                              columns=['query-id',
+                                       'exposure-prot-pred', 'exposure-nprot-pred', 'exp-diff-pred',
+                                       'exposure-prot-orig', 'exposure-nprot-orig', 'exp-diff-orig',
+                                       'precision-top1', 'precision-top5', 'precision-top10',
+                                       'precision-top20', 'precision-top100', 'precision-top500',
+                                       'prot-pos-mean-pred', 'nprot-pos-mean-pred', 'prot-pos-median-pred', 'nprot-pos-median-pred',
+                                       'prot-pos-mean-orig', 'nprot-pos-mean-orig', 'prot-pos-median-orig', 'nprot-pos-median-orig',
+                                       'kendall-tau', 'p-value'])
 
         i = 0
         for name, predGroup in predictedGroups:
@@ -2003,37 +2066,37 @@ class DELTR_Evaluator():
             predGroup = predGroup.reset_index()
             origGroup = origGroup.reset_index()
 
-            result.loc[i]['query_id'] = name
-            result.loc[i]['exposure_prot_pred'] = self.__calculate_group_exposure(predGroup, origGroup)[0]
-            result.loc[i]['exposure_nprot_pred'] = self.__calculate_group_exposure(predGroup, origGroup)[1]
-            result.loc[i]['exp_diff_pred'] = self.__calculate_group_exposure(predGroup, origGroup)[2]
-            result.loc[i]['exposure_prot_orig'] = self.__calculate_group_exposure(predGroup, origGroup)[3]
-            result.loc[i]['exposure_nprot_orig'] = self.__calculate_group_exposure(predGroup, origGroup)[4]
-            result.loc[i]['exp_diff_orig'] = self.__calculate_group_exposure(predGroup, origGroup)[5]
-            result.loc[i]['prot_pos_mean_pred'] = self.__avg_group_position(predGroup)[0]
-            result.loc[i]['nprot_pos_mean_pred'] = self.__avg_group_position(predGroup)[1]
-            result.loc[i]['prot_pos_median_pred'] = self.__avg_group_position(predGroup)[2]
-            result.loc[i]['nprot_pos_median_pred'] = self.__avg_group_position(predGroup)[3]
-            result.loc[i]['prot_pos_mean_orig'] = self.__avg_group_position(origGroup)[0]
-            result.loc[i]['nprot_pos_mean_orig'] = self.__avg_group_position(origGroup)[1]
-            result.loc[i]['prot_pos_median_orig'] = self.__avg_group_position(origGroup)[2]
-            result.loc[i]['nprot_pos_median_orig'] = self.__avg_group_position(origGroup)[3]
-            result.loc[i]['precision_top1'] = self.__precision_at_position(predGroup, origGroup, 1, 'doc_id')
-            result.loc[i]['precision_top5'] = self.__precision_at_position(predGroup, origGroup, 5, 'doc_id')
-            result.loc[i]['precision_top10'] = self.__precision_at_position(predGroup, origGroup, 10, 'doc_id')
-            result.loc[i]['precision_top20'] = self.__precision_at_position(predGroup, origGroup, 20, 'doc_id')
+            result.loc[i]['query-id'] = name
+            result.loc[i]['exposure-prot-pred'] = self.__calculate_group_exposure(predGroup, origGroup)[0]
+            result.loc[i]['exposure-nprot-pred'] = self.__calculate_group_exposure(predGroup, origGroup)[1]
+            result.loc[i]['exp-diff-pred'] = self.__calculate_group_exposure(predGroup, origGroup)[2]
+            result.loc[i]['exposure-prot-orig'] = self.__calculate_group_exposure(predGroup, origGroup)[3]
+            result.loc[i]['exposure-nprot-orig'] = self.__calculate_group_exposure(predGroup, origGroup)[4]
+            result.loc[i]['exp-diff-orig'] = self.__calculate_group_exposure(predGroup, origGroup)[5]
+            result.loc[i]['prot-pos-mean-pred'] = self.__avg_group_position(predGroup)[0]
+            result.loc[i]['nprot-pos-mean-pred'] = self.__avg_group_position(predGroup)[1]
+            result.loc[i]['prot-pos-median-pred'] = self.__avg_group_position(predGroup)[2]
+            result.loc[i]['nprot-pos-median-pred'] = self.__avg_group_position(predGroup)[3]
+            result.loc[i]['prot-pos-mean-orig'] = self.__avg_group_position(origGroup)[0]
+            result.loc[i]['nprot-pos-mean-orig'] = self.__avg_group_position(origGroup)[1]
+            result.loc[i]['prot-pos-median-orig'] = self.__avg_group_position(origGroup)[2]
+            result.loc[i]['nprot-pos-median-orig'] = self.__avg_group_position(origGroup)[3]
+            result.loc[i]['precision-top1'] = self.__precision_at_position(predGroup, origGroup, 1, 'doc_id')
+            result.loc[i]['precision-top5'] = self.__precision_at_position(predGroup, origGroup, 5, 'doc_id')
+            result.loc[i]['precision-top10'] = self.__precision_at_position(predGroup, origGroup, 10, 'doc_id')
+            result.loc[i]['precision-top20'] = self.__precision_at_position(predGroup, origGroup, 20, 'doc_id')
             if (not synthetic) :
-                result.loc[i]['precision_top100'] = self.__precision_at_position(predGroup, origGroup, 100, 'doc_id')
-                result.loc[i]['precision_top500'] = self.__precision_at_position(predGroup, origGroup, 500, 'doc_id')
-            result.loc[i]['kendall_tau'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[0]
-            result.loc[i]['p_value'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[1]
+                result.loc[i]['precision-top100'] = self.__precision_at_position(predGroup, origGroup, 100, 'doc_id')
+                result.loc[i]['precision-top500'] = self.__precision_at_position(predGroup, origGroup, 500, 'doc_id')
+            result.loc[i]['kendall-tau'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[0]
+            result.loc[i]['p-value'] = stats.kendalltau(origGroup['doc_id'], predGroup['doc_id'])[1]
             i += 1
 
         result = result.mean()
 
         with open(self.__evaluationFilename, "w") as text_file:
+            # write human readable
             print(result, file=text_file)
-        return
 
     def __precision_at_position(self, prediction, original, pos, mergeCol):
         top_pred = prediction.head(n=pos)
@@ -2130,14 +2193,17 @@ class DELTR_Evaluator():
                                                        filename,
                                                        self.__chunkSize / 2)
 
-    def __protected_percentage_per_chunk_average_all_queries(self):
+    def __protected_percentage_per_chunk_average_all_queries(self, plotGroundTruth=False):
         '''
         calculates percentage of protected (non-protected resp.) for each chunk of the ranking
         plots them into a figure
 
         averages results over all queries
         '''
-        rankingsPerQuery = self.__predictions.groupby(self.__predictions['query_id'], as_index=False, sort=False)
+        if plotGroundTruth:
+            rankingsPerQuery = self.__original.groupby(self.__original['query_id'], as_index=False, sort=False)
+        else:
+            rankingsPerQuery = self.__predictions.groupby(self.__predictions['query_id'], as_index=False, sort=False)
         shortest_query = math.inf
 
         data_matriks = pd.DataFrame()
@@ -2229,4 +2295,77 @@ class DELTR_Evaluator():
             colorblind_pred.at[colorblind_pred['doc_id'] == doc_id, 'prot_attr'] = prot_status_for_pred
 
         return colorblind_orig, colorblind_pred
+
+    def __scatterPlot(self, filename, utilityMeasure, fairnessMeasure):
+
+        createPlotFrame = True
+        for key, value in self.__experimentNamesAndFiles.items():
+            data = pd.read_table(value, delim_whitespace=True, header=None)
+            # drop last row
+            data = data[:-1]
+            if createPlotFrame:
+                columnNames = data[0].tolist()
+                columnNames.insert(0, "experimentName")
+                plotFrame = pd.DataFrame(columns=columnNames)
+                createPlotFrame = False
+            rowToAppend = data[1].tolist()
+            rowToAppend.insert(0, key)
+            plotFrame.loc[len(plotFrame)] = rowToAppend
+
+        # keep experiment names for colormap legend, but has to be replaced by integer
+#         experimentsAsInts = np.arange(len(plotFrame))
+#         experimentNames = pd.Series(plotFrame['experimentName'])
+#         plotFrame['experimentName'] = experimentsAsInts
+#         plotFrame = plotFrame.apply(pd.to_numeric)
+
+        plotFrame = plotFrame[:-6]
+
+        mpl.rcParams.update({'font.size': 30, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
+        # avoid type 3 (i.e. bitmap) fonts in figures
+        mpl.rcParams['ps.useafm'] = True
+        mpl.rcParams['pdf.use14corefonts'] = True
+        mpl.rcParams['text.usetex'] = True
+
+#         color_map = {'colorblind': 'red',
+#                      'gamma=0': 'blue',
+#                      'gamma=small': 'yellow',
+#                      'gamma=large': 'orange',
+#                      'fair-post-p=01': 'green',
+#                      'fair-post-p=02': 'black',
+#                      'fair-post-p=03': 'cyan'}
+#         ax = plt.subplot()
+#         x, y = plotFrame[utilityMeasure].apply(pd.to_numeric), plotFrame[fairnessMeasure].apply(pd.to_numeric)
+#         colors = plotFrame['experimentName'].map(color_map)
+#         ax.scatter(x, y, color=colors)
+#         ax.legend()
+
+        fig, ax = plt.subplots()
+
+        colormap = cm.plasma
+        colorlist = [colors.rgb2hex(colormap(i)) for i in np.linspace(0, 0.99, len(plotFrame['experimentName']))]
+        markerlist = ['X', 'P', 'v', '>', '<', 'o', 's', 'D', '*']
+
+        xCol = plotFrame[utilityMeasure].apply(pd.to_numeric)
+        yCol = plotFrame[fairnessMeasure].apply(pd.to_numeric)
+
+        for i, c in enumerate(colorlist):
+
+            x = xCol[i]
+            y = yCol[i]
+            l = plotFrame['experimentName'][i]
+            m = markerlist[i]
+
+            ax.scatter(x, y, label=l, s=50, linewidth=0.1, c=c, marker=m)
+
+        ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
+
+        plt.xlabel(utilityMeasure);
+        plt.ylabel(fairnessMeasure)
+
+#         ax1 = plotFrame.plot.scatter(x=utilityMeasure,
+#                                      y=fairnessMeasure,
+#                                      c='experimentName',
+#                                      colormap='viridis')
+
+        plt.savefig(filename, bbox_inches='tight')
 

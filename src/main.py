@@ -221,7 +221,7 @@ def main():
     elif args.evaluate == ['engineering-gender-withSemiPrivate']:
         resultDir = '../experiments/EngineeringStudents/results/'
         resultDir = '../octave-src/sample/ChileUni/Semi/gender/results/'
-        binSize = 10
+        binSize = 20
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-gender-withSemiPrivate',
                                     resultDir,
@@ -231,7 +231,7 @@ def main():
     elif args.evaluate == ['engineering-highschool-withSemiPrivate']:
         resultDir = '../experiments/EngineeringStudents/results/'
         resultDir = '../octave-src/sample/ChileUni/Semi/highschool/results/'
-        binSize = 10
+        binSize = 20
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-highschool-withSemiPrivate',
                                     resultDir,
@@ -241,7 +241,7 @@ def main():
     elif args.evaluate == ['engineering-gender-withoutSemiPrivate']:
         resultDir = '../experiments/EngineeringStudents/results/'
         resultDir = '../octave-src/sample/ChileUni/NoSemi/gender/results/'
-        binSize = 10
+        binSize = 20
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-gender-withoutSemiPrivate',
                                     resultDir,
@@ -251,7 +251,7 @@ def main():
     elif args.evaluate == ['engineering-highschool-withoutSemiPrivate']:
         resultDir = '../experiments/EngineeringStudents/results/'
         resultDir = '../octave-src/sample/ChileUni/NoSemi/highschool/results/'
-        binSize = 10
+        binSize = 20
         protAttr = 1
         evaluator = DELTR_Evaluator('engineering-highschool-withoutSemiPrivate',
                                     resultDir,
