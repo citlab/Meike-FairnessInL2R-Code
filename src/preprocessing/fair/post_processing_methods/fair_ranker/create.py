@@ -4,10 +4,10 @@ Created on Jan 17, 2017
 @author: meike.zehlike
 '''
 
-from post_processing_methods.fair_ranker.test import FairnessInRankingsTester
+from preprocessing.fair.post_processing_methods.fair_ranker.test import FairnessInRankingsTester
 from scipy.stats.stats import percentileofscore
 from scipy.stats.stats import scoreatpercentile
-from utilsAndConstants.constants import ESSENTIALLY_ZERO
+from preprocessing.fair.utilsAndConstants.constants import ESSENTIALLY_ZERO
 
 
 def feldmanRanking(protectedCandidates, nonProtectedCandidates, k):

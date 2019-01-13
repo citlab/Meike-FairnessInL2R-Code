@@ -1,5 +1,5 @@
-import fair.post_processing_methods.fair_ranker.create as fair
-from fair.dataset_creator.candidate import Candidate
+import preprocessing.fair.post_processing_methods.fair_ranker.create as fair
+from preprocessing.fair.dataset_creator.candidate import Candidate
 
 import pandas as pd
 
@@ -28,8 +28,6 @@ def rerank_featurevectors(dataDescription, p_deviation=0.0):
         if("TREC" in dataDescription.path):
             p = 0.105 + p_deviation
 
-        print("p value for query " + str(query))
-        print(p)
         fairRanking, fairNotSelected = fair.fairRanking(dataDescription.k, protected, nonProtected, p, dataDescription.alpha)
         fairRanking = setNewQualifications(fairRanking)
 
