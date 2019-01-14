@@ -1134,16 +1134,7 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-post-p*"] = self.__evaluationFilename
 
             #--------------------------------------------------------------------------------------
-
-            pString = "p-"
-
-            self.__original, self.__predictions, p_minus = self.__prepareData(pathsToScores, p=pString)
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_FAIR_' + pString + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_FAIR_' + pString + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-            self.__experimentNamesAndFiles["fair-post-p-"] = self.__evaluationFilename
+            # we didn't do p- because p* was 0.06 and p- would have been too low
             #--------------------------------------------------------------------------------------
 
             pString = "p+"
@@ -1168,7 +1159,6 @@ class DELTR_Evaluator():
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
                                'fair-post-p*' : str('FA*IR p=' + p_share),
-                               'fair-post-p-' : str('FA*IR p=' + p_minus),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
