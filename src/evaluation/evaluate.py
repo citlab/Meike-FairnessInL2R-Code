@@ -1829,7 +1829,7 @@ class DELTR_Evaluator():
             y = yColP[i]
             m = markerlist[i]
 
-            ax.scatter(x, y, s=150, linewidth=1, c='orangered', edgecolor='black', marker=m)
+            ax.scatter(x, y, s=250, linewidth=1, c='orangered', edgecolor='black', marker=m)
 
         # plot all non-protected
         for i, l in enumerate(plotFrame['experimentName']):
@@ -1838,7 +1838,7 @@ class DELTR_Evaluator():
             m = markerlist[i]
             readableLabel = legendLabelDict.get(l)
 
-            ax.scatter(x, y, label=readableLabel, s=150, linewidth=1, c='royalblue', edgecolor='black', marker=m)
+            ax.scatter(x, y, label=readableLabel, s=250, linewidth=1, c='royalblue', edgecolor='black', marker=m)
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
         # ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
