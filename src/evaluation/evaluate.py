@@ -237,9 +237,9 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p*=' + p_share),
-                               'fair-post-p-' : str('FA*IR p=' + p_minus),
-                               'fair-post-p+' : str('FA*IR p=' + p_plus)}
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -386,9 +386,9 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p*=' + p_share),
-                               'fair-post-p-' : str('FA*IR p=' + p_minus),
-                               'fair-post-p+' : str('FA*IR p=' + p_plus)}
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -810,9 +810,9 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p*=' + p_share),
-                               'fair-post-p-' : str('FA*IR p=' + p_minus),
-                               'fair-post-p+' : str('FA*IR p=' + p_plus)}
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -934,9 +934,9 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p*=' + p_share),
-                               'fair-post-p-' : str('FA*IR p=' + p_minus),
-                               'fair-post-p+' : str('FA*IR p=' + p_plus)}
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1158,8 +1158,8 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p*=' + p_share),
-                               'fair-post-p+' : str('FA*IR p=' + p_plus)}
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
