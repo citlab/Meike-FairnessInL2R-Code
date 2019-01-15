@@ -277,6 +277,31 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-pre-p*"] = self.__evaluationFilename
             #######################################################################################
 
+            gamma = 'PREPROCESSED_PMinus'
+            pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
+                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
+
+            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/PREPROCESSED_PMinus/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/PREPROCESSED_PMinus/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/PREPROCESSED_PMinus/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/PREPROCESSED_PMinus/',
+                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/PREPROCESSED_PMinus/']
+
+            self.__original, self.__predictions, _ = self.__prepareData(pathsToScores, pathsForColorblind)
+
+            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
+            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
+
+            self.__protected_percentage_per_chunk_average_all_queries()
+            self.__evaluate()
+
+            self.__experimentNamesAndFiles["fair-pre-p-"] = self.__evaluationFilename
+
+            #######################################################################################
+
             gamma = 'PREPROCESSED_PPlus'
             pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
                                   self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
@@ -300,29 +325,6 @@ class DELTR_Evaluator():
 
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
 
-            #######################################################################################
-            gamma = 'PREPROCESSED_PMinus'
-            pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/GAMMA=0/',
-                                  self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/GAMMA=0/']
-
-            pathsToScores = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/PREPROCESSED_PMinus/',
-                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/PREPROCESSED_PMinus/',
-                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_3/PREPROCESSED_PMinus/',
-                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_4/PREPROCESSED_PMinus/',
-                             self.__trainingDir + 'ChileUni/NoSemi/gender/fold_5/PREPROCESSED_PMinus/']
-
-            self.__original, self.__predictions, _ = self.__prepareData(pathsToScores, pathsForColorblind)
-
-            self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
-            self.__plotFilename = self.__resultDir + 'protNonprotDistribution_Gamma=' + gamma + '_' + self.__dataset + '.png'
-
-            self.__protected_percentage_per_chunk_average_all_queries()
-            self.__evaluate()
-
-            self.__experimentNamesAndFiles["fair-pre-p-"] = self.__evaluationFilename
 
             #######################################################################################
 
