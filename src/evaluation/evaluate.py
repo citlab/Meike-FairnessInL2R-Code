@@ -237,7 +237,7 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p=' + p_share),
+                               'fair-post-p*' : str('FA*IR p*=' + p_share),
                                'fair-post-p-' : str('FA*IR p=' + p_minus),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
@@ -386,7 +386,7 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p=' + p_share),
+                               'fair-post-p*' : str('FA*IR p*=' + p_share),
                                'fair-post-p-' : str('FA*IR p=' + p_minus),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
@@ -810,7 +810,7 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p=' + p_share),
+                               'fair-post-p*' : str('FA*IR p*=' + p_share),
                                'fair-post-p-' : str('FA*IR p=' + p_minus),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
@@ -934,7 +934,7 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p=' + p_share),
+                               'fair-post-p*' : str('FA*IR p*=' + p_share),
                                'fair-post-p-' : str('FA*IR p=' + p_minus),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
@@ -1158,7 +1158,7 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR p=' + p_share),
+                               'fair-post-p*' : str('FA*IR p*=' + p_share),
                                'fair-post-p+' : str('FA*IR p=' + p_plus)}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
@@ -1501,7 +1501,8 @@ class DELTR_Evaluator():
         '''
         reads training scores and predictions from disc and arranges them NICELY into a dataframe
         '''
-        pAsNumber = ""
+        collectedPs = []
+        one_p = ""
         trainingfiles = list()
         predictionfiles = list()
         for dirName in pathsToScores:
@@ -1511,8 +1512,8 @@ class DELTR_Evaluator():
                         trainingfiles.append(str(dirName + fileName))
                     if p is not None:
                         if 'predictions_SORTED.pred' and p in fileName:
-                            pAsNumber = re.findall(r'\d+.\d+', fileName)[0]
-                            pAsNumber = pAsNumber[:4]
+                            one_p = re.findall(r'\d+.\d+', fileName)[0]
+                            collectedPs.append(float(one_p))
                             predictionfiles.append(str(dirName + fileName))
                     else:
                         if 'predictions_SORTED.pred' in fileName:
@@ -1537,7 +1538,8 @@ class DELTR_Evaluator():
             predictedScores = self.__add_prot_to_colorblind(trainingScoresWithProtected,
                                                             trainingScores,
                                                             predictedScores)
-        return trainingScores, predictedScores, pAsNumber
+
+        return trainingScores, predictedScores, str(round(np.mean(collectedPs), 3))
 
     def __evaluate(self, synthetic=False):
         pd.set_option('display.float_format', lambda x: '%.3f' % x)
