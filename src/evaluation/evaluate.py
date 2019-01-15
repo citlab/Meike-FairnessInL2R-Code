@@ -579,8 +579,8 @@ class DELTR_Evaluator():
                                'gamma=small': 'DELTR Small Gamma',
                                'gamma=large': 'DELTR Large Gamma',
                                'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-pre-p-': str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p+': str('FA*IR $p^{-}=' + p_minus + '$')}
+                               'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
@@ -1102,8 +1102,8 @@ class DELTR_Evaluator():
                                'gamma=small': 'DELTR Small Gamma',
                                'gamma=large': 'DELTR Large Gamma',
                                'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-pre-p-': str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p+': str('FA*IR $p^{-}=' + p_minus + '$')}
+                               'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
@@ -1290,8 +1290,8 @@ class DELTR_Evaluator():
                                'gamma=small': 'DELTR Small Gamma',
                                'gamma=large': 'DELTR Large Gamma',
                                'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-pre-p-': str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p+': str('FA*IR $p^{-}=' + p_minus + '$')}
+                               'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
