@@ -935,7 +935,7 @@ class DELTR_Evaluator():
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
                                'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_share + '$'),
                                'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
@@ -1841,7 +1841,7 @@ class DELTR_Evaluator():
             ax.scatter(x, y, label=readableLabel, s=150, linewidth=1, c='royalblue', edgecolor='black', marker=m)
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
-        ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
+        # ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
         plt.grid()
         plt.xlabel(utilLabel);
         plt.ylabel(fairLabel)
