@@ -226,32 +226,7 @@ class DELTR_Evaluator():
             self.__evaluate()
             self.__experimentNamesAndFiles["fair-post-p+"] = self.__evaluationFilename
 
-            #######################################################################################
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
-            utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Group Exposure"
-            fairness1NP = "exposure-nprot-pred"
-            fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
-            fairness2NP = "nprot-pos-median-pred"
-
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$')}
-
-            scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility1, fairness2P, fairness2NP, utilityLabel1, fairnessLabel2, legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness1P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1, legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
-
-            #######################################################################################
+            ######################################################################################
 
             gamma = 'PREPROCESSED'
             pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
@@ -276,7 +251,6 @@ class DELTR_Evaluator():
 
             self.__experimentNamesAndFiles["fair-pre-p*"] = self.__evaluationFilename
             #######################################################################################
-
             gamma = 'PREPROCESSED_PMinus'
             pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
                                   self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
@@ -299,9 +273,7 @@ class DELTR_Evaluator():
             self.__evaluate()
 
             self.__experimentNamesAndFiles["fair-pre-p-"] = self.__evaluationFilename
-
             #######################################################################################
-
             gamma = 'PREPROCESSED_PPlus'
             pathsForColorblind = [self.__trainingDir + 'ChileUni/NoSemi/gender/fold_1/GAMMA=0/',
                                   self.__trainingDir + 'ChileUni/NoSemi/gender/fold_2/GAMMA=0/',
@@ -325,34 +297,61 @@ class DELTR_Evaluator():
 
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
 
-
             #######################################################################################
+            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Group Exposure"
+            fairness1NP = "exposure-nprot-pred"
+            fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
+            fairness2NP = "nprot-pos-median-pred"
 
-            self.__experimentNamesAndFiles.pop('fair-post-p*')
-            self.__experimentNamesAndFiles.pop('fair-post-p-')
-            self.__experimentNamesAndFiles.pop('fair-post-p+')
+            legendLabelDict = {'colorblind' : 'Colorblind L2R',
+                               'gamma=0' : 'Standard L2R',
+                               'gamma=small' : 'DELTR Small Gamma',
+                               'gamma=large' : 'DELTR Large Gamma',
+                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$'),
+                                'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
+                                'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
+                                'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+
+            scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
+            scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility1, fairness2P, fairness2NP, utilityLabel1, fairnessLabel2, legendLabelDict)
+            scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness1P + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1, legendLabelDict)
+            scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
+            self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
 
 
-            legendLabelDict = {'colorblind': 'Colorblind L2R',
-                               'gamma=0': 'Standard L2R',
-                               'gamma=small': 'DELTR Small Gamma',
-                               'gamma=large': 'DELTR Large Gamma',
-                               'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
 
-            scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
-                               legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility1, fairness2P, fairness2NP, utilityLabel1, fairnessLabel2,
-                               legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness1P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1,
-                               legendLabelDict)
-            scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
-            self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2,
-                           legendLabelDict)
+            # self.__experimentNamesAndFiles.pop('fair-post-p*')
+            # self.__experimentNamesAndFiles.pop('fair-post-p-')
+            # self.__experimentNamesAndFiles.pop('fair-post-p+')
+            #
+            #
+            # legendLabelDict = {'colorblind': 'Colorblind L2R',
+            #                    'gamma=0': 'Standard L2R',
+            #                    'gamma=small': 'DELTR Small Gamma',
+            #                    'gamma=large': 'DELTR Large Gamma',
+            #                    'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
+            #                    'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
+            #                    'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
+            #
+            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
+            # self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
+            #                    legendLabelDict)
+            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
+            # self.__scatterPlot(scatterFilename, utility1, fairness2P, fairness2NP, utilityLabel1, fairnessLabel2,
+            #                    legendLabelDict)
+            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness1P + self.__dataset + '.png'
+            # self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1,
+            #                    legendLabelDict)
+            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
+            # self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2,
+            #                legendLabelDict)
 
         ###########################################################################################
         ###########################################################################################
@@ -997,7 +996,7 @@ class DELTR_Evaluator():
 
             #######################################################################################
 
-            utility1, utilityLabel1 = "precision-top5", "Precision Top 5"
+            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top10", "Precision Top 10"
             fairness1P, fairnessLabel1 = "exposure-prot-pred", "Group Exposure"
             fairness1NP = "exposure-nprot-pred"
@@ -2216,9 +2215,12 @@ class DELTR_Evaluator():
         return colorblind_orig, colorblind_pred
 
     def __scatterPlot(self, filename, utilityMeasure, fairnessMeasureProtected, fairnessMeasureNonProtected, utilLabel, fairLabel, legendLabelDict):
-
+        print(utilLabel)
+        print(fairLabel)
         createPlotFrame = True
         for key, value in self.__experimentNamesAndFiles.items():
+            print(key)
+            print(value)
             data = pd.read_table(value, delim_whitespace=True, header=None)
             # drop last row
             data = data[:-1]
@@ -2237,35 +2239,33 @@ class DELTR_Evaluator():
         mpl.rcParams['pdf.use14corefonts'] = True
         mpl.rcParams['text.usetex'] = True
 
-        tick_spacing = 0.01
-        markerlist = ['X', 'o', 'v', '>', '<', 'P', 's', 'D', '*']
+        tick_spacing = 0.02
+        markerlist = ['X', 'o', 'v', '>', '<', 'P', 's', 'o', '*', '+']
 
+        print("Protected")
+        print( plotFrame[fairnessMeasureProtected].apply(pd.to_numeric) )
+        print("Noneprotected")
+        print(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric) )
         _, ax = plt.subplots()
         xCol = plotFrame[utilityMeasure].apply(pd.to_numeric)
-        yColP = plotFrame[fairnessMeasureProtected].apply(pd.to_numeric)
-        yColNP = plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric)
+        yCol = plotFrame[fairnessMeasureProtected].apply(pd.to_numeric).div(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric))
 
-        # plot all protected
-        for i, _ in enumerate(plotFrame['experimentName']):
-            x = xCol[i]
-            y = yColP[i]
-            m = markerlist[i]
+        print("Exposure")
+        print(yCol)
 
-            ax.scatter(x, y, s=250, linewidth=1, c='orangered', edgecolor='black', marker=m)
-
-        # plot all non-protected
+        # plot all protected/nonprotected
         for i, l in enumerate(plotFrame['experimentName']):
             x = xCol[i]
-            y = yColNP[i]
+            y = yCol[i]
             m = markerlist[i]
             readableLabel = legendLabelDict.get(l)
 
-            ax.scatter(x, y, label=readableLabel, s=250, linewidth=1, c='royalblue', edgecolor='black', marker=m)
+            ax.scatter(x, y, label=readableLabel, s=150, linewidth=1, c='royalblue', edgecolor='black', marker=m)
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
-        # ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
+        ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
         plt.grid()
-        plt.xlabel(utilLabel);
+        plt.xlabel(utilLabel)
         plt.ylabel(fairLabel)
 
         plt.savefig(filename, bbox_inches='tight')
