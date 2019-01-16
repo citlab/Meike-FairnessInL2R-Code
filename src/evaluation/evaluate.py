@@ -1765,7 +1765,7 @@ class DELTR_Evaluator():
         mpl.rcParams['pdf.use14corefonts'] = True
         mpl.rcParams['text.usetex'] = True
 
-        _, ax = plt.subplots(figsize=(20, 5))
+        _, ax = plt.subplots(figsize=(17, 3))
     #     plt.plot(prot, 'r-')
     #     plt.plot(nonprot, 'b')
         width = bar_width
