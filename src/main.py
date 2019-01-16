@@ -9,6 +9,7 @@ from data_preparation import *
 from learning.train import DELTR_Trainer
 from learning.predict import DELTR_Predictor
 from evaluation.evaluate import DELTR_Evaluator
+from preprocessing.preprocess import Preprocessing
 
 # TODO: bash Skripte anpassen, sodass Experimente mit Python laufen
 # TODO: Experimente mit Python ausführen und Result-Pfade in Evaluate anpassen
@@ -61,6 +62,16 @@ def main():
                                  'engineering-gender-withoutSemiPrivate',
                                  'engineering-highschool-withoutSemiPrivate'],
                         help="evaluates performance and fairness metrics for DATASET predictions")
+    parser.add_argument("--rerank",
+                        nargs=2,
+                        metavar=("DATASET", "P"),
+                        choices=['law',
+                                 'trec',
+                                 'engineering-NoSemi',
+                                 'p_minus',
+                                 'p_auto',
+                                 'p_plus'],
+                        help="reranks all folds for the sepcified dataset with FA*IR for pre-processing (alpha = 0.1)")
 
     args = parser.parse_args()
 
@@ -258,6 +269,11 @@ def main():
                                     binSize,
                                     protAttr)
         evaluator.evaluate()
+    #################### argparse rerank ################################
+    elif ('trec' in args.rerank or 'law' in args.rerank or 'engineering-NoSemi' in args.rerank) and ('p_minus' in args.rerank or 'p_auto' in args.rerank or 'p_plus' in args.rerank) and len(args.rerank) == 2:
+        preprocessor = Preprocessing(args.rerank[0],
+                                     args.rerank[1])
+        preprocessor.preprocess_dataset()
     else:
         parser.error("choose one command line option")
 
