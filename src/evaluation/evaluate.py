@@ -2143,7 +2143,7 @@ class DELTR_Evaluator():
         mpl.rcParams['pdf.use14corefonts'] = True
         mpl.rcParams['text.usetex'] = True
 
-        tick_spacing = 0.005
+        tick_spacing = 0.02
         markerlist = ['X', 'o', 'v', '>', '<', 'P', 's', 'D', '*', '+']
 
         # print("Protected")
