@@ -131,7 +131,6 @@ class DELTR_Evaluator():
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
-
             #######################################################################################
 
             gamma = '0'
@@ -325,8 +324,6 @@ class DELTR_Evaluator():
             scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
 
-
-
             # self.__experimentNamesAndFiles.pop('fair-post-p*')
             # self.__experimentNamesAndFiles.pop('fair-post-p-')
             # self.__experimentNamesAndFiles.pop('fair-post-p+')
@@ -370,7 +367,6 @@ class DELTR_Evaluator():
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_4/COLORBLIND/',
                              self.__trainingDir + 'ChileUni/NoSemi/highschool/fold_5/COLORBLIND/']
 
-
             self.__original, self.__predictions, _ = self.__prepareData(pathsToScores, pathsForColorblind)
 
             self.__evaluationFilename = self.__resultDir + 'performanceResults_Gamma=' + gamma + '_' + self.__dataset + '.txt'
@@ -383,7 +379,6 @@ class DELTR_Evaluator():
 
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
-
 
             #######################################################################################
             gamma = '0'
@@ -573,7 +568,6 @@ class DELTR_Evaluator():
             self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1, legendLabelDict)
             scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
-
 
         #         #########################################################################################
 #         ##########################################################################################
@@ -874,7 +868,6 @@ class DELTR_Evaluator():
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
-
             #######################################################################################
 
             gamma = '0'
@@ -1047,7 +1040,7 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
             #######################################################################################
 
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility1, utilityLabel1 = "precision-top20", "Precision Top 20"
             utility2, utilityLabel2 = "precision-top10", "Precision Top 10"
             fairness1P, fairnessLabel1 = "exposure-prot-pred", "Group Exposure"
             fairness1NP = "exposure-nprot-pred"
@@ -1058,12 +1051,12 @@ class DELTR_Evaluator():
                                'gamma=0' : 'Standard L2R',
                                'gamma=small' : 'DELTR Small Gamma',
                                'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$'),
-                                'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                                'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                                'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+                               'fair-post-p*' : str('FA*IR post $p^{*}=' + p_share + '$'),
+                               'fair-post-p+' : str('FA*IR post $p^{+}=' + p_plus + '$'),
+                               'fair-post-p-' : str('FA*IR post $p^{-}=' + p_minus + '$'),
+                               'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
+                               'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
+                               'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1239,7 +1232,6 @@ class DELTR_Evaluator():
             scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
 
-
 #         ###########################################################################################
 #
 #         elif self.__dataset == 'law-asian':
@@ -1368,7 +1360,6 @@ class DELTR_Evaluator():
             self.__plotFilename = self.__resultDir + 'protNonprotDistribution_groundtruth' + '_' + self.__dataset + '.png'
             self.__protected_percentage_per_chunk_average_all_queries(plotGroundTruth=True)
 
-
             #######################################################################################
 
             gamma = '0'
@@ -1492,7 +1483,6 @@ class DELTR_Evaluator():
             self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1, legendLabelDict)
             scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
-
 
             # #######################################################################################
             # gamma = 'PREPROCESSED_PMinus'
@@ -2153,7 +2143,7 @@ class DELTR_Evaluator():
         mpl.rcParams['pdf.use14corefonts'] = True
         mpl.rcParams['text.usetex'] = True
 
-        tick_spacing = 0.02
+        tick_spacing = 0.005
         markerlist = ['X', 'o', 'v', '>', '<', 'P', 's', 'D', '*', '+']
 
         # print("Protected")
