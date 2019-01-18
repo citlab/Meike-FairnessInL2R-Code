@@ -4,6 +4,7 @@ Created on May 11, 2018
 @author: mzehlike
 '''
 
+from adjustText import adjust_text
 import pandas as pd
 import numpy as np
 import matplotlib as mpl
@@ -304,16 +305,38 @@ class DELTR_Evaluator():
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
 
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$'),
-                                'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                                'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                                'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+            # legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'blue'},
+            #                    'gamma=0' : {'label': 'Standard L2R', 'marker': '$LTR$', 'color': 'blue'},
+            #                    'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': 'green'},
+            #                    'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': 'green'},
+            #                    'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': 0.1},
+            #                    'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': 'blue'},
+            #                    'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': 'blue'},
+            #                     'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': 'blue'},
+            #                     'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': 0.8},
+            #                     'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': 'blue'}}
+
+            # legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+            #                    'gamma=0' : {'label': 'Standard L2R', 'marker': 's', 'color': 'blue'},
+            #                    'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '*', 'color': '#00b300'},
+            #                    'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '*', 'color': '#006600'},
+            #                    'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': 'X', 'color': '#4da9ff'},
+            #                    'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': 'X', 'color': '#0069cc'},
+            #                    'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': 'X', 'color': '#cce6ff'},
+            #                     'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': 'P', 'color': '#c44dff'},
+            #                     'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': 'P', 'color': '#7700b3'},
+            #                     'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': 'P', 'color': '#dd99ff'}}
+
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+                               'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
+                               'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
+                               'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
+                               'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
+                               'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': '#99ceff'},
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
+                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -549,16 +572,17 @@ class DELTR_Evaluator():
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
 
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$'),
-                               'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                               'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+                               'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
+                               'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
+                               'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
+                               'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
+                               'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': '#99ceff'},
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
+                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
+
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1047,16 +1071,17 @@ class DELTR_Evaluator():
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
 
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR post $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR post $p^{+}=' + p_plus + '$'),
-                               'fair-post-p-' : str('FA*IR post $p^{-}=' + p_minus + '$'),
-                               'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                               'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+                               'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
+                               'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
+                               'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
+                               'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
+                               'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': '#99ceff'},
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
+                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
+
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1213,16 +1238,17 @@ class DELTR_Evaluator():
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
 
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_share + '$'),
-                               'fair-post-p-' : str('FA*IR $p^{-}=' + p_minus + '$'),
-                               'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                               'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p-': str('FA*IR pre $p^{-}=' + p_minus + '$')}
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+                               'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
+                               'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
+                               'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
+                               'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
+                               'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': '#99ceff'},
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
+                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
+
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1466,15 +1492,15 @@ class DELTR_Evaluator():
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
 
-            legendLabelDict = {'colorblind' : 'Colorblind L2R',
-                               'gamma=0' : 'Standard L2R',
-                               'gamma=small' : 'DELTR Small Gamma',
-                               'gamma=large' : 'DELTR Large Gamma',
-                               'fair-post-p*' : str('FA*IR $p^{*}=' + p_share + '$'),
-                               'fair-post-p+' : str('FA*IR $p^{+}=' + p_plus + '$'),
-                               'fair-pre-p*': str('FA*IR pre $p^{*}=' + p_share + '$'),
-                               'fair-pre-p+': str('FA*IR pre $p^{+}=' + p_plus + '$'),
-                               }
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+                               'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
+                               'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
+                               'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
+                               'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'}}
+
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -2145,27 +2171,95 @@ class DELTR_Evaluator():
         mpl.rcParams['text.usetex'] = True
 
         tick_spacing = 0.02
-        markerlist = ['X', 'o', 'v', '>', '<', 'P', 's', 'D', '*', '+']
 
-        # print("Protected")
-        # print( plotFrame[fairnessMeasureProtected].apply(pd.to_numeric) )
-        # print("Noneprotected")
-        # print(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric) )
         _, ax = plt.subplots()
         xCol = plotFrame[utilityMeasure].apply(pd.to_numeric)
         yCol = plotFrame[fairnessMeasureProtected].apply(pd.to_numeric).div(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric))
 
-        # print("Exposure")
-        # print(yCol)
 
+        deltr_small = None
+        deltr_big = None
+
+        fair_post_minus = None
+        fair_post_share = None
+        fair_post_plus = None
+
+        fair_pre_minus = None
+        fair_pre_share = None
+        fair_pre_plus = None
+
+        plot_text = [] #[0 for x in range(len(plotFrame['experimentName']))]
         # plot all protected/nonprotected
         for i, l in enumerate(plotFrame['experimentName']):
             x = xCol[i]
             y = yCol[i]
-            m = markerlist[i]
-            readableLabel = legendLabelDict.get(l)
+            m = legendLabelDict.get(l)['marker']
+            readableLabel = legendLabelDict.get(l)['label']
+            color = legendLabelDict.get(l)['color']
 
-            ax.scatter(x, y, label=readableLabel, s=150, linewidth=1, c='royalblue', edgecolor='black', marker=m)
+            plt.plot(y,x, zorder=1)
+            plot_text.append(plt.text(x, y, m, color=color))
+
+            if l == "colorblind":
+                ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker="s", zorder=2)
+            elif l == "gamma=0":
+                ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker="X", zorder=2)
+            else:
+                ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker='o', zorder=2)
+            #ax.annotate(m, (x, y), xytext=(x + 0.001, y + 0.001))
+
+            if l == "gamma=small":
+              deltr_small = i
+            if l == "gamma=large":
+              deltr_big = i
+
+            if l == "fair-post-p-":
+              fair_post_minus = i
+            if l == "fair-post-p*":
+              fair_post_share = i
+            if l == "fair-post-p+":
+              fair_post_plus = i
+
+            if l == "fair-pre-p-":
+              fair_pre_minus = i
+            if l == "fair-pre-p*":
+              fair_pre_share = i
+            if l == "fair-pre-p+":
+              fair_pre_plus = i
+
+        # plot deltr lines
+        ax.plot([xCol[deltr_small], xCol[deltr_big]], [yCol[deltr_small], yCol[deltr_big]], markersize=5., color="#00b300",
+                    zorder=1, linewidth=0.5)
+
+        if "law-black" in filename:
+            # plot fair post lines
+            ax.plot([xCol[fair_post_share], xCol[fair_post_plus]],
+                    [yCol[fair_post_share], yCol[fair_post_plus]], markersize=5.,
+                    color="#4da9ff", zorder=1, linewidth=0.5)
+
+            # plot fair pre lines
+            ax.plot([xCol[fair_pre_share], xCol[fair_pre_plus]],
+                    [yCol[fair_pre_share], yCol[fair_pre_plus]],
+                    markersize=5., color="#c44dff", zorder=1, linewidth=0.5)
+        else:
+            # plot fair post lines
+            ax.plot([xCol[fair_post_minus], xCol[fair_post_share], xCol[fair_post_plus]],
+                    [yCol[fair_post_minus], yCol[fair_post_share], yCol[fair_post_plus]], markersize=5., color="#4da9ff", zorder=1, linewidth=0.5)
+
+            # plot fair pre lines
+            ax.plot([xCol[fair_pre_minus], xCol[fair_pre_share], xCol[9]], [yCol[fair_pre_minus], yCol[fair_pre_share], yCol[fair_pre_plus]],
+                    markersize=5., color="#c44dff", zorder=1, linewidth=0.5)
+
+        std_x = np.array(xCol).std(axis=0)
+        mean_x = np.array(xCol).mean(axis=0)
+        print(std_x)
+        ax.set_xlim(left=(mean_x-2*std_x), right=(mean_x + 2*std_x))
+
+        std_y = np.array(yCol).std(axis=0)
+        mean_y = np.array(yCol).mean(axis=0)
+        print(std_y)
+        ax.set_ylim(bottom=(mean_y - 2*std_y), top=(mean_y + 2*std_y))
+
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
         ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
@@ -2173,5 +2267,8 @@ class DELTR_Evaluator():
         plt.xlabel(utilLabel)
         plt.ylabel(fairLabel)
 
-        plt.savefig(filename, bbox_inches='tight')
+        print(plot_text)
+        adjust_text(plot_text)
+
+        plt.savefig(filename, bbox_inches='tight', dpi=300)
 
