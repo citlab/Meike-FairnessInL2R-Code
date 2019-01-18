@@ -1068,6 +1068,7 @@ class DELTR_Evaluator():
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
 
         ###########################################################################################
+        ###########################################################################################
 
         elif self.__dataset == 'law-gender':
             gamma = 'colorblind'

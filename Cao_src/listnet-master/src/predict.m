@@ -42,7 +42,7 @@ arg_list = argv()
 %omega = load('/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/race_puertorican/COLORBLIND/model.m');
 %drgfile = '/home/mzehlike/workspace/Meike-FairnessInL2R-Code/octave-src/sample/LawStudents/race_puertorican/LawStudents_Race_test.txt';
 
-FEAT_START = 2
+FEAT_START = 3
 
 test_file = arg_list{1,1}
 model_file = arg_list{2,1}
