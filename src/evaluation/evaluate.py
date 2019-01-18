@@ -327,16 +327,16 @@ class DELTR_Evaluator():
             #                     'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': 'P', 'color': '#7700b3'},
             #                     'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': 'P', 'color': '#dd99ff'}}
 
-            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': 'o', 'color': 'red'},
-                               'gamma=0' : {'label': 'Standard L2R', 'marker': 'x', 'color': 'blue'},
+            legendLabelDict = {'colorblind' : {'label': 'Colorblind L2R', 'marker': '', 'color': 'red'},
+                               'gamma=0' : {'label': 'Standard L2R', 'marker': '', 'color': 'blue'},
                                'gamma=small' : {'label': 'DELTR Small Gamma', 'marker': '$D^{-}$', 'color': '#00b300'},
                                'gamma=large' : {'label': 'DELTR Large Gamma', 'marker': '$D^{+}$', 'color': '#006600'},
                                'fair-post-p*' : {'label': str('FA*IR $p^{*}=' + p_share + '$'), 'marker': '$F^{*}$', 'color': '#4da9ff'},
                                'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
                                'fair-post-p-' : {'label': str('FA*IR $p^{-}=' + p_minus + '$'), 'marker': '$F^{-}$', 'color': '#99ceff'},
-                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
-                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
-                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
+                                'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#F97B06'},
+                                'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#C25D00'},
+                                'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#FF9A3D'}}
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -2194,18 +2194,21 @@ class DELTR_Evaluator():
             x = xCol[i]
             y = yCol[i]
             m = legendLabelDict.get(l)['marker']
-            readableLabel = legendLabelDict.get(l)['label']
+            if m:
+                readableLabel = m + ': ' + legendLabelDict.get(l)['label']
+            else:
+                readableLabel = legendLabelDict.get(l)['label']
             color = legendLabelDict.get(l)['color']
 
             plt.plot(y,x, zorder=1)
-            plot_text.append(plt.text(x, y, m, color=color))
+            plot_text.append(plt.text(x, y, m, color=color, fontsize=20))
 
             if l == "colorblind":
                 ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker="s", zorder=2)
             elif l == "gamma=0":
                 ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker="X", zorder=2)
             else:
-                ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker='o', zorder=2)
+                ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, marker='.', zorder=2, facecolors=color, edgecolors=color)
             #ax.annotate(m, (x, y), xytext=(x + 0.001, y + 0.001))
 
             if l == "gamma=small":
@@ -2229,45 +2232,50 @@ class DELTR_Evaluator():
 
         # plot deltr lines
         ax.plot([xCol[deltr_small], xCol[deltr_big]], [yCol[deltr_small], yCol[deltr_big]], markersize=5., color="#00b300",
-                    zorder=1, linewidth=0.5)
+                    zorder=1, linewidth=1.5)
 
         if "law-black" in filename:
             # plot fair post lines
             ax.plot([xCol[fair_post_share], xCol[fair_post_plus]],
                     [yCol[fair_post_share], yCol[fair_post_plus]], markersize=5.,
-                    color="#4da9ff", zorder=1, linewidth=0.5)
+                    color="#4da9ff", zorder=1, linewidth=1.5)
 
             # plot fair pre lines
             ax.plot([xCol[fair_pre_share], xCol[fair_pre_plus]],
                     [yCol[fair_pre_share], yCol[fair_pre_plus]],
-                    markersize=5., color="#c44dff", zorder=1, linewidth=0.5)
+                    markersize=5., color="#F97B06", zorder=1, linewidth=1.5)
         else:
             # plot fair post lines
             ax.plot([xCol[fair_post_minus], xCol[fair_post_share], xCol[fair_post_plus]],
-                    [yCol[fair_post_minus], yCol[fair_post_share], yCol[fair_post_plus]], markersize=5., color="#4da9ff", zorder=1, linewidth=0.5)
+                    [yCol[fair_post_minus], yCol[fair_post_share], yCol[fair_post_plus]], markersize=5., color="#4da9ff", zorder=1, linewidth=1.5)
 
             # plot fair pre lines
             ax.plot([xCol[fair_pre_minus], xCol[fair_pre_share], xCol[9]], [yCol[fair_pre_minus], yCol[fair_pre_share], yCol[fair_pre_plus]],
-                    markersize=5., color="#c44dff", zorder=1, linewidth=0.5)
+                    markersize=5., color="#F97B06", zorder=1, linewidth=1.5)
 
         std_x = np.array(xCol).std(axis=0)
         mean_x = np.array(xCol).mean(axis=0)
-        print(std_x)
-        ax.set_xlim(left=(mean_x-2*std_x), right=(mean_x + 2*std_x))
+
+        ax.set_xlim(left=(mean_x - std_x), right=(mean_x + std_x))
 
         std_y = np.array(yCol).std(axis=0)
         mean_y = np.array(yCol).mean(axis=0)
-        print(std_y)
-        ax.set_ylim(bottom=(mean_y - 2*std_y), top=(mean_y + 2*std_y))
+
+        ax.set_ylim(bottom=(mean_y - std_y), top=(mean_y + std_y))
 
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
-        ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
+        #ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
         plt.grid()
         plt.xlabel(utilLabel)
         plt.ylabel(fairLabel)
 
-        print(plot_text)
+        leg = plt.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0, fontsize=20)
+
+        for handle, text in zip(leg.legendHandles, leg.get_texts()):
+            text.set_color(handle.get_facecolor()[0])
+            handle.set_visible(False)
+
         adjust_text(plot_text)
 
         plt.savefig(filename, bbox_inches='tight', dpi=300)
