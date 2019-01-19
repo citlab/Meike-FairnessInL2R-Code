@@ -1,10 +1,10 @@
-# Created by Octave 4.2.2, Sat Jan 19 02:28:38 2019 CET <meike@Irmchen>
+# Created by Octave 4.2.2, Sat Jan 19 21:36:30 2019 CET <meike@Irmchen>
 # name: omega
 # type: matrix
 # rows: 3
 # columns: 1
- 0.3676204789200285
- 0.1994271859567304
- 0.1062875068815977
+ 0.3280849076851667
+ 0.1934057196234865
+ 0.1035741383552953
 
 
