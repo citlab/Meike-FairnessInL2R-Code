@@ -583,7 +583,6 @@ class DELTR_Evaluator():
                                 'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
                                 'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
 
-
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
@@ -1082,7 +1081,6 @@ class DELTR_Evaluator():
                                 'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
                                 'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
 
-
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
@@ -1248,7 +1246,6 @@ class DELTR_Evaluator():
                                 'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
                                 'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'},
                                 'fair-pre-p-': {'label': str('FA*IR pre $p^{-}=' + p_minus + '$'), 'marker': '$\overline{F}^{-}$', 'color': '#dd99ff'}}
-
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -1500,7 +1497,6 @@ class DELTR_Evaluator():
                                'fair-post-p+' : {'label': str('FA*IR $p^{+}=' + p_plus + '$'), 'marker': '$F^{+}$', 'color': '#0069cc'},
                                 'fair-pre-p*': {'label': str('FA*IR pre $p^{*}=' + p_share + '$'), 'marker': '$\overline{F}^{*}$', 'color': '#c44dff'},
                                 'fair-pre-p+': {'label': str('FA*IR pre $p^{+}=' + p_plus + '$'), 'marker': '$\overline{F}^{+}$', 'color': '#7700b3'}}
-
 
             scatterFilename = self.__resultDir + 'scatter_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1, legendLabelDict)
@@ -2176,7 +2172,6 @@ class DELTR_Evaluator():
         xCol = plotFrame[utilityMeasure].apply(pd.to_numeric)
         yCol = plotFrame[fairnessMeasureProtected].apply(pd.to_numeric).div(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric))
 
-
         deltr_small = None
         deltr_big = None
 
@@ -2188,7 +2183,7 @@ class DELTR_Evaluator():
         fair_pre_share = None
         fair_pre_plus = None
 
-        plot_text = [] #[0 for x in range(len(plotFrame['experimentName']))]
+        plot_text = []  # [0 for x in range(len(plotFrame['experimentName']))]
         # plot all protected/nonprotected
         for i, l in enumerate(plotFrame['experimentName']):
             x = xCol[i]
@@ -2197,7 +2192,7 @@ class DELTR_Evaluator():
             readableLabel = legendLabelDict.get(l)['label']
             color = legendLabelDict.get(l)['color']
 
-            plt.plot(y,x, zorder=1)
+            plt.plot(y, x, zorder=1)
             plot_text.append(plt.text(x, y, m, color=color))
 
             if l == "colorblind":
@@ -2206,26 +2201,26 @@ class DELTR_Evaluator():
                 ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker="X", zorder=2)
             else:
                 ax.scatter(x, y, label=readableLabel, s=100, linewidth=1, c=color, marker='o', zorder=2)
-            #ax.annotate(m, (x, y), xytext=(x + 0.001, y + 0.001))
+            # ax.annotate(m, (x, y), xytext=(x + 0.001, y + 0.001))
 
             if l == "gamma=small":
-              deltr_small = i
+                deltr_small = i
             if l == "gamma=large":
-              deltr_big = i
+                deltr_big = i
 
             if l == "fair-post-p-":
-              fair_post_minus = i
+                fair_post_minus = i
             if l == "fair-post-p*":
-              fair_post_share = i
+                fair_post_share = i
             if l == "fair-post-p+":
-              fair_post_plus = i
+                fair_post_plus = i
 
             if l == "fair-pre-p-":
-              fair_pre_minus = i
+                fair_pre_minus = i
             if l == "fair-pre-p*":
-              fair_pre_share = i
+                fair_pre_share = i
             if l == "fair-pre-p+":
-              fair_pre_plus = i
+                fair_pre_plus = i
 
         # plot deltr lines
         ax.plot([xCol[deltr_small], xCol[deltr_big]], [yCol[deltr_small], yCol[deltr_big]], markersize=5., color="#00b300",
@@ -2253,13 +2248,12 @@ class DELTR_Evaluator():
         std_x = np.array(xCol).std(axis=0)
         mean_x = np.array(xCol).mean(axis=0)
         print(std_x)
-        ax.set_xlim(left=(mean_x-2*std_x), right=(mean_x + 2*std_x))
+        ax.set_xlim(left=(mean_x - 2 * std_x), right=(mean_x + 2 * std_x))
 
         std_y = np.array(yCol).std(axis=0)
         mean_y = np.array(yCol).mean(axis=0)
         print(std_y)
-        ax.set_ylim(bottom=(mean_y - 2*std_y), top=(mean_y + 2*std_y))
-
+        ax.set_ylim(bottom=(mean_y - 2 * std_y), top=(mean_y + 2 * std_y))
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
         ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)

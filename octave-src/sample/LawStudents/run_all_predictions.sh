@@ -15,28 +15,28 @@ PATH_TO_EXECUTABLE_DELTR=$GIT_ROOT/octave-src/src
 PATH_TO_EXECUTABLE_LISTNET=$GIT_ROOT/Cao_src/listnet-master/src
 PATH_TO_LSAT_DATASETS=$GIT_ROOT/octave-src/sample/LawStudents
 
-echo ""
-echo "################################# PREDICTING GENDER #############################################"
+#echo ""
+#echo "################################# PREDICTING GENDER #############################################"
 
-FOLD=gender
+#FOLD=gender
 
-echo "$FOLD predictions..."
-cd $PATH_TO_EXECUTABLE_LISTNET
-./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_LSAT_DATASETS/$FOLD/COLORBLIND/
+#echo "$FOLD predictions..."
+#cd $PATH_TO_EXECUTABLE_LISTNET
+#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/COLORBLIND/model.m $PATH_TO_LSAT_DATASETS/$FOLD/COLORBLIND/
 
-#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED/
+##./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED/
 
-#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PPlus/
+##./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PPlus/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PPlus/
 
-#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PMinus/
+##./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PMinus/model.m $PATH_TO_LSAT_DATASETS/$FOLD/PREPROCESSED_PMinus/
 
 
-cd $PATH_TO_EXECUTABLE_DELTR
-./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=0/
+#cd $PATH_TO_EXECUTABLE_DELTR
+#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=0/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=0/
 
-./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=SMALL/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=SMALL/
+#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=SMALL/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=SMALL/
 
-./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=LARGE/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=LARGE/
+#./predict.m $PATH_TO_LSAT_DATASETS/$FOLD/LawStudents_Gender_test.txt $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=LARGE/model.m $PATH_TO_LSAT_DATASETS/$FOLD/GAMMA\=LARGE/
 
 echo ""
 echo "################################# PREDICTING RACE #############################################"
