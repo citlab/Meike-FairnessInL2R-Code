@@ -300,7 +300,7 @@ class DELTR_Evaluator():
             #######################################################################################
             utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -545,7 +545,7 @@ class DELTR_Evaluator():
 
             utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1043,7 +1043,7 @@ class DELTR_Evaluator():
 
             utility1, utilityLabel1 = "precision-top20", "Precision Top 20"
             utility2, utilityLabel2 = "precision-top10", "Precision Top 10"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1209,7 +1209,7 @@ class DELTR_Evaluator():
 
             utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top500", "Precision Top 500"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1462,7 +1462,7 @@ class DELTR_Evaluator():
 
             utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top500", "Precision Top 500"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -2137,7 +2137,7 @@ class DELTR_Evaluator():
             rowToAppend.insert(0, key)
             plotFrame.loc[len(plotFrame)] = rowToAppend
 
-        mpl.rcParams.update({'font.size': 25, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
+        mpl.rcParams.update({'font.size': 22, 'lines.linewidth': 3, 'lines.markersize': 15, 'font.family':'Times New Roman'})
         # avoid type 3 (i.e. bitmap) fonts in figures
         mpl.rcParams['ps.useafm'] = True
         mpl.rcParams['pdf.use14corefonts'] = True
