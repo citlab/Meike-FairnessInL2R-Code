@@ -13,7 +13,6 @@ import matplotlib.ticker as ticker
 import scipy.stats as stats
 import math
 import os
-import re
 from fileinput import filename
 
 
