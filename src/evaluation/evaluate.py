@@ -297,9 +297,9 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
 
             #######################################################################################
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility1, utilityLabel1 = "kendall-tau", "Relevance"  # "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Fairness"  # "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -323,32 +323,6 @@ class DELTR_Evaluator():
             self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1, legendLabelDict)
             scatterFilename = self.__resultDir + 'scatter_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
             self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2, legendLabelDict)
-
-            # self.__experimentNamesAndFiles.pop('fair-post-p*')
-            # self.__experimentNamesAndFiles.pop('fair-post-p-')
-            # self.__experimentNamesAndFiles.pop('fair-post-p+')
-            #
-            #
-            # legendLabelDict = {'colorblind': 'Colorblind L2R',
-            #                    'gamma=0': 'Standard L2R',
-            #                    'gamma=small': 'DELTR Small Gamma',
-            #                    'gamma=large': 'DELTR Large Gamma',
-            #                    'fair-pre-p*': str('FA*IR $p^{*}=' + p_share + '$'),
-            #                    'fair-pre-p+': str('FA*IR $p^{+}=' + p_plus + '$'),
-            #                    'fair-pre-p-': str('FA*IR $p^{-}=' + p_minus + '$')}
-            #
-            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness1P + self.__dataset + '.png'
-            # self.__scatterPlot(scatterFilename, utility1, fairness1P, fairness1NP, utilityLabel1, fairnessLabel1,
-            #                    legendLabelDict)
-            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility1 + '-' + fairness2P + self.__dataset + '.png'
-            # self.__scatterPlot(scatterFilename, utility1, fairness2P, fairness2NP, utilityLabel1, fairnessLabel2,
-            #                    legendLabelDict)
-            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness1P + self.__dataset + '.png'
-            # self.__scatterPlot(scatterFilename, utility2, fairness1P, fairness1NP, utilityLabel2, fairnessLabel1,
-            #                    legendLabelDict)
-            # scatterFilename = self.__resultDir + 'scatter_PREPROCESSED_' + utility2 + '-' + fairness2P + self.__dataset + '.png'
-            # self.__scatterPlot(scatterFilename, utility2, fairness2P, fairness2NP, utilityLabel2, fairnessLabel2,
-            #                legendLabelDict)
 
         ###########################################################################################
         ###########################################################################################
@@ -542,9 +516,9 @@ class DELTR_Evaluator():
 
             #######################################################################################
 
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility1, utilityLabel1 = "kendall-tau", "Relevance"  # "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top100", "Precision Top 100"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Fairness"  # "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1040,9 +1014,9 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
             #######################################################################################
 
-            utility1, utilityLabel1 = "precision-top20", "Precision Top 20"
+            utility1, utilityLabel1 = "precision-top20", "Relevance"  # "Precision Top 20"
             utility2, utilityLabel2 = "precision-top10", "Precision Top 10"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Fairness"  # "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1206,9 +1180,9 @@ class DELTR_Evaluator():
             self.__experimentNamesAndFiles["fair-pre-p+"] = self.__evaluationFilename
             #######################################################################################
 
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility1, utilityLabel1 = "kendall-tau", "Relevance"  # "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top500", "Precision Top 500"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Fairness"  # "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -1459,9 +1433,9 @@ class DELTR_Evaluator():
 
             #######################################################################################
 
-            utility1, utilityLabel1 = "kendall-tau", "Kendall's Tau"
+            utility1, utilityLabel1 = "kendall-tau", "Relevance"  # "Kendall's Tau"
             utility2, utilityLabel2 = "precision-top500", "Precision Top 500"
-            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Exposure of \n Protected / Non-Protected"
+            fairness1P, fairnessLabel1 = "exposure-prot-pred", "Fairness"  # "Exposure of \n Protected / Non-Protected"
             fairness1NP = "exposure-nprot-pred"
             fairness2P, fairnessLabel2 = "prot-pos-median-pred", "Group Median Position"
             fairness2NP = "nprot-pos-median-pred"
@@ -2142,8 +2116,6 @@ class DELTR_Evaluator():
         mpl.rcParams['pdf.use14corefonts'] = True
         mpl.rcParams['text.usetex'] = True
 
-
-
         _, ax = plt.subplots()
         xCol = plotFrame[utilityMeasure].apply(pd.to_numeric)
         yCol = plotFrame[fairnessMeasureProtected].apply(pd.to_numeric).div(plotFrame[fairnessMeasureNonProtected].apply(pd.to_numeric))
@@ -2246,15 +2218,15 @@ class DELTR_Evaluator():
 
         std_x = np.array(xCol).std(axis=0)
         mean_x = np.array(xCol).mean(axis=0)
-        #print(std_x)
-        #ax.set_xlim(left=(mean_x - 2 * std_x), right=(mean_x + 2 * std_x))
+        # print(std_x)
+        # ax.set_xlim(left=(mean_x - 2 * std_x), right=(mean_x + 2 * std_x))
 
         ax.set_xlim(left=(mean_x - factor * std_x), right=(mean_x + factor * std_x))
 
         std_y = np.array(yCol).std(axis=0)
         mean_y = np.array(yCol).mean(axis=0)
 
-        #ax.set_ylim(bottom=(mean_y - 2 * std_y), top=(mean_y + 2 * std_y))
+        # ax.set_ylim(bottom=(mean_y - 2 * std_y), top=(mean_y + 2 * std_y))
         ax.set_ylim(bottom=(mean_y - factor * std_y), top=(mean_y + factor * std_y))
 
         if "trec" in filename:
@@ -2264,12 +2236,12 @@ class DELTR_Evaluator():
 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
 
-
         # ax.legend(bbox_to_anchor=(1.02, 1), borderaxespad=0)
 
-
-        plt.grid(color='silver', zorder=0)
-        ax.axhline(y=1.0, linestyle='-', color='silver', zorder=0)
+        # plt.grid(color='silver', zorder=0)
+        ax.axhline(y=1.0, linestyle='-', color='silver', zorder=0, linewidth=5)
+        ax.tick_params(axis='both', which='major', labelsize=10)
+        ax.tick_params(axis='both', which='minor', labelsize=8)
         plt.xlabel(utilLabel)
         plt.ylabel(fairLabel)
 
