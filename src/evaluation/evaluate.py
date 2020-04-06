@@ -2203,6 +2203,8 @@ class DELTR_Evaluator():
 
         tick_spacing = 0.01
         factor = 1.0
+        if "trec" in filename:
+            factor = 1.5
         if "gender-withoutSemiPrivate" in filename:
             factor = 1.0
 
